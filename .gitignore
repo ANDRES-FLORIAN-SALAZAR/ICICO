@@ -1,5 +1,5 @@
 # Archivos que no deben subirse al repositorio
-
+*gitignore
 # Archivos de configuración sensibles
 config/
 admin-config.js
