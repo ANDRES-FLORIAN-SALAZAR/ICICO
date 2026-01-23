@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicas - Casa de Oración</title>
+    <meta name="description" content="Mensajes de inspiración y enseñanza bíblica de Casa de Oración">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-logo">
+                    <i class="fas fa-church"></i>
+                    <span>Casa de Oración</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i>Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html"><i class="fas fa-users me-1"></i>Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="eventos.html"><i class="fas fa-calendar me-1"></i>Eventos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="escuela.html"><i class="fas fa-graduation-cap me-1"></i>Escuela Dominical</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cultos.html"><i class="fas fa-praying-hands me-1"></i>Cultos Especiales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html"><i class="fas fa-images me-1"></i>Galería</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="predicas.html"><i class="fas fa-bible me-1"></i>Predicas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html"><i class="fas fa-envelope me-1"></i>Contacto</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-link" href="#" onclick="showAdminLogin()">
+                            <i class="fas fa-user-shield me-1"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Header Section -->
+        <section class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Predicas Recientes</h1>
+                        <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Mensajes de inspiración y enseñanza bíblica</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Predicas Section -->
+        <section class="section-predicaes py-5">
+            <div class="container">
+                <div class="row g-4" id="predicasContainer">
+                    <!-- El Poder de la Oración -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                        <div class="predica-card">
+                            <div class="predica-image">
+                                <i class="fas fa-bible"></i>
+                            </div>
+                            <div class="predica-content">
+                                <span class="predica-date">15 de Diciembre</span>
+                                <h5 class="predica-title">El Poder de la Oración</h5>
+                                <p class="predica-speaker"><i class="fas fa-user me-2"></i>Pastor Juan Pérez</p>
+                                <p class="predica-description">Descubre cómo la oración puede transformar tu vida y mover montañas.</p>
+                                <div class="predica-time">
+                                    <i class="fas fa-clock me-2"></i>Disponible ahora
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fe en Acción -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="predica-card">
+                            <div class="predica-image">
+                                <i class="fas fa-bible"></i>
+                            </div>
+                            <div class="predica-content">
+                                <span class="predica-date">8 de Diciembre</span>
+                                <h5 class="predica-title">Fe en Acción</h5>
+                                <p class="predica-speaker"><i class="fas fa-user me-2"></i>Pastora María González</p>
+                                <p class="predica-description">Aprende a poner tu fe en práctica en el diario vivir.</p>
+                                <div class="predica-time">
+                                    <i class="fas fa-clock me-2"></i>Disponible ahora
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- La Gracia de Dios -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="predica-card">
+                            <div class="predica-image">
+                                <i class="fas fa-bible"></i>
+                            </div>
+                            <div class="predica-content">
+                                <span class="predica-date">1 de Diciembre</span>
+                                <h5 class="predica-title">La Gracia de Dios</h5>
+                                <p class="predica-speaker"><i class="fas fa-user me-2"></i>Pastor Carlos Rodríguez</p>
+                                <p class="predica-description">Comprendiendo el maravilloso regalo de la gracia divina.</p>
+                                <div class="predica-time">
+                                    <i class="fas fa-clock me-2"></i>Disponible ahora
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Casa de Oración</h5>
+                    <p>Compartiendo el amor de Cristo con nuestra comunidad</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="footer-links">
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="eventos.html">Eventos</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-phone me-2"></i>(123) 456-7890</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@casadeoracion.org</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Calle Principal #123</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Casa de Oración. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Administración -->
+    <div class="modal fade" id="adminLoginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Acceso de Administrador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="adminLoginForm">
+                        <div class="mb-3">
+                            <label for="adminPassword" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="adminPassword" required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberAdmin">
+                            <label class="form-check-label" for="rememberAdmin">
+                                Recordar sesión
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-sign-in-alt me-2"></i>Ingresar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

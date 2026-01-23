@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa de Oración - Iglesia Cristiana</title>
+    <meta name="description" content="Comunidad cristiana comprometida con compartir el amor de Dios y transformar vidas a través del evangelio">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">
+                <div class="brand-logo">
+                    <i class="fas fa-church"></i>
+                    <span>Casa de Oración</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-home me-1"></i>Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html"><i class="fas fa-users me-1"></i>Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="eventos.html"><i class="fas fa-calendar me-1"></i>Eventos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="escuela.html"><i class="fas fa-graduation-cap me-1"></i>Escuela Dominical</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cultos.html"><i class="fas fa-praying-hands me-1"></i>Cultos Especiales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html"><i class="fas fa-images me-1"></i>Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="predicas.html"><i class="fas fa-bible me-1"></i>Predicas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html"><i class="fas fa-envelope me-1"></i>Contacto</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-link" href="#" onclick="showAdminLogin()">
+                            <i class="fas fa-user-shield me-1"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-particles"></div>
+        <div class="hero-overlay"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content" data-aos="fade-right">
+                        <h1 class="display-3 fw-bold mb-4">Bienvenidos a Casa de Oración</h1>
+                        <p class="lead mb-4">Una comunidad cristiana comprometida con compartir el amor de Dios y transformar vidas a través del evangelio.</p>
+                        <div class="hero-buttons">
+                            <a href="nosotros.html" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-users me-2"></i>Conócenos
+                            </a>
+                            <a href="contacto.html" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-hand-holding-heart me-2"></i>Únete a Nosotros
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-stats" data-aos="fade-left">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="500">0</span>
+                            <span class="stat-label">Miembros</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="25">0</span>
+                            <span class="stat-label">Ministerios</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="10">0</span>
+                            <span class="stat-label">Años</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Casa de Oración</h5>
+                    <p>Compartiendo el amor de Cristo con nuestra comunidad</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="footer-links">
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="eventos.html">Eventos</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-phone me-2"></i>(123) 456-7890</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@casadeoracion.org</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Calle Principal #123</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Casa de Oración. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Administración -->
+    <div class="modal fade" id="adminLoginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Acceso de Administrador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="adminLoginForm" onsubmit="event.preventDefault(); checkAdminPassword();">
+                        <div class="mb-3">
+                            <label for="adminPassword" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="adminPassword" required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberAdmin">
+                            <label class="form-check-label" for="rememberAdmin">
+                                Recordar sesión
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-sign-in-alt me-2"></i>Ingresar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Gestión de Contenido -->
+    <div class="modal fade" id="contentManagerModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Panel de Administración</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="announcements-tab" data-bs-toggle="tab" data-bs-target="#admin-announcements" type="button">
+                                <i class="fas fa-bullhorn me-2"></i>Anuncios
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#admin-events" type="button">
+                                <i class="fas fa-calendar me-2"></i>Eventos
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="gallery-tab" data-bs-toggle="tab" data-bs-target="#admin-gallery" type="button">
+                                <i class="fas fa-images me-2"></i>Galería
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="predicas-tab" data-bs-toggle="tab" data-bs-target="#admin-predicas" type="button">
+                                <i class="fas fa-bible me-2"></i>Predicas
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content mt-3" id="adminTabContent">
+                        <!-- Anuncios -->
+                        <div class="tab-pane fade show active" id="admin-announcements" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6>Gestionar Anuncios</h6>
+                                <button class="btn btn-primary btn-sm" onclick="showAddAnnouncementModal()">
+                                    <i class="fas fa-plus me-1"></i>Nuevo Anuncio
+                                </button>
+                            </div>
+                            <div id="announcementsList" class="admin-content-list">
+                                <!-- Los anuncios se cargarán aquí -->
+                            </div>
+                        </div>
+                        
+                        <!-- Eventos -->
+                        <div class="tab-pane fade" id="admin-events" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6>Gestionar Eventos</h6>
+                                <button class="btn btn-primary btn-sm" onclick="showAddEventModal()">
+                                    <i class="fas fa-plus me-1"></i>Nuevo Evento
+                                </button>
+                            </div>
+                            <div id="eventsList" class="admin-content-list">
+                                <!-- Los eventos se cargarán aquí -->
+                            </div>
+                        </div>
+                        
+                        <!-- Galería -->
+                        <div class="tab-pane fade" id="admin-gallery" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6>Gestionar Galería</h6>
+                                <button class="btn btn-primary btn-sm" onclick="showUploadModal()">
+                                    <i class="fas fa-plus me-1"></i>Subir Contenido
+                                </button>
+                            </div>
+                            <div id="galleryList" class="admin-content-list">
+                                <!-- La galería se cargará aquí -->
+                            </div>
+                        </div>
+                        
+                        <!-- Predicas -->
+                        <div class="tab-pane fade" id="admin-predicas" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6>Gestionar Predicas</h6>
+                                <button class="btn btn-primary btn-sm" onclick="showAddSermonModal()">
+                                    <i class="fas fa-plus me-1"></i>Nuevo Predica
+                                </button>
+                            </div>
+                            <div id="predicasList" class="admin-content-list">
+                                <!-- Los predicaes se cargarán aquí -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-info" onclick="window.adminFunctions.exportContent()">
+                        <i class="fas fa-download me-1"></i>Exportar Datos
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Editar Anuncio -->
+    <div class="modal fade" id="editAnnouncementModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Anuncio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editAnnouncementForm">
+                        <input type="hidden" id="editAnnouncementId">
+                        <div class="mb-3">
+                            <label for="editAnnouncementType" class="form-label">Tipo</label>
+                            <select class="form-select" id="editAnnouncementType" required>
+                                <option value="Importante">Importante</option>
+                                <option value="Evento">Evento</option>
+                                <option value="Información">Información</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAnnouncementTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="editAnnouncementTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAnnouncementContent" class="form-label">Contenido</label>
+                            <textarea class="form-control" id="editAnnouncementContent" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="updateAnnouncement()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Editar Evento -->
+    <div class="modal fade" id="editEventModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Evento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editEventForm">
+                        <input type="hidden" id="editEventId">
+                        <div class="mb-3">
+                            <label for="editEventTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="editEventTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEventDate" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="editEventDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEventTime" class="form-label">Hora</label>
+                            <input type="text" class="form-control" id="editEventTime" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEventDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editEventDescription" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="updateEvent()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Subida de Contenido -->
+    <div class="modal fade" id="uploadModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Subir Contenido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="contentType" class="form-label">Tipo de Contenido</label>
+                                <select class="form-select" id="contentType" required>
+                                    <option value="">Selecciona...</option>
+                                    <option value="image">Imagen</option>
+                                    <option value="video">Video</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="contentTitle" class="form-label">Título</label>
+                                <input type="text" class="form-control" id="contentTitle" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contentDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="contentDescription" rows="3"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="contentFile" class="form-label">Archivo</label>
+                            <div class="file-upload-area">
+                                <input type="file" class="form-control" id="contentFile" accept="image/*,video/*" required>
+                                <div class="file-upload-label">
+                                    <i class="fas fa-file-upload"></i>
+                                    <span>Arrastra un archivo o haz clic para seleccionar</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-upload me-2"></i>Subir Contenido
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Media -->
+    <div class="modal fade" id="mediaModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Título del Media</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- El contenido se cargará dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

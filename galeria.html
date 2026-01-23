@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Casa de Oración</title>
+    <meta name="description" content="Testimonios visuales de nuestra comunidad cristiana">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="galeria.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-logo">
+                    <i class="fas fa-church"></i>
+                    <span>Casa de Oración</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i>Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html"><i class="fas fa-users me-1"></i>Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="eventos.html"><i class="fas fa-calendar me-1"></i>Eventos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="escuela.html"><i class="fas fa-graduation-cap me-1"></i>Escuela Dominical</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cultos.html"><i class="fas fa-praying-hands me-1"></i>Cultos Especiales</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="galeria.html"><i class="fas fa-images me-1"></i>Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="predicas.html"><i class="fas fa-bible me-1"></i>Predicas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html"><i class="fas fa-envelope me-1"></i>Contacto</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-link" href="#" onclick="showAdminLogin()">
+                            <i class="fas fa-user-shield me-1"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Header Section -->
+        <section class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Galería</h1>
+                        <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Testimonios visuales de nuestra comunidad</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería Section -->
+        <section class="section-galeria py-5">
+            <div class="container">
+                <div class="gallery-tabs-container mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <ul class="nav nav-pills justify-content-center mb-4" id="galleryTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="images-tab" data-bs-toggle="pill" data-bs-target="#images" type="button">
+                                <i class="fas fa-images me-2"></i>Imágenes
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="videos-tab" data-bs-toggle="pill" data-bs-target="#videos" type="button">
+                                <i class="fas fa-video me-2"></i>Videos
+                            </button>
+                        </li>
+                    </ul>
+                    
+                <div class="tab-content" id="galleryTabContent">
+                    <div class="tab-pane fade show active" id="images" role="tabpanel">
+                        <div class="gallery-grid" id="imageGallery">
+                            <!-- Las imágenes se cargarán dinámicamente aquí -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="videos" role="tabpanel">
+                        <div class="gallery-grid" id="videoGallery">
+                            <!-- Los videos se cargarán dinámicamente aquí -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Previsualización Mejorado -->
+    <div class="modal fade" id="mediaPreviewModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="mediaPreviewTitle">Previsualización</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="media-preview-container">
+                        <img id="previewImage" class="d-none" style="width: 100%; height: auto; max-height: 70vh; object-fit: contain;">
+                        <video id="previewVideo" class="d-none" controls style="width: 100%; height: auto; max-height: 70vh;">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                        <div class="text-center p-4" id="previewLoading">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <p class="mt-2">Cargando previsualización...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <div class="w-100">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="mb-0" id="mediaPreviewDescription">Descripción del archivo</p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary" id="downloadMediaBtn">
+                                    <i class="fas fa-download me-2"></i>Descargar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Casa de Oración</h5>
+                    <p>Compartiendo el amor de Cristo con nuestra comunidad</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="footer-links">
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="eventos.html">Eventos</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-phone me-2"></i>(123) 456-7890</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@casadeoracion.org</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Calle Principal #123</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Casa de Oración. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Administración -->
+    <div class="modal fade" id="adminLoginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Acceso de Administrador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="adminLoginForm">
+                        <div class="mb-3">
+                            <label for="adminPassword" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="adminPassword" required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberAdmin">
+                            <label class="form-check-label" for="rememberAdmin">
+                                Recordar sesión
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-sign-in-alt me-2"></i>Ingresar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Media -->
+    <div class="modal fade" id="mediaModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Título del Media</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- El contenido se cargará dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Forzar inicialización de la galería cuando carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página galería cargada, inicializando galería...');
+            
+            // Esperar un poco para que el DOM esté completamente listo
+            setTimeout(() => {
+                initializeGallery();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

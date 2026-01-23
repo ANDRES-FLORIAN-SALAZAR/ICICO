@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Casa de Oración</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body class="admin-page">
+    <!-- Navegación Principal -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-logo">
+                    <i class="fas fa-church"></i>
+                    <span>Casa de Oración</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="adminNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-2"></i>Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">
+                            <i class="fas fa-users me-2"></i>Nosotros
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="eventos.html">
+                            <i class="fas fa-calendar-alt me-2"></i>Eventos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="predicas.html">
+                            <i class="fas fa-bible me-2"></i>Predicas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galeria.html">
+                            <i class="fas fa-images me-2"></i>Galería
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">
+                            <i class="fas fa-envelope me-2"></i>Contacto
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-shield-alt"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="admin.html">
+                                <i class="fas fa-cog me-2"></i>Panel de Administración
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logoutAdmin()">
+                                <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="mb-3">Iniciar Sesión</h5>
+                        <form id="adminLoginForm">
+                            <div class="mb-3">
+                                <label for="adminPassword" class="form-label">Contraseña de Administrador</label>
+                                <input type="password" class="form-control" id="adminPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberAdmin">
+                                    <label class="form-check-label" for="rememberAdmin">Recordar sesión</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-sign-in-alt me-2"></i>
+                                Iniciar Sesión
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <div class="container py-5">
+            <div class="page-header text-center mb-5">
+                <h1 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-shield-alt me-3"></i>Panel de Administración
+                </h1>
+                <p class="lead">Gestiona todo el contenido de tu sitio web desde aquí</p>
+                
+                <!-- Panel de Almacenamiento Detallado -->
+                <div class="mt-4">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                <i class="fas fa-database me-2"></i>Uso de Almacenamiento
+                            </h6>
+                            <div class="row text-center mb-3">
+                                <div class="col-md-3">
+                                    <small class="text-muted">Usado</small>
+                                    <div id="storageUsed" class="fw-bold text-primary">0 MB</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <small class="text-muted">Disponible</small>
+                                    <div id="storageAvailable" class="fw-bold text-success">100 MB</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <small class="text-muted">Total</small>
+                                    <div id="storageTotal" class="fw-bold text-info">1 TB</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <small class="text-muted">Utilizado</small>
+                                    <div id="storagePercentage" class="fw-bold text-warning">0%</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Panel Detallado -->
+                            <div id="storageDetailsPanel" class="mt-3">
+                                <div class="text-center text-muted">
+                                    <i class="fas fa-spinner fa-spin"></i> Cargando detalles...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel de Gestión -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="admin-panel">
+                        <!-- Pestañas de Navegación -->
+                        <ul class="nav nav-tabs nav-fill mb-4" id="adminTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="events-tab" data-bs-toggle="tab" data-bs-target="#admin-events" type="button">
+                                    <i class="fas fa-calendar-alt me-2"></i>Eventos
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="gallery-tab" data-bs-toggle="tab" data-bs-target="#admin-gallery" type="button">
+                                    <i class="fas fa-images me-2"></i>Galería
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="predicas-tab" data-bs-toggle="tab" data-bs-target="#admin-predicas" type="button">
+                                    <i class="fas fa-book me-2"></i>Predicas
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="content-tab" data-bs-toggle="tab" data-bs-target="#admin-content" type="button">
+                                    <i class="fas fa-list-alt me-2"></i>Contenido
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#admin-settings" type="button">
+                                    <i class="fas fa-cog me-2"></i>Configuración
+                                </button>
+                            </li>
+                        </ul>
+
+                        <!-- Contenido de las Pestañas -->
+                        <div class="tab-content" id="adminTabContent">
+                            <!-- Eventos -->
+                            <div class="tab-pane fade show active" id="admin-events" role="tabpanel">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h4 class="mb-0">
+                                        <i class="fas fa-calendar-alt me-2"></i>Gestionar Eventos
+                                    </h4>
+                                    <button class="btn btn-primary" onclick="showAddEventModal()">
+                                        <i class="fas fa-plus me-2"></i>Nuevo Evento
+                                    </button>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Título</th>
+                                                <th>Fecha</th>
+                                                <th>Descripción</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="eventsList">
+                                            <!-- Los eventos se cargarán aquí -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- Galería -->
+                            <div class="tab-pane fade" id="admin-gallery" role="tabpanel">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h4 class="mb-0">
+                                        <i class="fas fa-images me-2"></i>Gestionar Galería
+                                    </h4>
+                                    <button class="btn btn-primary" onclick="showUploadModal()">
+                                        <i class="fas fa-plus me-2"></i>Subir Contenido
+                                    </button>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Tipo</th>
+                                                <th>Título</th>
+                                                <th>Fecha</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="galleryList">
+                                            <!-- La galería se cargará aquí -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- Predicas -->
+                            <div class="tab-pane fade" id="admin-predicas" role="tabpanel">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h4 class="mb-0">
+                                        <i class="fas fa-book me-2"></i>Gestionar Predicas
+                                    </h4>
+                                    <button class="btn btn-primary" onclick="showAddSermonModal()">
+                                        <i class="fas fa-plus me-2"></i>Nuevo Predica
+                                    </button>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Título</th>
+                                                <th>Predicador</th>
+                                                <th>Fecha</th>
+                                                <th>Descripción</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="predicasList">
+                                            <!-- Las predicas se cargarán aquí -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- Gestión de Contenido -->
+                            <div class="tab-pane fade" id="admin-content" role="tabpanel">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h4 class="mb-0">
+                                        <i class="fas fa-list-alt me-2"></i>Gestión de Contenido
+                                    </h4>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-outline-primary" onclick="refreshContentList()">
+                                            <i class="fas fa-sync-alt me-2"></i>Actualizar
+                                        </button>
+                                        <button class="btn btn-outline-warning" onclick="window.contentManager.clearGallery()">
+                                            <i class="fas fa-images me-2"></i>Limpiar Galería
+                                        </button>
+                                        <button class="btn btn-outline-danger" onclick="clearAllContent()">
+                                            <i class="fas fa-trash-alt me-2"></i>Limpiar Todo
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Resumen de Contenido -->
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card bg-success text-white">
+                                            <div class="card-body text-center">
+                                                <i class="fas fa-calendar-check fa-2x mb-2"></i>
+                                                <h5 id="eventsCount">0</h5>
+                                                <small>Eventos</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card bg-info text-white">
+                                            <div class="card-body text-center">
+                                                <i class="fas fa-images fa-2x mb-2"></i>
+                                                <h5 id="galleryCount">0</h5>
+                                                <small>Imágenes</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card bg-warning text-white">
+                                            <div class="card-body text-center">
+                                                <i class="fas fa-video fa-2x mb-2"></i>
+                                                <h5 id="videosCount">0</h5>
+                                                <small>Videos</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Historial de Cambios -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-history me-2"></i>Historial de Cambios
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="contentHistory" class="content-history">
+                                            <!-- El historial se cargará aquí -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Configuración -->
+                            <div class="tab-pane fade" id="admin-settings" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- Cambiar Contraseña -->
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">
+                                                    <i class="fas fa-key me-2"></i>Cambiar Contraseña
+                                                </h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <form id="changePasswordForm">
+                                                    <div class="mb-3">
+                                                        <label for="currentPassword" class="form-label">Contraseña Actual</label>
+                                                        <input type="password" class="form-control" id="currentPassword" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                                                        <input type="password" class="form-control" id="newPassword" required minlength="6">
+                                                        <div class="form-text">Mínimo 6 caracteres</div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="confirmPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                                                        <input type="password" class="form-control" id="confirmPassword" required>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary w-100">
+                                                        <i class="fas fa-key me-2"></i>Cambiar Contraseña
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- Configuración del Sistema -->
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">
+                                                    <i class="fas fa-cogs me-2"></i>Configuración del Sistema
+                                                </h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="siteTitle" class="form-label">Título del Sitio</label>
+                                                    <input type="text" class="form-control" id="siteTitle" value="Casa de Oración">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="adminEmail" class="form-label">Email del Administrador</label>
+                                                    <input type="email" class="form-control" id="adminEmail" placeholder="admin@casadeoracion.com">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="enableNotifications" checked>
+                                                        <label class="form-check-label" for="enableNotifications">
+                                                            Habilitar Notificaciones
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="enableAutoBackup" checked>
+                                                        <label class="form-check-label" for="enableAutoBackup">
+                                                            Respaldo Automático
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-success w-100" onclick="saveSystemSettings()">
+                                                    <i class="fas fa-save me-2"></i>Guardar Configuración
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Debugging de Contraseña -->
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">
+                                                    <i class="fas fa-bug me-2"></i>Depuración
+                                                </h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <button type="button" class="btn btn-outline-warning w-100" onclick="showCurrentPassword()">
+                                                    <i class="fas fa-eye me-2"></i>Ver Contraseña Actual
+                                                </button>
+                                                <small class="text-muted d-block mt-2">Función temporal para depuración</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Acciones del Sistema -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-tools me-2"></i>Acciones del Sistema
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                                <button class="btn btn-outline-primary w-100" onclick="backupSystem()">
+                                                    <i class="fas fa-download me-2"></i>Respaldar Sistema
+                                                </button>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <button class="btn btn-outline-warning w-100" onclick="clearCache()">
+                                                    <i class="fas fa-broom me-2"></i>Limpiar Caché
+                                                </button>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <button class="btn btn-outline-danger w-100" onclick="resetSystem()">
+                                                    <i class="fas fa-undo me-2"></i>Restablecer Sistema
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Acciones de Sistema -->
+                        <div class="mt-5 pt-4 border-top">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <button class="btn btn-outline-primary w-100" onclick="window.adminFunctions.exportContent()">
+                                        <i class="fas fa-download me-2"></i>Exportar Contenido
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button class="btn btn-outline-success w-100" onclick="document.getElementById('importFile').click()">
+                                        <i class="fas fa-upload me-2"></i>Importar Contenido
+                                    </button>
+                                    <input type="file" id="importFile" accept=".json" style="display: none;" onchange="window.adminFunctions.importContent(event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white">Casa de Oración</h5>
+                    <p class="text-white-50">Comunidad cristiana comprometida con compartir el amor de Dios y transformar vidas.</p>
+                    <div class="mt-3">
+                        <a href="index.html" class="btn btn-outline-light btn-sm me-2">
+                            <i class="fas fa-home"></i>
+                        </a>
+                        <a href="nosotros.html" class="btn btn-outline-light btn-sm me-2">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <a href="contacto.html" class="btn btn-outline-light btn-sm">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">
+                            <i class="fas fa-home me-2"></i>Inicio
+                        </a></li>
+                        <li class="mb-2"><a href="nosotros.html" class="text-white-50 text-decoration-none">
+                            <i class="fas fa-users me-2"></i>Nosotros
+                        </a></li>
+                        <li class="mb-2"><a href="eventos.html" class="text-white-50 text-decoration-none">
+                            <i class="fas fa-calendar-alt me-2"></i>Eventos
+                        </a></li>
+                        <li class="mb-2"><a href="predicas.html" class="text-white-50 text-decoration-none">
+                            <i class="fas fa-bible me-2"></i>Predicas
+                        </a></li>
+                        <li class="mb-2"><a href="galeria.html" class="text-white-50 text-decoration-none">
+                            <i class="fas fa-images me-2"></i>Galería
+                        </a></li>
+                        <li class="mb-2"><a href="escuela.html" class="text-white-50 text-decoration-none">
+                            <i class="fas fa-graduation-cap me-2"></i>Escuela Dominical
+                        </a></li>
+                        <li class="mb-2"><a href="cultos.html" class="text-white-50 text-decoration-none">
+                            <i class="fas fa-church me-2"></i>Cultos
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white">Contacto</h5>
+                    <p class="text-white-50 mb-2">
+                        <i class="fas fa-phone me-2"></i> +1 234 567 890
+                    </p>
+                    <p class="text-white-50 mb-2">
+                        <i class="fas fa-envelope me-2"></i> info@casadeoracion.com
+                    </p>
+                    <p class="text-white-50 mb-2">
+                        <i class="fas fa-map-marker-alt me-2"></i> 123 Calle Principal, Ciudad
+                    </p>
+                    <div class="mt-3">
+                        <a href="https://facebook.com" class="btn btn-outline-light btn-sm me-2" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com" class="btn btn-outline-light btn-sm me-2" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com" class="btn btn-outline-light btn-sm" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0">&copy; 2024 Casa de Oración. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white-50 mb-0">
+                        Panel de Administración v1.0
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+        </div>
+    </footer>
+
+    <!-- Modal de Agregar Predica -->
+    <div class="modal fade" id="addSermonModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Predica</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addSermonForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="newSermonTitle" class="form-label">Título del Predica</label>
+                                <input type="text" class="form-control" id="newSermonTitle" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="newSermonSpeaker" class="form-label">Ponente</label>
+                                <input type="text" class="form-control" id="newSermonSpeaker" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="newSermonDate" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="newSermonDate" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="newSermonReference" class="form-label">Referencia Bíblica</label>
+                                <input type="text" class="form-control" id="newSermonReference" placeholder="Ej: Juan 3:16">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newSermonDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="newSermonDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newSermonLink" class="form-label">Link del Video/Audio</label>
+                            <input type="url" class="form-control" id="newSermonLink" placeholder="https://youtube.com/watch?v=...">
+                        </div>
+                        <div class="mb-3">
+                            <label for="newSermonFile" class="form-label">Archivo (Imagen/Audio/Video)</label>
+                            <div class="file-upload-area">
+                                <input type="file" class="form-control" id="newSermonFile" accept=".jpg,.jpeg,.png,.gif,.bmp,.webp,.svg,.tiff,.ico,.mp3,.wav,.mp4,.avi,.mov,.image/*,.audio/*,.video/*" onchange="previewSermonFile(event)">
+                                <div class="file-upload-label">
+                                    <i class="fas fa-file-upload"></i>
+                                    <span>Arrastra un archivo o haz clic para seleccionar</span>
+                                </div>
+                            </div>
+                            <div id="predicaFilePreview" class="mt-3" style="display: none;">
+                                <div class="preview-container">
+                                    <img id="predicaPreviewImage" class="img-fluid rounded" style="max-height: 200px;">
+                                    <video id="predicaPreviewVideo" class="img-fluid rounded" style="max-height: 200px;" controls>
+                                        <div class="video-play-overlay" onclick="this.parentElement.play()">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div>
+                                    </video>
+                                    <audio id="predicaPreviewAudio" class="w-100" controls></audio>
+                                    <div class="preview-info mt-2">
+                                        <small class="text-muted" id="predicaFileInfo"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-plus me-2"></i>Agregar Predica
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición de Predica -->
+    <div class="modal fade" id="editSermonModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Predica</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editSermonForm">
+                        <input type="hidden" id="editSermonId">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editSermonTitle" class="form-label">Título del Predica</label>
+                                <input type="text" class="form-control" id="editSermonTitle" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editSermonSpeaker" class="form-label">Ponente</label>
+                                <input type="text" class="form-control" id="editSermonSpeaker" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editSermonDate" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="editSermonDate" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editSermonReference" class="form-label">Referencia Bíblica</label>
+                                <input type="text" class="form-control" id="editSermonReference" placeholder="Ej: Juan 3:16">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editSermonDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editSermonDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editSermonLink" class="form-label">Link del Video/Audio</label>
+                            <input type="url" class="form-control" id="editSermonLink" placeholder="https://youtube.com/watch?v=...">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editSermonFile" class="form-label">Reemplazar Archivo</label>
+                            <div class="file-upload-area">
+                                <input type="file" class="form-control" id="editSermonFile" accept=".jpg,.jpeg,.png,.gif,.bmp,.webp,.svg,.tiff,.ico,.mp3,.wav,.mp4,.avi,.mov,.image/*,.audio/*,.video/*">
+                                <div class="file-upload-label">
+                                    <i class="fas fa-file-upload"></i>
+                                    <span>Arrastra un archivo o haz clic para seleccionar</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveSermon()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición de Evento -->
+    <div class="modal fade" id="editEventModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Evento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editEventForm">
+                        <input type="hidden" id="editEventId">
+                        <div class="mb-3">
+                            <label for="editEventTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="editEventTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEventDate" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="editEventDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEventTime" class="form-label">Hora</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <select class="form-select" id="editEventHour" required>
+                                        <option value="">Hora</option>
+                                        <!-- Opciones 12 horas -->
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <!-- Opciones adicionales para 24 horas -->
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="00">00</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-select" id="editEventMinute" required>
+                                        <option value="">Minuto</option>
+                                        <option value="00">00</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-select" id="editEventPeriod" required>
+                                        <option value="">AM/PM</option>
+                                        <option value="AM">AM</option>
+                                        <option value="PM">PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="editEventTimeFormat" id="editEvent12Hour" value="12" checked>
+                                    <label class="form-check-label" for="editEvent12Hour">12 horas</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="editEventTimeFormat" id="editEvent24Hour" value="24">
+                                    <label class="form-check-label" for="editEvent24Hour">24 horas</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEventDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editEventDescription" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveEvent()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Agregar/Editar Predica -->
+    <div class="modal fade" id="sermonModal" tabindex="-1" aria-labelledby="sermonModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sermonModalLabel">
+                        <i class="fas fa-book me-2"></i>
+                        <span id="sermonModalTitle">Nueva Predica</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="sermonForm">
+                        <input type="hidden" id="sermonId">
+                        <div class="mb-3">
+                            <label for="sermonTitle" class="form-label">Título de la Predica</label>
+                            <input type="text" class="form-control" id="sermonTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sermonSpeaker" class="form-label">Predicador</label>
+                            <input type="text" class="form-control" id="sermonSpeaker" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sermonDate" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="sermonDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sermonDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="sermonDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sermonAudioUrl" class="form-label">URL del Audio (opcional)</label>
+                            <input type="url" class="form-control" id="sermonAudioUrl" placeholder="https://...">
+                        </div>
+                        <div class="mb-3">
+                            <label for="sermonVideoUrl" class="form-label">URL del Video (opcional)</label>
+                            <input type="url" class="form-control" id="sermonVideoUrl" placeholder="https://...">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveSermon()">Guardar Predica</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Agregar/Editar Galería -->
+    <div class="modal fade" id="galleryModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-images me-2"></i>
+                        <span id="galleryModalTitle">Nuevo Contenido</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="galleryForm">
+                        <input type="hidden" id="galleryId">
+                        <div class="mb-3">
+                            <label for="galleryType" class="form-label">Tipo de Contenido</label>
+                            <select class="form-control" id="galleryType" required>
+                                <option value="">Seleccionar tipo...</option>
+                                <option value="image">Imagen</option>
+                                <option value="video">Video</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="galleryTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="galleryTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="galleryDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="galleryDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="galleryUrl" class="form-label">URL del Contenido</label>
+                            <input type="url" class="form-control" id="galleryUrl" placeholder="https://..." required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveGallery()">Guardar Contenido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición de Imagen de Galería -->
+    <div class="modal fade" id="editGalleryImageModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Imagen de Galería</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editGalleryImageForm">
+                        <input type="hidden" id="editImageId">
+                        <div class="mb-3">
+                            <label for="editImageTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="editImageTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editImageDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editImageDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editImagePreview" class="form-label">Vista Previa</label>
+                            <img id="editImagePreview" class="img-fluid rounded" style="max-height: 200px; object-fit: cover;">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="updateGalleryImage()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición de Video de Galería -->
+    <div class="modal fade" id="editGalleryVideoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Video de Galería</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editGalleryVideoForm">
+                        <input type="hidden" id="editVideoId">
+                        <div class="mb-3">
+                            <label for="editVideoTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="editVideoTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editVideoDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editVideoDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editVideoPreview" class="form-label">Vista Previa</label>
+                            <video id="editVideoPreview" class="img-fluid rounded" controls style="max-height: 200px; width: 100%;">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="updateGalleryVideo()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Subida de Contenido -->
+    <div class="modal fade" id="uploadModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Subir Contenido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="contentType" class="form-label">Tipo de Contenido</label>
+                                <select class="form-select" id="contentType" required>
+                                    <option value="">Selecciona...</option>
+                                    <option value="image">Imagen</option>
+                                    <option value="video">Video</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="contentTitle" class="form-label">Título</label>
+                                <input type="text" class="form-control" id="contentTitle" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contentDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="contentDescription" rows="3"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="contentFile" class="form-label">Archivo</label>
+                            <div class="file-upload-area">
+                                <input type="file" class="form-control" id="contentFile" accept=".jpg,.jpeg,.png,.gif,.bmp,.webp,.svg,.tiff,.ico,.image/*,video/*" required onchange="previewFile(event)">
+                                <div class="file-upload-label">
+                                    <i class="fas fa-file-upload"></i>
+                                    <span>Arrastra un archivo o haz clic para seleccionar</span>
+                                </div>
+                            </div>
+                            <div id="filePreview" class="mt-3" style="display: none;">
+                                <div class="preview-container">
+                                    <img id="previewImage" class="img-fluid rounded" style="max-height: 200px;">
+                                    <video id="previewVideo" class="img-fluid rounded" style="max-height: 200px;" controls>
+                                        <div class="video-play-overlay" onclick="this.parentElement.play()">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div>
+                                    </video>
+                                    <div class="preview-info mt-2">
+                                        <small class="text-muted" id="fileInfo"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-upload me-2"></i>Subir Contenido
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js" defer></script>
+    <script>
+        // Funciones globales - deben estar fuera de cualquier otro bloque
+        window.clearAllContent = function() {
+            if (window.contentManager && window.contentManager.clearAllContent) {
+                window.contentManager.clearAllContent();
+            } else {
+                alert('Error: Content Manager no está disponible');
+            }
+        };
+
+        window.refreshContentList = function() {
+            // Recargar todas las funciones de contenido
+            if (typeof loadAnnouncements === 'function') {
+                loadAnnouncements();
+            }
+            if (typeof loadEvents === 'function') {
+                loadEvents();
+            }
+            if (typeof loadSundaySchool === 'function') {
+                loadSundaySchool();
+            }
+            if (typeof loadSpecialServices === 'function') {
+                loadSpecialServices();
+            }
+            if (typeof loadSermons === 'function') {
+                loadSermons();
+            }
+            if (typeof initializeGallery === 'function') {
+                initializeGallery();
+            }
+            
+            // Mostrar notificación
+            const notification = document.createElement('div');
+            notification.className = 'alert alert-info alert-dismissible fade show position-fixed top-0 end-0 m-3';
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                <i class="fas fa-sync-alt me-2"></i>Contenido actualizado exitosamente
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(notification);
+            
+            // Auto-eliminar después de 3 segundos
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        };
+
+        window.showCurrentPassword = function() {
+            // Obtener contraseña desde la configuración externa
+            let currentPassword = 'No disponible';
+            if (typeof getAdminConfig === 'function') {
+                try {
+                    const config = getAdminConfig();
+                    currentPassword = config.password || 'No configurada';
+                } catch (error) {
+                    console.error('Error al obtener configuración:', error);
+                    currentPassword = 'Error de configuración';
+                }
+            } else {
+                currentPassword = 'Configuración no cargada';
+            }
+            
+            // Crear modal temporal para mostrar la contraseña
+            const modalHtml = `
+                <div class="modal fade" id="passwordModal" tabindex="-1" data-bs-backdrop="static">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">
+                                    <i class="fas fa-key me-2"></i>Contraseña Actual
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    <strong>ADVERTENCIA:</strong> Esta es una función de depuración. 
+                                    En producción, esta función debería ser eliminada.
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label fw-bold">Contraseña de administrador:</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" value="${currentPassword}" readonly id="debugPassword">
+                                        <button class="btn btn-outline-secondary" type="button" onclick="copyPassword()" aria-label="Copiar contraseña">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Agregar modal al body
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+            
+            // Esperar un frame para que el DOM se actualice
+            requestAnimationFrame(() => {
+                const modalElement = document.getElementById('passwordModal');
+                const modal = new bootstrap.Modal(modalElement);
+                
+                // Configurar eventos antes de mostrar
+                modalElement.addEventListener('hidden.bs.modal', function() {
+                    this.remove();
+                });
+                
+                // Mostrar el modal
+                modal.show();
+            });
+        };
+
+        window.copyPassword = function() {
+            const passwordInput = document.getElementById('debugPassword');
+            passwordInput.select();
+            document.execCommand('copy');
+            
+            // Mostrar notificación de copia
+            const notification = document.createElement('div');
+            notification.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3';
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                <i class="fas fa-check me-2"></i>Contraseña copiada al portapapeles
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 2000);
+        };
+
+        window.clearCache = function() {
+            if (confirm('¿Estás seguro de que quieres limpiar la caché? Esto eliminará datos temporales.')) {
+                // Limpiar localStorage (excepto sesión de admin)
+                const adminLoggedIn = localStorage.getItem('adminLoggedIn');
+                const adminRemember = localStorage.getItem('adminRemember');
+                
+                localStorage.clear();
+                
+                // Restaurar sesión de admin
+                if (adminLoggedIn === 'true') {
+                    localStorage.setItem('adminLoggedIn', adminLoggedIn);
+                }
+                if (adminRemember) {
+                    localStorage.setItem('adminRemember', adminRemember);
+                }
+                
+                // Limpiar sessionStorage
+                sessionStorage.clear();
+                
+                // Mostrar notificación
+                const notification = document.createElement('div');
+                notification.className = 'alert alert-warning alert-dismissible fade show position-fixed top-0 end-0 m-3';
+                notification.style.zIndex = '9999';
+                notification.innerHTML = `
+                    <i class="fas fa-broom me-2"></i>Caché limpiada exitosamente
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 3000);
+            }
+        };
+
+        window.backupSystem = function() {
+            // Recopilar todos los datos del sistema
+            const backupData = {
+                timestamp: new Date().toISOString(),
+                version: '1.0',
+                data: {
+                    content: window.contentManager ? window.contentManager.content : {},
+                    settings: {
+                        systemSettings: localStorage.getItem('systemSettings'),
+                        adminLoggedIn: localStorage.getItem('adminLoggedIn'),
+                        adminRemember: localStorage.getItem('adminRemember')
+                    }
+                }
+            };
+            
+            // Crear blob y descargar
+            const dataStr = JSON.stringify(backupData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `backup_casa_oracion_${new Date().toISOString().slice(0,10)}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            // Mostrar notificación
+            const notification = document.createElement('div');
+            notification.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3';
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                <i class="fas fa-download me-2"></i>Respaldo descargado exitosamente
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        };
+
+        window.resetSystem = function() {
+            // Primera confirmación
+            const firstConfirm = confirm('¿Estás seguro de que quieres RESTABLECER el sistema? Esta acción eliminará TODO el contenido y configuraciones.');
+            
+            if (firstConfirm) {
+                // Segunda confirmación más explícita
+                const secondConfirm = confirm('¡PELIGRO EXTREMO! Esto eliminará:\n\n• Todo el contenido (anuncios, eventos, galería, predicas)\n• Todas las configuraciones\n• Todo el caché y almacenamiento local\n\nEsta acción NO SE PUEDE DESHACER.\n\n¿Estás ABSOLUTAMENTE seguro?');
+                
+                if (secondConfirm) {
+                    // Tercera confirmación con código
+                    const codeConfirm = prompt('Para confirmar, escribe "BORRAR_TODO" exactamente como aparece:');
+                    
+                    if (codeConfirm === 'BORRAR_TODO') {
+                        // Ejecutar restablecimiento completo
+                        performSystemReset();
+                    } else {
+                        alert('Código incorrecto. Operación cancelada por seguridad.');
+                    }
+                }
+            }
+        };
+
+        // Función interna para ejecutar el restablecimiento
+        function performSystemReset() {
+            try {
+                // 1. Limpiar todo el localStorage
+                localStorage.clear();
+                
+                // 2. Limpiar sessionStorage
+                sessionStorage.clear();
+                
+                // 3. Restablecer ContentManager a valores por defecto
+                if (window.contentManager) {
+                    window.contentManager.content = window.contentManager.getDefaultContent();
+                    window.contentManager.saveContent();
+                }
+                
+                // 4. Recargar la página para aplicar cambios
+                const notification = document.createElement('div');
+                notification.className = 'alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
+                notification.style.zIndex = '9999';
+                notification.style.width = 'auto';
+                notification.innerHTML = `
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>SISTEMA RESTABLECIDO</strong><br>
+                    <small>La página se recargará en 3 segundos...</small>
+                `;
+                document.body.appendChild(notification);
+                
+                // Recargar después de 3 segundos
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+                
+            } catch (error) {
+                alert('Error durante el restablecimiento: ' + error.message);
+            }
+        }
+
+        // Verificar sesión al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Verificando sesión en admin.html');
+            console.log('adminLoggedIn:', localStorage.getItem('adminLoggedIn'));
+            
+            // Dar tiempo a que se cargue el localStorage
+            setTimeout(() => {
+                if (localStorage.getItem('adminLoggedIn') !== 'true') {
+                    console.log('Sesión no encontrada, redirigiendo a index.html');
+                    window.location.href = 'index.html';
+                    return;
+                }
+                console.log('Sesión verificada, mostrando panel de administración');
+                
+                // Ocultar formulario de login y mostrar contenido
+                const loginForm = document.querySelector('.card');
+                const mainContent = document.querySelector('main.main-content');
+                
+                if (loginForm && mainContent) {
+                    loginForm.style.display = 'none';
+                    mainContent.style.display = 'block';
+                }
+            }, 100);
+        });
+
+        // Función para previsualizar archivos
+        function previewFile(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('filePreview');
+            const previewImage = document.getElementById('previewImage');
+            const previewVideo = document.getElementById('previewVideo');
+            const fileInfo = document.getElementById('fileInfo');
+            
+            if (!file) {
+                preview.style.display = 'none';
+                return;
+            }
+            
+            console.log('Previsualizando archivo:', file.name, file.type);
+            
+            // Mostrar información del archivo
+            const fileSize = (file.size / 1024 / 1024).toFixed(2);
+            fileInfo.textContent = `Nombre: ${file.name} | Tamaño: ${fileSize} MB | Tipo: ${file.type}`;
+            
+            // Ocultar ambas previsualizaciones
+            previewImage.style.display = 'none';
+            previewVideo.style.display = 'none';
+            
+            if (file.type.startsWith('image/')) {
+                // Previsualizar imagen
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else if (file.type.startsWith('video/')) {
+                // Previsualizar video
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewVideo.src = e.target.result;
+                    previewVideo.style.display = 'block';
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // Archivo no soportado para previsualización
+                fileInfo.textContent += ' | ⚠️ No se puede previsualizar este tipo de archivo';
+                preview.style.display = 'block';
+            }
+        }
+
+        // Función para cerrar sesión
+        function logoutAdmin() {
+            if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+                localStorage.removeItem('adminLoggedIn');
+                localStorage.removeItem('adminRemember');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Función para guardar configuración del sistema
+        function saveSystemSettings() {
+            const enableAutoBackup = document.getElementById('enableAutoBackup').checked;
+            const siteTitle = document.getElementById('siteTitle')?.value || 'Casa de Oración';
+            const siteDescription = document.getElementById('siteDescription')?.value || '';
+            
+            // Guardar configuración en localStorage
+            const settings = {
+                enableAutoBackup: enableAutoBackup,
+                siteTitle: siteTitle,
+                siteDescription: siteDescription,
+                lastUpdated: new Date().toISOString()
+            };
+            
+            localStorage.setItem('systemSettings', JSON.stringify(settings));
+            
+            // Mostrar notificación de éxito
+            const notification = document.createElement('div');
+            notification.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3';
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                <i class="fas fa-check-circle me-2"></i>Configuración guardada exitosamente
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(notification);
+            
+            // Auto-eliminar después de 3 segundos
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+
+        // Verificación final de que todas las funciones estén disponibles
+        console.log('Verificando funciones disponibles:', {
+            clearAllContent: typeof window.clearAllContent,
+            refreshContentList: typeof window.refreshContentList,
+            showCurrentPassword: typeof window.showCurrentPassword,
+            copyPassword: typeof window.copyPassword,
+            clearCache: typeof window.clearCache,
+            backupSystem: typeof window.backupSystem,
+            resetSystem: typeof window.resetSystem,
+            saveSystemSettings: typeof saveSystemSettings,
+            logoutAdmin: typeof logoutAdmin
+        });
+
+        // ========== FUNCIONES CRUD PARA EVENTOS ==========
+        
+        window.showAddEventModal = function() {
+            document.getElementById('eventModalTitle').textContent = 'Nuevo Evento';
+            document.getElementById('eventForm').reset();
+            document.getElementById('eventId').value = '';
+            
+            const modal = new bootstrap.Modal(document.getElementById('eventModal'));
+            modal.show();
+        };
+
+        window.showEditEventModal = function(id) {
+            const event = window.contentManager.getEvent(id);
+            if (event) {
+                document.getElementById('eventModalTitle').textContent = 'Editar Evento';
+                document.getElementById('eventId').value = event.id;
+                document.getElementById('eventTitle').value = event.title;
+                document.getElementById('eventDate').value = event.date;
+                document.getElementById('eventTime').value = event.time || '';
+                document.getElementById('eventDescription').value = event.description || '';
+                
+                const modal = new bootstrap.Modal(document.getElementById('eventModal'));
+                modal.show();
+            }
+        };
+
+        window.saveEvent = function() {
+            const id = document.getElementById('eventId').value;
+            const eventData = {
+                title: document.getElementById('eventTitle').value,
+                date: document.getElementById('eventDate').value,
+                time: document.getElementById('eventTime').value,
+                description: document.getElementById('eventDescription').value
+            };
+            
+            if (!eventData.title || !eventData.date) {
+                alert('Por favor completa el título y la fecha del evento');
+                return;
+            }
+            
+            if (id) {
+                // Actualizar evento existente
+                window.contentManager.updateEvent(id, eventData);
+                showNotification('Evento actualizado exitosamente', 'success');
+            } else {
+                // Crear nuevo evento
+                window.contentManager.addEvent(eventData);
+                showNotification('Evento creado exitosamente', 'success');
+            }
+            
+            bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+            loadEventsList();
+        };
+
+        window.deleteEvent = function(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar este evento?')) {
+                window.contentManager.deleteItem('event', id);
+                showNotification('Evento eliminado exitosamente', 'success');
+                loadEventsList();
+            }
+        };
+
+        // ========== FUNCIONES CRUD PARA PREDICAS ==========
+        
+        window.showAddSermonModal = function() {
+            document.getElementById('sermonModalTitle').textContent = 'Nueva Predica';
+            document.getElementById('sermonForm').reset();
+            document.getElementById('sermonId').value = '';
+            
+            const modal = new bootstrap.Modal(document.getElementById('sermonModal'));
+            modal.show();
+        };
+
+        window.showEditSermonModal = function(id) {
+            const sermon = window.contentManager.getSermon(id);
+            if (sermon) {
+                document.getElementById('sermonModalTitle').textContent = 'Editar Predica';
+                document.getElementById('sermonId').value = sermon.id;
+                document.getElementById('sermonTitle').value = sermon.title;
+                document.getElementById('sermonSpeaker').value = sermon.speaker;
+                document.getElementById('sermonDate').value = sermon.date;
+                document.getElementById('sermonDescription').value = sermon.description || '';
+                document.getElementById('sermonAudioUrl').value = sermon.audioUrl || '';
+                document.getElementById('sermonVideoUrl').value = sermon.videoUrl || '';
+                
+                const modal = new bootstrap.Modal(document.getElementById('sermonModal'));
+                modal.show();
+            }
+        };
+
+        window.saveSermon = function() {
+            const id = document.getElementById('sermonId').value;
+            const sermonData = {
+                title: document.getElementById('sermonTitle').value,
+                speaker: document.getElementById('sermonSpeaker').value,
+                date: document.getElementById('sermonDate').value,
+                description: document.getElementById('sermonDescription').value,
+                audioUrl: document.getElementById('sermonAudioUrl').value,
+                videoUrl: document.getElementById('sermonVideoUrl').value
+            };
+            
+            if (!sermonData.title || !sermonData.speaker || !sermonData.date) {
+                alert('Por favor completa el título, predicador y fecha');
+                return;
+            }
+            
+            if (id) {
+                // Actualizar predica existente
+                window.contentManager.updateSermon(id, sermonData);
+                showNotification('Predica actualizada exitosamente', 'success');
+            } else {
+                // Crear nueva predica
+                window.contentManager.addSermon(sermonData);
+                showNotification('Predica creada exitosamente', 'success');
+            }
+            
+            bootstrap.Modal.getInstance(document.getElementById('sermonModal')).hide();
+            loadPredicasList();
+        };
+
+        window.deleteSermon = function(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar esta predica?')) {
+                window.contentManager.deleteItem('sermon', id);
+                showNotification('Predica eliminada exitosamente', 'success');
+                loadPredicasList();
+            }
+        };
+
+        // ========== FUNCIONES CRUD PARA GALERÍA ==========
+        
+        window.showUploadModal = function() {
+            document.getElementById('galleryModalTitle').textContent = 'Nuevo Contenido';
+            document.getElementById('galleryForm').reset();
+            document.getElementById('galleryId').value = '';
+            
+            const modal = new bootstrap.Modal(document.getElementById('galleryModal'));
+            modal.show();
+        };
+
+        window.showEditGalleryModal = function(id, type) {
+            const item = type === 'image' ? 
+                window.contentManager.getImage(id) : 
+                window.contentManager.getVideo(id);
+                
+            if (item) {
+                document.getElementById('galleryModalTitle').textContent = 'Editar Contenido';
+                document.getElementById('galleryId').value = item.id;
+                document.getElementById('galleryType').value = type;
+                document.getElementById('galleryTitle').value = item.title;
+                document.getElementById('galleryDescription').value = item.description;
+                document.getElementById('galleryUrl').value = item.url;
+                
+                const modal = new bootstrap.Modal(document.getElementById('galleryModal'));
+                modal.show();
+            }
+        };
+
+        window.saveGallery = function() {
+            const id = document.getElementById('galleryId').value;
+            const type = document.getElementById('galleryType').value;
+            const galleryData = {
+                title: document.getElementById('galleryTitle').value,
+                description: document.getElementById('galleryDescription').value,
+                url: document.getElementById('galleryUrl').value
+            };
+            
+            if (!type || !galleryData.title || !galleryData.url) {
+                alert('Por favor completa el tipo, título y URL');
+                return;
+            }
+            
+            if (id) {
+                // Actualizar contenido existente
+                if (type === 'image') {
+                    window.contentManager.updateImage(id, galleryData);
+                } else {
+                    window.contentManager.updateVideo(id, galleryData);
+                }
+                showNotification('Contenido actualizado exitosamente', 'success');
+            } else {
+                // Crear nuevo contenido
+                if (type === 'image') {
+                    window.contentManager.addImage(galleryData);
+                } else {
+                    window.contentManager.addVideo(galleryData);
+                }
+                showNotification('Contenido creado exitosamente', 'success');
+            }
+            
+            bootstrap.Modal.getInstance(document.getElementById('galleryModal')).hide();
+            loadGalleryList();
+        };
+
+        window.deleteGallery = function(id, type) {
+            if (confirm('¿Estás seguro de que quieres eliminar este contenido?')) {
+                window.contentManager.deleteItem(type, id);
+                showNotification('Contenido eliminado exitosamente', 'success');
+                loadGalleryList();
+            }
+        };
+
+        // ========== FUNCIONES DE CARGA DE LISTAS ==========
+        
+        function loadEventsList() {
+            const events = window.contentManager.content.events || [];
+            const tbody = document.getElementById('eventsList');
+            
+            if (events.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center">No hay eventos registrados</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = events.map(event => `
+                <tr>
+                    <td>${event.title}</td>
+                    <td>${event.date}</td>
+                    <td>${event.description || 'Sin descripción'}</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning me-1" onclick="showEditEventModal('${event.id}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteEvent('${event.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadPredicasList() {
+            const sermons = window.contentManager.content.sermons || [];
+            const tbody = document.getElementById('predicasList');
+            
+            if (sermons.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center">No hay predicas registradas</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = sermons.map(sermon => `
+                <tr>
+                    <td>${sermon.title}</td>
+                    <td>${sermon.speaker}</td>
+                    <td>${sermon.date}</td>
+                    <td>${sermon.description || 'Sin descripción'}</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning me-1" onclick="showEditSermonModal('${sermon.id}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteSermon('${sermon.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadGalleryList() {
+            const images = window.contentManager.content.gallery.images || [];
+            const videos = window.contentManager.content.gallery.videos || [];
+            const tbody = document.getElementById('galleryList');
+            
+            const allItems = [
+                ...images.map(img => ({...img, type: 'image'})),
+                ...videos.map(video => ({...video, type: 'video'}))
+            ];
+            
+            if (allItems.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center">No hay contenido en la galería</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = allItems.map(item => `
+                <tr>
+                    <td>
+                        <span class="badge bg-${item.type === 'image' ? 'primary' : 'success'}">
+                            ${item.type === 'image' ? 'Imagen' : 'Video'}
+                        </span>
+                    </td>
+                    <td>${item.title}</td>
+                    <td>${item.date || 'Sin fecha'}</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning me-1" onclick="showEditGalleryModal('${item.id}', '${item.type}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteGallery('${item.id}', '${item.type}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Función auxiliar para mostrar notificaciones
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                <i class="fas fa-check-circle me-2"></i>${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+
+        // Cargar listas al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (window.contentManager) {
+                    loadEventsList();
+                    loadPredicasList();
+                    loadGalleryList();
+                }
+            }, 200);
+        });
+    </script>
+    
+    </body>
+</html>
