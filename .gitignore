@@ -8,7 +8,6 @@ config.js
 .env.local
 
 # Archivos subidos por usuarios
-uploads/
 !uploads/.gitkeep
 
 # Archivos temporales
