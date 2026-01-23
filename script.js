@@ -3,7 +3,7 @@
 // Cargar configuración de administración de forma asíncrona
 (function loadAdminConfig() {
     const script = document.createElement('script');
-    script.src = './config/admin-credentials.js';
+    script.src = '/config/admin-credentials.js';
     script.onload = function() {
         console.log('Configuración de administrador cargada exitosamente');
     };
