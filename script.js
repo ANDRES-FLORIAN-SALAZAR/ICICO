@@ -1136,6 +1136,12 @@ function emergencyResetContent() {
 
 // Hacer las funciones accesibles globalmente
 window.emergencyResetContent = emergencyResetContent;
+window.forceCleanReload = function() {
+    console.log('Forzando limpieza completa del localStorage...');
+    localStorage.removeItem('churchContent');
+    localStorage.clear();
+    location.reload();
+};
 window.addExistingImages = addExistingImages;
 window.cleanInvalidBase64URLs = cleanInvalidBase64URLs;
 window.cleanBrokenImages = cleanBrokenImages;
