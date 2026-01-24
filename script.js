@@ -1504,18 +1504,14 @@ function initializeAdmin() {
 
 // Funciones auxiliares
 function showAdminLogin() {
-    console.log('Intentando mostrar modal de admin login');
-    const modalElement = document.getElementById('adminLoginModal');
-    console.log('Modal element:', modalElement);
-    
-    if (modalElement) {
-        const modal = new bootstrap.Modal(modalElement);
-        console.log('Modal creado:', modal);
-        modal.show();
-        console.log('Modal show() llamado');
+    if (isLocalEnvironment()) {
+        // En local, redirigir al admin local
+        window.location.href = 'admin-local.html';
     } else {
-        console.error('No se encontró el modal con ID adminLoginModal');
+        // En producción, mostrar mensaje de acceso restringido
+        showNotification('El panel de administración solo está disponible en entorno local', 'warning');
     }
+    return false; // Prevenir navegación por defecto
 }
 
 function togglePassword() {
