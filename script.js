@@ -3,7 +3,7 @@
 // Cargar configuración de administración de forma asíncrona
 (function loadAdminConfig() {
     const script = document.createElement('script');
-    script.src = '/config/admin-credentials.js';
+    script.src = 'config/admin-credentials.js';
     script.onload = function() {
         console.log('Configuración de administrador cargada exitosamente');
     };
@@ -932,18 +932,20 @@ function addUploadedVideos() {
     const existingVideos = window.contentManager.content.gallery.videos;
     console.log('Videos existentes:', existingVideos.length, existingVideos);
     
-    const uploadedVideoExists = existingVideos.some(video => video.url.includes('pagina}.mp4'));
+    const uploadedVideoExists = existingVideos.some(video => 
+        video.url.includes('pagina}.mp4') || video.url.includes('VIDEO1.mp4')
+    );
     console.log('¿Video subido ya existe?', uploadedVideoExists);
     
     if (!uploadedVideoExists) {
         console.log('Agregando video subido manualmente...');
         const uploadedVideo = {
             id: 'video_' + Date.now(),
-            title: 'Video Subido',
-            description: 'Video subido por el usuario',
-            url: './uploads/videos/pagina}.mp4',
+            title: 'VIDEO1',
+            description: 'Video de la galería',
+            url: './uploads/videos/VIDEO1.mp4',
             date: new Date().toISOString().slice(0, 10),
-            fileSize: 11699104 // bytes
+            fileSize: 9153243 // bytes
         };
         
         console.log('Intentando agregar video:', uploadedVideo);
@@ -988,8 +990,18 @@ function addExistingImages() {
     
     // Lista de imágenes conocidas en la carpeta uploads/images
     const knownImages = [
-        { name: 'banner.png', title: 'Banner', description: 'Imagen banner' },
-        { name: 'comportamiento.jpg', title: 'Comportamiento', description: 'Imagen comportamiento' }
+        { name: '1.jpg', title: 'Imagen 1', description: 'Imagen de la galería' },
+        { name: '2.jpg', title: 'Imagen 2', description: 'Imagen de la galería' },
+        { name: '3.jpg', title: 'Imagen 3', description: 'Imagen de la galería' },
+        { name: '4.jpg', title: 'Imagen 4', description: 'Imagen de la galería' },
+        { name: '5.jpg', title: 'Imagen 5', description: 'Imagen de la galería' },
+        { name: '6.jpg', title: 'Imagen 6', description: 'Imagen de la galería' },
+        { name: '7.jpg', title: 'Imagen 7', description: 'Imagen de la galería' },
+        { name: '8.jpg', title: 'Imagen 8', description: 'Imagen de la galería' },
+        { name: '9.jpg', title: 'Imagen 9', description: 'Imagen de la galería' },
+        { name: '10.jpg', title: 'Imagen 10', description: 'Imagen de la galería' },
+        { name: '11.jpg', title: 'Imagen 11', description: 'Imagen de la galería' },
+        { name: '12.jpg', title: 'Imagen 12', description: 'Imagen de la galería' }
     ];
     
     const existingImages = window.contentManager.content.gallery.images;
