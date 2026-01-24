@@ -941,8 +941,8 @@ function addUploadedVideos() {
         console.log('Agregando video subido manualmente...');
         const uploadedVideo = {
             id: 'video_' + Date.now(),
-            title: 'VIDEO1',
-            description: 'Video de la galería',
+            title: 'Testimonio de Fe',
+            description: 'Seréis mis testigos en Jerusalén, en toda Judea, en Samaria, y hasta lo último de la tierra - Hechos 1:8',
             url: './uploads/videos/VIDEO1.mp4',
             date: new Date().toISOString().slice(0, 10),
             fileSize: 9153243 // bytes
@@ -990,18 +990,18 @@ function addExistingImages() {
     
     // Lista de imágenes conocidas en la carpeta uploads/images
     const knownImages = [
-        { name: '1.jpg', title: 'Imagen 1', description: 'Imagen de la galería' },
-        { name: '2.jpg', title: 'Imagen 2', description: 'Imagen de la galería' },
-        { name: '3.jpg', title: 'Imagen 3', description: 'Imagen de la galería' },
-        { name: '4.jpg', title: 'Imagen 4', description: 'Imagen de la galería' },
-        { name: '5.jpg', title: 'Imagen 5', description: 'Imagen de la galería' },
-        { name: '6.jpg', title: 'Imagen 6', description: 'Imagen de la galería' },
-        { name: '7.jpg', title: 'Imagen 7', description: 'Imagen de la galería' },
-        { name: '8.jpg', title: 'Imagen 8', description: 'Imagen de la galería' },
-        { name: '9.jpg', title: 'Imagen 9', description: 'Imagen de la galería' },
-        { name: '10.jpg', title: 'Imagen 10', description: 'Imagen de la galería' },
-        { name: '11.jpg', title: 'Imagen 11', description: 'Imagen de la galería' },
-        { name: '12.jpg', title: 'Imagen 12', description: 'Imagen de la galería' }
+        { name: '1.jpg', title: 'Fe en Acción', description: 'La fe es la certeza de lo que se espera, la convicción de lo que no se ve - Hebreos 11:1' },
+        { name: '2.jpg', title: 'Oración Comunitaria', description: 'Donde dos o tres se reúnen en mi nombre, allí estoy yo en medio de ellos - Mateo 18:20' },
+        { name: '3.jpg', title: 'Alabanza y Adoración', description: 'Cantaré al Señor toda mi vida; salmodiaré a mi Dios mientras viva - Salmos 104:33' },
+        { name: '4.jpg', title: 'Familia Cristiana', description: 'Gracia y paz a vosotros de Dios nuestro Padre y del Señor Jesucristo - Filipenses 1:2' },
+        { name: '5.jpg', title: 'Palabra de Dios', description: 'Tu palabra es lámpara a mis pies y lumbrera a mi camino - Salmos 119:105' },
+        { name: '6.jpg', title: 'Comunión Fraternal', description: 'Amaos los unos a los otros como yo os he amado - Juan 15:12' },
+        { name: '7.jpg', title: 'Misión y Servicio', description: 'Id y haced discípulos a todas las naciones - Mateo 28:19' },
+        { name: '8.jpg', title: 'Esperanza y Gozo', description: 'El gozo del Señor es nuestra fortaleza - Nehemías 8:10' },
+        { name: '9.jpg', title: 'Paz y Consuelo', description: 'La paz os dejo, mi paz os doy - Juan 14:27' },
+        { name: '10.jpg', title: 'Gracia Divina', description: 'Por gracia sois salvos por medio de la fe - Efesios 2:8' },
+        { name: '11.jpg', title: 'Amor Fraterno', description: 'Sobre todo, vístanse de amor, que es el vínculo perfecto - Colosenses 3:14' },
+        { name: '12.jpg', title: 'Nueva Vida', description: 'Si alguno está en Cristo, nueva criatura es - 2 Corintios 5:17' }
     ];
     
     const existingImages = window.contentManager.content.gallery.images;
@@ -1770,38 +1770,8 @@ class ContentManager {
                 }
             ],
             gallery: {
-                images: [
-                    {
-                        id: 'image_1',
-                        title: 'prueba',
-                        description: 'Imagen de prueba',
-                        url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzJlY2M3MSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+cnVlYmE8L3RleHQ+PC9zdmc+',
-                        date: new Date().toISOString().slice(0, 10)
-                    },
-                    {
-                        id: 'image_2',
-                        title: 'Templo Principal',
-                        description: 'Nuestro hermoso templo',
-                        url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzJlY2M3MSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+VGVtcGxvPC90ZXh0Pjwvc3ZnPg==',
-                        date: new Date().toISOString().slice(0, 10)
-                    },
-                    {
-                        id: 'image_3',
-                        title: 'Coro',
-                        description: 'Nuestro coro alabando',
-                        url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzM0OThkYiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Q29ybzwvdGV4dD48L3N2Zz4=',
-                        date: new Date(Date.now() - 86400000).toISOString().slice(0, 10)
-                    }
-                ],
-                videos: [
-                    {
-                        id: 'video_1',
-                        title: 'Predica: La Fe en Acción',
-                        description: 'Mensaje sobre poner la fe en práctica',
-                        url: 'https://www.youtube.com/watch?v=example',
-                        date: new Date(Date.now() - 172800000).toISOString().slice(0, 10)
-                    }
-                ]
+                images: [],
+                videos: []
             },
             sermons: [
                 {
