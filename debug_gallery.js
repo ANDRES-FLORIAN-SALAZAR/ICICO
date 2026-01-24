@@ -1,0 +1,1 @@
+console.log('Verificando datos de galería...'); console.log('Imágenes:', window.contentManager?.content?.gallery?.images); console.log('Títulos:', window.contentManager?.content?.gallery?.images?.map(img => img.title));
