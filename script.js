@@ -1,7 +1,23 @@
 // JavaScript para Casa de Oración - Sistema Completo de Gestión
 
+// Detectar si estamos en entorno local
+function isLocalEnvironment() {
+    return window.location.hostname === 'localhost' || 
+           window.location.hostname === '127.0.0.1' ||
+           window.location.protocol === 'file:';
+}
+
 // Cargar configuración de administración de forma asíncrona
 (function loadAdminConfig() {
+    if (!isLocalEnvironment()) {
+        // En producción, no cargar configuración de admin
+        window.validateAdminPassword = function() {
+            console.warn('Función de administración no disponible en producción');
+            return false;
+        };
+        return;
+    }
+    
     const script = document.createElement('script');
     script.src = 'config/admin-credentials.js';
     script.onload = function() {
@@ -20,6 +36,9 @@
 
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
+    // Manejar navegación de admin según entorno
+    handleAdminNavigation();
+    
     // Crear instancia global del ContentManager primero
     window.contentManager = new ContentManager();
     
@@ -41,6 +60,39 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAdmin();
     checkAdminSession();
 });
+
+// Manejar navegación de admin según entorno
+function handleAdminNavigation() {
+    const adminLinks = document.querySelectorAll('a[href="admin.html"]');
+    const adminDropdowns = document.querySelectorAll('#adminDropdown');
+    
+    if (isLocalEnvironment()) {
+        // En local, redirigir a admin-local.html
+        adminLinks.forEach(link => {
+            link.href = 'admin-local.html';
+        });
+        
+        // Actualizar dropdowns de admin
+        adminDropdowns.forEach(dropdown => {
+            const dropdownMenu = dropdown.nextElementSibling;
+            if (dropdownMenu) {
+                const adminItem = dropdownMenu.querySelector('a[href="admin.html"]');
+                if (adminItem) {
+                    adminItem.href = 'admin-local.html';
+                }
+            }
+        });
+    } else {
+        // En producción, ocultar enlaces de admin
+        adminLinks.forEach(link => {
+            link.parentElement.style.display = 'none';
+        });
+        
+        adminDropdowns.forEach(dropdown => {
+            dropdown.parentElement.style.display = 'none';
+        });
+    }
+}
 
 // Sistema de Navegación Suave
 function initializeNavigation() {
