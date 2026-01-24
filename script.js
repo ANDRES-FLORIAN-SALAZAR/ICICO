@@ -150,34 +150,49 @@ class StorageMonitor {
                     color: '#007bff'
                 });
 
-                // Calcular tamaño de imágenes y videos en el contenido
+                // Calcular tamaño total de imágenes
                 const parsedContent = JSON.parse(content);
+                let totalImageSize = 0;
+                let imageCount = 0;
                 if (parsedContent.gallery && parsedContent.gallery.images) {
-                    parsedContent.gallery.images.forEach((image, index) => {
+                    parsedContent.gallery.images.forEach((image) => {
                         if (image.fileSize) {
-                            this.usedStorage += image.fileSize;
-                            this.fileDetails.push({
-                                name: `Imagen ${index + 1}: ${image.title || image.fileName || 'Sin título'}`,
-                                size: image.fileSize,
-                                type: 'imagen',
-                                color: '#17a2b8'
-                            });
+                            totalImageSize += image.fileSize;
+                            imageCount++;
                         }
                     });
+                    
+                    if (totalImageSize > 0) {
+                        this.usedStorage += totalImageSize;
+                        this.fileDetails.push({
+                            name: `Imágenes (${imageCount} archivos)`,
+                            size: totalImageSize,
+                            type: 'imagenes',
+                            color: '#17a2b8'
+                        });
+                    }
                 }
 
+                // Calcular tamaño total de videos
+                let totalVideoSize = 0;
+                let videoCount = 0;
                 if (parsedContent.gallery && parsedContent.gallery.videos) {
-                    parsedContent.gallery.videos.forEach((video, index) => {
+                    parsedContent.gallery.videos.forEach((video) => {
                         if (video.fileSize) {
-                            this.usedStorage += video.fileSize;
-                            this.fileDetails.push({
-                                name: `Video ${index + 1}: ${video.title || video.fileName || 'Sin título'}`,
-                                size: video.fileSize,
-                                type: 'video',
-                                color: '#6f42c1'
-                            });
+                            totalVideoSize += video.fileSize;
+                            videoCount++;
                         }
                     });
+                    
+                    if (totalVideoSize > 0) {
+                        this.usedStorage += totalVideoSize;
+                        this.fileDetails.push({
+                            name: `Videos (${videoCount} archivos)`,
+                            size: totalVideoSize,
+                            type: 'videos',
+                            color: '#6f42c1'
+                        });
+                    }
                 }
 
                 // Calcular tamaño de eventos con archivos adjuntos
