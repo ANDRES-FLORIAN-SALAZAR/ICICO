@@ -53,3 +53,11 @@ local-config.js
 secrets.js
 #config/admin-credentials.js
 config/admin-credentials.js
+
+# Archivos locales de administración
+admin-local.html
+admin-local.js
+script-public.js
+admin-public.html
+# Archivos de administración (eliminar o ignorar)
+admin.html
