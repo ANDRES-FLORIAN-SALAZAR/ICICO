@@ -724,7 +724,7 @@ function updatePublicGallery() {
         console.log('Número de imágenes:', images.length);
         
         if (images.length === 0) {
-            imageGallery.innerHTML = '<p class="text-center text-white-50">No hay imágenes cargadas aún.</p>';
+            imageGallery.innerHTML = '';
         } else {
             imageGallery.innerHTML = images.map((image, index) => {
                 // Validar y limpiar URL de la imagen
@@ -772,7 +772,7 @@ function updatePublicGallery() {
     if (videoGallery) {
         const videos = window.contentManager.content.gallery.videos;
         if (videos.length === 0) {
-            videoGallery.innerHTML = '<p class="text-center text-white-50">No hay videos cargados aún.</p>';
+            videoGallery.innerHTML = '';
         } else {
             videoGallery.innerHTML = videos.map((video, index) => {
                 // Validar y limpiar URL del video
@@ -868,8 +868,15 @@ function updatePublicPredicas() {
                             <h5 class="predica-title">${sermon.title}</h5>
                             <p class="predica-speaker"><i class="fas fa-user me-2"></i>${sermon.speaker}</p>
                             <p class="predica-description">${sermon.description}</p>
-                            <div class="predica-time">
-                                <i class="fas fa-clock me-2"></i>Disponible ahora
+                            <div class="predica-actions">
+                                ${sermon.externalLink ? 
+                                    `<a href="${sermon.externalLink}" target="_blank" class="btn btn-primary btn-sm w-100">
+                                        <i class="fas fa-play-circle me-2"></i>Ver Predica
+                                    </a>` :
+                                    `<div class="predica-time">
+                                        <i class="fas fa-clock me-2"></i>Disponible ahora
+                                    </div>`
+                                }
                             </div>
                         </div>
                     </div>
@@ -1278,11 +1285,11 @@ function loadStaticGallery() {
     const videoGallery = document.getElementById('videoGallery');
     
     if (imageGallery) {
-        imageGallery.innerHTML = '<p class="text-center text-white-50">No hay imágenes cargadas aún.</p>';
+        imageGallery.innerHTML = '';
     }
     
     if (videoGallery) {
-        videoGallery.innerHTML = '<p class="text-center text-white-50">No hay videos cargados aún.</p>';
+        videoGallery.innerHTML = '';
     }
 }
 
@@ -2095,11 +2102,11 @@ class ContentManager {
         const videoGallery = document.getElementById('videoGallery');
         
         if (imageGallery) {
-            imageGallery.innerHTML = '<p class="text-center text-white-50">No hay imágenes cargadas aún.</p>';
+            imageGallery.innerHTML = '';
         }
         
         if (videoGallery) {
-            videoGallery.innerHTML = '<p class="text-center text-white-50">No hay videos cargados aún.</p>';
+            videoGallery.innerHTML = '';
         }
         
         // Actualizar otros contenedores si existen
