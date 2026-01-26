@@ -6,11 +6,33 @@ class ContentLoader {
         this.loadData();
     }
 
-    loadData() {
-        const savedData = localStorage.getItem('casaOracionData');
-        if (savedData) {
-            this.data = JSON.parse(savedData);
-        } else {
+    async loadData() {
+        try {
+            // Primero intentar cargar desde IndexedDB (nuevo sistema)
+            if (window.storageManager) {
+                this.data = {
+                    anuncios: await window.storageManager.getAllContent('anuncios'),
+                    eventos: await window.storageManager.getAllContent('eventos'),
+                    predicas: await window.storageManager.getAllContent('predicas'),
+                    galeria: await window.storageManager.getAllContent('galeria')
+                };
+            } else {
+                // Fallback a localStorage si storageManager no está disponible
+                const savedData = localStorage.getItem('casaOracionData');
+                if (savedData) {
+                    this.data = JSON.parse(savedData);
+                } else {
+                    this.data = {
+                        anuncios: [],
+                        eventos: [],
+                        predicas: [],
+                        galeria: []
+                    };
+                }
+            }
+        } catch (error) {
+            console.error('Error cargando datos en ContentLoader:', error);
+            // Si hay error, inicializar con datos vacíos
             this.data = {
                 anuncios: [],
                 eventos: [],
@@ -190,8 +212,23 @@ class ContentLoader {
 // Crear instancia global del cargador de contenido
 window.contentLoader = new ContentLoader();
 
-// Funciones de conveniencia para uso en las páginas
-window.loadAnuncios = (containerId) => window.contentLoader.renderAnuncios(containerId);
-window.loadEventos = (containerId) => window.contentLoader.renderEventos(containerId);
-window.loadPredicas = (containerId) => window.contentLoader.renderPredicas(containerId);
-window.loadGaleria = (containerId) => window.contentLoader.renderGaleria(containerId);
+// Funciones de conveniencia para uso en las páginas (ahora asíncronas)
+window.loadAnuncios = async (containerId) => {
+    await window.contentLoader.loadData();
+    window.contentLoader.renderAnuncios(containerId);
+};
+
+window.loadEventos = async (containerId) => {
+    await window.contentLoader.loadData();
+    window.contentLoader.renderEventos(containerId);
+};
+
+window.loadPredicas = async (containerId) => {
+    await window.contentLoader.loadData();
+    window.contentLoader.renderPredicas(containerId);
+};
+
+window.loadGaleria = async (containerId) => {
+    await window.contentLoader.loadData();
+    window.contentLoader.renderGaleria(containerId);
+};
