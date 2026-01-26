@@ -15,8 +15,8 @@
                     !image.url.includes('banner.png') && 
                     !image.url.includes('comportamiento.jpg') &&
                     !image.url.includes('rueba.jpg') &&
-                    !image.url.includes('coro.png') &&
-                    !image.url.includes('oracion.png')
+                    !image.url.includes('Coro.png') &&
+                    !image.url.includes('Templo.png')
                 );
                 if (parsedContent.gallery.images.length !== originalLength) {
                     hasChanges = true;
@@ -28,7 +28,10 @@
                 const originalLength = parsedContent.gallery.videos.length;
                 parsedContent.gallery.videos = parsedContent.gallery.videos.filter(video => 
                     !video.url.includes('banner.png') && 
-                    !video.url.includes('comportamiento.jpg')
+                    !video.url.includes('comportamiento.jpg') &&
+                    !image.url.includes('rueba.jpg') &&
+                    !image.url.includes('Coro.png') &&
+                    !image.url.includes('Templo.png')
                 );
                 if (parsedContent.gallery.videos.length !== originalLength) {
                     hasChanges = true;
