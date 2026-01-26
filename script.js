@@ -13,7 +13,10 @@
                 const originalLength = parsedContent.gallery.images.length;
                 parsedContent.gallery.images = parsedContent.gallery.images.filter(image => 
                     !image.url.includes('banner.png') && 
-                    !image.url.includes('comportamiento.jpg')
+                    !image.url.includes('comportamiento.jpg') &&
+                    !image.url.includes('rueba.jpg') &&
+                    !image.url.includes('coro.png') &&
+                    !image.url.includes('oracion.png')
                 );
                 if (parsedContent.gallery.images.length !== originalLength) {
                     hasChanges = true;
@@ -1016,8 +1019,7 @@ function initializePublicContent() {
         // Limpiar URLs base64 inválidas primero
         cleanInvalidBase64URLs();
         
-        // Limpiar imágenes rotas o inexistentes
-        cleanBrokenImages();
+        // Las imágenes rotas se limpian automáticamente en cleanBrokenFileReferences()
         
         // Agregar videos subidos que puedan faltar
         addUploadedVideos();
