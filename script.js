@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
     checkAdminSession();
     initializeNavigation();
     
+    // Limpiar referencias a archivos rotos
+    cleanBrokenFileReferences();
+    
     // Configurar formularios adicionales
     const uploadForm = document.getElementById('uploadForm');
     if (uploadForm) {
@@ -509,6 +512,29 @@ window.storageMonitor = new StorageMonitor();
 // Verificar si ContentManager está disponible
 function isContentManagerReady() {
     return window.contentManager && window.contentManager.content;
+}
+
+// Limpiar referencias a archivos no existentes
+function cleanBrokenFileReferences() {
+    if (!isContentManagerReady()) return;
+    
+    const content = window.contentManager.content;
+    
+    // Limpiar imágenes con banner.png o comportamiento.jpg
+    content.gallery.images = content.gallery.images.filter(image => 
+        !image.url.includes('banner.png') && 
+        !image.url.includes('comportamiento.jpg')
+    );
+    
+    // Limpiar videos con banner.png o comportamiento.jpg
+    content.gallery.videos = content.gallery.videos.filter(video => 
+        !video.url.includes('banner.png') && 
+        !video.url.includes('comportamiento.jpg')
+    );
+    
+    // Guardar cambios
+    window.contentManager.saveContent();
+    // Referencias a archivos rotas eliminadas
 }
 
 // Sistema de Eventos
