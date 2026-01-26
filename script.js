@@ -12,7 +12,6 @@ function isLocalEnvironment() {
     if (!isLocalEnvironment()) {
         // En producción, no cargar configuración de admin
         window.validateAdminPassword = function() {
-            console.warn('Función de administración no disponible en producción');
             return false;
         };
         return;
@@ -21,13 +20,11 @@ function isLocalEnvironment() {
     const script = document.createElement('script');
     script.src = 'config/admin-credentials.js';
     script.onload = function() {
-        console.log('Configuración de administrador cargada exitosamente');
+        // Configuración cargada
     };
     script.onerror = function() {
-        console.error('Error al cargar configuración de administrador');
-        // Fallback: sin contraseña por defecto - requiere archivo de configuración
+        // Error al cargar configuración
         window.validateAdminPassword = function(inputPassword) {
-            console.error('Configuración de administrador no disponible');
             return false;
         };
     };
@@ -59,6 +56,29 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeContact();
     initializeAdmin();
     checkAdminSession();
+    initializeNavigation();
+    
+    // Configurar formularios adicionales
+    const uploadForm = document.getElementById('uploadForm');
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFileUpload();
+        });
+    }
+    
+    const addSermonForm = document.getElementById('addSermonForm');
+    if (addSermonForm) {
+        addSermonForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveSermonFromModal();
+        });
+    }
+    
+    // Inicializar formulario de eventos si estamos en admin.html
+    if (window.location.pathname.includes('admin.html') || window.location.href.includes('admin.html')) {
+        setTimeout(initializeEventForm, 500);
+    }
 });
 
 // Manejar navegación de admin según entorno
@@ -486,42 +506,14 @@ class StorageMonitor {
 // Inicializar el StorageMonitor global
 window.storageMonitor = new StorageMonitor();
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Crear instancia global del ContentManager primero
-    window.contentManager = new ContentManager();
-    
-    // Inicializar AOS
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-    });
-
-    // Inicializar todos los sistemas
-    initializeCounters();
-    loadEvents();
-    loadSundaySchool();
-    loadSpecialServices();
-    initializeGallery();
-    loadSermons();
-    initializeContact();
-    initializeAdmin();
-    checkAdminSession();
-});
-
-function isContentManagerReady() {
-    return window.contentManager && window.contentManager.content;
-}
-
 // Sistema de Eventos
 function loadEvents() {
     // Cargar horarios regulares desde ContentManager
     const regularServices = document.getElementById('regularServices');
     if (regularServices) {
-        console.log('Elemento regularServices encontrado');
+        // Elemento regularServices encontrado
         // Verificar si contentManager está disponible
         if (!isContentManagerReady()) {
-            console.warn('ContentManager no está disponible aún');
             return;
         }
         
@@ -530,7 +522,6 @@ function loadEvents() {
         
         // Si no hay eventos en ContentManager, inicializar con los eventos del HTML
         if (events.length === 0) {
-            console.log('Inicializando eventos desde HTML...');
             
             // Horarios regulares (no se muestran en próximos eventos)
             const regularServices = [
@@ -580,11 +571,11 @@ function loadEvents() {
         
         // Filtrar: solo servicios regulares para horarios
         const regularServicesList = events.filter(event => event.isRegularService);
-        console.log('Servicios regulares encontrados:', regularServicesList);
+        // Servicios regulares encontrados
         
         // Filtrar: solo eventos especiales para próximos eventos
         const specialEvents = events.filter(event => !event.isRegularService);
-        console.log('Eventos especiales encontrados:', specialEvents);
+        // Eventos especiales encontrados
         
         // Cargar horarios regulares
         const services = regularServicesList.map(event => ({
@@ -616,28 +607,10 @@ function loadSundaySchool() {
 
     const classes = [
         {
-            icon: 'fa-baby',
-            title: 'Cuna',
-            age: '0-2 años',
-            description: 'Cuidado y enseñanza básica para los más pequeños.'
-        },
-        {
-            icon: 'fa-child',
-            title: 'Preescolar',
-            age: '3-5 años',
-            description: 'Enseñanzas bíblicas adaptadas para preescolares.'
-        },
-        {
             icon: 'fa-user-graduate',
             title: 'Primarios',
             age: '6-11 años',
             description: 'Estudios bíblicos interactivos y divertidos.'
-        },
-        {
-            icon: 'fa-users',
-            title: 'Adolescentes',
-            age: '12-17 años',
-            description: 'Formación espiritual y guía para jóvenes.'
         },
         {
             icon: 'fa-user-tie',
@@ -710,7 +683,6 @@ function loadSpecialServices() {
 // Función para actualizar galería en páginas públicas
 function updatePublicGallery() {
     if (!isContentManagerReady()) {
-        console.warn('ContentManager no está disponible aún');
         return;
     }
     
@@ -720,8 +692,6 @@ function updatePublicGallery() {
     // Actualizar imágenes
     if (imageGallery) {
         const images = window.contentManager.content.gallery.images;
-        console.log('Imágenes encontradas en ContentManager:', images);
-        console.log('Número de imágenes:', images.length);
         
         if (images.length === 0) {
             imageGallery.innerHTML = '';
@@ -729,34 +699,29 @@ function updatePublicGallery() {
             imageGallery.innerHTML = images.map((image, index) => {
                 // Validar y limpiar URL de la imagen
                 let imageUrl = image.url;
-                console.log(`Procesando imagen ${index + 1}:`, image);
-                console.log('URL original:', imageUrl);
                 
                 if (imageUrl && imageUrl.includes('data:image')) {
                     // Verificar que la URL base64 sea válida
                     if (imageUrl.length < 100 || !imageUrl.includes('base64') || !imageUrl.includes('image/')) {
                         // Usar placeholder si la URL es inválida
-                        console.log('URL base64 inválida, usando placeholder para imagen:', image.id);
                         imageUrl = 'https://picsum.photos/seed/' + image.id + '/400/300.jpg';
                     } else {
                         // Usar la URL base64 directamente
-                        console.log('Usando URL base64 válida para imagen:', image.id);
                     }
                 } else if (!imageUrl) {
                     // Usar placeholder si no hay URL
                     imageUrl = 'https://picsum.photos/seed/' + image.id + '/400/300.jpg';
                 } else if (imageUrl.startsWith('./uploads/')) {
                     // Usar la ruta del servidor directamente
-                    console.log('Usando ruta de servidor:', imageUrl);
                 }
                 
-                console.log('URL final:', imageUrl);
+                // URL final procesada
                 
                 return `
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}" onclick="openMediaModal('${image.title}', '${imageUrl}', 'image')">
                     <img src="${imageUrl}" alt="${image.title}" loading="lazy" 
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                         onload="console.log('Imagen cargada exitosamente:', this.src);">
+                         onload="// Imagen cargada";>
                     <div class="gallery-item-content">
                         <h5>${image.title}</h5>
                         <p>${image.description}</p>
@@ -843,7 +808,6 @@ function updatePublicGallery() {
 // Función para actualizar predicas en páginas públicas
 function updatePublicPredicas() {
     if (!isContentManagerReady()) {
-        console.warn('ContentManager no está disponible aún');
         return;
     }
     
@@ -889,7 +853,6 @@ function updatePublicPredicas() {
 // Función para actualizar eventos en páginas públicas
 function updatePublicEvents() {
     if (!isContentManagerReady()) {
-        console.warn('ContentManager no está disponible aún');
         return;
     }
     
@@ -902,13 +865,10 @@ function updatePublicEvents() {
         
         if (specialEvents.length === 0) {
             // No hay eventos especiales, mantener el contenido HTML existente
-            console.log('No hay eventos especiales, manteniendo contenido HTML existente');
             return;
         }
         
-        console.log('Actualizando eventos especiales:', specialEvents);
-        
-        // Limpiar contenido existente antes de agregar nuevos eventos
+        // Actualizar eventos especiales
         eventsContainer.innerHTML = '';
         
         // Agregar eventos especiales
@@ -1185,81 +1145,7 @@ function cleanInvalidBase64URLs() {
     }
 }
 
-// Función de emergencia para resetear contenido si hay muchos errores
-function emergencyResetContent() {
-    console.log('Ejecutando reset de emergencia del contenido...');
-    
-    // Limpiar localStorage completamente
-    localStorage.removeItem('churchContent');
-    
-    // Recrear ContentManager
-    if (window.contentManager) {
-        window.contentManager = new ContentManager();
-    }
-    
-    // Limpiar URLs inválidas y rotas
-    setTimeout(() => {
-        cleanInvalidBase64URLs();
-        cleanBrokenImages();
-        addExistingImages();
-        addUploadedVideos();
-    }, 200);
-    
-    console.log('Reset de emergencia completado');
-}
-
-// Hacer las funciones accesibles globalmente
-window.emergencyResetContent = emergencyResetContent;
-window.forceCleanReload = function() {
-    console.log('Forzando limpieza completa del localStorage...');
-    localStorage.removeItem('churchContent');
-    localStorage.clear();
-    location.reload();
-};
-window.addExistingImages = addExistingImages;
-window.cleanInvalidBase64URLs = cleanInvalidBase64URLs;
-window.cleanBrokenImages = cleanBrokenImages;
-
-// Función para limpiar imágenes rotas o inexistentes
-function cleanBrokenImages() {
-    if (!isContentManagerReady()) return;
-    
-    console.log('Limpiando imágenes rotas o inexistentes...');
-    
-    const images = window.contentManager.content.gallery.images;
-    
-    // Filtrar y eliminar imágenes que no existen
-    const validImages = images.filter(image => {
-        // Eliminar imágenes con URLs rotas o vacías
-        if (!image.url || image.url === './uploads/images/' || image.url.includes('1769118545690_vivae.jpg')) {
-            console.log('Eliminando imagen rota o inexistente:', image.title || 'Sin título');
-            return false;
-        }
-        
-        // Eliminar imágenes base64 inválidas
-        if (image.url && image.url.startsWith('data:') && image.url.length < 100) {
-            console.log('Eliminando imagen base64 inválida:', image.title || 'Sin título');
-            return false;
-        }
-        
-        return true;
-    });
-    
-    // Actualizar la lista de imágenes
-    window.contentManager.content.gallery.images = validImages;
-    
-    // Guardar los cambios
-    window.contentManager.saveContent();
-    
-    console.log('Imágenes rotas eliminadas. Imágenes válidas:', validImages.length);
-    
-    // Actualizar la galería
-    if (typeof updatePublicGallery === 'function') {
-        setTimeout(() => {
-            updatePublicGallery();
-        }, 100);
-    }
-}
+// ...
 
 // Sistema de Galería
 function initializeGallery() {
@@ -1372,7 +1258,7 @@ function addVideoToGallery(title, description, url) {
     newVideo.onclick = () => openMediaModal(title, url, 'video');
     newVideo.innerHTML = `
         <div class="video-placeholder">
-            <i class="fas fa-play"></i>
+            <i class="fas fa-play-circle"></i>
         </div>
         <div class="gallery-item-content">
             <h5 class="gallery-item-title">${title}</h5>
@@ -1427,77 +1313,6 @@ function initializeAdmin() {
         });
     }
     
-    // Formulario de subida
-    if (uploadForm) {
-        uploadForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const contentType = document.getElementById('contentType').value;
-            const title = document.getElementById('contentTitle').value;
-            const description = document.getElementById('contentDescription').value;
-            const file = document.getElementById('contentFile').files[0];
-            
-            console.log('Intentando subir:', {
-                contentType,
-                title,
-                description,
-                fileName: file?.name,
-                fileType: file?.type,
-                fileSize: file?.size
-            });
-            
-            if (!file) {
-                showNotification('Por favor selecciona un archivo', 'warning');
-                return;
-            }
-            
-            // Validar tipo de archivo
-            if (contentType === 'video' && !file.type.startsWith('video/')) {
-                showNotification('El archivo seleccionado no es un video válido', 'danger');
-                console.error('Tipo de archivo inválido para video:', file.type);
-                return;
-            }
-            
-            if (contentType === 'image' && !file.type.startsWith('image/')) {
-                showNotification('El archivo seleccionado no es una imagen válida', 'danger');
-                console.error('Tipo de archivo inválido para imagen:', file.type);
-                return;
-            }
-            
-            // Previsualizar archivo
-            previewGalleryFile(file);
-            
-            // Subir a carpeta local en lugar de guardar como base64
-            uploadFileToServer(file, title, description, contentType).then(itemData => {
-                console.log('Archivo subido exitosamente:', itemData);
-                
-                // Agregar al ContentManager con la ruta del servidor
-                if (contentType === 'image') {
-                    window.contentManager.addImage(itemData);
-                    console.log('Imagen agregada a ContentManager');
-                } else if (contentType === 'video') {
-                    // Agregar video sin importar en qué página estemos
-                    window.contentManager.addVideo(itemData);
-                    console.log('Video agregado a ContentManager:', itemData);
-                }
-                
-                showNotification('¡Contenido subido exitosamente!', 'success');
-                
-                // Cerrar modal y limpiar formulario
-                const modal = bootstrap.Modal.getInstance(document.getElementById('uploadModal'));
-                if (modal) modal.hide();
-                document.getElementById('uploadForm').reset();
-                document.getElementById('filePreview').style.display = 'none';
-                
-                // Actualizar lista
-                loadAdminGallery();
-            }).catch(error => {
-                console.error('Error al subir archivo:', error);
-                showNotification('Error al subir archivo: ' + error.message, 'danger');
-            });
-        });
-    }
-    
     // Cargar datos del panel de administración si estamos en admin.html
     if (window.location.pathname.includes('admin.html') || window.location.href.includes('admin.html')) {
         setTimeout(() => {
@@ -1539,109 +1354,11 @@ function togglePassword() {
     }
 }
 
-function openMediaModal(title, url, type) {
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
-    
-    modalTitle.textContent = title;
-    
-    if (type === 'image') {
-        modalBody.innerHTML = `<img src="${url}" alt="${title}" class="img-fluid">`;
-    } else if (type === 'video') {
-        // Detectar si es una URL de YouTube o un video local
-        if (url.includes('youtube.com') || url.includes('youtu.be')) {
-            // Para YouTube, usar iframe con autoplay y mute desactivado
-            const videoId = url.includes('youtu.be') ? url.split('/').pop() : url.split('v=')[1]?.split('&')[0];
-            const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&rel=0`;
-            
-            modalBody.innerHTML = `
-                <div class="ratio ratio-16x9">
-                    <iframe src="${embedUrl}" title="${title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            `;
-        } else {
-            // Para videos locales, usar elemento video nativo con audio habilitado
-            modalBody.innerHTML = `
-                <div class="video-container">
-                    <video controls autoplay muted class="w-100" style="max-height: 70vh;">
-                        <source src="${url}" type="video/mp4">
-                        <source src="${url}" type="video/webm">
-                        <source src="${url}" type="video/ogg">
-                        Tu navegador no soporta el elemento de video.
-                    </video>
-                    <div class="mt-3 text-center">
-                        <button class="btn btn-outline-primary btn-sm" onclick="toggleVideoMute()">
-                            <i class="fas fa-volume-up"></i> Activar Audio
-                        </button>
-                        <small class="text-muted d-block mt-2">Si el video no tiene audio, haz clic en "Activar Audio"</small>
-                    </div>
-                </div>
-            `;
-        }
-    }
-    
-    const modal = new bootstrap.Modal(document.getElementById('mediaModal'));
-    modal.show();
-    
-    // Para videos locales, intentar activar el audio automáticamente
-    if (type === 'video' && !url.includes('youtube.com') && !url.includes('youtu.be')) {
-        setTimeout(() => {
-            const video = modalBody.querySelector('video');
-            if (video) {
-                // Intentar quitar el muted después de la primera interacción
-                video.addEventListener('play', function() {
-                    setTimeout(() => {
-                        video.muted = false;
-                        console.log('Audio activado para el video');
-                    }, 100);
-                }, { once: true });
-            }
-        }, 500);
-    }
-}
-
-// Función para activar/desactivar el audio del video
-function toggleVideoMute() {
-    const video = document.querySelector('#mediaModal video');
-    if (video) {
-        video.muted = !video.muted;
-        const button = document.querySelector('[onclick="toggleVideoMute()"]');
-        if (button) {
-            if (video.muted) {
-                button.innerHTML = '<i class="fas fa-volume-up"></i> Activar Audio';
-            } else {
-                button.innerHTML = '<i class="fas fa-volume-mute"></i> Silenciar Audio';
-            }
-        }
-    }
-}
-
 function showUploadModal() {
     const modal = new bootstrap.Modal(document.getElementById('uploadModal'));
     modal.show();
 }
 
-function addVideoToGallery(title, description, url) {
-    const videoGallery = document.getElementById('videoGallery');
-    if (!videoGallery) {
-        console.warn('Elemento videoGallery no encontrado');
-        return;
-    }
-    
-    const newVideo = document.createElement('div');
-    newVideo.className = 'gallery-item animate-slide-up';
-    newVideo.onclick = () => openMediaModal(title, url, 'video');
-    newVideo.innerHTML = `
-        <div class="video-placeholder">
-            <i class="fas fa-play-circle"></i>
-        </div>
-        <div class="gallery-item-content">
-            <h5 class="gallery-item-title">${title}</h5>
-            <p class="gallery-item-description">${description}</p>
-        </div>
-    `;
-    videoGallery.appendChild(newVideo);
-}
 
 function showNotification(message, type = 'info') {
     // Crear notificación
@@ -1660,30 +1377,6 @@ function showNotification(message, type = 'info') {
     setTimeout(() => {
         notification.remove();
     }, 5000);
-}
-
-// Función para agregar imagen a la galería
-function addImageToGallery(title, description, url) {
-    const imageGallery = document.getElementById('imageGallery');
-    
-    // Verificar si el elemento existe antes de usarlo
-    if (!imageGallery) {
-        console.warn('Elemento imageGallery no encontrado - la imagen no se agregará a la galería');
-        showNotification('No se puede agregar la imagen: galería no disponible', 'warning');
-        return;
-    }
-    
-    const newImage = document.createElement('div');
-    newImage.className = 'gallery-item animate-slide-up';
-    newImage.onclick = () => openMediaModal(title, url, 'image');
-    newImage.innerHTML = `
-        <img src="${url}" alt="${title}">
-        <div class="gallery-item-content">
-            <h5 class="gallery-item-title">${title}</h5>
-            <p class="gallery-item-description">${description}</p>
-        </div>
-    `;
-    imageGallery.appendChild(newImage);
 }
 
 // Verificar sesión de administrador al cargar
@@ -3375,32 +3068,6 @@ function uploadFileToServer(file, title, description, type) {
         }, 1000);
     });
 }
-
-// Función para inicializar el formulario de subida
-document.addEventListener('DOMContentLoaded', function() {
-    // Configurar el formulario de subida
-    const uploadForm = document.getElementById('uploadForm');
-    if (uploadForm) {
-        uploadForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            handleFileUpload();
-        });
-    }
-    
-    // Configurar el formulario de predica
-    const addSermonForm = document.getElementById('addSermonForm');
-    if (addSermonForm) {
-        addSermonForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            saveSermonFromModal();
-        });
-    }
-    
-    // Inicializar formulario de eventos si estamos en admin.html
-    if (window.location.pathname.includes('admin.html') || window.location.href.includes('admin.html')) {
-        setTimeout(initializeEventForm, 500);
-    }
-});
 
 // Inicialización final
 console.log('Sistema de Casa de Oración inicializado correctamente');
