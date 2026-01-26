@@ -1,4 +1,4 @@
-// JavaScript para Casa de Oración - Solo funciones públicas
+// JavaScript básico para Casa de Oración
 (function() {
     'use strict';
 
@@ -7,8 +7,6 @@
         initializeAOS();
         initializeNavigation();
         initializeAnimations();
-        initializeCounters();
-        initializeScrollEffects();
     });
 
     // Inicializar AOS (Animate On Scroll)
@@ -24,26 +22,6 @@
 
     // Inicializar navegación
     function initializeNavigation() {
-        // Navegación suave al hacer clic en enlaces internos
-        const navLinks = document.querySelectorAll('a[href^="#"]');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    const headerHeight = document.querySelector('.navbar').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
         // Cambiar estilo de navbar al hacer scroll
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
@@ -55,7 +33,7 @@
         });
     }
 
-    // Inicializar animaciones
+    // Inicializar animaciones básicas
     function initializeAnimations() {
         // Animación de partículas hero
         const heroParticles = document.querySelector('.hero-particles');
@@ -75,14 +53,14 @@
         const particlesContainer = document.querySelector('.hero-particles');
         if (!particlesContainer) return;
 
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 30; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.cssText = `
                 position: absolute;
-                width: ${Math.random() * 4}px;
-                height: ${Math.random() * 4}px;
-                background: rgba(255, 255, 255, ${Math.random() * 0.8});
+                width: ${Math.random() * 3}px;
+                height: ${Math.random() * 3}px;
+                background: rgba(255, 255, 255, ${Math.random() * 0.6});
                 border-radius: 50%;
                 left: ${Math.random() * 100}%;
                 top: ${Math.random() * 100}%;
@@ -98,132 +76,7 @@
         const delay = Math.random() * 2;
         
         shape.style.animation = `float ${duration}s ${delay}s infinite ease-in-out`;
-        
-        // Animación adicional
-        shape.addEventListener('animationiteration', () => {
-            const randomDuration = 3 + Math.random() * 4;
-            shape.style.animationDuration = `${randomDuration}s`;
-        });
     }
-
-    // Inicializar contadores animados
-    function initializeCounters() {
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200;
-
-        const countUp = (counter) => {
-            const target = +counter.getAttribute('data-count');
-            const count = +counter.innerText;
-            const increment = target / speed;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(() => countUp(counter), 10);
-            } else {
-                counter.innerText = target;
-            }
-        };
-
-        // Usar Intersection Observer para activar contadores cuando sean visibles
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    countUp(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counters.forEach(counter => {
-            observer.observe(counter);
-        });
-    }
-
-    // Inicializar efectos de scroll
-    function initializeScrollEffects() {
-        // Animación de elementos al hacer scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    scrollObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observar elementos con animación
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
-        animatedElements.forEach(element => {
-            scrollObserver.observe(element);
-        });
-    }
-
-    // Función para mostrar notificaciones (genérica)
-    function showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `alert alert-${type} position-fixed top-0 end-0 m-3`;
-        notification.style.zIndex = '9999';
-        notification.style.minWidth = '300px';
-        notification.innerHTML = `
-            <div class="d-flex align-items-center">
-                <i class="fas fa-info-circle me-2"></i>
-                <span>${message}</span>
-                <button type="button" class="btn-close ms-auto" onclick="this.closest('.alert').remove()"></button>
-            </div>
-        `;
-        
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.remove();
-            }
-        }, 5000);
-    }
-
-    // Función para validar formularios
-    function validateForm(form) {
-        const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
-        let isValid = true;
-
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
-                input.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                input.classList.remove('is-invalid');
-                input.classList.add('is-valid');
-            }
-        });
-
-        return isValid;
-    }
-
-    // Función para mostrar loading
-    function showLoading(element, text = 'Cargando...') {
-        element.disabled = true;
-        element.innerHTML = `
-            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
-            ${text}
-        `;
-    }
-
-    // Función para restaurar botón
-    function restoreButton(element, originalText) {
-        element.disabled = false;
-        element.innerHTML = originalText;
-    }
-
-    // Exponer funciones globalmente si es necesario
-    window.showNotification = showNotification;
-    window.validateForm = validateForm;
-    window.showLoading = showLoading;
-    window.restoreButton = restoreButton;
 
 })();
 
@@ -247,17 +100,6 @@ style.textContent = `
     
     .particle {
         animation: float linear infinite;
-    }
-    
-    .animate-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease-out;
-    }
-    
-    .animate-in.animated {
-        opacity: 1;
-        transform: translateY(0);
     }
     
     .navbar.scrolled {

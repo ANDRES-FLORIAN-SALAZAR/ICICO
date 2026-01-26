@@ -35,80 +35,6 @@
         </div>
     </nav>
 
-    <!-- Contenido Principal -->
-    <main class="main-content">
-        <!-- Header Section -->
-        <section class="page-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Predicas Recientes</h1>
-                        <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Mensajes de inspiración y enseñanza bíblica</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Predicas Section -->
-        <section class="section-predicaes py-5">
-            <div class="container">
-                <div class="row g-4" id="predicasContainer">
-                    <!-- El Poder de la Oración -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                        <div class="predica-card">
-                            <div class="predica-image">
-                                <i class="fas fa-bible"></i>
-                            </div>
-                            <div class="predica-content">
-                                <span class="predica-date">15 de Diciembre</span>
-                                <h5 class="predica-title">El Poder de la Oración</h5>
-                                <p class="predica-speaker"><i class="fas fa-user me-2"></i>Pastor Juan Pérez</p>
-                                <p class="predica-description">Descubre cómo la oración puede transformar tu vida y mover montañas.</p>
-                                <div class="predica-time">
-                                    <i class="fas fa-clock me-2"></i>Disponible ahora
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Fe en Acción -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="predica-card">
-                            <div class="predica-image">
-                                <i class="fas fa-bible"></i>
-                            </div>
-                            <div class="predica-content">
-                                <span class="predica-date">8 de Diciembre</span>
-                                <h5 class="predica-title">Fe en Acción</h5>
-                                <p class="predica-speaker"><i class="fas fa-user me-2"></i>Pastora María González</p>
-                                <p class="predica-description">Aprende a poner tu fe en práctica en el diario vivir.</p>
-                                <div class="predica-time">
-                                    <i class="fas fa-clock me-2"></i>Disponible ahora
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- La Gracia de Dios -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="predica-card">
-                            <div class="predica-image">
-                                <i class="fas fa-bible"></i>
-                            </div>
-                            <div class="predica-content">
-                                <span class="predica-date">1 de Diciembre</span>
-                                <h5 class="predica-title">La Gracia de Dios</h5>
-                                <p class="predica-speaker"><i class="fas fa-user me-2"></i>Pastor Carlos Rodríguez</p>
-                                <p class="predica-description">Comprendiendo el maravilloso regalo de la gracia divina.</p>
-                                <div class="predica-time">
-                                    <i class="fas fa-clock me-2"></i>Disponible ahora
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -150,15 +76,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
-    <script src="content-manager.js"></script>
-    <script>
-        // Cargar predicaciones dinámicamente cuando la página esté lista
-        document.addEventListener('DOMContentLoaded', function() {
-            // Esperar a que AOS se inicialice
-            setTimeout(() => {
-                loadPredicas('predicasContainer');
-            }, 500);
-        });
-    </script>
 </body>
 </html>
