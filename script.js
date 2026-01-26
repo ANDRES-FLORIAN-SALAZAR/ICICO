@@ -506,6 +506,11 @@ class StorageMonitor {
 // Inicializar el StorageMonitor global
 window.storageMonitor = new StorageMonitor();
 
+// Verificar si ContentManager está disponible
+function isContentManagerReady() {
+    return window.contentManager && window.contentManager.content;
+}
+
 // Sistema de Eventos
 function loadEvents() {
     // Cargar horarios regulares desde ContentManager
