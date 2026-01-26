@@ -1,38 +1,14 @@
-// Cargador de contenido dinámico para Casa de Oración
-// Conecta el sistema de administración con las páginas públicas
-
-class ContentLoader {
+// Gestor de contenido simple - Lee desde localStorage
+class SimpleContentManager {
     constructor() {
         this.loadData();
     }
 
-    async loadData() {
-        try {
-            // Primero intentar cargar desde IndexedDB (nuevo sistema)
-            if (window.storageManager) {
-                this.data = {
-                    anuncios: await window.storageManager.getAllContent('anuncios'),
-                    eventos: await window.storageManager.getAllContent('eventos'),
-                    predicas: await window.storageManager.getAllContent('predicas'),
-                    galeria: await window.storageManager.getAllContent('galeria')
-                };
-            } else {
-                // Fallback a localStorage si storageManager no está disponible
-                const savedData = localStorage.getItem('casaOracionData');
-                if (savedData) {
-                    this.data = JSON.parse(savedData);
-                } else {
-                    this.data = {
-                        anuncios: [],
-                        eventos: [],
-                        predicas: [],
-                        galeria: []
-                    };
-                }
-            }
-        } catch (error) {
-            console.error('Error cargando datos en ContentLoader:', error);
-            // Si hay error, inicializar con datos vacíos
+    loadData() {
+        const savedData = localStorage.getItem('casaOracionData');
+        if (savedData) {
+            this.data = JSON.parse(savedData);
+        } else {
             this.data = {
                 anuncios: [],
                 eventos: [],
@@ -42,27 +18,23 @@ class ContentLoader {
         }
     }
 
-    // Obtener anuncios
     getAnuncios() {
         return this.data.anuncios || [];
     }
 
-    // Obtener eventos
     getEventos() {
         return this.data.eventos || [];
     }
 
-    // Obtener predicaciones
     getPredicas() {
         return this.data.predicas || [];
     }
 
-    // Obtener galería
     getGaleria() {
         return this.data.galeria || [];
     }
 
-    // Renderizar anuncios en una página
+    // Renderizar anuncios
     renderAnuncios(containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -86,7 +58,7 @@ class ContentLoader {
         });
     }
 
-    // Renderizar eventos en una página
+    // Renderizar eventos
     renderEventos(containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -125,7 +97,7 @@ class ContentLoader {
         });
     }
 
-    // Renderizar predicaciones en una página
+    // Renderizar predicaciones
     renderPredicas(containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -164,7 +136,7 @@ class ContentLoader {
         });
     }
 
-    // Renderizar galería en una página
+    // Renderizar galería
     renderGaleria(containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -183,7 +155,7 @@ class ContentLoader {
             if (item.tipo === 'imagen') {
                 itemElement.innerHTML = `
                     <div class="card h-100 shadow-sm gallery-card">
-                        <img src="${item.url}" class="card-img-top gallery-image" alt="${item.titulo}">
+                        <img src="${item.url}" class="card-img-top gallery-image" alt="${item.titulo}" style="height: 200px; object-fit: cover;">
                         <div class="card-body">
                             <h5 class="card-title">${item.titulo}</h5>
                             <p class="card-text">${item.descripcion}</p>
@@ -193,8 +165,14 @@ class ContentLoader {
             } else if (item.tipo === 'video') {
                 itemElement.innerHTML = `
                     <div class="card h-100 shadow-sm gallery-card">
-                        <div class="video-container">
-                            <iframe src="${item.url}" class="card-img-top" frameborder="0" allowfullscreen></iframe>
+                        <div class="video-container" style="height: 200px;">
+                            ${item.url.includes('youtube') || item.url.includes('youtu.be') ? 
+                                `<iframe src="${item.url}" class="card-img-top" frameborder="0" allowfullscreen style="height: 100%; width: 100%;"></iframe>` :
+                                `<video controls class="card-img-top" style="height: 100%; width: 100%;">
+                                    <source src="${item.url}" type="video/mp4">
+                                    Tu navegador no soporta videos.
+                                </video>`
+                            }
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">${item.titulo}</h5>
@@ -209,26 +187,11 @@ class ContentLoader {
     }
 }
 
-// Crear instancia global del cargador de contenido
-window.contentLoader = new ContentLoader();
+// Crear instancia global
+window.contentLoader = new SimpleContentManager();
 
-// Funciones de conveniencia para uso en las páginas (ahora asíncronas)
-window.loadAnuncios = async (containerId) => {
-    await window.contentLoader.loadData();
-    window.contentLoader.renderAnuncios(containerId);
-};
-
-window.loadEventos = async (containerId) => {
-    await window.contentLoader.loadData();
-    window.contentLoader.renderEventos(containerId);
-};
-
-window.loadPredicas = async (containerId) => {
-    await window.contentLoader.loadData();
-    window.contentLoader.renderPredicas(containerId);
-};
-
-window.loadGaleria = async (containerId) => {
-    await window.contentLoader.loadData();
-    window.contentLoader.renderGaleria(containerId);
-};
+// Funciones de conveniencia para uso en las páginas
+window.loadAnuncios = (containerId) => window.contentLoader.renderAnuncios(containerId);
+window.loadEventos = (containerId) => window.contentLoader.renderEventos(containerId);
+window.loadPredicas = (containerId) => window.contentLoader.renderPredicas(containerId);
+window.loadGaleria = (containerId) => window.contentLoader.renderGaleria(containerId);

@@ -15,10 +15,6 @@ Sitio web para la Casa de Oración con sistema de gestión de contenido dinámic
 - `cultos.html` - Cultos especiales
 - `predicas.html` - Predicaciones
 
-### Administración
-- `admin-local.html` - Panel de administración local
-- `admin-public.html` - Panel de administración público
-
 ### Recursos
 - `styles.css` - Estilos CSS principales
 - `script.js` - Lógica JavaScript
@@ -55,8 +51,6 @@ Sitio web para la Casa de Oración con sistema de gestión de contenido dinámic
 ├── escuela.html
 ├── cultos.html
 ├── predicas.html
-├── admin-local.html
-├── admin-public.html
 ├── galeria.css
 ├── data/
 │   └── content.json
@@ -79,7 +73,6 @@ Luego abre `http://localhost:8000` en tu navegador.
 - **Diseño responsivo** con Bootstrap 5
 - **Gestión de contenido** dinámica
 - **Galería multimedia** con imágenes y videos
-- **Sistema de administración** local
 - **Optimizado para GitHub Pages**
 
 ## Colores del Tema
