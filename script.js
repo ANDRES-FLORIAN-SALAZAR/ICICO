@@ -1,5 +1,48 @@
 // JavaScript para Casa de Oración - Sistema Completo de Gestión
 
+// Limpieza inmediata de archivos rotos antes que todo
+(function immediateCleanup() {
+    try {
+        const storedContent = localStorage.getItem('churchContent');
+        if (storedContent) {
+            const parsedContent = JSON.parse(storedContent);
+            let hasChanges = false;
+            
+            // Limpiar imágenes con banner.png o comportamiento.jpg
+            if (parsedContent.gallery && parsedContent.gallery.images) {
+                const originalLength = parsedContent.gallery.images.length;
+                parsedContent.gallery.images = parsedContent.gallery.images.filter(image => 
+                    !image.url.includes('banner.png') && 
+                    !image.url.includes('comportamiento.jpg')
+                );
+                if (parsedContent.gallery.images.length !== originalLength) {
+                    hasChanges = true;
+                }
+            }
+            
+            // Limpiar videos con banner.png o comportamiento.jpg
+            if (parsedContent.gallery && parsedContent.gallery.videos) {
+                const originalLength = parsedContent.gallery.videos.length;
+                parsedContent.gallery.videos = parsedContent.gallery.videos.filter(video => 
+                    !video.url.includes('banner.png') && 
+                    !video.url.includes('comportamiento.jpg')
+                );
+                if (parsedContent.gallery.videos.length !== originalLength) {
+                    hasChanges = true;
+                }
+            }
+            
+            // Guardar solo si hubo cambios
+            if (hasChanges) {
+                localStorage.setItem('churchContent', JSON.stringify(parsedContent));
+            }
+        }
+    } catch (error) {
+        // Si hay error, limpiar completamente el localStorage
+        localStorage.removeItem('churchContent');
+    }
+})();
+
 // Detectar si estamos en entorno local
 function isLocalEnvironment() {
     return window.location.hostname === 'localhost' || 
@@ -516,25 +559,55 @@ function isContentManagerReady() {
 
 // Limpiar referencias a archivos no existentes
 function cleanBrokenFileReferences() {
-    if (!isContentManagerReady()) return;
+    // Primero limpiar localStorage directamente si contiene datos corruptos
+    try {
+        const storedContent = localStorage.getItem('churchContent');
+        if (storedContent) {
+            const parsedContent = JSON.parse(storedContent);
+            
+            // Limpiar imágenes con banner.png o comportamiento.jpg
+            if (parsedContent.gallery && parsedContent.gallery.images) {
+                parsedContent.gallery.images = parsedContent.gallery.images.filter(image => 
+                    !image.url.includes('banner.png') && 
+                    !image.url.includes('comportamiento.jpg')
+                );
+            }
+            
+            // Limpiar videos con banner.png o comportamiento.jpg
+            if (parsedContent.gallery && parsedContent.gallery.videos) {
+                parsedContent.gallery.videos = parsedContent.gallery.videos.filter(video => 
+                    !video.url.includes('banner.png') && 
+                    !video.url.includes('comportamiento.jpg')
+                );
+            }
+            
+            // Guardar el contenido limpio de vuelta al localStorage
+            localStorage.setItem('churchContent', JSON.stringify(parsedContent));
+        }
+    } catch (error) {
+        // Si hay error, limpiar completamente el localStorage
+        localStorage.removeItem('churchContent');
+    }
     
-    const content = window.contentManager.content;
-    
-    // Limpiar imágenes con banner.png o comportamiento.jpg
-    content.gallery.images = content.gallery.images.filter(image => 
-        !image.url.includes('banner.png') && 
-        !image.url.includes('comportamiento.jpg')
-    );
-    
-    // Limpiar videos con banner.png o comportamiento.jpg
-    content.gallery.videos = content.gallery.videos.filter(video => 
-        !video.url.includes('banner.png') && 
-        !video.url.includes('comportamiento.jpg')
-    );
-    
-    // Guardar cambios
-    window.contentManager.saveContent();
-    // Referencias a archivos rotas eliminadas
+    // También limpiar en el ContentManager si está disponible
+    if (isContentManagerReady()) {
+        const content = window.contentManager.content;
+        
+        // Limpiar imágenes con banner.png o comportamiento.jpg
+        content.gallery.images = content.gallery.images.filter(image => 
+            !image.url.includes('banner.png') && 
+            !image.url.includes('comportamiento.jpg')
+        );
+        
+        // Limpiar videos con banner.png o comportamiento.jpg
+        content.gallery.videos = content.gallery.videos.filter(video => 
+            !video.url.includes('banner.png') && 
+            !video.url.includes('comportamiento.jpg')
+        );
+        
+        // Guardar cambios
+        window.contentManager.saveContent();
+    }
 }
 
 // Sistema de Eventos
