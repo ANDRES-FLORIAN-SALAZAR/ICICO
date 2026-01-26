@@ -40,6 +40,7 @@
     cursor: pointer;
     background: #fff;
     height: 100%;
+    border: 1px solid #000;
 }
 
 .gallery-item:hover {
@@ -140,24 +141,23 @@
 }
 
 .gallery-item-content {
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.95);
+    display: none;
 }
 
 .gallery-item-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #2c3e50 !important;
-    line-height: 1.3;
+    margin-bottom: 0.25rem;
+    color: #fff !important;
+    line-height: 1.2;
     display: block !important;
 }
 
 .gallery-item-description {
-    font-size: 0.9rem;
-    color: #6c757d !important;
+    font-size: 0.8rem;
+    color: #ccc !important;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.2;
     display: block !important;
 }
 
@@ -231,14 +231,6 @@
     .page-header p {
         font-size: 1rem;
     }
-}
-
-/* Header Responsive */
-.page-header {
-    padding: 6rem 0 3rem;
-    background: linear-gradient(135deg, #f5f7fa 0%, #718096 100%);
-    color: white;
-    text-align: center;
 }
 
 /* Botón de descarga */

@@ -29,15 +29,15 @@
                 parsedContent.gallery.videos = parsedContent.gallery.videos.filter(video => 
                     !video.url.includes('banner.png') && 
                     !video.url.includes('comportamiento.jpg') &&
-                    !image.url.includes('rueba.jpg') &&
-                    !image.url.includes('Coro.png') &&
-                    !image.url.includes('Templo.png')
+                    !video.url.includes('rueba.jpg') &&
+                    !video.url.includes('Coro.png') &&
+                    !video.url.includes('Templo.png')
                 );
                 if (parsedContent.gallery.videos.length !== originalLength) {
                     hasChanges = true;
                 }
             }
-            
+
             // Guardar solo si hubo cambios
             if (hasChanges) {
                 localStorage.setItem('churchContent', JSON.stringify(parsedContent));
@@ -1255,6 +1255,55 @@ function cleanInvalidBase64URLs() {
 }
 
 // ...
+
+// Función para abrir modal de previsualización de medios
+function openMediaModal(title, url, type) {
+    const modal = document.getElementById('mediaPreviewModal');
+    if (!modal) return;
+    
+    const modalTitle = document.getElementById('mediaPreviewTitle');
+    const previewImage = document.getElementById('previewImage');
+    const previewVideo = document.getElementById('previewVideo');
+    const previewLoading = document.getElementById('previewLoading');
+    const mediaPreviewDescription = document.getElementById('mediaPreviewDescription');
+    const downloadMediaBtn = document.getElementById('downloadMediaBtn');
+    
+    // Resetear todo
+    previewImage.classList.add('d-none');
+    previewVideo.classList.add('d-none');
+    previewLoading.classList.remove('d-none');
+    
+    // Configurar título
+    modalTitle.textContent = title;
+    mediaPreviewDescription.textContent = `Previsualización de ${type === 'image' ? 'imagen' : 'video'}`;
+    
+    // Configurar botón de descarga
+    downloadMediaBtn.onclick = () => {
+        if (type === 'image') {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = title;
+            link.click();
+        }
+    };
+    
+    // Mostrar contenido según tipo
+    setTimeout(() => {
+        previewLoading.classList.add('d-none');
+        
+        if (type === 'image') {
+            previewImage.src = url;
+            previewImage.classList.remove('d-none');
+        } else if (type === 'video') {
+            previewVideo.src = url;
+            previewVideo.classList.remove('d-none');
+        }
+    }, 500);
+    
+    // Mostrar modal
+    const bootstrapModal = new bootstrap.Modal(modal);
+    bootstrapModal.show();
+}
 
 // Sistema de Galería
 function initializeGallery() {
@@ -2707,6 +2756,11 @@ function saveEvent() {
     }
     
     loadAdminEvents();
+    
+    // Forzar actualización de eventos públicos si estamos en una página pública
+    if (typeof updatePublicEvents === 'function') {
+        updatePublicEvents();
+    }
     
     const modal = bootstrap.Modal.getInstance(document.getElementById('editEventModal'));
     if (modal) modal.hide();
