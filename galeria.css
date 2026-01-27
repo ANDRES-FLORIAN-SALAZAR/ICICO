@@ -1,0 +1,245 @@
+/* Estilos específicos para la Galería de Casa de Oración */
+
+/* Tabs de Galería */
+.gallery-tabs-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(5px);
+}
+
+.nav-pills .nav-link {
+    color: var(--dark-color);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    margin: 0 0.5rem;
+    transition: var(--transition);
+    font-weight: 500;
+    border: 2px solid transparent;
+}
+
+.nav-pills .nav-link:hover {
+    background: var(--accent-color);
+    color: var(--white-color);
+    transform: translateY(-2px);
+}
+
+.nav-pills .nav-link.active {
+    background: var(--accent-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+/* Grid de Galería */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--white-color);
+    box-shadow: var(--shadow-md);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: var(--white-color);
+    padding: 2rem 1rem 1rem;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay h5 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-overlay p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Modal de Previsualización */
+.media-preview-container {
+    position: relative;
+    background: #000;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-preview-container img,
+.media-preview-container video {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+#previewLoading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white-color);
+}
+
+/* Botón de Descargar */
+#downloadMediaBtn {
+    background: var(--success-color);
+    border-color: var(--success-color);
+    transition: var(--transition);
+}
+
+#downloadMediaBtn:hover {
+    background: #229954;
+    border-color: #229954;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .nav-pills .nav-link {
+        margin: 0.25rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .gallery-item img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-tabs-container {
+        padding: 1rem;
+    }
+    
+    .nav-pills {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .nav-pills .nav-link {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+/* Animaciones adicionales */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gallery-item {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading Skeleton */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Efecto Parallax en el overlay */
+.gallery-overlay {
+    backdrop-filter: blur(2px);
+}
+
+/* Tooltip personalizado */
+.gallery-item::before {
+    content: 'Click para ver';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent-color);
+    color: var(--white-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+}
