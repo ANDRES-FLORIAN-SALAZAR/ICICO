@@ -194,7 +194,7 @@ body::before {
 
 /* Main Content */
 .main-content {
-    padding: 4rem 0 2rem;
+    padding: 6rem 0 2rem;
     min-height: 60vh;
     position: relative;
     background: rgba(255, 255, 255, 0.6);
@@ -208,6 +208,7 @@ body::before {
     box-shadow: var(--shadow-md);
     transition: var(--transition);
     overflow: hidden;
+    margin-top: 2rem;
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
