@@ -30,7 +30,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--dark-color);
-    background-color: #f8f9fa !important;
+    background-color: #7f8c8d !important;
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -43,7 +43,7 @@ body::before {
 
 /* Asegurar que html también tenga el fondo gris */
 html {
-    background-color: #f8f9fa !important;
+    background-color: #7f8c8d !important;
 }
 
 /* Navegación */
@@ -93,7 +93,7 @@ html {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: #f8f9fa;
+    background: #7f8c8d;
     color: var(--dark-color);
     overflow: hidden;
 }
@@ -172,7 +172,7 @@ html {
 
 /* Page Headers */
 .page-header {
-    background: #f8f9fa;
+    background: #7f8c8d;
     color: var(--dark-color);
     padding: 5rem 0 3rem;
     text-align: center;
@@ -196,7 +196,7 @@ html {
     padding: 2rem 0;
     min-height: 60vh;
     position: relative;
-    background: #f8f9fa;
+    background: #7f8c8d;
 }
 
 /* Sección de contacto con más separación */
@@ -207,7 +207,7 @@ section.py-5 {
 
 /* Cards */
 .card {
-    background: rgba(248, 249, 250, 0.95);
+    background: rgba(127, 140, 141, 0.95);
     border: none;
     border-radius: 15px;
     box-shadow: var(--shadow-md);
@@ -237,7 +237,7 @@ section.py-5 {
 
 /* Frase Bíblica */
 .biblical-quote {
-    background: rgba(248, 249, 250, 0.9);
+    background: rgba(127, 140, 141, 0.9);
     border-left: 4px solid var(--primary-color);
     box-shadow: var(--shadow-md);
     backdrop-filter: blur(5px);
@@ -275,7 +275,7 @@ section.py-5 {
 
 /* Value Cards */
 .value-card {
-    background: rgba(248, 249, 250, 0.95);
+    background: rgba(127, 140, 141, 0.95);
     border: none;
     border-radius: 15px;
     box-shadow: var(--shadow-md);
@@ -290,7 +290,7 @@ section.py-5 {
 .value-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    background: rgba(248, 249, 250, 1);
+    background: rgba(127, 140, 141, 1);
 }
 
 .value-icon .icon-circle {
