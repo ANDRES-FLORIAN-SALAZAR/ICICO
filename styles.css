@@ -31,6 +31,11 @@ body {
     line-height: 1.6;
     color: var(--dark-color);
     background-color: var(--light-color);
+    background-image: url('Multimedia/Mundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 /* Navegación */
@@ -177,6 +182,19 @@ body {
 .main-content {
     padding: 2rem 0;
     min-height: 60vh;
+    position: relative;
+}
+
+/* Overlay for better text readability */
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1;
 }
 
 /* Cards */
@@ -187,6 +205,9 @@ body {
     box-shadow: var(--shadow-md);
     transition: var(--transition);
     overflow: hidden;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .card:hover {
@@ -207,11 +228,63 @@ body {
 /* Event Cards */
 .event-card,
 .sermon-card,
-.gallery-card {
+.gallery-card,
+.contact-card {
     border: none;
     border-radius: 15px;
     overflow: hidden;
     transition: var(--transition);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Value Cards */
+.value-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background: rgba(255, 255, 255, 1);
+}
+
+.value-icon .icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.value-card:hover .icon-circle {
+    background: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.value-title {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.value-desc {
+    color: var(--tertiary-color);
+    font-size: 0.9rem;
+    margin-bottom: 0;
 }
 
 .event-card:hover,
@@ -408,6 +481,19 @@ body {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 1rem;
     }
+    
+    /* Better card spacing on mobile */
+    .card,
+    .contact-card,
+    .event-card,
+    .sermon-card,
+    .gallery-card {
+        margin-bottom: 2rem;
+    }
+    
+    .row.g-4 > * {
+        margin-bottom: 2rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -431,6 +517,19 @@ body {
     
     .gallery-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Better card spacing on small mobile */
+    .card,
+    .contact-card,
+    .event-card,
+    .sermon-card,
+    .gallery-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .row.g-4 > * {
+        margin-bottom: 1.5rem;
     }
 }
 
