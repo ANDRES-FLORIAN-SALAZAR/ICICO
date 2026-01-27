@@ -7,7 +7,7 @@
     --tertiary-color: #95a5a6;
     --accent-color: #3498db;
     --white-color: #ffffff;
-    --dark-color: #000000;
+    --dark-color: #2c3e50;
     --background-color: #bdc3c7;
     --card-background: #ffffff;
     --text-primary: #000000;
@@ -46,7 +46,7 @@ html {
     background-color: var(--background-color);
 }
 
-/* Navegación - Mantener colores originales */
+/* Navegación */
 .navbar {
     background: rgba(44, 62, 80, 0.95);
     backdrop-filter: blur(10px);
@@ -81,7 +81,13 @@ html {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Hero Section - Texto en negro */
+.brand-logo-img {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+}
+
+/* Hero Section */
 .hero-section {
     position: relative;
     min-height: 100vh;
@@ -164,7 +170,7 @@ html {
     opacity: 0.8;
 }
 
-/* Page Headers - Texto en negro */
+/* Page Headers */
 .page-header {
     background: var(--background-color);
     color: var(--text-primary);
@@ -173,7 +179,7 @@ html {
     position: relative;
 }
 
-/* Main Content - Texto en negro */
+/* Main Content */
 .main-content {
     padding: 2rem 0;
     min-height: 60vh;
@@ -187,7 +193,7 @@ section.py-5 {
     padding-bottom: 3rem !important;
 }
 
-/* Cards - Texto en negro */
+/* Cards */
 .card {
     background: var(--card-background);
     border: 1px solid #e0e0e0;
@@ -214,7 +220,7 @@ section.py-5 {
     line-height: 1.6;
 }
 
-/* Frase Bíblica - Texto en negro */
+/* Frase Bíblica */
 .biblical-quote {
     background: var(--card-background);
     border-left: 4px solid var(--primary-color);
@@ -231,7 +237,7 @@ section.py-5 {
 .event-card,
 .sermon-card,
 .gallery-card,
-/* Tarjetas de Contacto - Texto en negro */
+/* Tarjetas de Contacto */
 .contact-card {
     background: var(--card-background);
     border: 1px solid #e0e0e0;
@@ -269,10 +275,10 @@ section.py-5 {
     font-weight: 600;
 }
 
-/* Value Cards - Texto en negro */
+/* Value Cards */
 .value-card {
     background: var(--secondary-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     box-shadow: var(--shadow-lg);
     transition: var(--transition);
@@ -280,7 +286,7 @@ section.py-5 {
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
-    color: var(--text-primary);
+    color: var(--white-color);
 }
 
 .value-card:hover {
@@ -303,20 +309,20 @@ section.py-5 {
 }
 
 .value-card:hover .icon-circle {
-    background: var(--text-primary);
+    background: var(--white-color);
     color: var(--accent-color);
     transform: scale(1.1);
 }
 
 .value-title {
-    color: var(--text-primary);
+    color: var(--white-color);
     margin-bottom: 0.5rem;
     font-weight: 700;
     font-size: 1.2rem;
 }
 
 .value-desc {
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 0.9rem;
     margin-bottom: 0;
     font-weight: 500;
