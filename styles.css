@@ -4,11 +4,11 @@
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #34495e;
-    --tertiary-color: #7f8c8d;
+    --tertiary-color: #95a5a6;
     --accent-color: #3498db;
     --white-color: #ffffff;
     --dark-color: #2c3e50;
-    --background-color: #7f8c8d;
+    --background-color: #bdc3c7;
     --card-background: #ffffff;
     --text-primary: #2c3e50;
     --text-secondary: #7f8c8d;
@@ -196,22 +196,28 @@ section.py-5 {
 /* Cards */
 .card {
     background: var(--card-background);
-    border: none;
+    border: 1px solid #e0e0e0;
     border-radius: 15px;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
     transition: var(--transition);
     overflow: hidden;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
-    backdrop-filter: blur(5px);
 }
 
 .card-title {
     color: var(--primary-color);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.card-text {
+    color: var(--text-primary);
+    font-weight: 500;
+    line-height: 1.6;
 }
 
 /* Frase Bíblica */
@@ -234,7 +240,7 @@ section.py-5 {
 /* Tarjetas de Contacto */
 .contact-card {
     background: var(--card-background);
-    border: none;
+    border: 1px solid #e0e0e0;
     border-radius: 15px;
     overflow: hidden;
     transition: var(--transition);
@@ -242,43 +248,50 @@ section.py-5 {
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
-    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow-lg);
 }
 
 .contact-card .card-body {
     color: var(--text-primary);
+    padding: 2rem;
 }
 
 .contact-card .card-text {
     color: var(--text-primary);
     margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
 
 .contact-card .small {
     color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
 .contact-card .btn {
     margin: 0.25rem;
+    font-weight: 600;
 }
 
 /* Value Cards */
 .value-card {
     background: var(--secondary-color);
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
     transition: var(--transition);
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
-    backdrop-filter: blur(5px);
+    color: var(--white-color);
 }
 
 .value-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-xl);
     background: var(--primary-color);
 }
 
@@ -291,25 +304,28 @@ section.py-5 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0 auto 1rem;
     font-size: 1.5rem;
-    transition: var(--transition);
 }
 
 .value-card:hover .icon-circle {
-    background: var(--accent-color);
+    background: var(--white-color);
+    color: var(--accent-color);
     transform: scale(1.1);
 }
 
 .value-title {
-    color: var(--primary-color);
+    color: var(--white-color);
     margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 .value-desc {
-    color: var(--tertiary-color);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 0.9rem;
     margin-bottom: 0;
+    font-weight: 500;
 }
 
 .event-card:hover,
