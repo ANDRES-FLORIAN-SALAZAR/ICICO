@@ -295,7 +295,7 @@ section.py-5 {
 
 /* Value Cards */
 .value-card {
-    background: rgba(127, 140, 141, 0.95);
+    background:#34495e;
     border: none;
     border-radius: 15px;
     box-shadow: var(--shadow-md);
