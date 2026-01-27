@@ -62,12 +62,14 @@
     width: 100%;
     height: 280px;
     overflow: hidden;
+    background: #f8f9fa;
 }
 
 .media-card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: var(--transition);
 }
 
@@ -81,12 +83,14 @@
     width: 100%;
     height: 280px;
     overflow: hidden;
+    background: #000;
 }
 
 .media-card-video video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 /* Contenido de la Tarjeta */
