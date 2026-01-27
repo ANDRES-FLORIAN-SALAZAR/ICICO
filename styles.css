@@ -93,6 +93,10 @@ body::before {
     overflow: hidden;
 }
 
+.hero-section .row {
+    min-height: 100vh;
+}
+
 .hero-overlay {
     position: absolute;
     top: 0;
