@@ -32,18 +32,13 @@ body {
     color: var(--dark-color);
     background-color: #f8f9fa;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
-/* Overlay para mejorar legibilidad del texto */
+/* Overlay eliminado para mostrar fondo gris */
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.7);
-    z-index: -1;
+    display: none;
 }
 
 /* Navegación */
@@ -93,7 +88,7 @@ body::before {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.8);
+    background: #f8f9fa;
     color: var(--dark-color);
     overflow: hidden;
 }
@@ -168,7 +163,7 @@ body::before {
 
 /* Page Headers */
 .page-header {
-    background: rgba(255, 255, 255, 0.8);
+    background: #f8f9fa;
     color: var(--dark-color);
     padding: 5rem 0 3rem;
     text-align: center;
@@ -189,10 +184,10 @@ body::before {
 
 /* Main Content */
 .main-content {
-    padding: 8rem 0 2rem;
+    padding: 2rem 0;
     min-height: 60vh;
     position: relative;
-    background: rgba(255, 255, 255, 0.6);
+    background: #f8f9fa;
 }
 
 /* Sección de contacto con más separación */
