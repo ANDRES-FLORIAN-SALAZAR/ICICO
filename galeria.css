@@ -2,7 +2,7 @@
 
 /* Tabs de Galería */
 .gallery-tabs-container {
-    background: #7f8c8d;
+    background: #ffffff;
     border-radius: 15px;
     padding: 1.5rem;
     box-shadow: var(--shadow-md);
@@ -43,7 +43,7 @@
 
 /* Tarjetas de Media - Estilo Actualizado */
 .media-card {
-    background: #7f8c8d;
+    background: #ffffff;
     border-radius: 8px;
     overflow: hidden;
     transition: var(--transition);
@@ -56,7 +56,7 @@
 }
 
 .media-card:hover {
-    background: #7f8c8d;
+    background: #ffffff;
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
 }
@@ -106,7 +106,7 @@
 /* Contenido de la Tarjeta - Estilo Actualizado */
 .media-card-content {
     padding: 1rem;
-    background: #7f8c8d;
+    background: #ffffff;
     color: var(--dark-color);
 }
 
