@@ -1,21 +1,26 @@
-/* Estilos CSS para Casa de Oración - Solo estilos públicos */
+/* Estilos CSS para Casa de Oración - Esquema Actualizado */
 
-/* Variables de Color - Esquema Optimizado */
+/* Variables de Color - Esquema Negro, Gris, Blanco y Azul */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
-    --tertiary-color: #95a5a6;
-    --accent-color: #3498db;
+    --primary-color: #1a202c;
+    --secondary-color: #2d3748;
+    --tertiary-color: #718096;
+    --accent-color: #3182ce;
+    --light-color: #f5f7fa;
     --white-color: #ffffff;
-    --dark-color: #2c3e50;
-    --background-color: #bdc3c7;
+    --dark-color: #1a202c;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --background-color: #f5f7fa;
     --card-background: #ffffff;
-    --text-primary: #000000;
-    --text-secondary: #333333;
+    --text-primary: #1a202c;
+    --text-secondary: #718096;
+    --text-light: #a0aec0;
     --transition: all 0.3s ease;
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
     --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
@@ -36,19 +41,19 @@ body {
     padding: 0;
 }
 
-/* Overlay eliminado para mostrar fondo gris */
+/* Overlay eliminado para mostrar fondo gris claro */
 body::before {
     display: none;
 }
 
-/* Asegurar que html también tenga el fondo gris */
+/* Asegurar que html también tenga el fondo gris claro */
 html {
     background-color: var(--background-color);
 }
 
 /* Navegación */
 .navbar {
-    background: rgba(44, 62, 80, 0.95);
+    background: rgba(26, 32, 44, 0.97);
     backdrop-filter: blur(10px);
     padding: 1rem 0;
     transition: var(--transition);
@@ -67,7 +72,7 @@ html {
 }
 
 .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.85);
     font-weight: 500;
     margin: 0 0.5rem;
     transition: var(--transition);
@@ -78,7 +83,8 @@ html {
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
     color: var(--white-color);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(49, 130, 206, 0.2);
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .brand-logo-img {
@@ -93,8 +99,8 @@ html {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: var(--background-color);
-    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white-color);
     overflow: hidden;
 }
 
@@ -108,7 +114,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -119,15 +125,17 @@ html {
 
 .hero-content h1 {
     font-size: 3.5rem;
-    font-weight: bold;
+    font-weight: 300;
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
 }
 
 .hero-content .lead {
     font-size: 1.25rem;
     margin-bottom: 2rem;
-    opacity: 0.9;
+    opacity: 0.95;
+    font-weight: 300;
 }
 
 .hero-buttons {
@@ -148,32 +156,35 @@ html {
 .stat-item {
     background: rgba(255, 255, 255, 0.1);
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 10px;
     backdrop-filter: blur(10px);
     transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat-item:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-lg);
 }
 
 .stat-number {
     display: block;
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 0.5rem;
+    color: var(--accent-color);
 }
 
 .stat-label {
     font-size: 1rem;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 /* Page Headers */
 .page-header {
-    background: var(--background-color);
-    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white-color);
     padding: 5rem 0 3rem;
     text-align: center;
     position: relative;
@@ -196,9 +207,9 @@ section.py-5 {
 /* Cards */
 .card {
     background: var(--card-background);
-    border: 1px solid #e0e0e0;
-    border-radius: 15px;
-    box-shadow: var(--shadow-lg);
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
     transition: var(--transition);
     overflow: hidden;
     margin-top: 2rem;
@@ -207,28 +218,25 @@ section.py-5 {
     z-index: 1;
 }
 
-.card-title {
-    color: var(--text-primary);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
 }
 
-.card-text {
-    color: var(--text-primary);
-    font-weight: 500;
-    line-height: 1.6;
+.card-title {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
 }
 
 /* Frase Bíblica */
 .biblical-quote {
     background: var(--card-background);
-    border-left: 4px solid var(--primary-color);
+    border-left: 4px solid var(--accent-color);
     box-shadow: var(--shadow-md);
-    backdrop-filter: blur(5px);
     padding: 1.5rem;
     margin: 2rem 0;
-    border-radius: 10px;
+    border-radius: 8px;
     font-style: italic;
     color: var(--text-primary);
 }
@@ -240,59 +248,51 @@ section.py-5 {
 /* Tarjetas de Contacto */
 .contact-card {
     background: var(--card-background);
-    border: 1px solid #e0e0e0;
-    border-radius: 15px;
+    border: none;
+    border-radius: 10px;
     overflow: hidden;
     transition: var(--transition);
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
 }
 
 .contact-card .card-body {
     color: var(--text-primary);
-    padding: 2rem;
 }
 
 .contact-card .card-text {
     color: var(--text-primary);
     margin-bottom: 0;
-    font-weight: 600;
-    font-size: 1.1rem;
-    line-height: 1.8;
 }
 
 .contact-card .small {
     color: var(--text-secondary);
-    font-weight: 500;
-    font-size: 0.95rem;
 }
 
 .contact-card .btn {
     margin: 0.25rem;
-    font-weight: 600;
 }
 
 /* Value Cards */
 .value-card {
-    background: var(--secondary-color);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    box-shadow: var(--shadow-lg);
+    background: var(--white-color);
+    border: 1px solid rgba(113, 128, 150, 0.1);
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
     transition: var(--transition);
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
-    color: var(--white-color);
 }
 
 .value-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-    background: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-color);
 }
 
 .value-icon .icon-circle {
@@ -304,28 +304,26 @@ section.py-5 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
+    margin: 0 auto;
     font-size: 1.5rem;
+    transition: var(--transition);
 }
 
 .value-card:hover .icon-circle {
-    background: var(--white-color);
-    color: var(--accent-color);
+    background: var(--primary-color);
     transform: scale(1.1);
 }
 
 .value-title {
-    color: var(--white-color);
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
-    font-weight: 700;
-    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .value-desc {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: 0;
-    font-weight: 500;
 }
 
 .event-card:hover,
@@ -337,8 +335,8 @@ section.py-5 {
 
 /* Buttons */
 .btn {
-    border-radius: 8px;
-    font-weight: 500;
+    border-radius: 6px;
+    font-weight: 600;
     transition: var(--transition);
     padding: 0.75rem 1.5rem;
 }
@@ -346,12 +344,14 @@ section.py-5 {
 .btn-primary {
     background: var(--accent-color);
     border-color: var(--accent-color);
+    color: var(--white-color);
 }
 
 .btn-primary:hover {
-    background: #2980b9;
-    border-color: #2980b9;
+    background: #2c5282;
+    border-color: #2c5282;
     transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(49, 130, 206, 0.3);
 }
 
 .btn-outline-light {
@@ -366,7 +366,7 @@ section.py-5 {
 
 /* Footer */
 .footer {
-    background: rgba(44, 62, 80, 0.95);
+    background: rgba(26, 32, 44, 0.97);
     backdrop-filter: blur(10px);
     color: var(--white-color);
     padding: 3rem 0 2rem;
@@ -389,13 +389,13 @@ section.py-5 {
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     transition: var(--transition);
 }
 
 .footer-links a:hover {
-    color: var(--white-color);
+    color: var(--accent-color);
 }
 
 .social-links a {
@@ -420,14 +420,16 @@ section.py-5 {
 
 .gallery-item {
     position: relative;
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
     transition: var(--transition);
+    box-shadow: var(--shadow-md);
 }
 
 .gallery-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
+    box-shadow: var(--shadow-lg);
 }
 
 .gallery-item img {
@@ -442,7 +444,7 @@ section.py-5 {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    background: linear-gradient(transparent, rgba(26, 32, 44, 0.9));
     color: var(--white-color);
     padding: 2rem 1rem 1rem;
     opacity: 0;
@@ -458,7 +460,7 @@ section.py-5 {
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .video-container iframe,
@@ -468,7 +470,7 @@ section.py-5 {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 /* Animaciones */
@@ -581,7 +583,7 @@ section.py-5 {
 }
 
 .text-muted {
-    color: var(--tertiary-color);
+    color: var(--text-secondary);
 }
 
 .mb-3 {
@@ -607,7 +609,7 @@ html {
 
 /* Loading States */
 .spinner-border {
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(49, 130, 206, 0.25);
     border-right-color: transparent;
     border-radius: 50%;
     width: 1rem;
@@ -622,15 +624,16 @@ html {
 
 /* Form Styles */
 .form-control {
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
     padding: 0.75rem;
     transition: var(--transition);
 }
 
 .form-control:focus {
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(49, 130, 206, 0.25);
+    outline: none;
 }
 
 .form-label {
@@ -656,9 +659,9 @@ html {
 }
 
 .alert-info {
-    background-color: #d1ecf1;
-    border-color: #bee5eb;
-    color: #0c5460;
+    background-color: #e6f7ff;
+    border-color: #91d5ff;
+    color: #0050b3;
 }
 
 .alert-success {
@@ -681,17 +684,23 @@ html {
 
 /* Modal Styles */
 .modal-content {
-    border-radius: 15px;
+    border-radius: 10px;
     border: none;
     box-shadow: var(--shadow-xl);
 }
 
 .modal-header {
-    border-bottom: 1px solid #dee2e6;
-    border-radius: 15px 15px 0 0;
+    border-bottom: 1px solid #e2e8f0;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.modal-header .btn-close {
+    filter: invert(1);
 }
 
 .modal-footer {
-    border-top: 1px solid #dee2e6;
-    border-radius: 0 0 15px 15px;
+    border-top: 1px solid #e2e8f0;
+    border-radius: 0 0 10px 10px;
 }
