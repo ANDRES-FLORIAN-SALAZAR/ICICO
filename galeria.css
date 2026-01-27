@@ -41,9 +41,9 @@
     padding: 2rem 0;
 }
 
-/* Tarjetas de Media - Estilo Spotify */
+/* Tarjetas de Media - Estilo Actualizado */
 .media-card {
-    background: #181818;
+    background: rgba(248, 249, 250, 0.95);
     border-radius: 8px;
     overflow: hidden;
     transition: var(--transition);
@@ -52,20 +52,22 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--shadow-md);
 }
 
 .media-card:hover {
-    background: #282828;
+    background: rgba(248, 249, 250, 1);
     transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
-/* Contenedor de Imagen - Estilo Spotify */
+/* Contenedor de Imagen - Estilo Actualizado */
 .media-card-image {
     position: relative;
     width: 100%;
     height: 200px;
     overflow: hidden;
-    background: #282828;
+    background: rgba(248, 249, 250, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,17 +103,17 @@
     object-position: center;
 }
 
-/* Contenido de la Tarjeta - Estilo Spotify */
+/* Contenido de la Tarjeta - Estilo Actualizado */
 .media-card-content {
     padding: 1rem;
-    background: #181818;
-    color: white;
+    background: rgba(248, 249, 250, 0.95);
+    color: var(--dark-color);
 }
 
 .media-card-title {
     font-size: 1rem;
     font-weight: 600;
-    color: white;
+    color: var(--dark-color);
     margin-bottom: 0.5rem;
     line-height: 1.3;
     overflow: hidden;
@@ -121,7 +123,7 @@
 
 .media-card-description {
     font-size: 0.85rem;
-    color: #b3b3b3;
+    color: var(--tertiary-color);
     margin-bottom: 0;
     line-height: 1.4;
     overflow: hidden;
