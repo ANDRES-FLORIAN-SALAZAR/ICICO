@@ -207,7 +207,7 @@ section.py-5 {
 
 /* Cards */
 .card {
-    background: rgba(127, 140, 141, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     border: none;
     border-radius: 15px;
     box-shadow: var(--shadow-md);
@@ -262,7 +262,9 @@ section.py-5 {
 .event-card,
 .sermon-card,
 .gallery-card,
+/* Tarjetas de Contacto */
 .contact-card {
+    background: rgba(255, 255, 255, 0.95);
     border: none;
     border-radius: 15px;
     overflow: hidden;
@@ -271,6 +273,24 @@ section.py-5 {
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+.contact-card .card-body {
+    color: var(--dark-color);
+}
+
+.contact-card .card-text {
+    color: var(--dark-color);
+    margin-bottom: 0;
+}
+
+.contact-card .small {
+    color: var(--tertiary-color);
+}
+
+.contact-card .btn {
+    margin: 0.25rem;
 }
 
 /* Value Cards */
