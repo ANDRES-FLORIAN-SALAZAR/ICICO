@@ -200,6 +200,12 @@ body::before {
     background: rgba(255, 255, 255, 0.6);
 }
 
+/* Sección de contacto con más separación */
+section.py-5 {
+    padding-top: 6rem !important;
+    padding-bottom: 3rem !important;
+}
+
 /* Cards */
 .card {
     background: rgba(255, 255, 255, 0.95);
