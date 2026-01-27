@@ -366,8 +366,7 @@ section.py-5 {
 }
 
 .footer h5 {
-    color: var(--primary-color);
-    color: var(--dark-color);
+    color: var(--white-color);
     margin-bottom: 1rem;
     font-weight: 600;
 }
@@ -382,17 +381,17 @@ section.py-5 {
 }
 
 .footer-links a {
-    color: var(--dark-color);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: var(--transition);
 }
 
 .footer-links a:hover {
-    color: var(--primary-color);
+    color: var(--white-color);
 }
 
 .social-links a {
-    color: var(--dark-color);
+    color: var(--white-color);
     font-size: 1.25rem;
     margin-right: 1rem;
     transition: var(--transition);
