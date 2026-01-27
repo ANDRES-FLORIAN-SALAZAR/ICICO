@@ -31,19 +31,33 @@ body {
     line-height: 1.6;
     color: var(--dark-color);
     background-color: var(--light-color);
-    background-image: url('Multimedia/Mundo.jpg');
+    background-image: url('./Multimedia/Mundo.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* Overlay para mejorar legibilidad del texto */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: -1;
 }
 
 /* Navegación */
 .navbar {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     padding: 1rem 0;
     transition: var(--transition);
-    box-shadow: none;
+    box-shadow: var(--shadow-md);
 }
 
 .navbar-brand {
@@ -84,7 +98,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.8);
     color: var(--dark-color);
     overflow: hidden;
 }
@@ -159,7 +173,7 @@ body {
 
 /* Page Headers */
 .page-header {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.8);
     color: var(--dark-color);
     padding: 5rem 0 3rem;
     text-align: center;
@@ -183,11 +197,12 @@ body {
     padding: 2rem 0;
     min-height: 60vh;
     position: relative;
+    background: rgba(255, 255, 255, 0.6);
 }
 
 /* Cards */
 .card {
-    background: var(--white-color);
+    background: rgba(255, 255, 255, 0.95);
     border: none;
     border-radius: 15px;
     box-shadow: var(--shadow-md);
@@ -196,6 +211,7 @@ body {
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
+    backdrop-filter: blur(5px);
 }
 
 .card:hover {
@@ -237,6 +253,7 @@ body {
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
+    backdrop-filter: blur(5px);
 }
 
 .value-card:hover {
@@ -313,7 +330,7 @@ body {
 
 /* Footer */
 .footer {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.9);
     color: var(--dark-color);
     padding: 3rem 0 2rem;
     margin-top: 4rem;
