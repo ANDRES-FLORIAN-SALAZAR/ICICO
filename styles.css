@@ -1,6 +1,6 @@
 /* Estilos CSS para Casa de Oración - Solo estilos públicos */
 
-/* Variables de Color */
+/* Variables de Color - Nuevo Esquema */
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #34495e;
@@ -12,6 +12,11 @@
     --success-color: #27ae60;
     --warning-color: #f39c12;
     --danger-color: #e74c3c;
+    --background-color: #7f8c8d;
+    --card-background: #ffffff;
+    --text-primary: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --text-light: #95a5a6;
     --transition: all 0.3s ease;
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -29,8 +34,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--dark-color);
-    background-color: #7f8c8d !important;
+    color: var(--text-primary);
+    background-color: var(--background-color);
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -38,12 +43,12 @@ body {
 
 /* Overlay eliminado para mostrar fondo gris */
 body::before {
-    display: none !important;
+    display: none;
 }
 
 /* Asegurar que html también tenga el fondo gris */
 html {
-    background-color: #7f8c8d !important;
+    background-color: var(--background-color);
 }
 
 /* Navegación */
@@ -58,16 +63,16 @@ html {
 .navbar-brand {
     font-weight: bold;
     font-size: 1.5rem;
-    color: var(--white-color) !important;
+    color: var(--white-color);
     text-decoration: none;
 }
 
 .navbar-brand:hover {
-    color: var(--accent-color) !important;
+    color: var(--accent-color);
 }
 
 .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
     margin: 0 0.5rem;
     transition: var(--transition);
@@ -77,7 +82,7 @@ html {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    color: var(--white-color) !important;
+    color: var(--white-color);
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -93,8 +98,8 @@ html {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: #7f8c8d;
-    color: var(--dark-color);
+    background: var(--background-color);
+    color: var(--text-primary);
     overflow: hidden;
 }
 
@@ -172,23 +177,11 @@ html {
 
 /* Page Headers */
 .page-header {
-    background: #7f8c8d;
-    color: var(--dark-color);
+    background: var(--background-color);
+    color: var(--text-primary);
     padding: 5rem 0 3rem;
     text-align: center;
     position: relative;
-}
-
-.page-header h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.page-header .lead {
-    font-size: 1.2rem;
-    opacity: 0.9;
 }
 
 /* Main Content */
@@ -196,7 +189,7 @@ html {
     padding: 2rem 0;
     min-height: 60vh;
     position: relative;
-    background: #7f8c8d;
+    background: var(--background-color);
 }
 
 /* Sección de contacto con más separación */
@@ -207,7 +200,7 @@ section.py-5 {
 
 /* Cards */
 .card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-background);
     border: none;
     border-radius: 15px;
     box-shadow: var(--shadow-md);
@@ -220,15 +213,6 @@ section.py-5 {
     backdrop-filter: blur(5px);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.card-body {
-    padding: 2rem;
-}
-
 .card-title {
     color: var(--primary-color);
     font-weight: 600;
@@ -237,7 +221,7 @@ section.py-5 {
 
 /* Frase Bíblica */
 .biblical-quote {
-    background: rgba(127, 140, 141, 0.9);
+    background: var(--card-background);
     border-left: 4px solid var(--primary-color);
     box-shadow: var(--shadow-md);
     backdrop-filter: blur(5px);
@@ -245,17 +229,7 @@ section.py-5 {
     margin: 2rem 0;
     border-radius: 10px;
     font-style: italic;
-    color: var(--dark-color);
-}
-
-.biblical-quote h4 {
-    color: var(--primary-color);
-    font-style: italic;
-    margin-bottom: 0.5rem;
-}
-
-.biblical-quote p {
-    font-weight: 500;
+    color: var(--text-primary);
 }
 
 /* Event Cards */
@@ -264,7 +238,7 @@ section.py-5 {
 .gallery-card,
 /* Tarjetas de Contacto */
 .contact-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-background);
     border: none;
     border-radius: 15px;
     overflow: hidden;
@@ -277,16 +251,16 @@ section.py-5 {
 }
 
 .contact-card .card-body {
-    color: var(--dark-color);
+    color: var(--text-primary);
 }
 
 .contact-card .card-text {
-    color: var(--dark-color);
+    color: var(--text-primary);
     margin-bottom: 0;
 }
 
 .contact-card .small {
-    color: var(--tertiary-color);
+    color: var(--text-secondary);
 }
 
 .contact-card .btn {
@@ -295,7 +269,7 @@ section.py-5 {
 
 /* Value Cards */
 .value-card {
-    background:#34495e;
+    background: var(--secondary-color);
     border: none;
     border-radius: 15px;
     box-shadow: var(--shadow-md);
@@ -310,7 +284,7 @@ section.py-5 {
 .value-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    background: rgba(127, 140, 141, 1);
+    background: var(--primary-color);
 }
 
 .value-icon .icon-circle {
