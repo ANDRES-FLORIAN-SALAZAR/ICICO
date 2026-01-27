@@ -54,7 +54,7 @@
             <div class="container">
                 <div class="row g-4 justify-content-center">
                     <!-- Tarjeta de Mapa con dirección -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="card h-100 shadow contact-card">
                             <div class="card-header bg-dark text-white text-center">
                                 <i class="fas fa-map fa-2x mb-2"></i>
@@ -71,7 +71,7 @@
                                     referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                                 <div class="p-3 text-center">
-                                    <p class="mb-2">
+                                    <p class="mb-2 small">
                                         <strong>Casa de Oración</strong><br>
                                         Crr 160 #133 – 18 Suba<br>
                                         Santa Cecilia<br>
@@ -85,58 +85,64 @@
                         </div>
                     </div>
 
-                    <!-- Tarjetas de Teléfono y Horarios en formato horizontal -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="row g-3">
-                            <!-- Tarjeta de Teléfono -->
-                            <div class="col-12">
-                                <div class="card shadow contact-card">
-                                    <div class="card-header bg-success text-white text-center">
-                                        <i class="fas fa-phone fa-2x mb-2"></i>
-                                        <h5 class="mb-0">Teléfono</h5>
-                                    </div>
-                                    <div class="card-body text-center">
-                                        <p class="card-text mb-2">
-                                            <strong>Teléfono Principal:</strong><br>
-                                            (123) 456-7890<br><br>
-                                            <strong>WhatsApp:</strong><br>
-                                            (123) 456-7890
-                                        </p>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <button class="btn btn-sm btn-success" onclick="window.open('tel:+1234567890')">
-                                                <i class="fas fa-phone me-1"></i>Llamar
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-success" onclick="window.open('https://wa.me/1234567890')">
-                                                <i class="fab fa-whatsapp me-1"></i>WhatsApp
-                                            </button>
-                                        </div>
-                                    </div>
+                    <!-- Tarjeta de Teléfono -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 shadow contact-card">
+                            <div class="card-header bg-success text-white text-center">
+                                <i class="fas fa-phone fa-2x mb-2"></i>
+                                <h5 class="mb-0">Teléfono</h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <p class="card-text mb-2">
+                                    <strong>Teléfono Principal:</strong><br>
+                                    (123) 456-7890<br><br>
+                                    <strong>WhatsApp:</strong><br>
+                                    (123) 456-7890
+                                </p>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <button class="btn btn-sm btn-success" onclick="window.open('tel:+1234567890')">
+                                        <i class="fas fa-phone me-1"></i>Llamar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success" onclick="window.open('https://wa.me/1234567890')">
+                                        <i class="fab fa-whatsapp me-1"></i>WhatsApp
+                                    </button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <!-- Tarjeta de Horarios -->
-                            <div class="col-12">
-                                <div class="card shadow contact-card">
-                                    <div class="card-header bg-warning text-dark text-center">
-                                        <i class="fas fa-clock fa-2x mb-2"></i>
-                                        <h5 class="mb-0">Horarios</h5>
-                                    </div>
-                                    <div class="card-body text-center">
-                                        <p class="card-text mb-2">
-                                            <strong>Domingos:</strong><br>
-                                            9:00 AM - 1:00 PM<br>
-                                            6:00 PM - 8:00 PM<br><br>
-                                            <strong>Miércoles:</strong><br>
-                                            7:00 PM - 9:00 PM
-                                        </p>
-                                        <div class="text-center">
-                                            <button class="btn btn-sm btn-warning" onclick="window.open('tel:+1234567890')">
-                                                <i class="fas fa-calendar me-1"></i>Agendar Visita
-                                            </button>
-                                        </div>
-                                    </div>
+                    <!-- Tarjeta de Horarios -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card h-100 shadow contact-card">
+                            <div class="card-header bg-warning text-dark text-center">
+                                <i class="fas fa-clock fa-2x mb-2"></i>
+                                <h5 class="mb-0">Horarios</h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <p class="card-text mb-2">
+                                    <strong>Domingos:</strong><br>
+                                    9:00 AM - 1:00 PM<br>
+                                    6:00 PM - 8:00 PM<br><br>
+                                    <strong>Miércoles:</strong><br>
+                                    7:00 PM - 9:00 PM
+                                </p>
+                                <div class="text-center">
+                                    <button class="btn btn-sm btn-warning" onclick="window.open('tel:+1234567890')">
+                                        <i class="fas fa-calendar me-1"></i>Agendar Visita
+                                    </button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frase Bíblica -->
+                <div class="row mt-5">
+                    <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="biblical-quote p-4 rounded-3">
+                            <i class="fas fa-quote-left fa-2x mb-3 text-primary"></i>
+                            <h4 class="fw-bold mb-3">Donde dos o tres se reúnen en mi nombre, allí estoy en medio de ellos.</h4>
+                            <p class="text-muted mb-0">Mateo 18:20</p>
                         </div>
                     </div>
                 </div>

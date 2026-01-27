@@ -236,6 +236,30 @@ section.py-5 {
     margin-bottom: 1rem;
 }
 
+/* Frase Bíblica */
+.biblical-quote {
+    background: rgba(255, 255, 255, 0.9);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(5px);
+    transition: var(--transition);
+}
+
+.biblical-quote:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.biblical-quote h4 {
+    color: var(--primary-color);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.biblical-quote p {
+    font-weight: 500;
+}
+
 /* Event Cards */
 .event-card,
 .sermon-card,
