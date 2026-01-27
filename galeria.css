@@ -49,6 +49,9 @@
     transition: var(--transition);
     cursor: pointer;
     position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .media-card:hover {
@@ -63,6 +66,9 @@
     height: 200px;
     overflow: hidden;
     background: #282828;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .media-card-image img {
@@ -71,6 +77,8 @@
     object-fit: cover;
     object-position: center;
     transition: var(--transition);
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .media-card:hover .media-card-image img {
@@ -164,7 +172,7 @@
     transform: translateY(-2px);
 }
 
-/* Responsive - Estilo Spotify */
+/* Responsive - Estilo Spotify con Tamaños Fijos */
 @media (max-width: 1200px) {
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -173,7 +181,7 @@
     
     .media-card-image,
     .media-card-video {
-        height: 180px;
+        height: 180px !important;
     }
 }
 
@@ -185,7 +193,7 @@
     
     .media-card-image,
     .media-card-video {
-        height: 160px;
+        height: 160px !important;
     }
     
     .media-card-content {
@@ -216,7 +224,7 @@
     
     .media-card-image,
     .media-card-video {
-        height: 150px;
+        height: 150px !important;
     }
     
     .media-card-content {
@@ -260,13 +268,14 @@
         border-radius: 8px;
         max-width: 400px;
         margin: 0 auto;
+        width: 100%;
     }
     
     .media-card-image,
     .media-card-video {
-        height: 250px;
+        height: 250px !important;
         border-radius: 8px 8px 0 0;
-        width: 100%;
+        width: 100% !important;
     }
     
     .media-card-content {
@@ -303,13 +312,14 @@
         border-radius: 8px;
         max-width: 350px;
         margin: 0 auto;
+        width: 100%;
     }
     
     .media-card-image,
     .media-card-video {
-        height: 220px;
+        height: 220px !important;
         border-radius: 8px 8px 0 0;
-        width: 100%;
+        width: 100% !important;
     }
     
     .media-card-content {
@@ -341,13 +351,14 @@
         border-radius: 6px;
         max-width: 300px;
         margin: 0 auto;
+        width: 100%;
     }
     
     .media-card-image,
     .media-card-video {
-        height: 200px;
+        height: 200px !important;
         border-radius: 6px 6px 0 0;
-        width: 100%;
+        width: 100% !important;
     }
     
     .media-card-content {
