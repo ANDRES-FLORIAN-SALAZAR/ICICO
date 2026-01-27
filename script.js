@@ -35,6 +35,9 @@
 
     // Inicializar animaciones básicas
     function initializeAnimations() {
+        // Animación de contador de estadísticas
+        animateCounters();
+        
         // Animación de partículas hero
         const heroParticles = document.querySelector('.hero-particles');
         if (heroParticles) {
@@ -45,6 +48,40 @@
         const floatingShapes = document.querySelectorAll('.shape');
         floatingShapes.forEach((shape, index) => {
             animateShape(shape, index);
+        });
+    }
+
+    // Animar contadores de estadísticas
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number[data-count]');
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const duration = 2000; // 2 segundos
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+            
+            // Iniciar cuando el elemento sea visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateCounter();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            observer.observe(counter);
         });
     }
 
