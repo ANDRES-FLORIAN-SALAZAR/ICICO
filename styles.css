@@ -267,16 +267,20 @@ section.py-5 {
 }
 
 .value-card {
-    background: transparent;
-    border: none;
+    background: transparent !important;
+    border: none !important;
     border-radius: 10px;
-    box-shadow: none;
+    box-shadow: none !important;
     transition: var(--transition);
     overflow: hidden;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
+}
+
+.value-card.h-100 {
+    background: transparent !important;
 }
 
 .card:hover,
