@@ -682,6 +682,16 @@ section.py-5 {
     background-color: var(--white-color) !important;
 }
 
+/* Overlay content - Force black text */
+.image-overlay .overlay-content {
+    color: #000000 !important;
+}
+
+.image-overlay .overlay-content h3,
+.image-overlay .overlay-content p {
+    color: #000000 !important;
+}
+
 /* Utility Classes */
 .text-center {
     text-align: center;
