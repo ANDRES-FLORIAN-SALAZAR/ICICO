@@ -268,9 +268,9 @@ section.py-5 {
 
 .value-card {
     background: transparent;
-    border: 1px solid var(--border-color);
+    border: none;
     border-radius: 10px;
-    box-shadow: var(--shadow-md);
+    box-shadow: none;
     transition: var(--transition);
     overflow: hidden;
     margin-top: 2rem;
