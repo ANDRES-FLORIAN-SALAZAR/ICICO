@@ -253,9 +253,21 @@ section.py-5 {
 .event-card,
 .sermon-card,
 .gallery-card,
-.contact-card,
-.value-card {
+.contact-card {
     background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.value-card {
+    background: transparent;
     border: 1px solid var(--border-color);
     border-radius: 10px;
     box-shadow: var(--shadow-md);
