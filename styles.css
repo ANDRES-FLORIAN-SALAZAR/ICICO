@@ -677,6 +677,11 @@ section.py-5 {
     100% { transform: rotate(360deg); }
 }
 
+/* Section Nosotros - Override gray background */
+.section-nosotros + section {
+    background-color: var(--white-color) !important;
+}
+
 /* Utility Classes */
 .text-center {
     text-align: center;
