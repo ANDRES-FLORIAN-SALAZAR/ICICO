@@ -368,8 +368,8 @@
         });
         
         // Añadir animación neon
-        const style = document.createElement('style');
-        style.textContent = `
+        const neonStyle = document.createElement('style');
+        neonStyle.textContent = `
             @keyframes neonGlow {
                 from {
                     box-shadow: 
@@ -389,7 +389,7 @@
                 }
             }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(neonStyle);
     </script>
 </body>
 </html>

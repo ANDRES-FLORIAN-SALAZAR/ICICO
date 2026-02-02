@@ -14,7 +14,7 @@
         }
 
         // Inicializar navegación
-        initNavigation();
+        initializeNavigation();
         
         // Inicializar contadores animados
         initCounters();
