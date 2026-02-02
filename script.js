@@ -151,7 +151,7 @@
                 description: 'Ayuno y oración especial por la iglesia y la comunidad',
                 icon: 'fa-cross',
                 day: 'Último Domingo',
-                time: '6:00 PM',
+                time: '10:00 AM',
                 color: 'warning'
             },
         ];
