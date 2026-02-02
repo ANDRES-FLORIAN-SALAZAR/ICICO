@@ -43,7 +43,8 @@
 
 /* Tarjetas de Media - Estilo Actualizado */
 .media-card {
-    background: #ffffff;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     overflow: hidden;
     transition: var(--transition);
@@ -53,10 +54,11 @@
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-md);
+    backdrop-filter: blur(5px);
 }
 
 .media-card:hover {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
 }
@@ -106,14 +108,15 @@
 /* Contenido de la Tarjeta - Estilo Actualizado */
 .media-card-content {
     padding: 1rem;
-    background: #ffffff;
-    color: var(--dark-color);
+    background: rgba(255, 255, 255, 0.9);
+    color: #000000;
+    backdrop-filter: blur(5px);
 }
 
 .media-card-title {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--dark-color);
+    color: #000000;
     margin-bottom: 0.5rem;
     line-height: 1.3;
     overflow: hidden;
@@ -123,7 +126,7 @@
 
 .media-card-description {
     font-size: 0.85rem;
-    color: var(--tertiary-color);
+    color: #000000;
     margin-bottom: 0;
     line-height: 1.4;
     overflow: hidden;

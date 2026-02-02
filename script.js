@@ -4,13 +4,7 @@
 
     // Inicialización cuando el DOM está listo
     document.addEventListener('DOMContentLoaded', function() {
-        initializeAOS();
-        initializeNavigation();
-        initializeAnimations();
-    });
-
-    // Inicializar AOS (Animate On Scroll)
-    function initializeAOS() {
+        // Inicializar AOS
         if (typeof AOS !== 'undefined') {
             AOS.init({
                 duration: 1000,
@@ -18,7 +12,22 @@
                 offset: 100
             });
         }
-    }
+
+        // Inicializar navegación
+        initNavigation();
+        
+        // Inicializar contadores animados
+        initCounters();
+        
+        // Inicializar partículas del hero
+        initHeroParticles();
+        
+        // Inicializar formas flotantes
+        initFloatingShapes();
+        
+        // Inicializar imagen fullscreen
+        initImageFullscreen();
+    });
 
     // Inicializar navegación
     function initializeNavigation() {
@@ -147,3 +156,60 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Función para imagen fullscreen - Solo para Galería
+function initImageFullscreen() {
+    // Verificar si estamos en la página de galería
+    if (!window.location.pathname.includes('galeria.html')) {
+        return;
+    }
+    
+    // Crear modal para imagen fullscreen
+    const modal = document.createElement('div');
+    modal.className = 'image-modal';
+    modal.innerHTML = '<img src="" alt="Imagen fullscreen">';
+    document.body.appendChild(modal);
+    
+    // Esperar a que el DOM esté completamente cargado
+    setTimeout(() => {
+        // Buscar todas las imágenes en la página
+        const allImages = document.querySelectorAll('img');
+        console.log('Total de imágenes encontradas:', allImages.length);
+        
+        allImages.forEach((img, index) => {
+            console.log(`Imagen ${index}:`, img.src, img.className);
+            img.classList.add('clickable-image');
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Click en imagen:', this.src);
+                openImageFullscreen(this.src);
+            });
+        });
+        
+        // Cerrar modal al hacer click
+        modal.addEventListener('click', closeImageFullscreen);
+        
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageFullscreen();
+            }
+        });
+    }, 1000); // Esperar 1 segundo
+}
+
+function openImageFullscreen(imageSrc) {
+    const modal = document.querySelector('.image-modal');
+    const modalImg = modal.querySelector('img');
+    modalImg.src = imageSrc;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevenir scroll
+}
+
+function closeImageFullscreen() {
+    const modal = document.querySelector('.image-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restaurar scroll
+}

@@ -285,6 +285,111 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=6"></script>
+    <script>
+        // Script específico para Galería - Imagen Fullscreen
+        document.addEventListener('DOMContentLoaded', function() {
+            // Crear modal
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.innerHTML = '<img src="" alt="Imagen fullscreen">';
+            modal.style.cssText = `
+                display: none;
+                position: fixed;
+                z-index: 9999;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                cursor: pointer;
+            `;
+            document.body.appendChild(modal);
+            
+            const modalImg = modal.querySelector('img');
+            modalImg.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 90%;
+                max-height: 90%;
+                object-fit: contain;
+                border-radius: 10px;
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+                border: 3px solid #00ffff;
+                box-shadow: 
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff,
+                    0 0 60px #00ffff,
+                    0 0 80px #00ffff,
+                    inset 0 0 20px #00ffff;
+                animation: neonGlow 2s ease-in-out infinite alternate;
+            `;
+            
+            // Añadir click a todas las imágenes
+            function addClickToImages() {
+                const images = document.querySelectorAll('.media-card-image img');
+                console.log('Imágenes encontradas:', images.length);
+                
+                images.forEach((img, index) => {
+                    console.log(`Imagen ${index}:`, img.src);
+                    img.style.cursor = 'pointer';
+                    img.onclick = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Click en imagen:', this.src);
+                        modalImg.src = this.src;
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    };
+                });
+            }
+            
+            // Intentar varias veces
+            addClickToImages();
+            setTimeout(addClickToImages, 500);
+            setTimeout(addClickToImages, 1000);
+            setTimeout(addClickToImages, 2000);
+            
+            // Cerrar modal
+            modal.onclick = function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
+            
+            // Cerrar con Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Añadir animación neon
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes neonGlow {
+                from {
+                    box-shadow: 
+                        0 0 20px #00ffff,
+                        0 0 40px #00ffff,
+                        0 0 60px #00ffff,
+                        0 0 80px #00ffff,
+                        inset 0 0 20px #00ffff;
+                }
+                to {
+                    box-shadow: 
+                        0 0 30px #00ffff,
+                        0 0 50px #00ffff,
+                        0 0 70px #00ffff,
+                        0 0 100px #00ffff,
+                        inset 0 0 30px #00ffff;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

@@ -13,7 +13,7 @@
     --success-color: #3182ce;
     --warning-color: #2c5282;
     --danger-color: #4a5568;
-    --background-color: #f5f7fa;
+    --background-color: #ffffff;
     --card-background: #ffffff;
     --text-primary: #1a202c;
     --text-secondary: #4a5568;
@@ -37,7 +37,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background-color: var(--background-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--tertiary-color) 100%);
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -120,7 +120,7 @@ html {
 /* Hero Section */
 .hero-section {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--tertiary-color) 100%);
@@ -142,7 +142,7 @@ html {
 }
 
 .hero-section .row {
-    min-height: 100vh;
+    height: 100vh;
     position: relative;
     z-index: 2;
 }
@@ -240,7 +240,6 @@ html {
     padding: 2rem 0;
     min-height: 60vh;
     position: relative;
-    background: var(--background-color);
 }
 
 section.py-5 {
@@ -248,11 +247,10 @@ section.py-5 {
     padding-bottom: 3rem !important;
 }
 
-/* Cards - Unificadas */
+/* Cards - Restauradas a fondo blanco excepto Galería */
 .card,
 .event-card,
 .sermon-card,
-.gallery-card,
 .contact-card {
     background: var(--card-background);
     border: 1px solid var(--border-color);
@@ -260,28 +258,38 @@ section.py-5 {
     box-shadow: var(--shadow-md);
     transition: var(--transition);
     overflow: hidden;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
+}
+
+/* Galería - Tarjetas transparentes */
+.gallery-card,
+.media-card {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    overflow: hidden;
+    backdrop-filter: blur(5px);
 }
 
 .value-card {
-    background: transparent !important;
-    border: none !important;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    box-shadow: none !important;
+    box-shadow: var(--shadow-md);
     transition: var(--transition);
     overflow: hidden;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     position: relative;
     z-index: 1;
+    backdrop-filter: blur(10px);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.value-card.h-100 {
-    background: transparent !important;
-}
 
 .card:hover,
 .event-card:hover,
@@ -301,9 +309,72 @@ section.py-5 {
     margin-bottom: 1rem;
 }
 
-.card-text,
 .value-desc {
-    color: var(--text-secondary);
+    color: #ffffff !important;
+}
+
+.card-text {
+    color: #000000 !important;
+}
+
+/* Forzar colores para eventos */
+.section-eventos .text-center h3 {
+    color: #ffffff !important;
+}
+
+.section-eventos .card-text {
+    color: #000000 !important;
+}
+
+/* Forzar colores para todas las tarjetas excepto Nosotros */
+.card-text,
+.event-card .card-text,
+.sermon-card .card-text,
+.gallery-card .card-text,
+.contact-card .card-text {
+    color: #000000 !important;
+}
+
+/* Excepción para texto "Casa de Oración" en contacto */
+.contact-card .text-muted {
+    color: #000000 !important;
+}
+
+/* Forzar colores específicos por página */
+.section-predicas .card-text,
+.section-eventos .card-text,
+.section-escuela .card-text {
+    color: #000000 !important;
+}
+
+.section-predicas strong,
+.section-eventos strong,
+.section-escuela strong {
+    color: #000000 !important;
+}
+
+.section-predicas small,
+.section-eventos small,
+.section-escuela small {
+    color: #000000 !important;
+}
+
+.value-desc {
+    color: #000000 !important;
+}
+
+.value-title {
+    color: var(--primary-color) !important;
+}
+
+/* Ajustar altura de secciones hero en nosotros */
+.nosotros .hero-section {
+    min-height: auto;
+    padding: 3rem 0;
+}
+
+.nosotros .hero-section:last-child {
+    min-height: 60vh;
 }
 
 /* Tabs de navegación */
@@ -693,19 +764,55 @@ section.py-5 {
     100% { transform: rotate(360deg); }
 }
 
-/* Section Nosotros - Override gray background */
-.section-nosotros + section {
-    background-color: var(--white-color) !important;
-}
 
-/* Overlay content - Force black text */
+/* Overlay content - Force white text */
 .image-overlay .overlay-content {
-    color: #000000 !important;
+    color: #ffffff !important;
+    padding: 2rem;
 }
 
 .image-overlay .overlay-content h3,
 .image-overlay .overlay-content p {
-    color: #000000 !important;
+    color: #ffffff !important;
+}
+
+/* Image Fullscreen Modal */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    cursor: pointer;
+}
+
+.image-modal img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.image-modal:hover {
+    background-color: rgba(0, 0, 0, 0.98);
+}
+
+/* Clickable images */
+.clickable-image {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.clickable-image:hover {
+    transform: scale(1.05);
 }
 
 /* Utility Classes */
