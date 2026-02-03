@@ -249,7 +249,20 @@ section.py-5 {
 }
 
 /* Cards - Restauradas a fondo blanco excepto Galería */
-.card,
+.card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
 .event-card,
 .sermon-card,
 .contact-card {
@@ -261,7 +274,14 @@ section.py-5 {
     overflow: hidden;
 }
 
-/* Galería - Tarjetas transparentes */
+.event-card:hover,
+.sermon-card:hover,
+.contact-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
 .gallery-card,
 .media-card {
     background: transparent;
