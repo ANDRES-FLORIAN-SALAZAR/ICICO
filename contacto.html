@@ -227,8 +227,8 @@
                 // Agregar marcador personalizado
                 const marker = L.marker([4.7455, -74.0975]).addTo(map);
                 
-                // Popup con información
-                marker.bindPopup('<div style="text-align: center;"><b>Casa de Oración</b><br>Crr 160 #133-18<br>Suba / Sta Cecilia</div>').openPopup();
+                // Popup con información (sin abrir automáticamente)
+                marker.bindPopup('<div style="text-align: center;"><b>Casa de Oración</b><br>Crr 160 #133-18<br>Suba / Sta Cecilia</div>');
                 
                 // Permitir zoom al hacer click en el mapa
                 map.on('click', function() {
