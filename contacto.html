@@ -7,14 +7,14 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     
-    <!-- Content Security Policy para bloquear Google Maps y permitir solo lo necesario -->
+    <!-- Content Security Policy para Google Maps -->
     <meta http-equiv="Content-Security-Policy" 
-          content="default-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org; 
-                   script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; 
-                   style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; 
-                   img-src 'self' data: https: blob:;
+          content="default-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://maps.googleapis.com https://maps.gstatic.com; 
+                   script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://maps.googleapis.com; 
+                   style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://fonts.googleapis.com; 
+                   img-src 'self' data: https: blob: https://maps.gstatic.com;
                    frame-src 'none';
-                   connect-src 'self' https://*.tile.openstreetmap.org;">
+                   connect-src 'self' https://maps.googleapis.com;">
     
     <title>Contacto - Casa de Oración</title>
     <meta name="description" content="Contacta con Casa de Oración. Estamos aquí para servirte">
@@ -22,10 +22,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Leaflet CSS para mapa interactivo -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
-          crossorigin=""/>
     
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -198,45 +194,57 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    <!-- Leaflet JS para mapa interactivo -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
-            crossorigin=""></script>
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"></script>
     
-    <!-- Script para inicializar el mapa -->
+    <!-- Script para inicializar Google Maps -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Solo inicializar mapa si el elemento existe
+    let map;
+    
+    function initMap() {
         const mapElement = document.getElementById('map');
         if (mapElement) {
             try {
                 // Crear el mapa centrado en Casa de Oración
-                const map = L.map('map', {
-                    center: [4.7455, -74.0975],
+                map = new google.maps.Map(mapElement, {
+                    center: { lat: 4.7455, lng: -74.0975 },
                     zoom: 16,
-                    scrollWheelZoom: false // Desactivar zoom con scroll
+                    scrollwheel: false,
+                    styles: [
+                        {
+                            "featureType": "all",
+                            "elementType": "geometry.fill",
+                            "stylers": [{"weight": "2.00"}]
+                        },
+                        {
+                            "featureType": "all",
+                            "elementType": "geometry.stroke",
+                            "stylers": [{"color": "#9c9c9c"}]
+                        },
+                        {
+                            "featureType": "all",
+                            "elementType": "labels.text",
+                            "stylers": [{"visibility": "on"}]
+                        }
+                    ]
                 });
-                
-                // Agregar capa de tiles de OpenStreetMap
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                    maxZoom: 19
-                }).addTo(map);
                 
                 // Agregar marcador personalizado
-                const marker = L.marker([4.7455, -74.0975]).addTo(map);
-                
-                // Popup con información (sin abrir automáticamente)
-                marker.bindPopup('<div style="text-align: center;"><b>Casa de Oración</b><br>Crr 160 #133-18<br>Suba / Sta Cecilia</div>');
-                
-                // Permitir zoom al hacer click en el mapa
-                map.on('click', function() {
-                    map.scrollWheelZoom.enable();
+                const marker = new google.maps.Marker({
+                    position: { lat: 4.7455, lng: -74.0975 },
+                    map: map,
+                    title: 'Casa de Oración',
+                    animation: google.maps.Animation.DROP
                 });
                 
-                // Desactivar zoom cuando el mouse sale del mapa
-                mapElement.addEventListener('mouseleave', function() {
-                    map.scrollWheelZoom.disable();
+                // Ventana de información
+                const infoWindow = new google.maps.InfoWindow({
+                    content: '<div style="text-align: center; padding: 10px;"><b>Casa de Oración</b><br>Crr 160 #133-18<br>Suba / Sta Cecilia</div>'
+                });
+                
+                // Abrir info window al hacer click en el marcador
+                marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
                 });
                 
             } catch (error) {
@@ -244,7 +252,7 @@
                 mapElement.innerHTML = '<p class="text-center text-muted p-3">Error al cargar el mapa</p>';
             }
         }
-    });
+    }
     </script>
     
     <script src="script.js?v=9"></script>
