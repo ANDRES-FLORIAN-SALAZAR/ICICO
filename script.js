@@ -17,7 +17,7 @@
         initializeNavigation();
         
         // Inicializar contadores animados
-        initCounters();
+        animateCounters();
         
         // Inicializar partículas del hero
         initHeroParticles();

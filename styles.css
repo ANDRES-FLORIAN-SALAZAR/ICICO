@@ -120,12 +120,13 @@ html {
 /* Hero Section */
 .hero-section {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--tertiary-color) 100%);
     color: var(--white-color);
     overflow: hidden;
+    padding-top: 80px;
 }
 
 .hero-section::before {
@@ -813,6 +814,19 @@ section.py-5 {
 
 .clickable-image:hover {
     transform: scale(1.05);
+}
+
+/* Espaciado para móvil en hero */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 100px !important;
+        min-height: 100vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem !important;
+        margin-top: 2rem !important;
+    }
 }
 
 /* Utility Classes */
