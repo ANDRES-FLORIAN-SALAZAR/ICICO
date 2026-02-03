@@ -6,11 +6,27 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    
+    <!-- Content Security Policy para bloquear Google Maps y permitir solo lo necesario -->
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org; 
+                   script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; 
+                   style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; 
+                   img-src 'self' data: https: blob:;
+                   frame-src 'none';
+                   connect-src 'self' https://*.tile.openstreetmap.org;">
+    
     <title>Contacto - Casa de Oración</title>
     <meta name="description" content="Contacta con Casa de Oración. Estamos aquí para servirte">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Leaflet CSS para mapa interactivo -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin=""/>
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
@@ -66,16 +82,11 @@
                             <div class="card-body text-center">
                                 <div class="map-placeholder mb-3">
                                     <p class="text-muted mb-3">Casa de Oración</p>
+                                    <p class="small mb-0"><strong>Crr 160 #133-18</strong><br>Suba / Sta Cecilia</p>
                                 </div>
+                                <!-- Mapa interactivo con Leaflet -->
                                 <div class="map-container">
-                                    <iframe 
-                                        src="https://www.openstreetmap.org/export/embed.html?bbox=-74.105,4.740,-74.090,4.750&layer=mapnik&marker=4.7459,-74.0987"
-                                        width="100%" 
-                                        height="200" 
-                                        style="border:0; border-radius: 8px;" 
-                                        frameborder="0"
-                                        loading="lazy">
-                                    </iframe>
+                                    <div id="map" style="height: 200px; border-radius: 8px;"></div>
                                 </div>
                             </div>
                         </div>
@@ -188,6 +199,56 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Leaflet JS para mapa interactivo -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
+    
+    <!-- Script para inicializar el mapa -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Solo inicializar mapa si el elemento existe
+        const mapElement = document.getElementById('map');
+        if (mapElement) {
+            try {
+                // Crear el mapa centrado en Casa de Oración
+                const map = L.map('map', {
+                    center: [4.7455, -74.0975],
+                    zoom: 16,
+                    scrollWheelZoom: false // Desactivar zoom con scroll
+                });
+                
+                // Agregar capa de tiles de OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    maxZoom: 19
+                }).addTo(map);
+                
+                // Agregar marcador personalizado
+                const marker = L.marker([4.7455, -74.0975]).addTo(map);
+                
+                // Popup con información
+                marker.bindPopup('<div style="text-align: center;"><b>Casa de Oración</b><br>Crr 160 #133-18<br>Suba / Sta Cecilia</div>').openPopup();
+                
+                // Permitir zoom al hacer click en el mapa
+                map.on('click', function() {
+                    map.scrollWheelZoom.enable();
+                });
+                
+                // Desactivar zoom cuando el mouse sale del mapa
+                mapElement.addEventListener('mouseleave', function() {
+                    map.scrollWheelZoom.disable();
+                });
+                
+            } catch (error) {
+                console.error('Error al inicializar el mapa:', error);
+                mapElement.innerHTML = '<p class="text-center text-muted p-3">Error al cargar el mapa</p>';
+            }
+        }
+    });
+    </script>
+    
     <script src="script.js?v=9"></script>
 </body>
 </html>
