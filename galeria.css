@@ -43,8 +43,8 @@
 
 /* Tarjetas de Media - Estilo Actualizado */
 .media-card {
-    background: #f8f9fa;
-    border: 2px solid #1a202c;
+    background: #f8f9fa !important;
+    border: 2px solid #1a202c !important;
     border-radius: 8px;
     overflow: hidden;
     transition: var(--transition);
@@ -57,10 +57,10 @@
 }
 
 .media-card:hover {
-    background: #f8f9fa;
+    background: #f8f9fa !important;
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
-    border-color: #2d3748;
+    border-color: #2d3748 !important;
 }
 
 /* Contenedor de Imagen - Estilo Actualizado */
