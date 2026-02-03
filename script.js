@@ -18,15 +18,6 @@
         
         // Inicializar contadores animados
         animateCounters();
-        
-        // Inicializar partículas del hero
-        initHeroParticles();
-        
-        // Inicializar formas flotantes
-        initFloatingShapes();
-        
-        // Inicializar imagen fullscreen
-        initImageFullscreen();
     });
 
     // Inicializar navegación
