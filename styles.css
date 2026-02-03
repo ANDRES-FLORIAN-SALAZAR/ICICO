@@ -816,7 +816,31 @@ section.py-5 {
     transform: scale(1.05);
 }
 
-/* Espaciado para móvil en hero */
+/* Responsive mejorado para todos los dispositivos */
+
+/* Tablets y móviles grandes */
+@media (max-width: 992px) {
+    .hero-section {
+        padding-top: 90px !important;
+        min-height: 100vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem !important;
+        margin-top: 1.5rem !important;
+    }
+    
+    .hero-stats {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    
+    .stat-item {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Móviles medianos */
 @media (max-width: 768px) {
     .hero-section {
         padding-top: 100px !important;
@@ -826,6 +850,188 @@ section.py-5 {
     .hero-content h1 {
         font-size: 2rem !important;
         margin-top: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-content p {
+        font-size: 1rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .hero-buttons {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-buttons .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        margin-right: 0 !important;
+    }
+    
+    .hero-stats {
+        margin-top: 2rem;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat-item {
+        margin-bottom: 1.5rem;
+        width: 100%;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem !important;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .hero-section {
+        padding-top: 80px !important;
+        min-height: 100vh;
+        padding-bottom: 2rem !important;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem !important;
+        margin-top: 1.5rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .hero-content p {
+        font-size: 0.95rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .hero-buttons .btn {
+        font-size: 0.9rem !important;
+        padding: 0.75rem 1.5rem !important;
+    }
+    
+    .stat-number {
+        font-size: 2rem !important;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 400px) {
+    .hero-section {
+        padding-top: 70px !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.5rem !important;
+        margin-top: 1rem !important;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem !important;
+    }
+    
+    .hero-buttons .btn {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem !important;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Responsive para Navbar y Footer */
+
+/* Navbar responsive */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem !important;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 0.25rem 0 !important;
+        text-align: center;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    .navbar-collapse {
+        background: rgba(26, 32, 44, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 1rem;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Footer responsive */
+@media (max-width: 768px) {
+    .footer {
+        padding: 2rem 0 1rem 0 !important;
+    }
+    
+    .footer .row > div {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .footer h5 {
+        font-size: 1.1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .footer-links {
+        padding: 0 !important;
+        list-style: none !important;
+    }
+    
+    .footer-links li {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .footer-links a {
+        font-size: 0.9rem !important;
+    }
+    
+    .social-links {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .social-links a {
+        margin: 0 0.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer .row > div {
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer h5 {
+        font-size: 1rem !important;
+    }
+    
+    .footer p {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .footer-links a {
+        font-size: 0.85rem !important;
     }
 }
 
