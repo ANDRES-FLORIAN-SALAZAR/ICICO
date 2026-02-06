@@ -233,10 +233,10 @@
             // Limpiar indicador de carga
             mapElement.innerHTML = '';
             
-            // Coordenadas precisas de Crr 160 #133-18, Suba / Santa Cecilia, Bogotá
+            // Ubicación precisa de Crr 160 #133-18, Suba / Santa Cecilia, Bogotá
             const CASA_ORACION_LOCATION = {
-                lat: 4.7353,
-                lng: -74.0599,
+                lat: 4.7353169,
+                lng: -74.059934,
                 address: "Crr 160 #133-18, Suba / Santa Cecilia, Bogotá, Colombia"
             };
             
@@ -299,7 +299,6 @@
             
             console.log('🗺️ Mapa de Casa de Oración cargado exitosamente');
             console.log('📍 Ubicación:', CASA_ORACION_LOCATION.address);
-            console.log('📐 Coordenadas:', CASA_ORACION_LOCATION.lat, CASA_ORACION_LOCATION.lng);
             
         } catch (error) {
             console.error('❌ Error al inicializar el mapa:', error);
