@@ -238,9 +238,9 @@
                 address: "Crr 160 #133-18, Suba / Santa Cecilia, Bogotá, Colombia"
             };
             
-            // Crear mapa educativo con OpenStreetMap centrado en Suba
+            // Crear mapa educativo con OpenStreetMap centrado en ubicación exacta
             const map = L.map('map', {
-                center: [4.7353, -74.0599],
+                center: [4.740741, -74.130021],
                 zoom: 17,
                 scrollWheelZoom: false,
                 zoomControl: true,
@@ -264,13 +264,13 @@
             });
             
             // Agregar marcador principal sin popup
-            const marker = L.marker([4.7353, -74.0599], {
+            const marker = L.marker([4.740741, -74.130021], {
                 icon: churchIcon,
                 title: 'Casa de Oración - Suba / Santa Cecilia'
             }).addTo(map);
             
             // Agregar círculo de proximidad (500 metros)
-            const proximityCircle = L.circle([4.7353, -74.0599], {
+            const proximityCircle = L.circle([4.740741, -74.130021], {
                 color: '#3182ce',
                 fillColor: '#3182ce',
                 fillOpacity: 0.1,
