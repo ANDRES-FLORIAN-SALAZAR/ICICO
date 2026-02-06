@@ -265,50 +265,11 @@
                 className: 'custom-church-marker'
             });
             
-            // Agregar marcador principal
+            // Agregar marcador principal sin popup
             const marker = L.marker([CASA_ORACION_LOCATION.lat, CASA_ORACION_LOCATION.lng], {
                 icon: churchIcon,
                 title: 'Casa de Oración - Suba / Santa Cecilia'
             }).addTo(map);
-            
-            // Crear popup educativo e interactivo
-            const popupContent = `
-                <div style="text-align: center; padding: 15px; max-width: 280px; font-family: 'Segoe UI', sans-serif;">
-                    <h4 style="color: #1a202c; margin-bottom: 10px; font-size: 16px;">
-                        <i class="fas fa-church" style="color: #3182ce;"></i> Casa de Oración
-                    </h4>
-                    <p style="margin: 8px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">
-                        <strong>Dirección:</strong><br>
-                        Crr 160 #133-18<br>
-                        Suba / Santa Cecilia<br>
-                        Bogotá, Colombia
-                    </p>
-                    <div style="margin: 12px 0; padding: 8px; background: #f7fafc; border-radius: 5px; font-size: 12px; color: #718096;">
-                        <i class="fas fa-map-marker-alt" style="color: #3182ce;"></i>
-                        Lat: ${CASA_ORACION_LOCATION.lat.toFixed(6)}<br>
-                        <i class="fas fa-compass" style="color: #3182ce;"></i>
-                        Lng: ${CASA_ORACION_LOCATION.lng.toFixed(6)}
-                    </div>
-                    <div style="margin-top: 12px; display: flex; gap: 5px; justify-content: center; flex-wrap: wrap;">
-                        <button onclick="getDirections()" style="background: #3182ce; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 12px;">
-                            <i class="fas fa-directions"></i> Cómo Llegar
-                        </button>
-                        <button onclick="getCoordinates()" style="background: #2d3748; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 12px;">
-                            <i class="fas fa-copy"></i> Copiar Coords
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            marker.bindPopup(popupContent, {
-                maxWidth: 300,
-                className: 'custom-popup'
-            });
-            
-            // Abrir popup automáticamente
-            setTimeout(() => {
-                marker.openPopup();
-            }, 1000);
             
             // Agregar círculo de proximidad (500 metros)
             const proximityCircle = L.circle([CASA_ORACION_LOCATION.lat, CASA_ORACION_LOCATION.lng], {
