@@ -6,15 +6,18 @@
 
     // Función para cargar el JSON de la galería
     async function loadGalleryData() {
+        console.log('📁 Cargando galeria.json...');
         try {
             const response = await fetch('galeria.json');
+            console.log('📡 Response status:', response.status);
             if (!response.ok) {
-                throw new Error('No se pudo cargar el archivo galeria.json');
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
             galleryData = await response.json();
+            console.log('✅ Galería cargada correctamente');
             return galleryData;
         } catch (error) {
-            console.error('Error cargando galería:', error);
+            console.error('❌ Error cargando galería:', error);
             return null;
         }
     }
@@ -117,12 +120,16 @@
 
     // Función de inicialización
     async function initializeGallery() {
+        console.log('🚀 Inicializando galería...');
+        
         await loadGalleryData();
         
         if (!galleryData) {
+            console.error('❌ No se cargaron los datos de la galería');
             return;
         }
         
+        console.log('✅ Datos cargados, renderizando imágenes...');
         renderAllImages();
     }
 
