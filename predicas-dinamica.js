@@ -59,17 +59,23 @@
 
     // Función para renderizar predicas por categoría
     function renderPredicas(category = 'recientes') {
+        console.log('🎨 Renderizando categoría:', category);
         const container = document.getElementById('predicasContainer');
+        console.log('🎯 Container encontrado:', container);
+        
         if (!container || !predicasData) {
+            console.error('❌ No hay container o predicasData');
             return;
         }
 
         // Obtener predicas de la categoría especificada
         const predicas = predicasData.categories[category] || [];
+        console.log('📋 Predicas encontradas:', predicas.length);
         
         // Renderizar predicas
         const predicasHtml = predicas.map((predica, index) => createPredicaCard(predica, index)).join('');
         container.innerHTML = predicasHtml;
+        console.log('✅ Predicas renderizadas');
         
         // Reinicializar AOS
         if (typeof AOS !== 'undefined') {
