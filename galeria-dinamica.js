@@ -85,79 +85,124 @@
         if (categoryId === 'all') {
             // Mostrar todas las categorías
             galleryData.categories.images.forEach((category, catIndex) => {
-                categoriesHtml += `
-                    <div class="category-section mb-5" data-category-id="${category.id}">
-                        <div class="category-header d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="category-title">
-                                <i class="fas fa-calendar-alt me-2 text-primary"></i>
-                                ${category.name}
-                            </h4>
-                            <span class="badge bg-primary">${category.items.length} imágenes</span>
-                        </div>
-                        <div class="gallery-grid">
-                            ${category.items.slice(0, galleryData.settings.itemsPerPage).map((img, imgIndex) => 
-                                createImageCard(img, imgIndex, catIndex)
-                            ).join('')}
-                        </div>
-                        ${category.items.length > galleryData.settings.itemsPerPage ? `
-                            <div class="text-center mt-3">
-                                <button class="btn btn-primary load-more-btn" 
-                                        data-category="${category.id}" 
-                                        data-type="images" 
-                                        data-current-page="1"
-                                        data-total-pages="${Math.ceil(category.items.length / galleryData.settings.itemsPerPage)}">
-                                    <i class="fas fa-plus-circle me-2"></i>
-                                    Ver más (${category.items.length - galleryData.settings.itemsPerPage} restantes)
-                                </button>
+                const sectionId = `category-section-${category.id}`;
+                let existingSection = document.getElementById(sectionId);
+                
+                if (!existingSection || page === 1) {
+                    // Crear nueva sección
+                    categoriesHtml += `
+                        <div class="category-section mb-5" id="${sectionId}" data-category-id="${category.id}">
+                            <div class="category-header d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="category-title">
+                                    <i class="fas fa-calendar-alt me-2 text-primary"></i>
+                                    ${category.name}
+                                </h4>
+                                <span class="badge bg-primary">${category.items.length} imágenes</span>
                             </div>
-                        ` : ''}
-                    </div>
-                `;
+                            <div class="gallery-grid" id="gallery-grid-${category.id}">
+                                ${category.items.slice(0, galleryData.settings.itemsPerPage).map((img, imgIndex) => 
+                                    createImageCard(img, imgIndex, catIndex)
+                                ).join('')}
+                            </div>
+                            ${category.items.length > galleryData.settings.itemsPerPage ? `
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary load-more-btn" 
+                                            data-category="${category.id}" 
+                                            data-type="images" 
+                                            data-current-page="1"
+                                            data-total-pages="${Math.ceil(category.items.length / galleryData.settings.itemsPerPage)}">
+                                        <i class="fas fa-plus-circle me-2"></i>
+                                        Ver más (${category.items.length - galleryData.settings.itemsPerPage} restantes)
+                                    </button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
             });
+            
+            if (categoriesHtml) {
+                imageGallery.innerHTML = categoriesHtml;
+            }
         } else {
-            // Mostrar categoría específica
+            // Mostrar categoría específica o cargar más
             const category = galleryData.categories.images.find(cat => cat.id === parseInt(categoryId));
             if (category) {
-                const startIndex = (page - 1) * galleryData.settings.itemsPerPage;
-                const endIndex = startIndex + galleryData.settings.itemsPerPage;
-                const itemsToShow = category.items.slice(startIndex, endIndex);
+                const sectionId = `category-section-${category.id}`;
+                let existingSection = document.getElementById(sectionId);
+                const gridId = `gallery-grid-${category.id}`;
+                let gridElement = document.getElementById(gridId);
+                
+                if (!existingSection || page === 1) {
+                    // Crear nueva sección
+                    const startIndex = (page - 1) * galleryData.settings.itemsPerPage;
+                    const endIndex = startIndex + galleryData.settings.itemsPerPage;
+                    const itemsToShow = category.items.slice(startIndex, endIndex);
 
-                categoriesHtml = `
-                    <div class="category-section">
-                        <div class="category-header d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="category-title">
-                                <i class="fas fa-calendar-alt me-2 text-primary"></i>
-                                ${category.name}
-                            </h4>
-                            <span class="badge bg-primary">${category.items.length} imágenes</span>
-                        </div>
-                        <div class="gallery-grid">
-                            ${itemsToShow.map((img, imgIndex) => 
-                                createImageCard(img, imgIndex, categoryId)
-                            ).join('')}
-                        </div>
-                        ${endIndex < category.items.length ? `
-                            <div class="text-center mt-3">
-                                <button class="btn btn-primary load-more-btn" 
-                                        data-category="${category.id}" 
-                                        data-type="images" 
-                                        data-current-page="${page}"
-                                        data-total-pages="${Math.ceil(category.items.length / galleryData.settings.itemsPerPage)}">
-                                    <i class="fas fa-plus-circle me-2"></i>
-                                    Ver más (${category.items.length - endIndex} restantes)
-                                </button>
+                    categoriesHtml = `
+                        <div class="category-section" id="${sectionId}">
+                            <div class="category-header d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="category-title">
+                                    <i class="fas fa-calendar-alt me-2 text-primary"></i>
+                                    ${category.name}
+                                </h4>
+                                <span class="badge bg-primary">${category.items.length} imágenes</span>
                             </div>
-                        ` : ''}
-                    </div>
-                `;
+                            <div class="gallery-grid" id="${gridId}">
+                                ${itemsToShow.map((img, imgIndex) => 
+                                    createImageCard(img, imgIndex, categoryId)
+                                ).join('')}
+                            </div>
+                            ${endIndex < category.items.length ? `
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary load-more-btn" 
+                                            data-category="${category.id}" 
+                                            data-type="images" 
+                                            data-current-page="${page}"
+                                            data-total-pages="${Math.ceil(category.items.length / galleryData.settings.itemsPerPage)}">
+                                        <i class="fas fa-plus-circle me-2"></i>
+                                        Ver más (${category.items.length - endIndex} restantes)
+                                    </button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                    
+                    imageGallery.innerHTML = categoriesHtml;
+                } else if (gridElement && page > 1) {
+                    // Agregar más imágenes a la sección existente
+                    const startIndex = (page - 1) * galleryData.settings.itemsPerPage;
+                    const endIndex = startIndex + galleryData.settings.itemsPerPage;
+                    const itemsToAdd = category.items.slice(startIndex, endIndex);
+                    
+                    // Agregar nuevas tarjetas
+                    const newCardsHtml = itemsToAdd.map((img, imgIndex) => 
+                        createImageCard(img, startIndex + imgIndex, categoryId)
+                    ).join('');
+                    
+                    gridElement.insertAdjacentHTML('beforeend', newCardsHtml);
+                    
+                    // Actualizar o eliminar botón "ver más"
+                    const loadMoreBtn = existingSection.querySelector('.load-more-btn');
+                    if (loadMoreBtn) {
+                        if (endIndex >= category.items.length) {
+                            loadMoreBtn.style.display = 'none';
+                        } else {
+                            loadMoreBtn.dataset.currentPage = page;
+                            const remaining = category.items.length - endIndex;
+                            loadMoreBtn.innerHTML = `
+                                <i class="fas fa-plus-circle me-2"></i>
+                                Ver más (${remaining} restantes)
+                            `;
+                        }
+                    }
+                }
             }
         }
-
-        imageGallery.innerHTML = categoriesHtml;
         
         // Reinicializar AOS para las nuevas tarjetas
         if (typeof AOS !== 'undefined') {
-            AOS.refresh();
+            setTimeout(() => AOS.refresh(), 100);
         }
 
         // Inicializar eventos de clic para las tarjetas y botones

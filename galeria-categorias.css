@@ -7,22 +7,26 @@
     border-radius: 15px;
     padding: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 30px;
 }
 
 .category-selector .btn-group {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: center;
 }
 
 .category-selector .btn {
     border-radius: 25px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-weight: 500;
     transition: all 0.3s ease;
     border: 2px solid var(--primary-color);
     background: rgba(255, 255, 255, 0.1);
     color: white;
+    font-size: 0.95rem;
+    min-width: 120px;
 }
 
 .category-selector .btn:hover {
@@ -44,10 +48,11 @@
     margin-bottom: 30px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .category-header {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     padding-bottom: 15px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
@@ -55,34 +60,130 @@
 .category-title {
     color: var(--text-primary);
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin: 0;
+    display: flex;
+    align-items: center;
 }
 
 .category-title i {
     color: var(--primary-color);
+    margin-right: 10px;
 }
 
 .category-header .badge {
     font-size: 0.9rem;
-    padding: 8px 15px;
+    padding: 8px 16px;
     border-radius: 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+}
+
+/* Grid de Galería Mejorado */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+/* Responsive para diferentes tamaños */
+@media (max-width: 1200px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Tarjetas de Imágenes Mejoradas */
+.media-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    position: relative;
+}
+
+.media-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color);
+}
+
+.media-card-image {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+}
+
+.media-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.media-card:hover .media-card-image img {
+    transform: scale(1.1);
+}
+
+.media-card-content {
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+}
+
+.media-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.media-card-description {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Botón Ver Más */
 .load-more-btn {
     border-radius: 25px;
-    padding: 12px 30px;
+    padding: 14px 32px;
     font-weight: 500;
     transition: all 0.3s ease;
     background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
     border: none;
     color: white;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
 }
 
 .load-more-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(49, 130, 206, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4);
 }
 
 .load-more-btn i {
@@ -103,20 +204,40 @@
     .category-selector .btn {
         width: 100%;
         justify-content: center;
+        min-width: auto;
     }
     
     .category-section {
-        padding: 15px;
+        padding: 20px 15px;
+        margin-bottom: 20px;
     }
     
     .category-header {
         flex-direction: column;
         align-items: flex-start !important;
-        gap: 10px;
+        gap: 12px;
     }
     
     .category-title {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+    }
+    
+    .media-card-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .media-card-content {
+        padding: 15px;
+    }
+    
+    .media-card-title {
+        font-size: 1rem;
+    }
+    
+    .media-card-description {
+        font-size: 0.85rem;
     }
 }
 
@@ -136,26 +257,20 @@
     }
 }
 
-/* Efecto hover en tarjetas dentro de categorías */
-.category-section .media-card {
-    transition: all 0.3s ease;
+/* Efecto de carga para nuevas imágenes */
+.media-card.new-item {
+    animation: slideInUp 0.5s ease-out;
 }
 
-.category-section .media-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Contador de elementos */
-.category-header .badge {
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-    border: none;
-    font-weight: 600;
-}
-
-/* Espaciado mejorado */
-.category-section .gallery-grid {
-    margin-bottom: 20px;
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Loading state */
@@ -172,4 +287,27 @@
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+/* Mejora de contraste y legibilidad */
+.category-section:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Efecto de brillo en imágenes */
+.media-card-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.media-card:hover .media-card-image::after {
+    opacity: 1;
 }
