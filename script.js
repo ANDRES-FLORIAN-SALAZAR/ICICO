@@ -178,7 +178,7 @@ function initImageFullscreen() {
         allImages.forEach((img, index) => {
             console.log(`Imagen ${index}:`, img.src, img.className);
             img.classList.add('clickable-image');
-            img.style.cursor = 'pointer';
+            img.setAttribute('cursor', 'pointer');
             img.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
