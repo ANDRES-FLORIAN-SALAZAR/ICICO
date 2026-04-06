@@ -1,0 +1,175 @@
+/* Estilos para Galería Categorizada */
+
+/* Selector de Categorías */
+.category-selector {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.category-selector .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-selector .btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.category-selector .btn:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(49, 130, 206, 0.3);
+}
+
+.category-selector .btn.active {
+    background: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(49, 130, 206, 0.3);
+}
+
+/* Secciones de Categoría */
+.category-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.category-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.category-title i {
+    color: var(--primary-color);
+}
+
+.category-header .badge {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+/* Botón Ver Más */
+.load-more-btn {
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border: none;
+    color: white;
+}
+
+.load-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(49, 130, 206, 0.4);
+}
+
+.load-more-btn i {
+    transition: transform 0.3s ease;
+}
+
+.load-more-btn:hover i {
+    transform: rotate(90deg);
+}
+
+/* Responsive para Selectores */
+@media (max-width: 768px) {
+    .category-selector .btn-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .category-selector .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .category-section {
+        padding: 15px;
+    }
+    
+    .category-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 10px;
+    }
+    
+    .category-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Animaciones */
+.category-section {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efecto hover en tarjetas dentro de categorías */
+.category-section .media-card {
+    transition: all 0.3s ease;
+}
+
+.category-section .media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Contador de elementos */
+.category-header .badge {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border: none;
+    font-weight: 600;
+}
+
+/* Espaciado mejorado */
+.category-section .gallery-grid {
+    margin-bottom: 20px;
+}
+
+/* Loading state */
+.loading-more {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-primary);
+}
+
+.loading-more i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
