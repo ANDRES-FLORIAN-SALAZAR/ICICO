@@ -55,11 +55,7 @@
         console.log(`📸 Total de imágenes a renderizar: ${allImages.length}`);
 
         // Renderizar todas las imágenes
-        allImagesHtml = `
-            <div class="gallery-grid">
-                ${allImages.map((image, index) => createImageCard(image, index)).join('')}
-            </div>
-        `;
+        allImagesHtml = allImages.map((image, index) => createImageCard(image, index)).join('');
 
         imageGallery.innerHTML = allImagesHtml;
         console.log('✅ Galería renderizada con', allImages.length, 'imágenes');
@@ -131,6 +127,7 @@
     // Función de inicialización
     async function initializeGallery() {
         console.log('🚀 Inicializando galería...');
+        console.log('📋 DOM ready:', document.readyState);
         
         await loadGalleryData();
         
