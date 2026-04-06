@@ -38,15 +38,21 @@
     // Función para renderizar todas las imágenes
     function renderAllImages() {
         const imageGallery = document.getElementById('imageGallery');
-        if (!imageGallery || !galleryData) return;
+        if (!imageGallery || !galleryData) {
+            console.log('❌ No hay imageGallery o galleryData');
+            return;
+        }
 
         let allImagesHtml = '';
         
         // Juntar todas las imágenes de todas las categorías
         const allImages = [];
         galleryData.categories.images.forEach(category => {
+            console.log(`📁 Categoría: ${category.name}, Imágenes: ${category.items.length}`);
             allImages.push(...category.items);
         });
+
+        console.log(`📸 Total de imágenes a renderizar: ${allImages.length}`);
 
         // Renderizar todas las imágenes
         allImagesHtml = `
@@ -56,6 +62,7 @@
         `;
 
         imageGallery.innerHTML = allImagesHtml;
+        console.log('✅ Galería renderizada con', allImages.length, 'imágenes');
         
         // Reinicializar AOS
         if (typeof AOS !== 'undefined') {
@@ -123,7 +130,20 @@
 
     // Función de inicialización
     async function initializeGallery() {
+        console.log('🚀 Inicializando galería...');
+        
         await loadGalleryData();
+        
+        if (!galleryData) {
+            console.log('❌ Error: galleryData es null después de cargar');
+            return;
+        }
+        
+        console.log('📊 galleryData cargado:', {
+            categories: galleryData.categories ? Object.keys(galleryData.categories) : 'null',
+            settings: galleryData.settings
+        });
+        
         renderAllImages();
     }
 

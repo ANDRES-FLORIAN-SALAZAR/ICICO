@@ -93,7 +93,7 @@
         for (let i = 0; i < 30; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
-            particle.style.cssText = `
+            particle.style.particleStyle = `
                 position: absolute;
                 width: ${Math.random() * 3}px;
                 height: ${Math.random() * 3}px;
@@ -112,15 +112,23 @@
         const duration = 3 + Math.random() * 4;
         const delay = Math.random() * 2;
         
-        shape.style.animation = `float ${duration}s ${delay}s infinite ease-in-out`;
-    }
+        shape.shapeStyle = `
+            position: absolute;
+            width: ${Math.random() * 3}px;
+            height: ${Math.random() * 3}px;
+            background: rgba(255, 255, 255, ${Math.random() * 0.6});
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation: float ${duration}s ${delay}s infinite ease-in-out`;
+        }
 
     
 })();
 
 // Animación CSS para partículas flotantes
-const style = document.createElement('style');
-style.textContent = `
+const animationStyle = document.createElement('style');
+animationStyle.textContent = `
     @keyframes float {
         0%, 100% {
             transform: translateY(0px) translateX(0px);
