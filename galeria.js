@@ -1,14 +1,15 @@
-// Galería Casa de Oración - Versión Definitiva
-console.log('🚀 Iniciando galería...');
+// Galería Completa - Casa de Oración
+console.log('🚀 Iniciando galería completa...');
 
 let galleryData = null;
 
-// Función para cargar galería desde JSON
+// Cargar datos desde JSON
 async function cargarGaleria() {
     try {
         const response = await fetch('galeria.json');
         const data = await response.json();
         galleryData = data;
+        console.log('✅ Galería cargada:', data);
         return data;
     } catch (error) {
         console.error('❌ Error cargando galería:', error);
@@ -16,7 +17,7 @@ async function cargarGaleria() {
     }
 }
 
-// Función para filtrar por mes y año combinados
+// Filtrar por mes y año combinados
 function filtrarPorMesYAño() {
     const mesSelect = document.getElementById('filtro-mes-select');
     const yearInput = document.getElementById('filtro-year-input');
@@ -29,7 +30,7 @@ function filtrarPorMesYAño() {
     renderizarGaleria(mes, año);
 }
 
-// Función principal para renderizar galería
+// Renderizar galería con filtros
 async function renderizarGaleria(mesFiltro = 'todos', añoFiltro = null) {
     const container = document.getElementById('imageGallery');
     if (!container) return;
@@ -55,7 +56,7 @@ async function renderizarGaleria(mesFiltro = 'todos', añoFiltro = null) {
     const imagenesFiltradas = todasLasImagenes.filter(img => {
         if (mesFiltro === 'todos' && !añoFiltro) return true;
         
-        // Extraer mes y año del nombre de la categoría
+        // Encontrar la categoría de esta imagen
         const categoria = galleryData.categories.images.find(cat => 
             cat.items.some(item => item.id === img.id)
         );
@@ -75,11 +76,11 @@ async function renderizarGaleria(mesFiltro = 'todos', añoFiltro = null) {
         return;
     }
 
-    // Generar HTML
+    // Generar HTML con Bootstrap
     let html = '<div class="row g-4">';
     imagenesFiltradas.forEach((img, index) => {
         html += `
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="${index * 100}">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
                 <div class="card h-100 shadow sermon-card">
                     <div class="media-card-image">
                         <img src="${img.src}" alt="${img.alt}" class="card-img-top" style="height: 200px; object-fit: cover; cursor: pointer;" onclick="verImagen('${img.src}', '${img.title}', '${img.description}')">
@@ -105,7 +106,7 @@ async function renderizarGaleria(mesFiltro = 'todos', añoFiltro = null) {
     console.log(`✅ Galería renderizada: ${imagenesFiltradas.length} imágenes`);
 }
 
-// Función para ver imagen en modal
+// Ver imagen en modal
 function verImagen(src, title, description) {
     const modal = document.getElementById('mediaPreviewModal');
     const img = document.getElementById('previewImage');
@@ -123,7 +124,7 @@ function verImagen(src, title, description) {
     }
 }
 
-// Iniciar cuando el DOM esté listo
+// Inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => renderizarGaleria());
 } else {
