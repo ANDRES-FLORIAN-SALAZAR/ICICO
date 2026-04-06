@@ -43,8 +43,6 @@
             return;
         }
 
-        let allImagesHtml = '';
-        
         // Juntar todas las imágenes de todas las categorías
         const allImages = [];
         galleryData.categories.images.forEach(category => {
@@ -55,9 +53,9 @@
         console.log(`📸 Total de imágenes a renderizar: ${allImages.length}`);
 
         // Renderizar todas las imágenes
-        allImagesHtml = allImages.map((image, index) => createImageCard(image, index)).join('');
-
+        const allImagesHtml = allImages.map((image, index) => createImageCard(image, index)).join('');
         imageGallery.innerHTML = allImagesHtml;
+        
         console.log('✅ Galería renderizada con', allImages.length, 'imágenes');
         
         // Reinicializar AOS
@@ -127,7 +125,6 @@
     // Función de inicialización
     async function initializeGallery() {
         console.log('🚀 Inicializando galería...');
-        console.log('📋 DOM ready:', document.readyState);
         
         await loadGalleryData();
         
@@ -150,8 +147,5 @@
     } else {
         initializeGallery();
     }
-
-    // Hacer funciones globales si es necesario
-    window.initializeGallery = initializeGallery;
 
 })();
