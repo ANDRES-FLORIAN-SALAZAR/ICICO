@@ -32,9 +32,16 @@
                 <div class="media-card-content">
                     <h5 class="media-card-title">${image.title}</h5>
                     <p class="media-card-description">${image.description}</p>
+                    <span class="mes-badge">${getMonthName(categoryIndex)} 2026</span>
                 </div>
             </div>
         `;
+    }
+
+    // Función para obtener el nombre del mes
+    function getMonthName(categoryIndex) {
+        const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        return months[categoryIndex] || 'Mes';
     }
 
     // Función para crear una tarjeta de video
@@ -81,6 +88,14 @@
 
         let imagesToShow = [];
         let categoriesHtml = '';
+
+        // Agregar contador
+        if (categoryId === 'all') {
+            const totalImages = galleryData.categories.images.reduce((total, cat) => total + cat.items.length, 0);
+            categoriesHtml += `
+                <p class="contador-fotos">Mostrando ${totalImages} fotos en total</p>
+            `;
+        }
 
         if (categoryId === 'all') {
             // Mostrar todas las categorías

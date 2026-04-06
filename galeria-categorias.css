@@ -1,4 +1,4 @@
-/* Estilos para Galería Categorizada */
+/* Estilos para Galería Categorizada - Estilo Referencia */
 
 /* Selector de Categorías */
 .category-selector {
@@ -42,19 +42,17 @@
 
 /* Secciones de Categoría */
 .category-section {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    padding: 25px;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
     margin-bottom: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: none;
 }
 
 .category-header {
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
 }
 
 .category-title {
@@ -81,11 +79,11 @@
     box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
 }
 
-/* Grid de Galería Mejorado */
+/* Grid de Galería - Estilo Referencia */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    gap: 20px;
     margin-bottom: 20px;
 }
 
@@ -110,22 +108,20 @@
     }
 }
 
-/* Tarjetas de Imágenes - Estilo Original */
+/* Tarjetas de Imágenes - Estilo Referencia */
 .media-card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    background: white;
+    border-radius: 12px;
     overflow: hidden;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.25s ease;
+    border: none;
     cursor: pointer;
-    backdrop-filter: blur(10px);
-    height: 100%;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
 }
 
 .media-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    border-color: var(--primary-color);
+    box-shadow: 0 8px 24px rgba(58, 123, 213, 0.2);
 }
 
 .media-card-image {
@@ -138,56 +134,67 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.media-card:hover .media-card-image img {
-    transform: scale(1.05);
+    display: block;
 }
 
 .media-card-content {
-    padding: 20px;
-    text-align: center;
+    padding: 14px;
+    text-align: left;
+    background: white;
 }
 
 .media-card-title {
-    font-size: 1.1rem;
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--text-primary);
+    margin-bottom: 3px;
+    color: #1a2e4a;
+    line-height: 1.3;
 }
 
 .media-card-description {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    font-size: 12px;
+    color: #888;
     margin: 0;
-    opacity: 0.8;
+    line-height: 1.4;
+}
+
+/* Mes Badge - Estilo Referencia */
+.mes-badge {
+    display: inline-block;
+    background: #e8f0fe;
+    color: #3a7bd5;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 
 /* Botón Ver Más */
 .load-more-btn {
-    border-radius: 25px;
-    padding: 14px 32px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border-radius: 30px;
+    padding: 13px 35px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    background: linear-gradient(135deg, #1a2e4a, #3a7bd5);
     border: none;
     color: white;
-    font-size: 1rem;
-    box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
+    font-size: 15px;
+    box-shadow: 0 4px 14px rgba(58, 123, 213, 0.35);
+    cursor: pointer;
 }
 
 .load-more-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(58, 123, 213, 0.45);
 }
 
-.load-more-btn i {
-    transition: transform 0.3s ease;
-}
-
-.load-more-btn:hover i {
-    transform: rotate(90deg);
+/* Contador */
+.contador-fotos {
+    text-align: center;
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 16px;
 }
 
 /* Responsive para Selectores */
@@ -204,7 +211,7 @@
     }
     
     .category-section {
-        padding: 20px 15px;
+        padding: 0;
         margin-bottom: 20px;
     }
     
@@ -221,19 +228,31 @@
     .media-card-image {
         height: 200px;
     }
+    
+    .media-card-content {
+        padding: 12px;
+    }
+    
+    .media-card-title {
+        font-size: 14px;
+    }
+    
+    .media-card-description {
+        font-size: 11px;
+    }
 }
 
 @media (max-width: 480px) {
     .media-card-content {
-        padding: 15px;
+        padding: 10px;
     }
     
     .media-card-title {
-        font-size: 1rem;
+        font-size: 13px;
     }
     
     .media-card-description {
-        font-size: 0.85rem;
+        font-size: 10px;
     }
 }
 
