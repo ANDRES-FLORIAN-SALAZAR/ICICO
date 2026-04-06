@@ -177,6 +177,55 @@
     transform: translateY(-2px);
 }
 
+/* Filtros Combinados */
+.filtros-mes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--light-color);
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+}
+
+.filtro-select {
+    padding: 10px 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background: var(--white-color);
+    color: var(--dark-color);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+    min-width: 150px;
+}
+
+.filtro-select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.1);
+}
+
+.filtro-input {
+    padding: 10px 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background: var(--white-color);
+    color: var(--dark-color);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+    width: 100px;
+}
+
+.filtro-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.1);
+}
+
 /* Responsive - Estilo Spotify con Tamaños Fijos */
 @media (max-width: 1200px) {
     .gallery-grid {
