@@ -125,11 +125,22 @@
     // Función de inicialización
     async function initializeGallery() {
         console.log('🚀 Inicializando galería...');
+        console.log('📋 DOM ready:', document.readyState);
+        console.log('🌐 URL actual:', window.location.href);
+        
+        // Verificar elementos críticos
+        const imageGallery = document.getElementById('imageGallery');
+        console.log('🎯 imageGallery element:', imageGallery);
+        
+        if (!imageGallery) {
+            console.error('❌ No se encontró el elemento #imageGallery');
+            return;
+        }
         
         await loadGalleryData();
         
         if (!galleryData) {
-            console.log('❌ Error: galleryData es null después de cargar');
+            console.error('❌ Error: galleryData es null después de cargar');
             return;
         }
         

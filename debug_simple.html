@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Galería</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .debug { background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .error { background: #ffe6e6; color: red; }
+        .success { background: #e6ffe6; color: green; }
+        .warning { background: #fff3cd; color: #856404; }
+        img { max-width: 200px; height: auto; margin: 10px; border: 2px solid #ddd; }
+        .media-card { border: 1px solid #ddd; margin: 10px; padding: 10px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Debug Galería</h1>
+    <div id="debug-info"></div>
+    <div id="test-images"></div>
+
+    <script>
+        const debugInfo = document.getElementById('debug-info');
+        const testImages = document.getElementById('test-images');
+
+        async function debugGallery() {
+            try {
+                debugInfo.innerHTML += '<div class="debug">🚀 Iniciando depuración...</div>';
+                
+                // 1. Verificar si galeria.json existe
+                debugInfo.innerHTML += '<div class="debug">📁 Intentando cargar galeria.json...</div>';
+                const response = await fetch('galeria.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                debugInfo.innerHTML += '<div class="success">✅ JSON cargado correctamente</div>';
+                
+                // 2. Verificar estructura
+                if (!data.categories) {
+                    throw new Error('No existe data.categories');
+                }
+                
+                if (!data.categories.images) {
+                    throw new Error('No existe data.categories.images');
+                }
+                
+                const categories = data.categories.images;
+                debugInfo.innerHTML += `<div class="debug">📂 Categorías encontradas: ${categories.length}</div>`;
+                
+                // 3. Contar imágenes
+                let totalImages = 0;
+                categories.forEach((category, index) => {
+                    debugInfo.innerHTML += `<div class="debug">📁 ${index + 1}. ${category.name}: ${category.items.length} imágenes</div>`;
+                    totalImages += category.items.length;
+                });
+                
+                debugInfo.innerHTML += `<div class="success">📸 Total imágenes: ${totalImages}</div>`;
+                
+                // 4. Probar primeras 3 imágenes
+                const allImages = [];
+                categories.forEach(category => {
+                    allImages.push(...category.items);
+                });
+                
+                testImages.innerHTML = '<h2>🧪 Prueba de imágenes:</h2>';
+                
+                for (let i = 0; i < Math.min(3, allImages.length); i++) {
+                    const img = allImages[i];
+                    const imgElement = document.createElement('div');
+                    imgElement.innerHTML = `
+                        <div class="media-card">
+                            <h4>${img.title}</h4>
+                            <img src="${img.src}" alt="${img.alt}" 
+                                 onerror="this.style.border='2px solid red'; this.alt='ERROR: ' + this.src; this.title='No se pudo cargar: ' + this.src;"
+                                 onload="this.style.border='2px solid green'; this.title='Cargado correctamente: ' + this.src;">
+                            <p><strong>Ruta:</strong> ${img.src}</p>
+                            <p><strong>Alt:</strong> ${img.alt}</p>
+                            <p><strong>Descripción:</strong> ${img.description}</p>
+                        </div>
+                    `;
+                    testImages.appendChild(imgElement);
+                }
+                
+                // 5. Simular renderizado
+                debugInfo.innerHTML += '<div class="debug">🎨 Simulando renderizado...</div>';
+                const mockGallery = document.createElement('div');
+                mockGallery.className = 'gallery-grid';
+                mockGallery.innerHTML = allImages.slice(0, 6).map((img, i) => `
+                    <div class="media-card">
+                        <img src="${img.src}" alt="${img.alt}" style="width: 150px; height: 100px; object-fit: cover;">
+                        <h5>${img.title}</h5>
+                        <p>${img.description}</p>
+                    </div>
+                `).join('');
+                
+                debugInfo.innerHTML += '<div class="success">✅ Renderizado simulado exitoso</div>';
+                
+            } catch (error) {
+                debugInfo.innerHTML += `<div class="error">❌ Error: ${error.message}</div>`;
+                console.error('Error completo:', error);
+            }
+        }
+
+        // Iniciar depuración
+        debugGallery();
+    </script>
+</body>
+</html>
