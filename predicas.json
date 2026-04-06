@@ -1,0 +1,68 @@
+{
+  "categories": {
+    "recientes": [
+      {
+        "id": 1,
+        "title": "Esperando",
+        "speaker": "Líder Ciro",
+        "date": "2026-01-15",
+        "url": "https://www.facebook.com/ruben.casadeoracion/videos/911275481304379/?rdid=sNRDkMrygkWGEqGL#",
+        "platform": "facebook",
+        "duration": "45:30"
+      },
+      {
+        "id": 2,
+        "title": "Cómo Vivir un Año Bajo La Bendición de Dios",
+        "speaker": "Pastor Daniel",
+        "date": "2026-01-08",
+        "url": "https://www.facebook.com/share/v/1DEEDE1fuu/",
+        "platform": "facebook",
+        "duration": "52:15"
+      },
+      {
+        "id": 3,
+        "title": "Del Miedo Al Propósito",
+        "speaker": "Pastor Daniel",
+        "date": "2025-12-25",
+        "url": "https://www.facebook.com/ruben.casadeoracion/videos/890761330544897/?app=fbl",
+        "platform": "facebook",
+        "duration": "48:45"
+      },
+      {
+        "id": 4,
+        "title": "Mensaje de Poder",
+        "speaker": "Pastor Ruben",
+        "date": "2025-12-18",
+        "url": "https://www.facebook.com/share/v/1DYx5Bd3hV/",
+        "platform": "facebook",
+        "duration": "55:20"
+      }
+    ],
+    "clasicas": [
+      {
+        "id": 5,
+        "title": "La Fe que Mueve Montañas",
+        "speaker": "Pastor Ruben",
+        "date": "2025-11-20",
+        "url": "https://www.facebook.com/ruben.casadeoracion/videos/870761330544897/",
+        "platform": "facebook",
+        "duration": "42:10"
+      },
+      {
+        "id": 6,
+        "title": "El Poder de la Oración",
+        "speaker": "Líder Ciro",
+        "date": "2025-11-15",
+        "url": "https://www.facebook.com/ruben.casadeoracion/videos/860761330544897/",
+        "platform": "facebook",
+        "duration": "38:25"
+      }
+    ]
+  },
+  "settings": {
+    "itemsPerPage": 6,
+    "showLoadMore": true,
+    "enableCategories": true,
+    "defaultCategory": "recientes"
+  }
+}
