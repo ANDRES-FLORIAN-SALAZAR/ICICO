@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery Test</title>
+</head>
+<body>
+    <h1>Testing Gallery</h1>
+    <div id="test-results"></div>
+    
+    <script>
+        // Test if galeria.json loads
+        fetch('galeria.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('test-results').innerHTML = 
+                    '<h2>✅ JSON loaded successfully</h2>' +
+                    '<p>Categories: ' + Object.keys(data.categories).join(', ') + '</p>' +
+                    '<p>Total images: ' + data.categories.images.reduce((sum, cat) => sum + cat.items.length, 0) + '</p>';
+            })
+            .catch(error => {
+                document.getElementById('test-results').innerHTML = 
+                    '<h2>❌ Error loading JSON</h2><p>' + error.message + '</p>';
+            });
+    </script>
+</body>
+</html>

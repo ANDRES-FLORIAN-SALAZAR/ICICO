@@ -154,7 +154,7 @@ animationStyle.textContent = `
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(animationStyle);
 
 // Función para imagen fullscreen - Solo para Galería
 function initImageFullscreen() {
