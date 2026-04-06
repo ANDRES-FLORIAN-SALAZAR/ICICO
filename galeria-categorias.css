@@ -1,85 +1,6 @@
-/* Estilos para Galería Categorizada - Estilo Referencia */
+/* Galería Simplificada - Casa de Oración */
 
-/* Selector de Categorías */
-.category-selector {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 30px;
-}
-
-.category-selector .btn-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-.category-selector .btn {
-    border-radius: 25px;
-    padding: 12px 24px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: 2px solid var(--primary-color);
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 0.95rem;
-    min-width: 120px;
-}
-
-.category-selector .btn:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(49, 130, 206, 0.3);
-}
-
-.category-selector .btn.active {
-    background: var(--primary-color);
-    box-shadow: 0 5px 15px rgba(49, 130, 206, 0.3);
-}
-
-/* Secciones de Categoría */
-.category-section {
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
-    margin-bottom: 30px;
-    border: none;
-}
-
-.category-header {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: none;
-}
-
-.category-title {
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 1.4rem;
-    margin: 0;
-    display: flex;
-    align-items: center;
-}
-
-.category-title i {
-    color: var(--primary-color);
-    margin-right: 10px;
-}
-
-.category-header .badge {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-    border-radius: 20px;
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-    border: none;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
-}
-
-/* Grid de Galería - Estilo Referencia */
+/* Grid de Galería */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -108,7 +29,7 @@
     }
 }
 
-/* Tarjetas de Imágenes - Estilo Referencia */
+/* Tarjetas de Imágenes - Estilo Simple */
 .media-card {
     background: white;
     border-radius: 12px;
@@ -158,77 +79,24 @@
     line-height: 1.4;
 }
 
-/* Mes Badge - Estilo Referencia */
-.mes-badge {
-    display: inline-block;
-    background: #e8f0fe;
-    color: #3a7bd5;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 10px;
-    margin-top: 5px;
+/* Animaciones */
+.media-card {
+    animation: fadeInUp 0.6s ease-out;
 }
 
-/* Botón Ver Más */
-.load-more-btn {
-    border-radius: 30px;
-    padding: 13px 35px;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    background: linear-gradient(135deg, #1a2e4a, #3a7bd5);
-    border: none;
-    color: white;
-    font-size: 15px;
-    box-shadow: 0 4px 14px rgba(58, 123, 213, 0.35);
-    cursor: pointer;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.load-more-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(58, 123, 213, 0.45);
-}
-
-/* Contador */
-.contador-fotos {
-    text-align: center;
-    font-size: 13px;
-    color: #999;
-    margin-bottom: 16px;
-}
-
-/* Responsive para Selectores */
+/* Responsive */
 @media (max-width: 768px) {
-    .category-selector .btn-group {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .category-selector .btn {
-        width: 100%;
-        justify-content: center;
-        min-width: auto;
-    }
-    
-    .category-section {
-        padding: 0;
-        margin-bottom: 20px;
-    }
-    
-    .category-header {
-        flex-direction: column;
-        align-items: flex-start !important;
-        gap: 12px;
-    }
-    
-    .category-title {
-        font-size: 1.2rem;
-    }
-    
-    .media-card-image {
-        height: 200px;
-    }
-    
     .media-card-content {
         padding: 12px;
     }
@@ -254,52 +122,4 @@
     .media-card-description {
         font-size: 10px;
     }
-}
-
-/* Animaciones */
-.category-section {
-    animation: fadeInUp 0.6s ease-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Efecto de carga para nuevas imágenes */
-.media-card.new-item {
-    animation: slideInUp 0.5s ease-out;
-}
-
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Loading state */
-.loading-more {
-    text-align: center;
-    padding: 20px;
-    color: var(--text-primary);
-}
-
-.loading-more i {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
