@@ -12,10 +12,9 @@
                 throw new Error('No se pudo cargar el archivo galeria.json');
             }
             galleryData = await response.json();
-            console.log('📸 Galería cargada:', galleryData);
             return galleryData;
         } catch (error) {
-            console.error('❌ Error cargando galería:', error);
+            console.error('Error cargando galería:', error);
             return null;
         }
     }
@@ -39,24 +38,18 @@
     function renderAllImages() {
         const imageGallery = document.getElementById('imageGallery');
         if (!imageGallery || !galleryData) {
-            console.log('❌ No hay imageGallery o galleryData');
             return;
         }
 
         // Juntar todas las imágenes de todas las categorías
         const allImages = [];
         galleryData.categories.images.forEach(category => {
-            console.log(`📁 Categoría: ${category.name}, Imágenes: ${category.items.length}`);
             allImages.push(...category.items);
         });
-
-        console.log(`📸 Total de imágenes a renderizar: ${allImages.length}`);
 
         // Renderizar todas las imágenes
         const allImagesHtml = allImages.map((image, index) => createImageCard(image, index)).join('');
         imageGallery.innerHTML = allImagesHtml;
-        
-        console.log('✅ Galería renderizada con', allImages.length, 'imágenes');
         
         // Reinicializar AOS
         if (typeof AOS !== 'undefined') {
@@ -124,30 +117,11 @@
 
     // Función de inicialización
     async function initializeGallery() {
-        console.log('🚀 Inicializando galería...');
-        console.log('📋 DOM ready:', document.readyState);
-        console.log('🌐 URL actual:', window.location.href);
-        
-        // Verificar elementos críticos
-        const imageGallery = document.getElementById('imageGallery');
-        console.log('🎯 imageGallery element:', imageGallery);
-        
-        if (!imageGallery) {
-            console.error('❌ No se encontró el elemento #imageGallery');
-            return;
-        }
-        
         await loadGalleryData();
         
         if (!galleryData) {
-            console.error('❌ Error: galleryData es null después de cargar');
             return;
         }
-        
-        console.log('📊 galleryData cargado:', {
-            categories: galleryData.categories ? Object.keys(galleryData.categories) : 'null',
-            settings: galleryData.settings
-        });
         
         renderAllImages();
     }

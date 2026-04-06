@@ -93,7 +93,7 @@
         for (let i = 0; i < 30; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
-            particle.style.particleStyle = `
+            particle.style.cssText = `
                 position: absolute;
                 width: ${Math.random() * 3}px;
                 height: ${Math.random() * 3}px;
@@ -112,7 +112,7 @@
         const duration = 3 + Math.random() * 4;
         const delay = Math.random() * 2;
         
-        shape.shapeStyle = `
+        shape.style.cssText = `
             position: absolute;
             width: ${Math.random() * 3}px;
             height: ${Math.random() * 3}px;
@@ -121,94 +121,36 @@
             left: ${Math.random() * 100}%;
             top: ${Math.random() * 100}%;
             animation: float ${duration}s ${delay}s infinite ease-in-out`;
-        }
+    }
 
-    
-})();
-
-// Animación CSS para partículas flotantes
-const animationStyle = document.createElement('style');
-animationStyle.textContent = `
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px) translateX(0px);
-        }
-        25% {
-            transform: translateY(-20px) translateX(10px);
-        }
-        50% {
-            transform: translateY(10px) translateX(-10px);
-        }
-        75% {
-            transform: translateY(-10px) translateX(20px);
-        }
-    }
-    
-    .particle {
-        animation: float linear infinite;
-    }
-    
-    .navbar.scrolled {
-        background: rgba(44, 62, 80, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    }
-`;
-document.head.appendChild(animationStyle);
-
-// Función para imagen fullscreen - Solo para Galería
-function initImageFullscreen() {
-    // Verificar si estamos en la página de galería
-    if (!window.location.pathname.includes('galeria.html')) {
-        return;
-    }
-    
-    // Crear modal para imagen fullscreen
-    const modal = document.createElement('div');
-    modal.className = 'image-modal';
-    modal.innerHTML = '<img src="" alt="Imagen fullscreen">';
-    document.body.appendChild(modal);
-    
-    // Esperar a que el DOM esté completamente cargado
-    setTimeout(() => {
-        // Buscar todas las imágenes en la página
-        const allImages = document.querySelectorAll('img');
-        console.log('Total de imágenes encontradas:', allImages.length);
-        
-        allImages.forEach((img, index) => {
-            console.log(`Imagen ${index}:`, img.src, img.className);
-            img.classList.add('clickable-image');
-            img.setAttribute('cursor', 'pointer');
-            img.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Click en imagen:', this.src);
-                openImageFullscreen(this.src);
-            });
-        });
-        
-        // Cerrar modal al hacer click
-        modal.addEventListener('click', closeImageFullscreen);
-        
-        // Cerrar modal con tecla Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeImageFullscreen();
+    // Animación CSS para partículas flotantes
+    const animationStyle = document.createElement('style');
+    animationStyle.textContent = `
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px);
             }
-        });
-    }, 1000); // Esperar 1 segundo
-}
+            25% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            50% {
+                transform: translateY(10px) translateX(-10px);
+            }
+            75% {
+                transform: translateY(-10px) translateX(20px);
+            }
+        }
+        
+        .particle {
+            animation: float linear infinite;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+    `;
+    document.head.appendChild(animationStyle);
 
-function openImageFullscreen(imageSrc) {
-    const modal = document.querySelector('.image-modal');
-    const modalImg = modal.querySelector('img');
-    modalImg.src = imageSrc;
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Prevenir scroll
-}
-
-function closeImageFullscreen() {
-    const modal = document.querySelector('.image-modal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Restaurar scroll
-}
+})();
