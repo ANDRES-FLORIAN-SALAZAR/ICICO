@@ -83,14 +83,19 @@ function aplicarFiltros() {
     
     console.log('Aplicando filtros:', {tipo, mes, año});
     
-    imagenesFiltradas = todasLasImagenes.filter(imagen => {
-        const coincideTipo = tipo === 'todos' || imagen.tipo === tipo;
-        const coincideMes = mes === 'todos' || imagen.mes === mes;
-        const coincideAño = !año || imagen.año == año;
+    imagenesFiltradas = todasLasImagenes.filter(item => {
+        // Filtrado por tipo
+        const coincideTipo = tipo === 'todos' || item.tipo === tipo;
+        
+        // Filtrado por mes y año
+        const coincideMes = mes === 'todos' || item.mes === mes;
+        const coincideAño = !año || item.año == año;
+        
         return coincideTipo && coincideMes && coincideAño;
     });
     
     console.log('Imágenes filtradas:', imagenesFiltradas.length);
+    console.log('Primeros 3 elementos filtrados:', imagenesFiltradas.slice(0, 3));
     
     paginaActual = 0;
     renderizarGaleria();
