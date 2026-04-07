@@ -6,6 +6,49 @@ let imagenesFiltradas = [];
 let paginaActual = 0;
 const imagenesPorPagina = 6;
 
+// Detectar mes actual
+function detectarMesActual() {
+    const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    const fechaActual = new Date();
+    const mesActual = meses[fechaActual.getMonth()];
+    const añoActual = fechaActual.getFullYear();
+    
+    console.log(`Mes detectado: ${mesActual} ${añoActual}`);
+    
+    // Establecer automáticamente el mes y año actual en los filtros
+    document.getElementById('filtro-mes').value = mesActual;
+    document.getElementById('filtro-año').value = añoActual;
+    
+    return { mes: mesActual, año: añoActual };
+}
+
+// Ordenar y regenerar IDs
+function ordenarYRegenerarIds(imagenes) {
+    console.log('Ordenando imágenes y regenerando IDs...');
+    
+    // Ordenar por mes y año (cronológicamente)
+    const mesesOrden = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    
+    imagenes.sort((a, b) => {
+        // Primero por año
+        if (a.año !== b.año) {
+            return a.año - b.año;
+        }
+        // Luego por mes
+        return mesesOrden.indexOf(a.mes) - mesesOrden.indexOf(b.mes);
+    });
+    
+    // Regenerar IDs en orden
+    imagenes.forEach((imagen, index) => {
+        imagen.id = index + 1;
+    });
+    
+    console.log(`Imágenes ordenadas: ${imagenes.length} imágenes`);
+    console.log('Primeras 3 imágenes:', imagenes.slice(0, 3));
+    
+    return imagenes;
+}
+
 // Cargar datos desde JSON
 async function cargarImagenes() {
     try {
@@ -14,9 +57,20 @@ async function cargarImagenes() {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
-        todasLasImagenes = data.imagenes;
+        
+        // Ordenar y regenerar IDs automáticamente
+        todasLasImagenes = ordenarYRegenerarIds(data.imagenes);
         imagenesFiltradas = [...todasLasImagenes];
-        console.log('Imágenes cargadas:', todasLasImagenes.length);
+        
+        // Detectar mes actual y establecer filtros
+        const { mes, año } = detectarMesActual();
+        
+        console.log('Imágenes cargadas y procesadas:', todasLasImagenes.length);
+        console.log('Mes actual detectado:', mes, año);
+        
+        // Aplicar filtros automáticamente al cargar
+        setTimeout(() => aplicarFiltros(), 500);
+        
         return true;
     } catch (error) {
         console.error('Error cargando imágenes:', error);
@@ -135,18 +189,20 @@ function cargarMas() {
     renderizarGaleria();
 }
 
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', async function() {
-    console.log('DOM listo, iniciando galería...');
+// Inicialización automática cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM cargado - Inicializando galería automáticamente...');
     
-    // Cargar imágenes
-    const cargado = await cargarImagenes();
-    if (!cargado) {
-        document.getElementById('galeria-container').innerHTML = 
-            '<div class="col-12 text-center"><p class="text-danger">Error cargando las imágenes</p></div>';
-        return;
-    }
-    
+    // Esperar un momento y cargar automáticamente
+    setTimeout(() => {
+        cargarImagenes().then(success => {
+            if (success) {
+                console.log('Galería inicializada exitosamente');
+            } else {
+                console.error('Error inicializando galería');
+            }
+        });
+    }, 1000);
     // Renderizar galería inicial
     renderizarGaleria();
     
