@@ -146,7 +146,9 @@ function renderizarGaleria() {
     // Generar HTML separando imágenes y videos
     let html = '';
     imagenesMostrar.forEach((item, index) => {
+        console.log(`8. Procesando item ${index + 1}:`, item);
         if (item.tipo === 'video') {
+            console.log(`9. Es video - generando HTML para: ${item.title}`);
             html += `
                 <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
                     <div class="card h-100 shadow">
@@ -165,6 +167,7 @@ function renderizarGaleria() {
                 </div>
             `;
         } else {
+            console.log(`9. Es imagen - generando HTML para: ${item.title}`);
             html += `
                 <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
                     <div class="card h-100 shadow">
@@ -180,14 +183,14 @@ function renderizarGaleria() {
         }
     });
     
-    console.log('9. HTML generado:', html.substring(0, 200) + '...');
+    console.log('10. HTML generado:', html.substring(0, 200) + '...');
     
     // Si es la primera página, reemplazar todo
     if (paginaActual === 0) {
-        console.log('10. Primera página - reemplazando HTML');
+        console.log('11. Primera página - reemplazando HTML');
         container.innerHTML = html;
     } else {
-        console.log('11. Página adicional - agregando HTML');
+        console.log('12. Página adicional - agregando HTML');
         // Si no, agregar al final
         container.innerHTML += html;
     }
@@ -206,7 +209,7 @@ function renderizarGaleria() {
         setTimeout(() => AOS.refresh(), 100);
     }
     
-    console.log('12. Galería renderizada exitosamente');
+    console.log('13. Galería renderizada exitosamente');
 }
 
 // Ver imagen en modal
