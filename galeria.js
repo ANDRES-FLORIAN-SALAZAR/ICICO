@@ -9,7 +9,7 @@ const imagenesPorPagina = 6;
 // Cargar datos desde JSON
 async function cargarImagenes() {
     try {
-        const response = await fetch('galeria-nueva.json');
+        const response = await fetch('galeria.json');
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
