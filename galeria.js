@@ -140,7 +140,7 @@ function renderizarGaleria() {
                 <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
                     <div class="card h-100 shadow">
                         <div class="video-container">
-                            <video controls class="video-player" poster="${item.src.replace('.mp4', '.jpg')}">
+                            <video controls class="video-player">
                                 <source src="${item.src}" type="video/mp4">
                                 Tu navegador no soporta videos.
                             </video>
