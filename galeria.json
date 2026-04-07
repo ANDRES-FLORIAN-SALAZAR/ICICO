@@ -1,25 +1,7 @@
 {
   "imagenes": [
     {
-      "id": 5,
-      "src": "Multimedia/images/5.jpg",
-      "alt": "Servicio Cristiano",
-      "title": "Servicio",
-      "description": "Sirviendo con amor",
-      "mes": "Febrero",
-      "año": 2026
-    },
-    {
-      "id": 6,
-      "src": "Multimedia/images/6.jpg",
-      "alt": "Estudio Bíblico",
-      "title": "Oración",
-      "description": "Compartiendo momentos de oración",
-      "mes": "Febrero",
-      "año": 2026
-    },
-    {
-      "id": 10,
+      "id": 1,
       "src": "Multimedia/images/10.jpg",
       "alt": "Alabanza",
       "title": "Enseñanza",
@@ -28,7 +10,7 @@
       "año": 2026
     },
     {
-      "id": 13,
+      "id": 2,
       "src": "Multimedia/images/13.jpg",
       "alt": "Conferencia",
       "title": "Aprendizaje",
@@ -37,7 +19,7 @@
       "año": 2026
     },
     {
-      "id": 14,
+      "id": 3,
       "src": "Multimedia/images/14.jpg",
       "alt": "Retiro Espiritual",
       "title": "Reflexión",
@@ -46,7 +28,7 @@
       "año": 2026
     },
     {
-      "id": 15,
+      "id": 4,
       "src": "Multimedia/images/15.jpg",
       "alt": "Fiesta Cristiana",
       "title": "Celebración",
@@ -55,7 +37,7 @@
       "año": 2026
     },
     {
-      "id": 16,
+      "id": 5,
       "src": "Multimedia/images/16.jpg",
       "alt": "Servicio Comunitario",
       "title": "Ayuda",
@@ -64,7 +46,7 @@
       "año": 2026
     },
     {
-      "id": 17,
+      "id": 6,
       "src": "Multimedia/images/17.jpg",
       "alt": "Concierto de Alabanza",
       "title": "Santificación",
@@ -73,7 +55,7 @@
       "año": 2026
     },
     {
-      "id": 18,
+      "id": 7,
       "src": "Multimedia/images/18.jpg",
       "alt": "Campamento Cristiano",
       "title": "Comunión",
@@ -82,7 +64,26 @@
       "año": 2026
     },
     {
-      "id": 11,
+      "id": 8,
+      "src": "Multimedia/images/5.jpg",
+      "alt": "Servicio Cristiano",
+      "title": "Servicio",
+      "description": "Sirviendo con amor",
+      "mes": "Febrero",
+      "año": 2026
+    },
+    {
+      "id": 9,
+      "src": "Multimedia/images/6.jpg",
+      "alt": "Estudio Bíblico",
+      "title": "Oración",
+      "description": "Compartiendo momentos de oración",
+      "mes": "Febrero",
+      "año": 2026
+    },
+
+    {
+      "id": 10,
       "src": "Multimedia/images/11.jpg",
       "alt": "Bautismo",
       "title": "Nacimiento Espiritual",
@@ -90,9 +91,8 @@
       "mes": "Diciembre",
       "año": 2025
     },
-
     {
-      "id": 1,
+      "id": 11,
       "src": "Multimedia/images/1.jpg",
       "alt": "Culto de Adoración",
       "title": "Agradecimiento",
@@ -101,7 +101,7 @@
       "año": 2025
     },
     {
-      "id": 2,
+      "id": 12,
       "src": "Multimedia/images/2.jpg",
       "alt": "Predicación",
       "title": "Palabra de Dios",
@@ -110,7 +110,7 @@
       "año": 2025
     },
     {
-      "id": 3,
+      "id": 13,
       "src": "Multimedia/images/3.jpg",
       "alt": "Oración Comunitaria",
       "title": "Adoración",
@@ -119,7 +119,7 @@
       "año": 2025
     },
     {
-      "id": 4,
+      "id": 14,
       "src": "Multimedia/images/4.jpg",
       "alt": "Confraternidad",
       "title": "Comunidad",
@@ -128,7 +128,7 @@
       "año": 2025
     },
     {
-      "id": 7,
+      "id": 15,
       "src": "Multimedia/images/7.jpg",
       "alt": "Culto Especial",
       "title": "Celebración",
@@ -137,7 +137,7 @@
       "año": 2025
     },
     {
-      "id": 8,
+      "id": 16,
       "src": "Multimedia/images/8.jpg",
       "alt": "Grupo de Jóvenes",
       "title": "Lazos",
@@ -146,7 +146,7 @@
       "año": 2025
     },
     {
-      "id": 9,
+      "id": 17,
       "src": "Multimedia/images/9.jpg",
       "alt": "Misión",
       "title": "Evangelismo",
@@ -155,7 +155,7 @@
       "año": 2025
     },
     {
-      "id": 12,
+      "id": 18,
       "src": "Multimedia/images/12.jpg",
       "alt": "Comunión",
       "title": "Adoración",
