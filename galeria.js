@@ -187,9 +187,9 @@ function cargarMas() {
 
 // Inicialización automática cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM cargado - Inicializando galería automáticamente...');
+    console.log('DOM cargado - Inicializando galería...');
     
-    // Esperar un momento y cargar automáticamente
+    // Cargar imágenes y mostrar todas
     setTimeout(() => {
         cargarImagenes().then(success => {
             if (success) {
@@ -199,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, 1000);
+    
     // Renderizar galería inicial
     renderizarGaleria();
     
