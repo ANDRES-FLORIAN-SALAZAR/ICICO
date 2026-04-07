@@ -1,56 +1,88 @@
 // Galería Completa - Casa de Oración
-console.log('🚀 Iniciando galería completa...');
+console.log('=== GALERÍA INICIANDO ===');
 
 let galleryData = null;
 
 // Cargar datos desde JSON
 async function cargarGaleria() {
+    console.log('1. Iniciando carga de galeria.json...');
     try {
+        console.log('2. Haciendo fetch a galeria.json...');
         const response = await fetch('galeria.json');
+        console.log('3. Response status:', response.status);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        console.log('4. Parseando JSON...');
         const data = await response.json();
+        console.log('5. JSON parseado:', data);
+        
         galleryData = data;
-        console.log('✅ Galería cargada:', data);
+        console.log('6. Galería cargada exitosamente');
         return data;
     } catch (error) {
-        console.error('❌ Error cargando galería:', error);
+        console.error('7. ERROR cargando galería:', error);
         return null;
     }
 }
 
 // Filtrar por mes y año combinados
 function filtrarPorMesYAño() {
+    console.log('=== FILTRANDO ===');
     const mesSelect = document.getElementById('filtro-mes-select');
     const yearInput = document.getElementById('filtro-year-input');
     
-    const mes = mesSelect.value;
-    const año = yearInput.value;
+    console.log('8. Elementos encontrados:', {mesSelect, yearInput});
     
-    console.log(`🔍 Filtrando: mes=${mes}, año=${año}`);
+    const mes = mesSelect ? mesSelect.value : null;
+    const año = yearInput ? yearInput.value : null;
+    
+    console.log('9. Valores de filtro:', {mes, año});
     
     renderizarGaleria(mes, año);
 }
 
 // Renderizar galería con filtros
 async function renderizarGaleria(mesFiltro = 'todos', añoFiltro = null) {
+    console.log('=== RENDERIZANDO GALERÍA ===');
+    console.log('10. Parámetros:', {mesFiltro, añoFiltro});
+    
     const container = document.getElementById('imageGallery');
-    if (!container) return;
+    console.log('11. Container encontrado:', container);
+    
+    if (!container) {
+        console.error('12. ERROR: No se encontró #imageGallery');
+        return;
+    }
 
     // Cargar datos si no están cargados
     if (!galleryData) {
-        console.log('📁 Cargando galeria.json...');
+        console.log('13. Cargando datos...');
         await cargarGaleria();
     }
     
-    if (!galleryData || !galleryData.categories || !galleryData.categories.images) {
-        container.innerHTML = '<p class="text-center">No hay imágenes disponibles.</p>';
+    if (!galleryData) {
+        console.error('14. ERROR: No se pudo cargar galleryData');
+        container.innerHTML = '<p class="text-center text-danger">Error cargando los datos de la galería</p>';
+        return;
+    }
+    
+    if (!galleryData.categories || !galleryData.categories.images) {
+        console.error('15. ERROR: Estructura incorrecta:', galleryData);
+        container.innerHTML = '<p class="text-center text-danger">Estructura de datos incorrecta</p>';
         return;
     }
 
     // Extraer y filtrar imágenes
     let todasLasImagenes = [];
     galleryData.categories.images.forEach(categoria => {
+        console.log('16. Procesando categoría:', categoria.name);
         todasLasImagenes.push(...categoria.items);
     });
+    
+    console.log('17. Total imágenes extraídas:', todasLasImagenes.length);
     
     // Aplicar filtros
     const imagenesFiltradas = todasLasImagenes.filter(img => {
@@ -69,14 +101,16 @@ async function renderizarGaleria(mesFiltro = 'todos', añoFiltro = null) {
         return coincideMes && coincideAño;
     });
     
-    console.log(`📸 Imágenes filtradas: ${imagenesFiltradas.length} de ${todasLasImagenes.length}`);
+    console.log('18. Imágenes filtradas:', imagenesFiltradas.length, 'de', todasLasImagenes.length);
     
     if (imagenesFiltradas.length === 0) {
+        console.log('19. No hay imágenes para mostrar');
         container.innerHTML = '<p class="text-center">No hay imágenes para los filtros seleccionados.</p>';
         return;
     }
 
     // Generar HTML con Bootstrap
+    console.log('20. Generando HTML...');
     let html = '<div class="row g-4">';
     imagenesFiltradas.forEach((img, index) => {
         html += `
@@ -95,6 +129,7 @@ async function renderizarGaleria(mesFiltro = 'todos', añoFiltro = null) {
     });
     html += '</div>';
     
+    console.log('21. HTML generado, insertando...');
     // Insertar HTML
     container.innerHTML = html;
     
@@ -103,15 +138,20 @@ async function renderizarGaleria(mesFiltro = 'todos', añoFiltro = null) {
         setTimeout(() => AOS.refresh(), 100);
     }
     
-    console.log(`✅ Galería renderizada: ${imagenesFiltradas.length} imágenes`);
+    console.log('22. Galería renderizada exitosamente');
 }
 
 // Ver imagen en modal
 function verImagen(src, title, description) {
+    console.log('=== ABRIR MODAL ===');
+    console.log('23. Parámetros:', {src, title, description});
+    
     const modal = document.getElementById('mediaPreviewModal');
     const img = document.getElementById('previewImage');
     const titleEl = document.getElementById('mediaPreviewTitle');
     const descEl = document.getElementById('mediaPreviewDescription');
+    
+    console.log('24. Elementos modal:', {modal, img, titleEl, descEl});
     
     if (modal && img) {
         img.src = src;
@@ -121,12 +161,24 @@ function verImagen(src, title, description) {
         
         const bsModal = new bootstrap.Modal(modal);
         bsModal.show();
+        console.log('25. Modal abierto');
+    } else {
+        console.error('26. ERROR: No se encontraron elementos del modal');
     }
 }
 
 // Inicializar cuando el DOM esté listo
+console.log('27. Verificando estado del DOM:', document.readyState);
+
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => renderizarGaleria());
+    console.log('28. DOM está cargando, agregando listener...');
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('29. DOM cargado, iniciando renderizado...');
+        renderizarGaleria();
+    });
 } else {
+    console.log('30. DOM ya listo, iniciando renderizado...');
     renderizarGaleria();
 }
+
+console.log('=== GALERÍA SCRIPT CARGADO ===');
