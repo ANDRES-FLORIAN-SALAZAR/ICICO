@@ -49,8 +49,8 @@
       "id": 6,
       "src": "Multimedia/images/6.jpg",
       "alt": "Estudio Bíblico",
-      "title": "Enseñanza",
-      "description": "Aprendiendo de Jesús",
+      "title": "Oración",
+      "description": "Compartiendo momentos de oración",
       "mes": "febrero",
       "año": 2026
     },
@@ -112,8 +112,8 @@
       "id": 13,
       "src": "Multimedia/images/13.jpg",
       "alt": "Conferencia",
-      "title": "Enseñanza",
-      "description": "Aprendiendo juntos",
+      "title": "Aprendizaje",
+      "description": "Aprendiendo de Dios",
       "mes": "mayo",
       "año": 2026
     },
