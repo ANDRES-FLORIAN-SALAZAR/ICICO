@@ -18,7 +18,7 @@
     font-size: 14px;
     transition: all 0.3s ease;
     color: #000000;
-    background: #4a5568;
+    background: #ffffff;
 }
 
 .filtro-select:focus, .filtro-input:focus {
@@ -29,8 +29,8 @@
 }
 
 .filtro-select option {
-    background: #4a5568;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
 }
 
 /* Etiquetas de formulario */
