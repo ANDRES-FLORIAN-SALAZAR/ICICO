@@ -95,7 +95,8 @@ function aplicarFiltros() {
     });
     
     console.log('Imágenes filtradas:', imagenesFiltradas.length);
-    console.log('Primeros 3 elementos filtrados:', imagenesFiltradas.slice(0, 3));
+    console.log('Videos encontrados:', imagenesFiltradas.filter(item => item.tipo === 'video').length);
+    console.log('Imágenes encontradas:', imagenesFiltradas.filter(item => item.tipo === 'imagen').length);
     
     paginaActual = 0;
     renderizarGaleria();
