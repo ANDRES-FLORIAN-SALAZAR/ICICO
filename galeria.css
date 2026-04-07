@@ -89,19 +89,29 @@
     background-image: none !important;
 }
 
+/* Sobreescribir variable CSS de Bootstrap */
 .gallery-item .card {
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    height: 100%;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease !important;
+    height: 100% !important;
 }
 
 .gallery-item .card-body {
-    padding: 1rem;
+    padding: 1rem !important;
 }
 
 .gallery-item .card:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* Forzar transparencia en todos los elementos de la galería */
+#galeria-container .card,
+#galeria-container .card-body,
+#galeria-container .card * {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
 }
 
 /* Títulos y Descripciones */
