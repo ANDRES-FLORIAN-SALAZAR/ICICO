@@ -14,7 +14,7 @@
     --warning-color: #2c5282;
     --danger-color: #4a5568;
     --background-color: #ffffff;
-    --card-background: #ffffff;
+    --card-background: transparent;
     --text-primary: #1a202c;
     --text-secondary: #4a5568;
     --text-light: #718096;
@@ -649,6 +649,7 @@ section.py-5 {
     transition: var(--transition);
     box-shadow: var(--shadow-md);
     background: var(--card-background);
+    background-color: transparent;
 }
 
 .gallery-item:hover {
