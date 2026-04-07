@@ -45,11 +45,23 @@ function aplicarFiltros() {
 
 // Renderizar galería
 function renderizarGaleria() {
+    console.log('=== RENDERIZANDO GALERÍA ===');
     const container = document.getElementById('galeria-container');
     const btnCargarMas = document.getElementById('btn-cargar-mas');
     
+    console.log('1. Container encontrado:', container);
+    console.log('2. Botón cargar más encontrado:', btnCargarMas);
+    console.log('3. Total imágenes filtradas:', imagenesFiltradas.length);
+    
     if (!container) {
-        console.error('No se encontró el contenedor');
+        console.error('4. ERROR: No se encontró el contenedor');
+        return;
+    }
+    
+    if (imagenesFiltradas.length === 0) {
+        console.log('5. No hay imágenes para mostrar');
+        container.innerHTML = '<div class="col-12 text-center"><p class="text-warning">No hay imágenes para mostrar</p></div>';
+        btnCargarMas.style.display = 'none';
         return;
     }
     
@@ -58,11 +70,13 @@ function renderizarGaleria() {
     const fin = inicio + imagenesPorPagina;
     const imagenesMostrar = imagenesFiltradas.slice(inicio, fin);
     
-    console.log(`Mostrando imágenes ${inicio + 1} a ${Math.min(fin, imagenesFiltradas.length)} de ${imagenesFiltradas.length}`);
+    console.log(`6. Mostrando imágenes ${inicio + 1} a ${Math.min(fin, imagenesFiltradas.length)} de ${imagenesFiltradas.length}`);
+    console.log('7. Imágenes a mostrar:', imagenesMostrar);
     
     // Generar HTML
     let html = '';
     imagenesMostrar.forEach((imagen, index) => {
+        console.log(`8. Procesando imagen ${index + 1}:`, imagen);
         html += `
             <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
                 <div class="card h-100 shadow">
@@ -77,10 +91,14 @@ function renderizarGaleria() {
         `;
     });
     
+    console.log('9. HTML generado:', html.substring(0, 200) + '...');
+    
     // Si es la primera página, reemplazar todo
     if (paginaActual === 0) {
+        console.log('10. Primera página - reemplazando HTML');
         container.innerHTML = html;
     } else {
+        console.log('11. Página adicional - agregando HTML');
         // Si no, agregar al final
         container.innerHTML += html;
     }
@@ -98,6 +116,8 @@ function renderizarGaleria() {
     if (typeof AOS !== 'undefined') {
         setTimeout(() => AOS.refresh(), 100);
     }
+    
+    console.log('12. Galería renderizada exitosamente');
 }
 
 // Ver imagen en modal
