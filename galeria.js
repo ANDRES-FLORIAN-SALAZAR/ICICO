@@ -90,7 +90,7 @@ function aplicarFiltros() {
         // Filtrado por tipo
         const coincideTipo = tipo === 'todos' || item.tipo === tipo;
         
-        // Filtrado por mes y año
+        // Filtrado por mes y año (solo si se selecciona específicamente)
         const coincideMes = mes === 'todos' || item.mes === mes;
         const coincideAño = !año || item.año == año;
         
