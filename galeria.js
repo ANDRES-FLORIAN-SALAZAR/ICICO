@@ -218,18 +218,13 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM cargado - Inicializando galería...');
     
     // Cargar imágenes y mostrar todas
-    setTimeout(() => {
-        cargarImagenes().then(success => {
-            if (success) {
-                console.log('Galería inicializada exitosamente');
-            } else {
-                console.error('Error inicializando galería');
-            }
-        });
-    }, 1000);
-    
-    // Renderizar galería inicial
-    renderizarGaleria();
+    cargarImagenes().then(success => {
+        if (success) {
+            console.log('Galería inicializada exitosamente');
+        } else {
+            console.error('Error inicializando galería');
+        }
+    });
     
     // Agregar evento al botón de cargar más
     document.getElementById('btn-cargar-mas').addEventListener('click', cargarMas);
