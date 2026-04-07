@@ -77,15 +77,17 @@ async function cargarImagenes() {
 
 // Aplicar filtros
 function aplicarFiltros() {
+    const tipo = document.getElementById('filtro-tipo').value;
     const mes = document.getElementById('filtro-mes').value;
     const año = document.getElementById('filtro-año').value;
     
-    console.log('Aplicando filtros:', {mes, año});
+    console.log('Aplicando filtros:', {tipo, mes, año});
     
     imagenesFiltradas = todasLasImagenes.filter(imagen => {
+        const coincideTipo = tipo === 'todos' || imagen.tipo === tipo;
         const coincideMes = mes === 'todos' || imagen.mes === mes;
         const coincideAño = !año || imagen.año == año;
-        return coincideMes && coincideAño;
+        return coincideTipo && coincideMes && coincideAño;
     });
     
     console.log('Imágenes filtradas:', imagenesFiltradas.length);
@@ -124,22 +126,41 @@ function renderizarGaleria() {
     console.log(`6. Mostrando imágenes ${inicio + 1} a ${Math.min(fin, imagenesFiltradas.length)} de ${imagenesFiltradas.length}`);
     console.log('7. Imágenes a mostrar:', imagenesMostrar);
     
-    // Generar HTML
+    // Generar HTML separando imágenes y videos
     let html = '';
-    imagenesMostrar.forEach((imagen, index) => {
-        console.log(`8. Procesando imagen ${index + 1}:`, imagen);
-        html += `
-            <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
-                <div class="card h-100 shadow">
-                    <img src="${imagen.src}" alt="${imagen.alt}" onclick="verImagen('${imagen.src}', '${imagen.title}', '${imagen.description}')" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">${imagen.title}</h5>
-                        <p class="card-text">${imagen.description}</p>
-                        <small class="text-muted">${imagen.mes} ${imagen.año}</small>
+    imagenesMostrar.forEach((item, index) => {
+        if (item.tipo === 'video') {
+            html += `
+                <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="card h-100 shadow">
+                        <div class="video-container">
+                            <video controls class="video-player" poster="${item.src.replace('.mp4', '.jpg')}">
+                                <source src="${item.src}" type="video/mp4">
+                                Tu navegador no soporta videos.
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${item.title}</h5>
+                            <p class="card-text">${item.description}</p>
+                            <small class="text-muted">${item.mes} ${item.año}</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
+        } else {
+            html += `
+                <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="card h-100 shadow">
+                        <img src="${item.src}" alt="${item.alt}" onclick="verImagen('${item.src}', '${item.title}', '${item.description}')" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">${item.title}</h5>
+                            <p class="card-text">${item.description}</p>
+                            <small class="text-muted">${item.mes} ${item.año}</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
     });
     
     console.log('9. HTML generado:', html.substring(0, 200) + '...');
@@ -158,7 +179,7 @@ function renderizarGaleria() {
     const totalMostradas = (paginaActual + 1) * imagenesPorPagina;
     if (totalMostradas < imagenesFiltradas.length) {
         btnCargarMas.style.display = 'inline-block';
-        btnCargarMas.textContent = `Cargar más (${imagenesFiltradas.length - totalMostradas} imágenes restantes)`;
+        btnCargarMas.textContent = `Cargar más (${imagenesFiltradas.length - totalMostradas} elementos restantes)`;
     } else {
         btnCargarMas.style.display = 'none';
     }

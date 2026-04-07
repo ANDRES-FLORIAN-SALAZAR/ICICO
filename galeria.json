@@ -152,7 +152,8 @@
       "title": "Evangelismo",
       "description": "Llevando el mensaje de salvación",
       "mes": "Diciembre",
-      "año": 2025
+      "año": 2025,
+      "tipo": "imagen"
     },
     {
       "id": 18,
@@ -161,7 +162,38 @@
       "title": "Adoración",
       "description": "Unidos en adoración",
       "mes": "Diciembre",
-      "año": 2025
+      "año": 2025,
+      "tipo": "imagen"
+    },
+    {
+      "id": 19,
+      "src": "Multimedia/videos/video1.mp4",
+      "alt": "Predicación Dominical",
+      "title": "Mensaje de Esperanza",
+      "description": "Palabra de Dios para la congregación",
+      "mes": "Marzo",
+      "año": 2026,
+      "tipo": "video"
+    },
+    {
+      "id": 20,
+      "src": "Multimedia/videos/video2.mp4",
+      "alt": "Conferencia Juvenil",
+      "title": "Fuego Santo",
+      "description": "Enseñanza para los jóvenes",
+      "mes": "Abril",
+      "año": 2026,
+      "tipo": "video"
+    },
+    {
+      "id": 21,
+      "src": "Multimedia/videos/video3.mp4",
+      "alt": "Concierto de Alabanza",
+      "title": "Adoración en Familia",
+      "description": "Unidos cantando al Señor",
+      "mes": "Mayo",
+      "año": 2026,
+      "tipo": "video"
     }
   ]
 }

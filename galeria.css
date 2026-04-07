@@ -80,6 +80,27 @@
     transform: scale(1.05);
 }
 
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.video-player {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.video-player:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
 /* Cards de Galería */
 .gallery-item .card,
 .gallery-item .card-body,

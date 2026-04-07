@@ -54,7 +54,15 @@
             <div class="container">
                 <div class="filtros-container">
                     <div class="row align-items-center">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
+                            <label for="filtro-tipo" class="form-label">Tipo:</label>
+                            <select id="filtro-tipo" class="form-select filtro-select">
+                                <option value="todos">Todos</option>
+                                <option value="imagenes">Imágenes</option>
+                                <option value="videos">Videos</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
                             <label for="filtro-mes" class="form-label">Mes:</label>
                             <select id="filtro-mes" class="form-select filtro-select">
                                 <option value="todos">Todos los meses</option>
@@ -72,11 +80,11 @@
                                 <option value="diciembre">Diciembre</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="filtro-año" class="form-label">Año:</label>
                             <input type="number" id="filtro-año" class="form-control filtro-input" placeholder="Año" value="2026" min="2020" max="2030">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label class="form-label">&nbsp;</label><br>
                             <button onclick="aplicarFiltros()" class="btn btn-primary w-100">
                                 <i class="fas fa-filter me-2"></i>Aplicar Filtros
