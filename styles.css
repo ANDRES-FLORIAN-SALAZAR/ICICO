@@ -649,7 +649,6 @@ section.py-5 {
     transition: var(--transition);
     box-shadow: var(--shadow-md);
     background: var(--card-background);
-    background-color: transparent;
 }
 
 .gallery-item:hover {
