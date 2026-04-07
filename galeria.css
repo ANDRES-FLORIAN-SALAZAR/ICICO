@@ -33,6 +33,14 @@
     color: #ffffff;
 }
 
+/* Etiquetas de formulario */
+.filtros-container .form-label {
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
 /* Galería Container */
 #galeria-container {
     margin: 0 -15px;
