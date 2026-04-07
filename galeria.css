@@ -81,21 +81,23 @@
 }
 
 /* Cards de Galería */
+.gallery-item .card,
+.gallery-item .card-body,
+.gallery-item .card * {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
 .gallery-item .card {
     border: none;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     height: 100%;
-    background: transparent !important;
 }
 
 .gallery-item .card-body {
-    background: transparent !important;
     padding: 1rem;
-}
-
-.gallery-item .card * {
-    background: transparent !important;
 }
 
 .gallery-item .card:hover {
