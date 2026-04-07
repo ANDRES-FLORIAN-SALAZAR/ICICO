@@ -17,12 +17,20 @@
     border-radius: 5px;
     font-size: 14px;
     transition: all 0.3s ease;
+    color: #ffffff;
+    background: #4a5568;
 }
 
 .filtro-select:focus, .filtro-input:focus {
     outline: none;
     border-color: #0056b3;
     box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+    color: #ffffff;
+}
+
+.filtro-select option {
+    background: #4a5568;
+    color: #ffffff;
 }
 
 /* Galería Container */
