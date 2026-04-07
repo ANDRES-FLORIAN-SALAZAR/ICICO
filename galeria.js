@@ -62,14 +62,10 @@ async function cargarImagenes() {
         todasLasImagenes = ordenarYRegenerarIds(data.imagenes);
         imagenesFiltradas = [...todasLasImagenes];
         
-        // Detectar mes actual y establecer filtros
-        const { mes, año } = detectarMesActual();
-        
         console.log('Imágenes cargadas y procesadas:', todasLasImagenes.length);
-        console.log('Mes actual detectado:', mes, año);
         
-        // Aplicar filtros automáticamente al cargar
-        setTimeout(() => aplicarFiltros(), 500);
+        // Mostrar todas las imágenes al cargar
+        renderizarGaleria();
         
         return true;
     } catch (error) {
