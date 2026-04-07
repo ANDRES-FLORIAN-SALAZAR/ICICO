@@ -1,0 +1,112 @@
+{
+  "imagenes": [
+    {
+      "id": 1,
+      "src": "Multimedia/images/1.jpg",
+      "alt": "Culto de Adoración",
+      "title": "Adoración",
+      "description": "Momentos de alabanza a Dios",
+      "mes": "enero",
+      "año": 2026
+    },
+    {
+      "id": 2,
+      "src": "Multimedia/images/2.jpg",
+      "alt": "Predicación",
+      "title": "Palabra de Dios",
+      "description": "Compartiendo la Biblia",
+      "mes": "enero",
+      "año": 2026
+    },
+    {
+      "id": 3,
+      "src": "Multimedia/images/3.jpg",
+      "alt": "Oración Comunitaria",
+      "title": "Oración",
+      "description": "Unidos en oración",
+      "mes": "enero",
+      "año": 2026
+    },
+    {
+      "id": 4,
+      "src": "Multimedia/images/4.jpg",
+      "alt": "Confraternidad",
+      "title": "Comunidad",
+      "description": "Celebrando juntos",
+      "mes": "febrero",
+      "año": 2026
+    },
+    {
+      "id": 5,
+      "src": "Multimedia/images/5.jpg",
+      "alt": "Servicio Cristiano",
+      "title": "Servicio",
+      "description": "Sirviendo con amor",
+      "mes": "febrero",
+      "año": 2026
+    },
+    {
+      "id": 6,
+      "src": "Multimedia/images/6.jpg",
+      "alt": "Estudio Bíblico",
+      "title": "Enseñanza",
+      "description": "Aprendiendo de Jesús",
+      "mes": "febrero",
+      "año": 2026
+    },
+    {
+      "id": 7,
+      "src": "Multimedia/images/7.jpg",
+      "alt": "Culto Especial",
+      "title": "Celebración",
+      "description": "Día especial en la casa de Dios",
+      "mes": "marzo",
+      "año": 2026
+    },
+    {
+      "id": 8,
+      "src": "Multimedia/images/8.jpg",
+      "alt": "Grupo de Jóvenes",
+      "title": "Juventud",
+      "description": "La nueva generación cristiana",
+      "mes": "marzo",
+      "año": 2026
+    },
+    {
+      "id": 9,
+      "src": "Multimedia/images/9.jpg",
+      "alt": "Misión",
+      "title": "Evangelismo",
+      "description": "Llevando el mensaje de salvación",
+      "mes": "marzo",
+      "año": 2026
+    },
+    {
+      "id": 10,
+      "src": "Multimedia/images/10.jpg",
+      "alt": "Alabanza",
+      "title": "Música",
+      "description": "Cantando al Señor",
+      "mes": "abril",
+      "año": 2026
+    },
+    {
+      "id": 11,
+      "src": "Multimedia/images/11.jpg",
+      "alt": "Bautismo",
+      "title": "Nacimiento Espiritual",
+      "description": "Nuevo comienzo en Cristo",
+      "mes": "abril",
+      "año": 2026
+    },
+    {
+      "id": 12,
+      "src": "Multimedia/images/12.jpg",
+      "alt": "Comunión",
+      "title": "Santa Cena",
+      "description": "Recordando a Jesús",
+      "mes": "abril",
+      "año": 2026
+    }
+  ]
+}
