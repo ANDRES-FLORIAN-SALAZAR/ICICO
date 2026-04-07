@@ -60,12 +60,16 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     height: 100%;
-    background: #6c757d;
+    background: #6c757d !important;
 }
 
 .gallery-item .card-body {
-    background: transparent;
+    background: transparent !important;
     padding: 1rem;
+}
+
+.gallery-item .card * {
+    background: transparent !important;
 }
 
 .gallery-item .card:hover {
