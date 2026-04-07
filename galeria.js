@@ -53,17 +53,22 @@ function ordenarYRegenerarIds(imagenes) {
 // Cargar datos desde JSON
 async function cargarImagenes() {
     try {
+        console.log('=== INICIANDO CARGA DE JSON ===');
         const response = await fetch('galeria.json');
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
         
+        console.log('JSON crudo:', data);
+        console.log('Elementos en JSON:', data.imagenes.length);
+        
         // Ordenar y regenerar IDs automáticamente
         todasLasImagenes = ordenarYRegenerarIds(data.imagenes);
         imagenesFiltradas = [...todasLasImagenes];
         
         console.log('Imágenes cargadas y procesadas:', todasLasImagenes.length);
+        console.log('Videos en todasLasImagenes:', todasLasImagenes.filter(item => item.tipo === 'video').length);
         
         // Mostrar todas las imágenes al cargar
         renderizarGaleria();
