@@ -26,13 +26,13 @@ function detectarMesActual() {
 function ordenarYRegenerarIds(imagenes) {
     console.log('Ordenando imágenes y regenerando IDs...');
     
-    // Ordenar por mes y año (cronológicamente)
+    // Ordenar por año y mes (2026 primero, luego 2025)
     const mesesOrden = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
     
     imagenes.sort((a, b) => {
-        // Primero por año
+        // Primero por año (2026 antes que 2025)
         if (a.año !== b.año) {
-            return a.año - b.año;
+            return b.año - a.año;  // Invertido: 2026 - 2025
         }
         // Luego por mes
         return mesesOrden.indexOf(a.mes) - mesesOrden.indexOf(b.mes);
@@ -45,6 +45,7 @@ function ordenarYRegenerarIds(imagenes) {
     
     console.log(`Imágenes ordenadas: ${imagenes.length} imágenes`);
     console.log('Primeras 3 imágenes:', imagenes.slice(0, 3));
+    console.log('Años presentes:', [...new Set(imagenes.map(img => img.año))]);
     
     return imagenes;
 }
