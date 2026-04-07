@@ -63,6 +63,11 @@
     background: #6c757d;
 }
 
+.gallery-item .card-body {
+    background: transparent;
+    padding: 1rem;
+}
+
 .gallery-item .card:hover {
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
