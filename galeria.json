@@ -1,48 +1,12 @@
 {
   "imagenes": [
     {
-      "id": 1,
-      "src": "Multimedia/images/1.jpg",
-      "alt": "Culto de Adoración",
-      "title": "Agradecimiento",
-      "description": "Agradeciendo a Dios",
-      "mes": "enero",
-      "año": 2026
-    },
-    {
-      "id": 2,
-      "src": "Multimedia/images/2.jpg",
-      "alt": "Predicación",
-      "title": "Palabra de Dios",
-      "description": "Compartiendo la Biblia",
-      "mes": "enero",
-      "año": 2026
-    },
-    {
-      "id": 3,
-      "src": "Multimedia/images/3.jpg",
-      "alt": "Oración Comunitaria",
-      "title": "Adoración",
-      "description": "Unidos en Alabanza",
-      "mes": "enero",
-      "año": 2026
-    },
-    {
-      "id": 4,
-      "src": "Multimedia/images/4.jpg",
-      "alt": "Confraternidad",
-      "title": "Comunidad",
-      "description": "Celebrando juntos",
-      "mes": "febrero",
-      "año": 2026
-    },
-    {
       "id": 5,
       "src": "Multimedia/images/5.jpg",
       "alt": "Servicio Cristiano",
       "title": "Servicio",
       "description": "Sirviendo con amor",
-      "mes": "febrero",
+      "mes": "Febrero",
       "año": 2026
     },
     {
@@ -51,34 +15,7 @@
       "alt": "Estudio Bíblico",
       "title": "Oración",
       "description": "Compartiendo momentos de oración",
-      "mes": "febrero",
-      "año": 2026
-    },
-    {
-      "id": 7,
-      "src": "Multimedia/images/7.jpg",
-      "alt": "Culto Especial",
-      "title": "Celebración",
-      "description": "Día especial en la casa de Dios",
-      "mes": "marzo",
-      "año": 2026
-    },
-    {
-      "id": 8,
-      "src": "Multimedia/images/8.jpg",
-      "alt": "Grupo de Jóvenes",
-      "title": "Lazos",
-      "description": "Generaciones unidas en Cristo",
-      "mes": "marzo",
-      "año": 2026
-    },
-    {
-      "id": 9,
-      "src": "Multimedia/images/9.jpg",
-      "alt": "Misión",
-      "title": "Evangelismo",
-      "description": "Llevando el mensaje de salvación",
-      "mes": "marzo",
+      "mes": "Febrero",
       "año": 2026
     },
     {
@@ -87,25 +24,7 @@
       "alt": "Alabanza",
       "title": "Enseñanza",
       "description": "Aprendiendo de la Palabra",
-      "mes": "abril",
-      "año": 2026
-    },
-    {
-      "id": 11,
-      "src": "Multimedia/images/11.jpg",
-      "alt": "Bautismo",
-      "title": "Nacimiento Espiritual",
-      "description": "Nuevo comienzo en Cristo",
-      "mes": "abril",
-      "año": 2026
-    },
-    {
-      "id": 12,
-      "src": "Multimedia/images/12.jpg",
-      "alt": "Comunión",
-      "title": "Adoración",
-      "description": "Unidos en adoración",
-      "mes": "abril",
+      "mes": "Marzo",
       "año": 2026
     },
     {
@@ -114,7 +33,7 @@
       "alt": "Conferencia",
       "title": "Aprendizaje",
       "description": "Aprendiendo de Dios",
-      "mes": "mayo",
+      "mes": "Marzo",
       "año": 2026
     },
     {
@@ -123,7 +42,7 @@
       "alt": "Retiro Espiritual",
       "title": "Reflexión",
       "description": "Tiempo con Dios",
-      "mes": "mayo",
+      "mes": "Marzo",
       "año": 2026
     },
     {
@@ -132,7 +51,7 @@
       "alt": "Fiesta Cristiana",
       "title": "Celebración",
       "description": "Gozando en el Señor",
-      "mes": "junio",
+      "mes": "Marzo",
       "año": 2026
     },
     {
@@ -141,7 +60,7 @@
       "alt": "Servicio Comunitario",
       "title": "Ayuda",
       "description": "Sirviendo al prójimo",
-      "mes": "junio",
+      "mes": "Marzo",
       "año": 2026
     },
     {
@@ -150,7 +69,7 @@
       "alt": "Concierto de Alabanza",
       "title": "Santificación",
       "description": "Separados para Dios",
-      "mes": "julio",
+      "mes": "Marzo",
       "año": 2026
     },
     {
@@ -159,8 +78,90 @@
       "alt": "Campamento Cristiano",
       "title": "Comunión",
       "description": "Unidos en la fe",
-      "mes": "julio",
+      "mes": "Marzo",
       "año": 2026
+    },
+    {
+      "id": 11,
+      "src": "Multimedia/images/11.jpg",
+      "alt": "Bautismo",
+      "title": "Nacimiento Espiritual",
+      "description": "Nuevo comienzo en Cristo",
+      "mes": "D",
+      "año": 2026
+    },
+
+    {
+      "id": 1,
+      "src": "Multimedia/images/1.jpg",
+      "alt": "Culto de Adoración",
+      "title": "Agradecimiento",
+      "description": "Agradeciendo a Dios",
+      "mes": "Diciembre",
+      "año": 2025
+    },
+    {
+      "id": 2,
+      "src": "Multimedia/images/2.jpg",
+      "alt": "Predicación",
+      "title": "Palabra de Dios",
+      "description": "Compartiendo la Biblia",
+      "mes": "Diciembre",
+      "año": 2025
+    },
+    {
+      "id": 3,
+      "src": "Multimedia/images/3.jpg",
+      "alt": "Oración Comunitaria",
+      "title": "Adoración",
+      "description": "Unidos en Alabanza",
+      "mes": "Diciembre",
+      "año": 2025
+    },
+    {
+      "id": 4,
+      "src": "Multimedia/images/4.jpg",
+      "alt": "Confraternidad",
+      "title": "Comunidad",
+      "description": "Celebrando juntos",
+      "mes": "Diciembre",
+      "año": 2025
+    },
+    {
+      "id": 7,
+      "src": "Multimedia/images/7.jpg",
+      "alt": "Culto Especial",
+      "title": "Celebración",
+      "description": "Día especial en la casa de Dios",
+      "mes": "Diciembre",
+      "año": 2025
+    },
+    {
+      "id": 8,
+      "src": "Multimedia/images/8.jpg",
+      "alt": "Grupo de Jóvenes",
+      "title": "Lazos",
+      "description": "Generaciones unidas en Cristo",
+      "mes": "Diciembre",
+      "año": 2025
+    },
+    {
+      "id": 9,
+      "src": "Multimedia/images/9.jpg",
+      "alt": "Misión",
+      "title": "Evangelismo",
+      "description": "Llevando el mensaje de salvación",
+      "mes": "Diciembre",
+      "año": 2025
+    },
+    {
+      "id": 12,
+      "src": "Multimedia/images/12.jpg",
+      "alt": "Comunión",
+      "title": "Adoración",
+      "description": "Unidos en adoración",
+      "mes": "Diciembre",
+      "año": 2025
     }
   ]
 }
