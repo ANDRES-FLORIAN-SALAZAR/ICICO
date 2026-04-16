@@ -7,7 +7,8 @@
       "title": "Enseñanza",
       "description": "Aprendiendo de la Palabra",
       "mes": "Marzo",
-      "año": 2026
+      "año": 2026,
+      "tipo": "imagen"
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "title": "Aprendizaje",
       "description": "Aprendiendo de Dios",
       "mes": "Marzo",
-      "año": 2026
+      "año": 2026,
+      "tipo": "imagen"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "title": "Reflexión",
       "description": "Tiempo con Dios",
       "mes": "Marzo",
-      "año": 2026
+      "año": 2026,
+      "tipo": "imagen"
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "title": "Celebración",
       "description": "Gozando en el Señor",
       "mes": "Marzo",
-      "año": 2026
+      "año": 2026,
+      "tipo": "imagen"
     },
     {
       "id": 5,
@@ -43,7 +47,8 @@
       "title": "Ayuda",
       "description": "Sirviendo al prójimo",
       "mes": "Marzo",
-      "año": 2026
+      "año": 2026,
+      "tipo": "imagen"
     },
     {
       "id": 6,
@@ -52,7 +57,8 @@
       "title": "Santificación",
       "description": "Separados para Dios",
       "mes": "Marzo",
-      "año": 2026
+      "año": 2026,
+      "tipo": "imagen"
     },
     {
       "id": 7,
@@ -61,7 +67,8 @@
       "title": "Comunión",
       "description": "Unidos en la fe",
       "mes": "Marzo",
-      "año": 2026
+      "año": 2026,
+      "tipo": "imagen"
     },
     {
       "id": 8,
@@ -70,7 +77,8 @@
       "title": "Servicio",
       "description": "Sirviendo con amor",
       "mes": "Febrero",
-      "año": 2026
+      "año": 2026,
+      "tipo": "imagen"
     },
     {
       "id": 9,
@@ -79,9 +87,9 @@
       "title": "Oración",
       "description": "Compartiendo momentos de oración",
       "mes": "Febrero",
-      "año": 2026
+      "año": 2026,
+      "tipo": "imagen"
     },
-
     {
       "id": 10,
       "src": "Multimedia/images/11.jpg",
@@ -89,7 +97,8 @@
       "title": "Nacimiento Espiritual",
       "description": "Nuevo comienzo en Cristo",
       "mes": "Diciembre",
-      "año": 2025
+      "año": 2025,
+      "tipo": "imagen"
     },
     {
       "id": 11,
@@ -98,7 +107,8 @@
       "title": "Agradecimiento",
       "description": "Agradeciendo a Dios",
       "mes": "Diciembre",
-      "año": 2025
+      "año": 2025,
+      "tipo": "imagen"
     },
     {
       "id": 12,
@@ -107,7 +117,8 @@
       "title": "Palabra de Dios",
       "description": "Compartiendo la Biblia",
       "mes": "Diciembre",
-      "año": 2025
+      "año": 2025,
+      "tipo": "imagen"
     },
     {
       "id": 13,
@@ -116,7 +127,8 @@
       "title": "Adoración",
       "description": "Unidos en Alabanza",
       "mes": "Diciembre",
-      "año": 2025
+      "año": 2025,
+      "tipo": "imagen"
     },
     {
       "id": 14,
@@ -125,7 +137,8 @@
       "title": "Comunidad",
       "description": "Celebrando juntos",
       "mes": "Diciembre",
-      "año": 2025
+      "año": 2025,
+      "tipo": "imagen"
     },
     {
       "id": 15,
@@ -134,7 +147,8 @@
       "title": "Celebración",
       "description": "Día especial en la casa de Dios",
       "mes": "Diciembre",
-      "año": 2025
+      "año": 2025,
+      "tipo": "imagen"
     },
     {
       "id": 16,
@@ -143,7 +157,8 @@
       "title": "Lazos",
       "description": "Generaciones unidas en Cristo",
       "mes": "Diciembre",
-      "año": 2025
+      "año": 2025,
+      "tipo": "imagen"
     },
     {
       "id": 17,
