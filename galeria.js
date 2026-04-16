@@ -158,39 +158,6 @@ async function cargarVideos() {
     }
 }
 
-// Aplicar filtros
-function aplicarFiltros() {
-    const tipo = document.getElementById('filtro-tipo').value;
-    const mes = document.getElementById('filtro-mes').value;
-    const año = document.getElementById('filtro-año').value;
-    
-    console.log('=== APLICANDO FILTROS ===');
-    console.log('Valores seleccionados:', {tipo, mes, año});
-    console.log('Total elementos disponibles:', todasLasImagenes.length);
-    console.log('Elementos con tipo video:', todasLasImagenes.filter(item => item.tipo === 'video'));
-    
-    imagenesFiltradas = todasLasImagenes.filter(item => {
-        // Filtrado por tipo
-        const coincideTipo = tipo === 'todos' || item.tipo === tipo;
-        
-        // Filtrado por mes y año (solo si se selecciona específicamente)
-        const coincideMes = mes === 'todos' || item.mes === mes;
-        const coincideAño = !año || item.año == año;
-        
-        console.log(`Item ${item.id}: tipo=${item.tipo}, coincideTipo=${coincideTipo}, coincideMes=${coincideMes}, coincideAño=${coincideAño}`);
-        
-        return coincideTipo && coincideMes && coincideAño;
-    });
-    
-    console.log('Imágenes filtradas:', imagenesFiltradas.length);
-    console.log('Videos encontrados:', imagenesFiltradas.filter(item => item.tipo === 'video').length);
-    console.log('Imágenes encontradas:', imagenesFiltradas.filter(item => item.tipo === 'imagen').length);
-    console.log('Elementos filtrados:', imagenesFiltradas);
-    
-    paginaActual = 0;
-    renderizarGaleria();
-}
-
 // Renderizar imágenes
 function renderizarImagenes() {
     console.log('=== RENDERIZANDO IMÁGENES ===');

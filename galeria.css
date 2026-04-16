@@ -1,56 +1,5 @@
 /* Galería Nueva - Casa de Oración */
 
-/* Contenedor de Filtros */
-.filtros-container {
-    background:#4a5568;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    box-shadow: 0 2px 10px #ffffff;
-}
-
-/* Campos de Filtro */
-.filtro-select, .filtro-input {
-    margin: 5px;
-    padding: 8px 15px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    color: #000000;
-    background: #ffffff;
-}
-
-.filtro-select:focus, .filtro-input:focus {
-    outline: none;
-    border-color: #0056b3;
-    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
-    color: #000000;
-}
-
-.filtro-select option {
-    background: #ffffff;
-    color: #000000;
-}
-
-/* Etiquetas de formulario */
-.filtros-container .form-label {
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    margin-bottom: 8px !important;
-    display: block !important;
-    font-size: 16px !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
-}
-
-/* Estilo adicional para todas las etiquetas dentro del contenedor de filtros */
-.filtros-container label {
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    font-size: 16px !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
-}
-
 /* Galería Container */
 #galeria-container {
     margin: 0 -15px;
