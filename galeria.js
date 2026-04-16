@@ -235,7 +235,8 @@ function renderizarVideos() {
         console.log(`   - src: ${item.src}`);
         console.log(`   - title: ${item.title}`);
         console.log(`   - tipo: ${item.tipo}`);
-        html += `
+        
+        const videoHtml = `
             <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
                 <div class="card h-100 shadow">
                     <div class="video-container">
@@ -252,9 +253,12 @@ function renderizarVideos() {
                 </div>
             </div>
         `;
+        
+        console.log(`   - HTML generado para video:`, videoHtml);
+        html += videoHtml;
     });
     
-    console.log('9. HTML generado:', html.substring(0, 200) + '...');
+    console.log('9. HTML completo generado:', html.substring(0, 500) + '...');
     
     // Reemplazar todo el contenido
     container.innerHTML = html;
@@ -268,6 +272,7 @@ function renderizarVideos() {
     }
     
     console.log('10. Galería de videos renderizada exitosamente');
+    console.log('11. Contenedor del video después de renderizar:', container.innerHTML);
 }
 
 // Ver imagen en modal
