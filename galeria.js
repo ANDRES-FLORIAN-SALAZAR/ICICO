@@ -6,6 +6,8 @@ let paginaActual = 0;
 let paginaActualVideos = 0;
 const imagenesPorPagina = 6;
 let seccionActual = 'imagenes';
+let imagenesCargadas = false;
+let videosCargados = false;
 
 // Cambiar entre secciones
 function mostrarSeccion(seccion) {
@@ -21,19 +23,35 @@ function mostrarSeccion(seccion) {
     document.getElementById('btn-videos').classList.remove('btn-primary');
     document.getElementById('btn-videos').classList.add('btn-secondary');
     
-    // Mostrar sección seleccionada
+    // Mostrar sección seleccionada y cargar contenido solo si es necesario
     if (seccion === 'imagenes') {
         document.getElementById('seccion-imagenes').style.display = 'block';
         document.getElementById('btn-imagenes').classList.remove('btn-secondary');
         document.getElementById('btn-imagenes').classList.add('btn-primary');
         seccionActual = 'imagenes';
-        cargarImagenes();
+        
+        // Cargar imágenes solo si no han sido cargadas antes
+        if (!imagenesCargadas) {
+            console.log('Cargando imágenes por primera vez...');
+            cargarImagenes();
+        } else {
+            console.log('Imágenes ya cargadas, mostrando...');
+            renderizarImagenes();
+        }
     } else if (seccion === 'videos') {
         document.getElementById('seccion-videos').style.display = 'block';
         document.getElementById('btn-videos').classList.remove('btn-secondary');
         document.getElementById('btn-videos').classList.add('btn-primary');
         seccionActual = 'videos';
-        cargarVideos();
+        
+        // Cargar videos solo si no han sido cargados antes
+        if (!videosCargados) {
+            console.log('Cargando videos por primera vez...');
+            cargarVideos();
+        } else {
+            console.log('Videos ya cargados, mostrando...');
+            renderizarVideos();
+        }
     }
 }
 
@@ -100,7 +118,8 @@ async function cargarImagenes() {
         
         console.log('Imágenes cargadas y procesadas:', todasLasImagenes.length);
         
-        // Renderizar imágenes
+        // Marcar como cargadas y renderizar
+        imagenesCargadas = true;
         renderizarImagenes();
         
         return true;
@@ -128,7 +147,8 @@ async function cargarVideos() {
         
         console.log('Videos cargados y procesados:', videosFiltrados.length);
         
-        // Renderizar videos
+        // Marcar como cargados y renderizar
+        videosCargados = true;
         renderizarVideos();
         
         return true;
