@@ -34,7 +34,7 @@ async function cargarImagenes() {
 function renderizarGaleria() {
     console.log('=== RENDERIZANDO GALERÍA ===');
     const container = document.getElementById('galeria-container');
-    const btnCargarMas = document.getElementById('btn-cargar-mas');
+    const btnCargarMas = document.getElementById('btn-cargar-mas-imagenes');
     
     if (!container) {
         console.error('ERROR: No se encontró el contenedor');
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Agregar evento al botón de cargar más solo si existe
-    const btnCargarMas = document.getElementById('btn-cargar-mas');
+    const btnCargarMas = document.getElementById('btn-cargar-mas-imagenes');
     if (btnCargarMas) {
         btnCargarMas.addEventListener('click', cargarMas);
     }
