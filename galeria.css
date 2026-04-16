@@ -50,6 +50,17 @@
     transform: translateY(-2px);
 }
 
+.btn-videos {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    border: none;
+    color: white;
+}
+
+.btn-videos:hover {
+    background: linear-gradient(135deg, #495057, #343a40);
+    transform: translateY(-2px);
+}
+
 /* Estilos de Secciones */
 .seccion-activa {
     display: block !important;
@@ -61,6 +72,36 @@
     display: none !important;
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+
+/* Estilos para Videos */
+.video-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+    background: #000;
+}
+
+.video-player {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.video-player:hover {
+    transform: scale(1.02);
+}
+
+/* Contenedor de Videos */
+#videos-container {
+    margin: 0 -15px;
+    padding: 0 15px;
+}
+
+#videos-container .gallery-item {
+    margin-bottom: 30px;
 }
 
 /* Cards de Galería */
