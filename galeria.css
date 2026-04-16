@@ -50,17 +50,6 @@
     transform: translateY(-2px);
 }
 
-.btn-videos {
-    background: linear-gradient(135deg, #6c757d, #495057);
-    border: none;
-    color: white;
-}
-
-.btn-videos:hover {
-    background: linear-gradient(135deg, #495057, #343a40);
-    transform: translateY(-2px);
-}
-
 /* Estilos de Secciones */
 .seccion-activa {
     display: block !important;
@@ -74,49 +63,13 @@
     transition: opacity 0.3s ease;
 }
 
-.video-player {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.video-player:hover {
-    transform: scale(1.02);
-    transition: transform 0.3s ease;
-}
-
 /* Cards de Galería */
-.gallery-item .card,
-.gallery-item .card-body,
-.gallery-item .card * {
-    background: transparent !important;
-    background-color: transparent !important;
-    background-image: none !important;
-}
-
-/* Sobreescribir variable CSS de Bootstrap */
 .gallery-item .card {
-    border: none !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
-    transition: all 0.3s ease !important;
-    height: 100% !important;
-}
-
-.gallery-item .card-body {
-    padding: 1rem !important;
-}
-
-.gallery-item .card:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
-}
-
-/* Forzar transparencia en todos los elementos de la galería */
-#galeria-container .card,
-#galeria-container .card-body,
-#galeria-container .card * {
-    background: transparent !important;
-    background-color: transparent !important;
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
     background-image: none !important;
 }
 
