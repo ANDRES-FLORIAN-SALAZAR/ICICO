@@ -144,8 +144,9 @@
 }
 
 .gallery-item .card-text small {
-    color: #e0b89c;
+    color: var(--color-dark-2);
     font-size: 0.85rem;
+    font-weight: 500;
 }
 
 /* Modal - Paleta Específica */
