@@ -163,74 +163,57 @@ function mostrarSeccion(seccion) {
     console.log('   - btn-imagenes:', btnImagenes);
     console.log('   - btn-videos:', btnVideos);
     
-    // Estado actual
-    console.log('2. Estado actual:');
-    console.log('   - seccion-imagenes display:', seccionImagenes ? seccionImagenes.style.display : 'no encontrado');
-    console.log('   - seccion-videos display:', seccionVideos ? seccionVideos.style.display : 'no encontrado');
-    
-    // Ocultar ambas secciones completamente
+    // Ocultar ambas secciones
     if (seccionImagenes) {
-        seccionImagenes.style.display = 'none';
-        seccionImagenes.style.visibility = 'hidden';
-        seccionImagenes.style.opacity = '0';
         seccionImagenes.classList.remove('seccion-activa');
         seccionImagenes.classList.add('seccion-inactiva');
-        console.log('3. Ocultando sección imágenes');
+        console.log('2. Ocultando sección imágenes');
     }
     if (seccionVideos) {
-        seccionVideos.style.display = 'none';
-        seccionVideos.style.visibility = 'hidden';
-        seccionVideos.style.opacity = '0';
         seccionVideos.classList.remove('seccion-activa');
         seccionVideos.classList.add('seccion-inactiva');
-        console.log('4. Ocultando sección videos');
+        console.log('3. Ocultando sección videos');
     }
     
     // Desactivar ambos botones
     if (btnImagenes) {
         btnImagenes.classList.remove('btn-primary');
         btnImagenes.classList.add('btn-secondary');
-        console.log('5. Desactivando botón imágenes');
+        console.log('4. Desactivando botón imágenes');
     }
     if (btnVideos) {
         btnVideos.classList.remove('btn-primary');
         btnVideos.classList.add('btn-secondary');
-        console.log('6. Desactivando botón videos');
+        console.log('5. Desactivando botón videos');
     }
     
     // Mostrar sección seleccionada y activar botón correspondiente
     if (seccion === 'imagenes') {
-        console.log('7. Mostrando sección imágenes');
+        console.log('6. Mostrando sección imágenes');
         if (seccionImagenes) {
-            seccionImagenes.style.display = 'block';
-            seccionImagenes.style.visibility = 'visible';
-            seccionImagenes.style.opacity = '1';
             seccionImagenes.classList.remove('seccion-inactiva');
             seccionImagenes.classList.add('seccion-activa');
-            console.log('8. Sección imágenes display actual:', seccionImagenes.style.display);
+            console.log('7. Sección imágenes activada');
         }
         if (btnImagenes) {
             btnImagenes.classList.remove('btn-secondary');
             btnImagenes.classList.add('btn-primary');
-            console.log('9. Botón imágenes activado');
+            console.log('8. Botón imágenes activado');
         }
     } else if (seccion === 'videos') {
-        console.log('7. Mostrando sección videos');
+        console.log('6. Mostrando sección videos');
         if (seccionVideos) {
-            seccionVideos.style.display = 'block';
-            seccionVideos.style.visibility = 'visible';
-            seccionVideos.style.opacity = '1';
             seccionVideos.classList.remove('seccion-inactiva');
             seccionVideos.classList.add('seccion-activa');
-            console.log('8. Sección videos display actual:', seccionVideos.style.display);
+            console.log('7. Sección videos activada');
         }
         if (btnVideos) {
             btnVideos.classList.remove('btn-secondary');
             btnVideos.classList.add('btn-primary');
-            console.log('9. Botón videos activado');
+            console.log('8. Botón videos activado');
         }
-        // Cargar videos si no están cargados
-        console.log('10. Llamando a cargarVideos()');
+        // Cargar videos
+        console.log('9. Llamando a cargarVideos()');
         cargarVideos();
     }
     
@@ -268,7 +251,6 @@ function renderizarVideos(videos) {
     
     console.log('1. Container videos encontrado:', container);
     console.log('2. Total videos a renderizar:', videos.length);
-    console.log('3. Videos:', videos);
     
     if (!container) {
         console.error('ERROR: No se encontró el contenedor de videos');
@@ -276,18 +258,14 @@ function renderizarVideos(videos) {
     }
     
     if (videos.length === 0) {
-        console.log('4. No hay videos para mostrar');
+        console.log('3. No hay videos para mostrar');
         container.innerHTML = '<div class="col-12 text-center"><p class="text-warning">No hay videos disponibles</p></div>';
-        // Asegurar que el container sea visible
-        container.style.display = 'block';
         return;
     }
     
     let html = '';
     videos.forEach((video, index) => {
-        console.log(`5. Procesando video ${index + 1}:`, video);
-        console.log(`   - src: ${video.src}`);
-        console.log(`   - title: ${video.title}`);
+        console.log(`4. Procesando video ${index + 1}:`, video);
         
         const videoHtml = `
             <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
@@ -307,42 +285,24 @@ function renderizarVideos(videos) {
             </div>
         `;
         
-        console.log(`   - HTML generado:`, videoHtml);
         html += videoHtml;
     });
     
-    console.log('6. HTML completo generado:', html);
-    
-    // Limpiar container primero
-    container.innerHTML = '';
-    
-    // Agregar HTML
+    console.log('5. Insertando HTML en container');
     container.innerHTML = html;
     
-    // **CRÍTICO: Asegurar que el container y sus padres sean visibles**
-    container.style.display = 'block';
-    container.style.visibility = 'visible';
-    container.style.opacity = '1';
-    
-    // También asegurar que el section padre sea visible
+    // Forzar que la sección de videos sea visible
     const sectionVideos = document.getElementById('seccion-videos');
     if (sectionVideos) {
-        sectionVideos.style.display = 'block';
-        sectionVideos.style.visibility = 'visible';
-        sectionVideos.style.opacity = '1';
         sectionVideos.classList.remove('seccion-inactiva');
         sectionVideos.classList.add('seccion-activa');
+        console.log('6. Sección videos forzada a activa');
     }
     
-    console.log('7. Container después de renderizar:', container.innerHTML);
-    console.log('8. Container visible:', container.style.display);
-    console.log('9. Container padre:', container.parentElement);
-    console.log('10. Container position:', container.getBoundingClientRect());
+    console.log('7. Videos renderizados exitosamente');
     
     // Inicializar AOS para los nuevos videos
     if (typeof AOS !== 'undefined') {
         setTimeout(() => AOS.refresh(), 100);
     }
-    
-    console.log('11. Videos renderizados exitosamente');
 }

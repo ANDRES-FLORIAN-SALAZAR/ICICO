@@ -71,14 +71,16 @@
 
 /* Estilos de Secciones */
 .seccion-activa {
-    display: block !important;
+    display: block;
     opacity: 1;
+    visibility: visible;
     transition: opacity 0.3s ease;
 }
 
 .seccion-inactiva {
-    display: none !important;
+    display: none;
     opacity: 0;
+    visibility: hidden;
     transition: opacity 0.3s ease;
 }
 
