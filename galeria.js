@@ -291,15 +291,31 @@ function renderizarVideos(videos) {
     console.log('5. Insertando HTML en container');
     container.innerHTML = html;
     
-    // Forzar que la sección de videos sea visible
+    // Forzar visibilidad con múltiples métodos
     const sectionVideos = document.getElementById('seccion-videos');
     if (sectionVideos) {
+        console.log('6. Forzando visibilidad de sección videos');
         sectionVideos.classList.remove('seccion-inactiva');
         sectionVideos.classList.add('seccion-activa');
-        console.log('6. Sección videos forzada a activa');
+        sectionVideos.style.display = 'block';
+        sectionVideos.style.visibility = 'visible';
+        sectionVideos.style.opacity = '1';
+        sectionVideos.style.position = 'relative';
+        sectionVideos.style.zIndex = '1';
+        
+        console.log('7. Estado final de sección videos:');
+        console.log('   - display:', sectionVideos.style.display);
+        console.log('   - visibility:', sectionVideos.style.visibility);
+        console.log('   - opacity:', sectionVideos.style.opacity);
+        console.log('   - classes:', sectionVideos.className);
     }
     
-    console.log('7. Videos renderizados exitosamente');
+    // También forzar el container
+    container.style.display = 'block';
+    container.style.visibility = 'visible';
+    container.style.opacity = '1';
+    
+    console.log('8. Videos renderizados exitosamente');
     
     // Inicializar AOS para los nuevos videos
     if (typeof AOS !== 'undefined') {
