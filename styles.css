@@ -909,7 +909,7 @@ section.py-5 {
     backdrop-filter: blur(10px);
     color: var(--white-color);
     padding: 3rem 0 2rem;
-    margin-top: 4rem;
+    margin-top: 0;
 }
 
 .footer h5 {
