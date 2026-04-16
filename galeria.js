@@ -168,13 +168,21 @@ function mostrarSeccion(seccion) {
     console.log('   - seccion-imagenes display:', seccionImagenes ? seccionImagenes.style.display : 'no encontrado');
     console.log('   - seccion-videos display:', seccionVideos ? seccionVideos.style.display : 'no encontrado');
     
-    // Ocultar ambas secciones
+    // Ocultar ambas secciones completamente
     if (seccionImagenes) {
         seccionImagenes.style.display = 'none';
+        seccionImagenes.style.visibility = 'hidden';
+        seccionImagenes.style.opacity = '0';
+        seccionImagenes.classList.remove('seccion-activa');
+        seccionImagenes.classList.add('seccion-inactiva');
         console.log('3. Ocultando sección imágenes');
     }
     if (seccionVideos) {
         seccionVideos.style.display = 'none';
+        seccionVideos.style.visibility = 'hidden';
+        seccionVideos.style.opacity = '0';
+        seccionVideos.classList.remove('seccion-activa');
+        seccionVideos.classList.add('seccion-inactiva');
         console.log('4. Ocultando sección videos');
     }
     
@@ -195,6 +203,10 @@ function mostrarSeccion(seccion) {
         console.log('7. Mostrando sección imágenes');
         if (seccionImagenes) {
             seccionImagenes.style.display = 'block';
+            seccionImagenes.style.visibility = 'visible';
+            seccionImagenes.style.opacity = '1';
+            seccionImagenes.classList.remove('seccion-inactiva');
+            seccionImagenes.classList.add('seccion-activa');
             console.log('8. Sección imágenes display actual:', seccionImagenes.style.display);
         }
         if (btnImagenes) {
@@ -206,6 +218,10 @@ function mostrarSeccion(seccion) {
         console.log('7. Mostrando sección videos');
         if (seccionVideos) {
             seccionVideos.style.display = 'block';
+            seccionVideos.style.visibility = 'visible';
+            seccionVideos.style.opacity = '1';
+            seccionVideos.classList.remove('seccion-inactiva');
+            seccionVideos.classList.add('seccion-activa');
             console.log('8. Sección videos display actual:', seccionVideos.style.display);
         }
         if (btnVideos) {
@@ -262,6 +278,8 @@ function renderizarVideos(videos) {
     if (videos.length === 0) {
         console.log('4. No hay videos para mostrar');
         container.innerHTML = '<div class="col-12 text-center"><p class="text-warning">No hay videos disponibles</p></div>';
+        // Asegurar que el container sea visible
+        container.style.display = 'block';
         return;
     }
     
@@ -301,14 +319,30 @@ function renderizarVideos(videos) {
     // Agregar HTML
     container.innerHTML = html;
     
+    // **CRÍTICO: Asegurar que el container y sus padres sean visibles**
+    container.style.display = 'block';
+    container.style.visibility = 'visible';
+    container.style.opacity = '1';
+    
+    // También asegurar que el section padre sea visible
+    const sectionVideos = document.getElementById('seccion-videos');
+    if (sectionVideos) {
+        sectionVideos.style.display = 'block';
+        sectionVideos.style.visibility = 'visible';
+        sectionVideos.style.opacity = '1';
+        sectionVideos.classList.remove('seccion-inactiva');
+        sectionVideos.classList.add('seccion-activa');
+    }
+    
     console.log('7. Container después de renderizar:', container.innerHTML);
     console.log('8. Container visible:', container.style.display);
     console.log('9. Container padre:', container.parentElement);
+    console.log('10. Container position:', container.getBoundingClientRect());
     
     // Inicializar AOS para los nuevos videos
     if (typeof AOS !== 'undefined') {
         setTimeout(() => AOS.refresh(), 100);
     }
     
-    console.log('10. Videos renderizados exitosamente');
+    console.log('11. Videos renderizados exitosamente');
 }
