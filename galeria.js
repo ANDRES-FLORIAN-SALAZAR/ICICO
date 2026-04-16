@@ -1,10 +1,41 @@
-// Galería Nueva - Casa de Oración
-console.log('Galería Nueva - Iniciando...');
-
+// Variables globales
 let todasLasImagenes = [];
 let imagenesFiltradas = [];
+let videosFiltrados = [];
 let paginaActual = 0;
+let paginaActualVideos = 0;
 const imagenesPorPagina = 6;
+let seccionActual = 'imagenes';
+
+// Cambiar entre secciones
+function mostrarSeccion(seccion) {
+    console.log(`Cambiando a sección: ${seccion}`);
+    
+    // Ocultar ambas secciones
+    document.getElementById('seccion-imagenes').style.display = 'none';
+    document.getElementById('seccion-videos').style.display = 'none';
+    
+    // Desactivar ambos botones
+    document.getElementById('btn-imagenes').classList.remove('btn-primary');
+    document.getElementById('btn-imagenes').classList.add('btn-secondary');
+    document.getElementById('btn-videos').classList.remove('btn-primary');
+    document.getElementById('btn-videos').classList.add('btn-secondary');
+    
+    // Mostrar sección seleccionada
+    if (seccion === 'imagenes') {
+        document.getElementById('seccion-imagenes').style.display = 'block';
+        document.getElementById('btn-imagenes').classList.remove('btn-secondary');
+        document.getElementById('btn-imagenes').classList.add('btn-primary');
+        seccionActual = 'imagenes';
+        cargarImagenes();
+    } else if (seccion === 'videos') {
+        document.getElementById('seccion-videos').style.display = 'block';
+        document.getElementById('btn-videos').classList.remove('btn-secondary');
+        document.getElementById('btn-videos').classList.add('btn-primary');
+        seccionActual = 'videos';
+        cargarVideos();
+    }
+}
 
 // Detectar mes actual
 function detectarMesActual() {
@@ -50,10 +81,10 @@ function ordenarYRegenerarIds(imagenes) {
     return imagenes;
 }
 
-// Cargar datos desde JSON
+// Cargar solo imágenes
 async function cargarImagenes() {
     try {
-        console.log('=== INICIANDO CARGA DE JSON ===');
+        console.log('=== CARGANDO IMÁGENES ===');
         const response = await fetch('galeria.json');
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -63,19 +94,46 @@ async function cargarImagenes() {
         console.log('JSON crudo:', data);
         console.log('Elementos en JSON:', data.imagenes.length);
         
-        // Ordenar y regenerar IDs automáticamente
-        todasLasImagenes = ordenarYRegenerarIds(data.imagenes);
+        // Filtrar solo imágenes
+        todasLasImagenes = ordenarYRegenerarIds(data.imagenes.filter(item => item.tipo === 'imagen'));
         imagenesFiltradas = [...todasLasImagenes];
         
         console.log('Imágenes cargadas y procesadas:', todasLasImagenes.length);
-        console.log('Videos en todasLasImagenes:', todasLasImagenes.filter(item => item.tipo === 'video').length);
         
-        // Mostrar todas las imágenes al cargar
-        renderizarGaleria();
+        // Renderizar imágenes
+        renderizarImagenes();
         
         return true;
     } catch (error) {
         console.error('Error cargando imágenes:', error);
+        return false;
+    }
+}
+
+// Cargar solo videos
+async function cargarVideos() {
+    try {
+        console.log('=== CARGANDO VIDEOS ===');
+        const response = await fetch('galeria.json');
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        const data = await response.json();
+        
+        console.log('JSON crudo:', data);
+        console.log('Elementos en JSON:', data.imagenes.length);
+        
+        // Filtrar solo videos
+        videosFiltrados = ordenarYRegenerarIds(data.imagenes.filter(item => item.tipo === 'video'));
+        
+        console.log('Videos cargados y procesados:', videosFiltrados.length);
+        
+        // Renderizar videos
+        renderizarVideos();
+        
+        return true;
+    } catch (error) {
+        console.error('Error cargando videos:', error);
         return false;
     }
 }
@@ -113,18 +171,18 @@ function aplicarFiltros() {
     renderizarGaleria();
 }
 
-// Renderizar galería
-function renderizarGaleria() {
-    console.log('=== RENDERIZANDO GALERÍA ===');
+// Renderizar imágenes
+function renderizarImagenes() {
+    console.log('=== RENDERIZANDO IMÁGENES ===');
     const container = document.getElementById('galeria-container');
-    const btnCargarMas = document.getElementById('btn-cargar-mas');
+    const btnCargarMas = document.getElementById('btn-cargar-mas-imagenes');
     
-    console.log('1. Container encontrado:', container);
+    console.log('1. Container imágenes encontrado:', container);
     console.log('2. Botón cargar más encontrado:', btnCargarMas);
     console.log('3. Total imágenes filtradas:', imagenesFiltradas.length);
     
     if (!container) {
-        console.error('4. ERROR: No se encontró el contenedor');
+        console.error('4. ERROR: No se encontró el contenedor de imágenes');
         return;
     }
     
@@ -143,55 +201,32 @@ function renderizarGaleria() {
     console.log(`6. Mostrando imágenes ${inicio + 1} a ${Math.min(fin, imagenesFiltradas.length)} de ${imagenesFiltradas.length}`);
     console.log('7. Imágenes a mostrar:', imagenesMostrar);
     
-    // Generar HTML separando imágenes y videos
+    // Generar HTML para imágenes
     let html = '';
     imagenesMostrar.forEach((item, index) => {
-        console.log(`8. Procesando item ${index + 1}:`, item);
-        if (item.tipo === 'video') {
-            console.log(`9. Es video - generando HTML para: ${item.title}`);
-            html += `
-                <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
-                    <div class="card h-100 shadow">
-                        <div class="video-container">
-                            <video controls class="video-player">
-                                <source src="${item.src}" type="video/mp4">
-                                Tu navegador no soporta videos.
-                            </video>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">${item.title}</h5>
-                            <p class="card-text">${item.description}</p>
-                            <small class="text-muted">${item.mes} ${item.año}</small>
-                        </div>
+        console.log(`8. Procesando imagen ${index + 1}:`, item);
+        html += `
+            <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
+                <div class="card h-100 shadow">
+                    <img src="${item.src}" alt="${item.alt}" onclick="verImagen('${item.src}', '${item.title}', '${item.description}')" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">${item.description}</p>
+                        <small class="text-muted">${item.mes} ${item.año}</small>
                     </div>
                 </div>
-            `;
-        } else {
-            console.log(`9. Es imagen - generando HTML para: ${item.title}`);
-            html += `
-                <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
-                    <div class="card h-100 shadow">
-                        <img src="${item.src}" alt="${item.alt}" onclick="verImagen('${item.src}', '${item.title}', '${item.description}')" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">${item.title}</h5>
-                            <p class="card-text">${item.description}</p>
-                            <small class="text-muted">${item.mes} ${item.año}</small>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
+            </div>
+        `;
     });
     
-    console.log('10. HTML generado:', html.substring(0, 200) + '...');
+    console.log('9. HTML generado:', html.substring(0, 200) + '...');
     
     // Si es la primera página, reemplazar todo
     if (paginaActual === 0) {
-        console.log('11. Primera página - reemplazando HTML');
+        console.log('10. Primera página - reemplazando HTML');
         container.innerHTML = html;
     } else {
-        console.log('12. Página adicional - agregando HTML');
-        // Si no, agregar al final
+        console.log('11. Página adicional - agregando HTML');
         container.innerHTML += html;
     }
     
@@ -199,7 +234,7 @@ function renderizarGaleria() {
     const totalMostradas = (paginaActual + 1) * imagenesPorPagina;
     if (totalMostradas < imagenesFiltradas.length) {
         btnCargarMas.style.display = 'inline-block';
-        btnCargarMas.textContent = `Cargar más (${imagenesFiltradas.length - totalMostradas} elementos restantes)`;
+        btnCargarMas.textContent = `Cargar más (${imagenesFiltradas.length - totalMostradas} imágenes restantes)`;
     } else {
         btnCargarMas.style.display = 'none';
     }
@@ -209,7 +244,100 @@ function renderizarGaleria() {
         setTimeout(() => AOS.refresh(), 100);
     }
     
-    console.log('13. Galería renderizada exitosamente');
+    console.log('12. Galería de imágenes renderizada exitosamente');
+}
+
+// Renderizar videos
+function renderizarVideos() {
+    console.log('=== RENDERIZANDO VIDEOS ===');
+    const container = document.getElementById('videos-container');
+    const btnCargarMas = document.getElementById('btn-cargar-mas-videos');
+    
+    console.log('1. Container videos encontrado:', container);
+    console.log('2. Botón cargar más encontrado:', btnCargarMas);
+    console.log('3. Total videos filtrados:', videosFiltrados.length);
+    
+    if (!container) {
+        console.error('4. ERROR: No se encontró el contenedor de videos');
+        return;
+    }
+    
+    if (videosFiltrados.length === 0) {
+        console.log('5. No hay videos para mostrar');
+        container.innerHTML = '<div class="col-12 text-center"><p class="text-warning">No hay videos para mostrar</p></div>';
+        btnCargarMas.style.display = 'none';
+        return;
+    }
+    
+    // Calcular videos a mostrar
+    const inicio = paginaActualVideos * imagenesPorPagina;
+    const fin = inicio + imagenesPorPagina;
+    const videosMostrar = videosFiltrados.slice(inicio, fin);
+    
+    console.log(`6. Mostrando videos ${inicio + 1} a ${Math.min(fin, videosFiltrados.length)} de ${videosFiltrados.length}`);
+    console.log('7. Videos a mostrar:', videosMostrar);
+    
+    // Generar HTML para videos
+    let html = '';
+    videosMostrar.forEach((item, index) => {
+        console.log(`8. Procesando video ${index + 1}:`, item);
+        html += `
+            <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
+                <div class="card h-100 shadow">
+                    <div class="video-container">
+                        <video controls class="video-player">
+                            <source src="${item.src}" type="video/mp4">
+                            Tu navegador no soporta videos.
+                        </video>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">${item.description}</p>
+                        <small class="text-muted">${item.mes} ${item.año}</small>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    console.log('9. HTML generado:', html.substring(0, 200) + '...');
+    
+    // Si es la primera página, reemplazar todo
+    if (paginaActualVideos === 0) {
+        console.log('10. Primera página - reemplazando HTML');
+        container.innerHTML = html;
+    } else {
+        console.log('11. Página adicional - agregando HTML');
+        container.innerHTML += html;
+    }
+    
+    // Mostrar/ocultar botón de cargar más
+    const totalMostradas = (paginaActualVideos + 1) * imagenesPorPagina;
+    if (totalMostradas < videosFiltrados.length) {
+        btnCargarMas.style.display = 'inline-block';
+        btnCargarMas.textContent = `Cargar más (${videosFiltrados.length - totalMostradas} videos restantes)`;
+    } else {
+        btnCargarMas.style.display = 'none';
+    }
+    
+    // Inicializar AOS para los nuevos videos
+    if (typeof AOS !== 'undefined') {
+        setTimeout(() => AOS.refresh(), 100);
+    }
+    
+    console.log('12. Galería de videos renderizada exitosamente');
+}
+
+// Cargar más imágenes
+function cargarMasImagenes() {
+    paginaActual++;
+    renderizarImagenes();
+}
+
+// Cargar más videos
+function cargarMasVideos() {
+    paginaActualVideos++;
+    renderizarVideos();
 }
 
 // Ver imagen en modal
@@ -231,7 +359,7 @@ function cargarMas() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM cargado - Inicializando galería...');
     
-    // Cargar imágenes y mostrar todas
+    // Cargar imágenes por defecto
     cargarImagenes().then(success => {
         if (success) {
             console.log('Galería inicializada exitosamente');
@@ -240,8 +368,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Agregar evento al botón de cargar más
-    document.getElementById('btn-cargar-mas').addEventListener('click', cargarMas);
+    // Agregar eventos a botones
+    document.getElementById('btn-cargar-mas-imagenes')?.addEventListener('click', cargarMasImagenes);
+    document.getElementById('btn-cargar-mas-videos')?.addEventListener('click', cargarMasVideos);
     
     console.log('Galería inicializada correctamente');
 });
