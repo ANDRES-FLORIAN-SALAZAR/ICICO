@@ -43,7 +43,7 @@ function renderizarGaleria() {
     
     if (imagenesFiltradas.length === 0) {
         container.innerHTML = '<div class="col-12 text-center"><p class="text-warning">No hay imágenes para mostrar</p></div>';
-        btnCargarMas.style.display = 'none';
+        if (btnCargarMas) btnCargarMas.style.display = 'none';
         return;
     }
     
@@ -78,11 +78,13 @@ function renderizarGaleria() {
     
     // Mostrar/ocultar botón de cargar más
     const totalMostradas = (paginaActual + 1) * imagenesPorPagina;
-    if (totalMostradas < imagenesFiltradas.length) {
-        btnCargarMas.style.display = 'inline-block';
-        btnCargarMas.textContent = `Cargar más (${imagenesFiltradas.length - totalMostradas} imágenes restantes)`;
-    } else {
-        btnCargarMas.style.display = 'none';
+    if (btnCargarMas) {
+        if (totalMostradas < imagenesFiltradas.length) {
+            btnCargarMas.style.display = 'inline-block';
+            btnCargarMas.textContent = `Cargar más (${imagenesFiltradas.length - totalMostradas} imágenes restantes)`;
+        } else {
+            btnCargarMas.style.display = 'none';
+        }
     }
     
     // Inicializar AOS para las nuevas imágenes
@@ -121,8 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Agregar evento al botón de cargar más
-    document.getElementById('btn-cargar-mas').addEventListener('click', cargarMas);
+    // Agregar evento al botón de cargar más solo si existe
+    const btnCargarMas = document.getElementById('btn-cargar-mas');
+    if (btnCargarMas) {
+        btnCargarMas.addEventListener('click', cargarMas);
+    }
     
     console.log('Galería inicializada correctamente');
 });
