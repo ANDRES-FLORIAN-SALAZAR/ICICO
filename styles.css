@@ -172,7 +172,7 @@ body {
 
 .navbar-nav .nav-link.active {
     color: var(--accent-color) !important;
-    background: rgba(59, 130, 246, 0.2);
+    background: rgba(227, 106, 60, 0.2);
 }
 
 .navbar-toggler {
@@ -182,7 +182,7 @@ body {
 }
 
 .navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(227, 106, 60, 0.25);
 }
 
 /* Hero Section Mejorada */
@@ -570,7 +570,7 @@ html {
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
     color: var(--white-color);
-    background: rgba(49, 130, 206, 0.1);
+    background: rgba(227, 106, 60, 0.1);
 }
 
 .brand-logo-img {
@@ -716,7 +716,7 @@ section.py-5 {
     padding-bottom: 3rem !important;
 }
 
-/* Cards - Restauradas a fondo blanco excepto Galería */
+/* Cards - Colores consistentes */
 .card {
     background: var(--card-background);
     border: 1px solid var(--border-color);
@@ -731,129 +731,36 @@ section.py-5 {
     box-shadow: var(--shadow-lg);
 }
 
-.event-card,
-.sermon-card,
-.contact-card {
-    background: var(--card-background);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-    overflow: hidden;
-}
-
-.event-card:hover,
-.sermon-card:hover,
-.contact-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-}
-
-.gallery-card,
-.media-card {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-}
-
-.value-card {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-    overflow: hidden;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    position: relative;
-    z-index: 1;
-    backdrop-filter: blur(10px);
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-
-.card:hover,
-.event-card:hover,
-.sermon-card:hover,
-.gallery-card:hover,
-.contact-card:hover,
-.value-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-}
-
-.card-title,
-.value-title {
-    color: var(--primary-color);
+/* Títulos y textos consistentes en todas las tarjetas */
+.card-title {
+    color: var(--text-primary) !important;
     font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.value-desc {
-    color: #ffffff !important;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    transition: var(--transition);
 }
 
 .card-text {
-    color: #000000 !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
-/* Forzar colores para eventos */
-.section-eventos .text-center h3 {
+.card:hover .card-title {
+    color: var(--accent-color) !important;
+}
+
+/* Secciones específicas mantienen sus colores */
+.section-galeria .card-title {
     color: #ffffff !important;
 }
 
-.section-eventos .card-text {
+.section-galeria .card-text {
+    color: #c7b8a8 !important;
+}
+
+.section-nosotros .card-text {
     color: #000000 !important;
-}
-
-/* Forzar colores para todas las tarjetas excepto Nosotros */
-.card-text,
-.event-card .card-text,
-.sermon-card .card-text,
-.gallery-card .card-text,
-.contact-card .card-text {
-    color: #ffffff !important;
-}
-
-/* Excepción para texto "Casa de Oración" en contacto */
-.contact-card .text-muted {
-    color: #000000 !important;
-}
-
-/* Forzar colores específicos por página */
-.section-predicas .card-text,
-.section-eventos .card-text,
-.section-escuela .card-text {
-    color: #000000 !important;
-}
-
-.section-predicas strong,
-.section-eventos strong,
-.section-escuela strong {
-    color: #000000 !important;
-}
-
-.section-predicas small,
-.section-eventos small,
-.section-escuela small {
-    color: #000000 !important;
-}
-
-.value-desc {
-    color: #000000 !important;
-}
-
-.value-title {
-    color: var(--primary-color) !important;
 }
 
 /* Ajustar altura de secciones hero en nosotros */
@@ -958,7 +865,7 @@ section.py-5 {
     background: var(--accent-hover);
     border-color: var(--accent-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(49, 130, 206, 0.3);
+    box-shadow: 0 6px 15px rgba(227, 106, 60, 0.3);
 }
 
 .btn-secondary {
