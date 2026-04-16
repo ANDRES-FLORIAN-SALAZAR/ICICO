@@ -117,7 +117,7 @@
 /* Cards de Galería - Paleta Específica */
 .gallery-item .card {
     border: none;
-    background: #2a2a2a;
+    background: #ffffff;
     box-shadow: 0 4px 15px rgba(43, 15, 10, 0.3);
     border-radius: 15px;
     overflow: hidden;

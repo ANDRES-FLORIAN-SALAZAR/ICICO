@@ -718,7 +718,7 @@ section.py-5 {
 
 /* Cards - Colores consistentes */
 .card {
-    background: var(--card-background);
+    background: #ffffff;
     border: 1px solid var(--border-color);
     border-radius: 15px;
     box-shadow: var(--shadow-md);
