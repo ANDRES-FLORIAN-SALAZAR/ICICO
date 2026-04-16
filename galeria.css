@@ -1,4 +1,4 @@
-/* Galería Nueva - Casa de Oración - Nueva Paleta de Colores */
+/* Galería Nueva - Casa de Oración - Paleta de Colores Específica */
 
 /* Galería Container */
 #galeria-container {
@@ -29,7 +29,7 @@
     transform: scale(1.05);
 }
 
-/* Botones de Navegación - Nueva Paleta */
+/* Botones de Navegación - Paleta Específica */
 .btn-imagenes, .btn-videos {
     padding: 12px 24px;
     font-size: 16px;
@@ -38,36 +38,35 @@
     transition: all 0.3s ease;
     margin: 0 8px;
     border: none;
+    color: #ffffff;
 }
 
 .btn-imagenes {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    color: white;
-    box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+    background: linear-gradient(135deg, #e36a3c, #c94717);
+    box-shadow: 0 4px 6px rgba(227, 106, 60, 0.3);
 }
 
 .btn-imagenes:hover {
-    background: linear-gradient(135deg, #2980b9, #21618c);
+    background: linear-gradient(135deg, #c94717, #8c2f14);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 6px 12px rgba(227, 106, 60, 0.4);
 }
 
 .btn-videos {
-    background: linear-gradient(135deg, #9b59b6, #8e44ad);
-    color: white;
-    box-shadow: 0 4px 6px rgba(155, 89, 182, 0.3);
+    background: linear-gradient(135deg, #c2a04a, #7a5a2b);
+    box-shadow: 0 4px 6px rgba(194, 160, 74, 0.3);
 }
 
 .btn-videos:hover {
-    background: linear-gradient(135deg, #8e44ad, #7d3c98);
+    background: linear-gradient(135deg, #7a5a2b, #4a1f14);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(155, 89, 182, 0.4);
+    box-shadow: 0 6px 12px rgba(194, 160, 74, 0.4);
 }
 
 .btn-videos.active {
-    background: linear-gradient(135deg, #9b59b6, #8e44ad);
-    color: white;
-    box-shadow: 0 6px 12px rgba(155, 89, 182, 0.4);
+    background: linear-gradient(135deg, #c2a04a, #7a5a2b);
+    color: #ffffff;
+    box-shadow: 0 6px 12px rgba(194, 160, 74, 0.4);
 }
 
 /* Estilos de Secciones */
@@ -83,12 +82,12 @@
     transition: opacity 0.3s ease;
 }
 
-/* Estilos para Videos - Nueva Paleta */
+/* Estilos para Videos - Paleta Específica */
 .video-container {
     position: relative;
     overflow: hidden;
     border-radius: 15px 15px 0 0;
-    background: #2c3e50;
+    background: #2b0f0a;
 }
 
 .video-player {
@@ -113,56 +112,50 @@
     margin-bottom: 30px;
 }
 
-/* Cards de Galería - Nueva Paleta */
+/* Cards de Galería - Paleta Específica */
 .gallery-item .card {
     border: none;
-    background: #ffffff;
-    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.1);
+    background: #2a2a2a;
+    box-shadow: 0 4px 15px rgba(43, 15, 10, 0.3);
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .gallery-item .card:hover {
-    box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15);
+    box-shadow: 0 8px 25px rgba(43, 15, 10, 0.5);
     transform: translateY(-3px);
 }
 
-/* Títulos y Textos - Nueva Paleta */
+/* Títulos y Textos - Paleta Específica */
 .gallery-item .card-title {
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 8px;
 }
 
 .gallery-item .card-text {
-    color: #34495e;
+    color: #c7b8a8;
     font-size: 0.95rem;
     line-height: 1.4;
 }
 
 .gallery-item .card-text small {
-    color: #7f8c8d;
+    color: #e0b89c;
     font-size: 0.85rem;
 }
 
-/* Badge de fecha */
-.gallery-item .text-muted {
-    font-size: 0.8rem;
-    color: #dee2e6 !important;
-}
-
-/* Modal - Nueva Paleta */
+/* Modal - Paleta Específica */
 #imagenModal .modal-header {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    color: white;
+    background: linear-gradient(135deg, #e36a3c, #c94717);
+    color: #ffffff;
     border: none;
 }
 
 #imagenModal .modal-body {
     padding: 0;
-    background: #ecf0f1;
+    background: #1f1f1f;
 }
 
 #modal-imagen {
@@ -172,9 +165,9 @@
 }
 
 #modal-descripcion {
-    color: #2c3e50;
+    color: #ffffff;
     font-style: italic;
-    background: #ffffff;
+    background: #2a2a2a;
     padding: 20px;
 }
 
@@ -183,35 +176,36 @@
     border: none;
     border-radius: 15px;
     overflow: hidden;
+    background: #2a2a2a;
 }
 
-/* Botón Cargar Más - Nueva Paleta */
+/* Botón Cargar Más - Paleta Específica */
 #btn-cargar-mas-imagenes {
-    background: linear-gradient(135deg, #27ae60, #229954);
-    color: white;
+    background: linear-gradient(135deg, #c2a04a, #7a5a2b);
+    color: #ffffff;
     border: none;
     border-radius: 25px;
     padding: 12px 30px;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+    box-shadow: 0 4px 15px rgba(194, 160, 74, 0.3);
     transition: all 0.3s ease;
 }
 
 #btn-cargar-mas-imagenes:hover {
-    background: linear-gradient(135deg, #229954, #1e8449);
+    background: linear-gradient(135deg, #7a5a2b, #4a1f14);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+    box-shadow: 0 6px 20px rgba(194, 160, 74, 0.4);
 }
 
 /* Estados de Carga */
 .loading {
-    color: #7f8c8d;
+    color: #c7b8a8;
     text-align: center;
     padding: 40px;
 }
 
 .empty-state {
-    color: #95a5a6;
+    color: #e0b89c;
     text-align: center;
     padding: 40px;
 }

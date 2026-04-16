@@ -1,76 +1,84 @@
-/* Estilos CSS para Casa de Oración - Nueva Paleta de Colores */
+/* Estilos CSS para Casa de Oración - Paleta de Colores Específica */
 
-/* Variables de Color - Paleta Moderna */
+/* Variables de Color - Paleta Definida por Usuario */
 :root {
-    /* Colores Primarios - Desde Paleta */
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
-    --tertiary-color: #7f8c8d;
-    --accent-color: #3498db;
-    --accent-hover: #2980b9;
+    /* Tonos oscuros (base) */
+    --color-dark-1: #2b0f0a;   /* marrón muy oscuro */
+    --color-dark-2: #4a1f14;   /* marrón profundo */
     
-    /* Colores Adicionales de Paleta */
-    --purple-color: #9b59b6;
-    --purple-hover: #8e44ad;
-    --green-color: #27ae60;
-    --green-hover: #229954;
-    --orange-color: #e67e22;
-    --orange-hover: #d35400;
-    --red-color: #e74c3c;
-    --red-hover: #c0392b;
-    --teal-color: #16a085;
-    --teal-hover: #138d75;
+    /* Tonos cálidos principales */
+    --color-primary: #8c2f14;  /* rojo tierra */
+    --color-secondary: #c94717; /* naranja quemado */
+    --color-accent: #e36a3c;   /* naranja suave */
+
+    /* Tonos claros */
+    --color-light-1: #e0b89c;  /* beige cálido */
+    --color-light-2: #e5e1dc;  /* gris claro */
+
+    /* Tonos dorados / arena */
+    --color-gold: #c2a04a;     /* dorado */
+    --color-sand: #7a5a2b;     /* arena oscura */
+
+    /* UI */
+    --color-bg: #1f1f1f;       /* fondo oscuro */
+    --color-card: #2a2a2a;     /* tarjetas */
+    --color-border: rgba(255,255,255,0.1);
+
+    /* Texto */
+    --color-text-main: #ffffff;
+    --color-text-muted: #c7b8a8;
     
-    /* Colores Neutros - Actualizados */
-    --light-color: #ecf0f1;
-    --white-color: #ffffff;
-    --dark-color: #2c3e50;
-    --gray-50: #ecf0f1;
-    --gray-100: #bdc3c7;
-    --gray-200: #95a5a6;
-    --gray-300: #7f8c8d;
-    --gray-400: #95a5a6;
-    --gray-500: #7f8c8d;
-    --gray-600: #34495e;
-    --gray-700: #2c3e50;
-    --gray-800: #34495e;
-    --gray-900: #2c3e50;
+    /* Variables compatibles con código existente */
+    --primary-color: var(--color-primary);
+    --secondary-color: var(--color-secondary);
+    --accent-color: var(--color-accent);
+    --accent-hover: var(--color-secondary);
+    --light-color: var(--color-light-1);
+    --white-color: var(--color-text-main);
+    --dark-color: var(--color-dark-1);
+    --gray-50: var(--color-light-2);
+    --gray-100: var(--color-light-1);
+    --gray-200: var(--color-light-2);
+    --gray-300: var(--color-text-muted);
+    --gray-400: var(--color-text-muted);
+    --gray-500: var(--color-text-muted);
+    --gray-600: var(--color-sand);
+    --gray-700: var(--color-dark-2);
+    --gray-800: var(--color-dark-1);
+    --gray-900: var(--color-dark-1);
     
     /* Colores de Estado */
-    --success-color: #27ae60;
-    --success-hover: #229954;
-    --warning-color: #f39c12;
-    --warning-hover: #e67e22;
-    --danger-color: #e74c3c;
-    --danger-hover: #c0392b;
+    --success-color: var(--color-accent);
+    --success-hover: var(--color-secondary);
+    --warning-color: var(--color-gold);
+    --warning-hover: var(--color-sand);
+    --danger-color: var(--color-primary);
+    --danger-hover: var(--color-dark-2);
     
     /* Fondos y Textos */
-    --background-color: #ecf0f1;
-    --card-background: #ffffff;
-    --text-primary: #2c3e50;
-    --text-secondary: #34495e;
-    --text-light: #7f8c8d;
-    --text-muted: #95a5a6;
+    --background-color: var(--color-bg);
+    --card-background: var(--color-card);
+    --text-primary: var(--color-text-main);
+    --text-secondary: var(--color-text-muted);
+    --text-light: var(--color-text-muted);
+    --text-muted: var(--color-text-muted);
     
     /* Bordes y Sombras */
-    --border-color: #bdc3c7;
-    --border-hover: #95a5a6;
+    --border-color: var(--color-border);
+    --border-hover: rgba(255,255,255,0.2);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-sm: 0 1px 2px 0 rgba(44, 62, 80, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(44, 62, 80, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(44, 62, 80, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(44, 62, 80, 0.1);
-    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-sm: 0 1px 2px 0 rgba(43, 15, 10, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(43, 15, 10, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(43, 15, 10, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(43, 15, 10, 0.6);
+    --shadow-2xl: 0 25px 50px -12px rgba(43, 15, 10, 0.7);
     
     /* Gradientes - Nueva Paleta */
-    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
-    --gradient-hero: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
-    --gradient-purple: linear-gradient(135deg, var(--purple-color), var(--purple-hover));
-    --gradient-green: linear-gradient(135deg, var(--green-color), var(--green-hover));
-    --gradient-orange: linear-gradient(135deg, var(--orange-color), var(--orange-hover));
-    --gradient-red: linear-gradient(135deg, var(--red-color), var(--red-hover));
-    --gradient-teal: linear-gradient(135deg, var(--teal-color), var(--teal-hover));
+    --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-dark-2));
+    --gradient-accent: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+    --gradient-hero: linear-gradient(135deg, var(--color-dark-1) 0%, var(--color-dark-2) 50%, var(--color-primary) 100%);
+    --gradient-gold: linear-gradient(135deg, var(--color-gold), var(--color-sand));
+    --gradient-warm: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
     
     /* Espaciado */
     --spacing-xs: 0.25rem;
