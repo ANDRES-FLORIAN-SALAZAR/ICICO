@@ -4,7 +4,7 @@ let imagenesFiltradas = [];
 let videosFiltrados = [];
 let paginaActual = 0;
 let paginaActualVideos = 0;
-const imagenesPorPagina = 6;
+const imagenesPorPagina = 18; // Aumentado para mostrar todas las imágenes
 let seccionActual = 'imagenes';
 let imagenesCargadas = false;
 let videosCargados = false;
@@ -180,12 +180,10 @@ function renderizarImagenes() {
         return;
     }
     
-    // Calcular imágenes a mostrar
-    const inicio = paginaActual * imagenesPorPagina;
-    const fin = inicio + imagenesPorPagina;
-    const imagenesMostrar = imagenesFiltradas.slice(inicio, fin);
+    // Mostrar todas las imágenes sin paginación
+    const imagenesMostrar = imagenesFiltradas;
     
-    console.log(`6. Mostrando imágenes ${inicio + 1} a ${Math.min(fin, imagenesFiltradas.length)} de ${imagenesFiltradas.length}`);
+    console.log(`6. Mostrando todas las imágenes: ${imagenesMostrar.length}`);
     console.log('7. Imágenes a mostrar:', imagenesMostrar);
     
     // Generar HTML para imágenes
@@ -208,30 +206,18 @@ function renderizarImagenes() {
     
     console.log('9. HTML generado:', html.substring(0, 200) + '...');
     
-    // Si es la primera página, reemplazar todo
-    if (paginaActual === 0) {
-        console.log('10. Primera página - reemplazando HTML');
-        container.innerHTML = html;
-    } else {
-        console.log('11. Página adicional - agregando HTML');
-        container.innerHTML += html;
-    }
+    // Reemplazar todo el contenido
+    container.innerHTML = html;
     
-    // Mostrar/ocultar botón de cargar más
-    const totalMostradas = (paginaActual + 1) * imagenesPorPagina;
-    if (totalMostradas < imagenesFiltradas.length) {
-        btnCargarMas.style.display = 'inline-block';
-        btnCargarMas.textContent = `Cargar más (${imagenesFiltradas.length - totalMostradas} imágenes restantes)`;
-    } else {
-        btnCargarMas.style.display = 'none';
-    }
+    // Ocultar botón de cargar más ya que mostramos todo
+    btnCargarMas.style.display = 'none';
     
     // Inicializar AOS para las nuevas imágenes
     if (typeof AOS !== 'undefined') {
         setTimeout(() => AOS.refresh(), 100);
     }
     
-    console.log('12. Galería de imágenes renderizada exitosamente');
+    console.log('10. Galería de imágenes renderizada exitosamente');
 }
 
 // Renderizar videos
@@ -256,12 +242,10 @@ function renderizarVideos() {
         return;
     }
     
-    // Calcular videos a mostrar
-    const inicio = paginaActualVideos * imagenesPorPagina;
-    const fin = inicio + imagenesPorPagina;
-    const videosMostrar = videosFiltrados.slice(inicio, fin);
+    // Mostrar todos los videos sin paginación
+    const videosMostrar = videosFiltrados;
     
-    console.log(`6. Mostrando videos ${inicio + 1} a ${Math.min(fin, videosFiltrados.length)} de ${videosFiltrados.length}`);
+    console.log(`6. Mostrando todos los videos: ${videosMostrar.length}`);
     console.log('7. Videos a mostrar:', videosMostrar);
     
     // Generar HTML para videos
@@ -289,30 +273,18 @@ function renderizarVideos() {
     
     console.log('9. HTML generado:', html.substring(0, 200) + '...');
     
-    // Si es la primera página, reemplazar todo
-    if (paginaActualVideos === 0) {
-        console.log('10. Primera página - reemplazando HTML');
-        container.innerHTML = html;
-    } else {
-        console.log('11. Página adicional - agregando HTML');
-        container.innerHTML += html;
-    }
+    // Reemplazar todo el contenido
+    container.innerHTML = html;
     
-    // Mostrar/ocultar botón de cargar más
-    const totalMostradas = (paginaActualVideos + 1) * imagenesPorPagina;
-    if (totalMostradas < videosFiltrados.length) {
-        btnCargarMas.style.display = 'inline-block';
-        btnCargarMas.textContent = `Cargar más (${videosFiltrados.length - totalMostradas} videos restantes)`;
-    } else {
-        btnCargarMas.style.display = 'none';
-    }
+    // Ocultar botón de cargar más ya que mostramos todo
+    btnCargarMas.style.display = 'none';
     
     // Inicializar AOS para los nuevos videos
     if (typeof AOS !== 'undefined') {
         setTimeout(() => AOS.refresh(), 100);
     }
     
-    console.log('12. Galería de videos renderizada exitosamente');
+    console.log('10. Galería de videos renderizada exitosamente');
 }
 
 // Cargar más imágenes
