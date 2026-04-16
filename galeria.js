@@ -7,7 +7,7 @@ let videosCargados = false;
 
 // Cambiar entre secciones
 function mostrarSeccion(seccion) {
-    console.log(`Cambiando a sección: ${seccion}`);
+    console.log(`=== CAMBIANDO A SECCIÓN: ${seccion} ===`);
     
     // Ocultar ambas secciones
     document.getElementById('seccion-imagenes').style.display = 'none';
@@ -21,6 +21,7 @@ function mostrarSeccion(seccion) {
     
     // Mostrar sección seleccionada y cargar contenido solo si es necesario
     if (seccion === 'imagenes') {
+        console.log('Mostrando sección de imágenes');
         document.getElementById('seccion-imagenes').style.display = 'block';
         document.getElementById('btn-imagenes').classList.remove('btn-secondary');
         document.getElementById('btn-imagenes').classList.add('btn-primary');
@@ -34,6 +35,7 @@ function mostrarSeccion(seccion) {
             renderizarImagenes();
         }
     } else if (seccion === 'videos') {
+        console.log('Mostrando sección de videos');
         document.getElementById('seccion-videos').style.display = 'block';
         document.getElementById('btn-videos').classList.remove('btn-secondary');
         document.getElementById('btn-videos').classList.add('btn-primary');
@@ -47,6 +49,8 @@ function mostrarSeccion(seccion) {
             renderizarVideos();
         }
     }
+    
+    console.log('=== CAMBIO DE SECCIÓN COMPLETADO ===');
 }
 
 // Ordenar y regenerar IDs
@@ -111,6 +115,8 @@ async function cargarImagenes() {
 async function cargarVideos() {
     try {
         console.log('=== CARGANDO VIDEOS ===');
+        console.log('Iniciando carga de videos...');
+        
         const response = await fetch('galeria.json');
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -127,6 +133,13 @@ async function cargarVideos() {
         console.log('Videos filtrados:', videosFiltrados);
         console.log('Videos cargados y procesados:', videosFiltrados.length);
         
+        // Verificar si hay videos antes de renderizar
+        if (videosFiltrados.length === 0) {
+            console.error('ERROR: No se encontraron videos en el JSON');
+            alert('No se encontraron videos disponibles');
+            return false;
+        }
+        
         // Marcar como cargados y renderizar
         videosCargados = true;
         renderizarVideos();
@@ -134,6 +147,7 @@ async function cargarVideos() {
         return true;
     } catch (error) {
         console.error('Error cargando videos:', error);
+        alert('Error al cargar los videos: ' + error.message);
         return false;
     }
 }
