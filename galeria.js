@@ -150,43 +150,75 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Función para cambiar entre secciones
 function mostrarSeccion(seccion) {
-    console.log(`Cambiando a sección: ${seccion}`);
+    console.log(`=== CAMBIANDO A SECCIÓN: ${seccion} ===`);
     
     const seccionImagenes = document.getElementById('seccion-imagenes');
     const seccionVideos = document.getElementById('seccion-videos');
     const btnImagenes = document.getElementById('btn-imagenes');
     const btnVideos = document.getElementById('btn-videos');
     
+    console.log('1. Elementos encontrados:');
+    console.log('   - seccion-imagenes:', seccionImagenes);
+    console.log('   - seccion-videos:', seccionVideos);
+    console.log('   - btn-imagenes:', btnImagenes);
+    console.log('   - btn-videos:', btnVideos);
+    
+    // Estado actual
+    console.log('2. Estado actual:');
+    console.log('   - seccion-imagenes display:', seccionImagenes ? seccionImagenes.style.display : 'no encontrado');
+    console.log('   - seccion-videos display:', seccionVideos ? seccionVideos.style.display : 'no encontrado');
+    
     // Ocultar ambas secciones
-    if (seccionImagenes) seccionImagenes.style.display = 'none';
-    if (seccionVideos) seccionVideos.style.display = 'none';
+    if (seccionImagenes) {
+        seccionImagenes.style.display = 'none';
+        console.log('3. Ocultando sección imágenes');
+    }
+    if (seccionVideos) {
+        seccionVideos.style.display = 'none';
+        console.log('4. Ocultando sección videos');
+    }
     
     // Desactivar ambos botones
     if (btnImagenes) {
         btnImagenes.classList.remove('btn-primary');
         btnImagenes.classList.add('btn-secondary');
+        console.log('5. Desactivando botón imágenes');
     }
     if (btnVideos) {
         btnVideos.classList.remove('btn-primary');
         btnVideos.classList.add('btn-secondary');
+        console.log('6. Desactivando botón videos');
     }
     
     // Mostrar sección seleccionada y activar botón correspondiente
     if (seccion === 'imagenes') {
-        if (seccionImagenes) seccionImagenes.style.display = 'block';
+        console.log('7. Mostrando sección imágenes');
+        if (seccionImagenes) {
+            seccionImagenes.style.display = 'block';
+            console.log('8. Sección imágenes display actual:', seccionImagenes.style.display);
+        }
         if (btnImagenes) {
             btnImagenes.classList.remove('btn-secondary');
             btnImagenes.classList.add('btn-primary');
+            console.log('9. Botón imágenes activado');
         }
     } else if (seccion === 'videos') {
-        if (seccionVideos) seccionVideos.style.display = 'block';
+        console.log('7. Mostrando sección videos');
+        if (seccionVideos) {
+            seccionVideos.style.display = 'block';
+            console.log('8. Sección videos display actual:', seccionVideos.style.display);
+        }
         if (btnVideos) {
             btnVideos.classList.remove('btn-secondary');
             btnVideos.classList.add('btn-primary');
+            console.log('9. Botón videos activado');
         }
         // Cargar videos si no están cargados
+        console.log('10. Llamando a cargarVideos()');
         cargarVideos();
     }
+    
+    console.log('=== CAMBIO DE SECCIÓN COMPLETADO ===');
 }
 
 // Cargar videos desde JSON
@@ -218,19 +250,28 @@ function renderizarVideos(videos) {
     console.log('=== RENDERIZANDO VIDEOS ===');
     const container = document.getElementById('videos-container');
     
+    console.log('1. Container videos encontrado:', container);
+    console.log('2. Total videos a renderizar:', videos.length);
+    console.log('3. Videos:', videos);
+    
     if (!container) {
         console.error('ERROR: No se encontró el contenedor de videos');
         return;
     }
     
     if (videos.length === 0) {
+        console.log('4. No hay videos para mostrar');
         container.innerHTML = '<div class="col-12 text-center"><p class="text-warning">No hay videos disponibles</p></div>';
         return;
     }
     
     let html = '';
     videos.forEach((video, index) => {
-        html += `
+        console.log(`5. Procesando video ${index + 1}:`, video);
+        console.log(`   - src: ${video.src}`);
+        console.log(`   - title: ${video.title}`);
+        
+        const videoHtml = `
             <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
                 <div class="card h-100 shadow">
                     <div class="video-container">
@@ -247,14 +288,27 @@ function renderizarVideos(videos) {
                 </div>
             </div>
         `;
+        
+        console.log(`   - HTML generado:`, videoHtml);
+        html += videoHtml;
     });
     
+    console.log('6. HTML completo generado:', html);
+    
+    // Limpiar container primero
+    container.innerHTML = '';
+    
+    // Agregar HTML
     container.innerHTML = html;
+    
+    console.log('7. Container después de renderizar:', container.innerHTML);
+    console.log('8. Container visible:', container.style.display);
+    console.log('9. Container padre:', container.parentElement);
     
     // Inicializar AOS para los nuevos videos
     if (typeof AOS !== 'undefined') {
         setTimeout(() => AOS.refresh(), 100);
     }
     
-    console.log('Videos renderizados exitosamente');
+    console.log('10. Videos renderizados exitosamente');
 }
