@@ -733,7 +733,7 @@ section.py-5 {
 
 /* Títulos y textos consistentes en todas las tarjetas */
 .card-title {
-    color: var(--text-primary) !important;
+    color: var(--color-dark-1) !important;
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 8px;
@@ -741,7 +741,7 @@ section.py-5 {
 }
 
 .card-text {
-    color: var(--text-secondary) !important;
+    color: var(--color-dark-2) !important;
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -759,8 +759,12 @@ section.py-5 {
     color: #c7b8a8 !important;
 }
 
+.section-nosotros .card-title {
+    color: var(--color-dark-1) !important;
+}
+
 .section-nosotros .card-text {
-    color: #000000 !important;
+    color: var(--color-dark-2) !important;
 }
 
 /* Ajustar altura de secciones hero en nosotros */
