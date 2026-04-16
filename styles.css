@@ -803,7 +803,7 @@ section.py-5 {
 
 /* Frase Bíblica */
 .biblical-quote {
-    background: var(--card-background);
+    background: #ffffff;
     border-left: 4px solid var(--accent-color);
     box-shadow: var(--shadow-md);
     padding: 1.5rem;
