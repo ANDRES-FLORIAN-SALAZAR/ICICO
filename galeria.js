@@ -2,10 +2,6 @@
 let todasLasImagenes = [];
 let imagenesFiltradas = [];
 let videosFiltrados = [];
-let paginaActual = 0;
-let paginaActualVideos = 0;
-const imagenesPorPagina = 18; // Aumentado para mostrar todas las imágenes
-let seccionActual = 'imagenes';
 let imagenesCargadas = false;
 let videosCargados = false;
 
@@ -28,7 +24,6 @@ function mostrarSeccion(seccion) {
         document.getElementById('seccion-imagenes').style.display = 'block';
         document.getElementById('btn-imagenes').classList.remove('btn-secondary');
         document.getElementById('btn-imagenes').classList.add('btn-primary');
-        seccionActual = 'imagenes';
         
         // Cargar imágenes solo si no han sido cargadas antes
         if (!imagenesCargadas) {
@@ -42,7 +37,6 @@ function mostrarSeccion(seccion) {
         document.getElementById('seccion-videos').style.display = 'block';
         document.getElementById('btn-videos').classList.remove('btn-secondary');
         document.getElementById('btn-videos').classList.add('btn-primary');
-        seccionActual = 'videos';
         
         // Cargar videos solo si no han sido cargados antes
         if (!videosCargados) {
@@ -53,22 +47,6 @@ function mostrarSeccion(seccion) {
             renderizarVideos();
         }
     }
-}
-
-// Detectar mes actual
-function detectarMesActual() {
-    const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-    const fechaActual = new Date();
-    const mesActual = meses[fechaActual.getMonth()];
-    const añoActual = fechaActual.getFullYear();
-    
-    console.log(`Mes detectado: ${mesActual} ${añoActual}`);
-    
-    // Establecer automáticamente el mes y año actual en los filtros
-    document.getElementById('filtro-mes').value = mesActual;
-    document.getElementById('filtro-año').value = añoActual;
-    
-    return { mes: mesActual, año: añoActual };
 }
 
 // Ordenar y regenerar IDs
@@ -141,10 +119,12 @@ async function cargarVideos() {
         
         console.log('JSON crudo:', data);
         console.log('Elementos en JSON:', data.imagenes.length);
+        console.log('Elementos tipo video en JSON:', data.imagenes.filter(item => item.tipo === 'video'));
         
         // Filtrar solo videos
         videosFiltrados = ordenarYRegenerarIds(data.imagenes.filter(item => item.tipo === 'video'));
         
+        console.log('Videos filtrados:', videosFiltrados);
         console.log('Videos cargados y procesados:', videosFiltrados.length);
         
         // Marcar como cargados y renderizar
@@ -252,6 +232,9 @@ function renderizarVideos() {
     let html = '';
     videosMostrar.forEach((item, index) => {
         console.log(`8. Procesando video ${index + 1}:`, item);
+        console.log(`   - src: ${item.src}`);
+        console.log(`   - title: ${item.title}`);
+        console.log(`   - tipo: ${item.tipo}`);
         html += `
             <div class="col-lg-4 col-md-6 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
                 <div class="card h-100 shadow">
@@ -287,18 +270,6 @@ function renderizarVideos() {
     console.log('10. Galería de videos renderizada exitosamente');
 }
 
-// Cargar más imágenes
-function cargarMasImagenes() {
-    paginaActual++;
-    renderizarImagenes();
-}
-
-// Cargar más videos
-function cargarMasVideos() {
-    paginaActualVideos++;
-    renderizarVideos();
-}
-
 // Ver imagen en modal
 function verImagen(src, title, description) {
     const modal = new bootstrap.Modal(document.getElementById('imagenModal'));
@@ -308,21 +279,11 @@ function verImagen(src, title, description) {
     modal.show();
 }
 
-// Cargar más imágenes
-function cargarMas() {
-    paginaActual++;
-    renderizarGaleria();
-}
-
 // Inicialización automática cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM cargado - Inicializando galería...');
     
     // No cargar contenido automáticamente, esperar a que el usuario seleccione
-    
-    // Agregar eventos a botones
-    document.getElementById('btn-cargar-mas-imagenes')?.addEventListener('click', cargarMasImagenes);
-    document.getElementById('btn-cargar-mas-videos')?.addEventListener('click', cargarMasVideos);
     
     // Mostrar sección de imágenes por defecto (sin cargar contenido)
     mostrarSeccion('imagenes');
