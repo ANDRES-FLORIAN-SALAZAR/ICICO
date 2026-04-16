@@ -1,59 +1,76 @@
-/* Estilos CSS para Casa de Oración - Esquema Optimizado */
+/* Estilos CSS para Casa de Oración - Nueva Paleta de Colores */
 
-/* Variables de Color - Esquema Profesional */
+/* Variables de Color - Paleta Moderna */
 :root {
-    /* Colores Primarios */
-    --primary-color: #0f172a;
-    --secondary-color: #1e293b;
-    --tertiary-color: #334155;
-    --accent-color: #3b82f6;
-    --accent-hover: #2563eb;
+    /* Colores Primarios - Desde Paleta */
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --tertiary-color: #7f8c8d;
+    --accent-color: #3498db;
+    --accent-hover: #2980b9;
     
-    /* Colores Neutros */
-    --light-color: #f8fafc;
+    /* Colores Adicionales de Paleta */
+    --purple-color: #9b59b6;
+    --purple-hover: #8e44ad;
+    --green-color: #27ae60;
+    --green-hover: #229954;
+    --orange-color: #e67e22;
+    --orange-hover: #d35400;
+    --red-color: #e74c3c;
+    --red-hover: #c0392b;
+    --teal-color: #16a085;
+    --teal-hover: #138d75;
+    
+    /* Colores Neutros - Actualizados */
+    --light-color: #ecf0f1;
     --white-color: #ffffff;
-    --dark-color: #020617;
-    --gray-50: #f8fafc;
-    --gray-100: #f1f5f9;
-    --gray-200: #e2e8f0;
-    --gray-300: #cbd5e1;
-    --gray-400: #94a3b8;
-    --gray-500: #64748b;
-    --gray-600: #475569;
-    --gray-700: #334155;
-    --gray-800: #1e293b;
-    --gray-900: #0f172a;
+    --dark-color: #2c3e50;
+    --gray-50: #ecf0f1;
+    --gray-100: #bdc3c7;
+    --gray-200: #95a5a6;
+    --gray-300: #7f8c8d;
+    --gray-400: #95a5a6;
+    --gray-500: #7f8c8d;
+    --gray-600: #34495e;
+    --gray-700: #2c3e50;
+    --gray-800: #34495e;
+    --gray-900: #2c3e50;
     
     /* Colores de Estado */
-    --success-color: #22c55e;
-    --success-hover: #16a34a;
-    --warning-color: #f59e0b;
-    --warning-hover: #d97706;
-    --danger-color: #ef4444;
-    --danger-hover: #dc2626;
+    --success-color: #27ae60;
+    --success-hover: #229954;
+    --warning-color: #f39c12;
+    --warning-hover: #e67e22;
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
     
     /* Fondos y Textos */
-    --background-color: #f8fafc;
+    --background-color: #ecf0f1;
     --card-background: #ffffff;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-light: #94a3b8;
-    --text-muted: #64748b;
+    --text-primary: #2c3e50;
+    --text-secondary: #34495e;
+    --text-light: #7f8c8d;
+    --text-muted: #95a5a6;
     
     /* Bordes y Sombras */
-    --border-color: #e2e8f0;
-    --border-hover: #cbd5e1;
+    --border-color: #bdc3c7;
+    --border-hover: #95a5a6;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 1px 2px 0 rgba(44, 62, 80, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(44, 62, 80, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(44, 62, 80, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(44, 62, 80, 0.1);
     --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     
-    /* Gradientes */
+    /* Gradientes - Nueva Paleta */
     --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
-    --gradient-hero: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--tertiary-color) 100%);
+    --gradient-hero: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+    --gradient-purple: linear-gradient(135deg, var(--purple-color), var(--purple-hover));
+    --gradient-green: linear-gradient(135deg, var(--green-color), var(--green-hover));
+    --gradient-orange: linear-gradient(135deg, var(--orange-color), var(--orange-hover));
+    --gradient-red: linear-gradient(135deg, var(--red-color), var(--red-hover));
+    --gradient-teal: linear-gradient(135deg, var(--teal-color), var(--teal-hover));
     
     /* Espaciado */
     --spacing-xs: 0.25rem;
