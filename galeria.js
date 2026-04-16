@@ -297,17 +297,20 @@ function renderizarVideos(videos) {
         console.log('6. Forzando visibilidad de sección videos');
         sectionVideos.classList.remove('seccion-inactiva');
         sectionVideos.classList.add('seccion-activa');
-        sectionVideos.style.display = 'block';
-        sectionVideos.style.visibility = 'visible';
-        sectionVideos.style.opacity = '1';
-        sectionVideos.style.position = 'relative';
-        sectionVideos.style.zIndex = '1';
+        
+        // **CRÍTICO: Forzar estilos inline para sobreescribir CSS**
+        sectionVideos.style.setProperty('display', 'block', 'important');
+        sectionVideos.style.setProperty('visibility', 'visible', 'important');
+        sectionVideos.style.setProperty('opacity', '1', 'important');
+        sectionVideos.style.setProperty('position', 'relative', 'important');
+        sectionVideos.style.setProperty('z-index', '1', 'important');
         
         console.log('7. Estado final de sección videos:');
         console.log('   - display:', sectionVideos.style.display);
         console.log('   - visibility:', sectionVideos.style.visibility);
         console.log('   - opacity:', sectionVideos.style.opacity);
         console.log('   - classes:', sectionVideos.className);
+        console.log('   - computed style:', window.getComputedStyle(sectionVideos).display);
     }
     
     // También forzar el container
