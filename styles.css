@@ -2,28 +2,29 @@
 
 /* Variables de Color - Esquema Negro, Gris, Blanco y Azul */
 :root {
-    --primary-color: #1a202c;
-    --secondary-color: #2d3748;
-    --tertiary-color: #4a5568;
-    --accent-color: #3182ce;
-    --accent-hover: #2c5282;
-    --light-color: #f5f7fa;
+    --primary-color: #0f172a;
+    --secondary-color: #1e293b;
+    --tertiary-color: #334155;
+
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+
+    --light-color: #f8fafc;
     --white-color: #ffffff;
-    --dark-color: #1a202c;
-    --success-color: #3182ce;
-    --warning-color: #2c5282;
-    --danger-color: #4a5568;
-    --background-color: #ffffff;
-    --card-background: #4a5568;
-    --text-primary: #1a202c;
-    --text-secondary: #4a5568;
-    --text-light: #718096;
+    --dark-color: #020617;
+
+    --success-color: #22c55e;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+
+    --background-color: #f8fafc;
+    --card-background: #ffffff;
+
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-light: #94a3b8;
+
     --border-color: #e2e8f0;
-    --transition: all 0.3s ease;
-    --shadow-sm: 0 2px 4px rgba(26, 32, 44, 0.08);
-    --shadow-md: 0 4px 8px rgba(26, 32, 44, 0.1);
-    --shadow-lg: 0 10px 20px rgba(26, 32, 44, 0.12);
-    --shadow-xl: 0 20px 40px rgba(26, 32, 44, 0.15);
 }
 
 /* Estilos Globales */
