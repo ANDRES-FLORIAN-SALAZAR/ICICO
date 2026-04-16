@@ -379,18 +379,14 @@ function cargarMas() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM cargado - Inicializando galería...');
     
-    // Cargar imágenes por defecto
-    cargarImagenes().then(success => {
-        if (success) {
-            console.log('Galería inicializada exitosamente');
-        } else {
-            console.error('Error inicializando galería');
-        }
-    });
+    // No cargar contenido automáticamente, esperar a que el usuario seleccione
     
     // Agregar eventos a botones
     document.getElementById('btn-cargar-mas-imagenes')?.addEventListener('click', cargarMasImagenes);
     document.getElementById('btn-cargar-mas-videos')?.addEventListener('click', cargarMasVideos);
     
-    console.log('Galería inicializada correctamente');
+    // Mostrar sección de imágenes por defecto (sin cargar contenido)
+    mostrarSeccion('imagenes');
+    
+    console.log('Galería inicializada correctamente - esperando selección del usuario');
 });
