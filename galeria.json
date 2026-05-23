@@ -1,7 +1,87 @@
 {
   "imagenes": [
-    {
+  {
       "id": 1,
+      "src": "Multimedia/images/19.jpg",
+      "alt": "Compartir",
+      "title": "Compartiendo la Fe",
+      "description": "compañeros de viaje",
+      "mes": "Mayo",
+      "año": 2026,
+      "tipo": "imagen"
+    },
+    {
+      "id": 2,
+      "src": "Multimedia/images/20.jpg",
+      "alt": "Compartir",
+      "title": "Compartiendo la Bendición",
+      "description": "Viviendo la fe",
+      "mes": "Mayo",
+      "año": 2026,
+      "tipo": "imagen"
+    },
+    {
+      "id": 3,
+      "src": "Multimedia/images/21.jpg",
+      "alt": "Compartir",
+      "title": "Unidas en Dios",
+      "description": "Reunidas en Adoración",
+      "mes": "Mayo",
+      "año": 2026,
+      "tipo": "imagen"
+    },
+    {
+      "id": 4,
+      "src": "Multimedia/images/22.jpg",
+      "alt": "Compartir",
+      "title": "Gosando con Jesús",
+      "description": "Gratitud y Alegría",
+      "mes": "Mayo",
+      "año": 2026,
+      "tipo": "imagen"
+    },
+    {
+      "id": 5,
+      "src": "Multimedia/images/23.jpg",
+      "alt": "Compartir",
+      "title": "Compartiendo Alegría",
+      "description": "Reunidos para Alabar",
+      "mes": "Mayo",
+      "año": 2026,
+      "tipo": "imagen"
+    },
+    {
+      "id": 6,
+      "src": "Multimedia/images/24.jpg",
+      "alt": "Compartir",
+      "title": "Compartiendo Adoración",
+      "description": "Escuchando su Voz",
+      "mes": "Mayo",
+      "año": 2026,
+      "tipo": "imagen"
+    },
+    {
+      "id": 7,
+      "src": "Multimedia/images/25.jpg",
+      "alt": "Compartir",
+      "title": "Compartiendo la Esperanza",
+      "description": "Adorando y Alabando",
+      "mes": "Mayo",
+      "año": 2026,
+      "tipo": "imagen"
+    },
+    {
+      "id": 8,
+      "src": "Multimedia/images/26.jpg",
+      "alt": "Compartir",
+      "title": "Palabras de Fe",
+      "description": "Enseñanza de Dios",
+      "mes": "Mayo",
+      "año": 2026,
+      "tipo": "imagen"
+    },
+    {
+      "id": 9,
       "src": "Multimedia/images/10.jpg",
       "alt": "Alabanza",
       "title": "Enseñanza",
@@ -11,7 +91,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 2,
+      "id": 10,
       "src": "Multimedia/images/13.jpg",
       "alt": "Conferencia",
       "title": "Aprendizaje",
@@ -21,7 +101,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 3,
+      "id": 11,
       "src": "Multimedia/images/14.jpg",
       "alt": "Retiro Espiritual",
       "title": "Reflexión",
@@ -31,7 +111,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 4,
+      "id": 12,
       "src": "Multimedia/images/15.jpg",
       "alt": "Fiesta Cristiana",
       "title": "Celebración",
@@ -41,7 +121,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 5,
+      "id": 13,
       "src": "Multimedia/images/16.jpg",
       "alt": "Servicio Comunitario",
       "title": "Ayuda",
@@ -51,7 +131,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 6,
+      "id": 14,
       "src": "Multimedia/images/17.jpg",
       "alt": "Concierto de Alabanza",
       "title": "Santificación",
@@ -61,7 +141,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 7,
+      "id": 15,
       "src": "Multimedia/images/18.jpg",
       "alt": "Campamento Cristiano",
       "title": "Comunión",
@@ -71,7 +151,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 8,
+      "id": 16,
       "src": "Multimedia/images/5.jpg",
       "alt": "Servicio Cristiano",
       "title": "Servicio",
@@ -81,7 +161,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 9,
+      "id": 17,
       "src": "Multimedia/images/6.jpg",
       "alt": "Estudio Bíblico",
       "title": "Oración",
@@ -91,7 +171,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 10,
+      "id": 18,
       "src": "Multimedia/images/11.jpg",
       "alt": "Bautismo",
       "title": "Nacimiento Espiritual",
@@ -101,7 +181,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 11,
+      "id": 19,
       "src": "Multimedia/images/1.jpg",
       "alt": "Culto de Adoración",
       "title": "Agradecimiento",
@@ -111,7 +191,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 12,
+      "id": 20,
       "src": "Multimedia/images/2.jpg",
       "alt": "Predicación",
       "title": "Palabra de Dios",
@@ -121,7 +201,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 13,
+      "id": 21,
       "src": "Multimedia/images/3.jpg",
       "alt": "Oración Comunitaria",
       "title": "Adoración",
@@ -131,7 +211,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 14,
+      "id": 22,
       "src": "Multimedia/images/4.jpg",
       "alt": "Confraternidad",
       "title": "Comunidad",
@@ -141,7 +221,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 15,
+      "id": 23,
       "src": "Multimedia/images/7.jpg",
       "alt": "Culto Especial",
       "title": "Celebración",
@@ -151,7 +231,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 16,
+      "id": 24,
       "src": "Multimedia/images/8.jpg",
       "alt": "Grupo de Jóvenes",
       "title": "Lazos",
@@ -161,7 +241,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 17,
+      "id": 25,
       "src": "Multimedia/images/9.jpg",
       "alt": "Misión",
       "title": "Evangelismo",
@@ -171,7 +251,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 18,
+      "id": 26,
       "src": "Multimedia/images/12.jpg",
       "alt": "Comunión",
       "title": "Adoración",
@@ -181,7 +261,7 @@
       "tipo": "imagen"
     },
     {
-      "id": 19,
+      "id": 27,
       "src": "Multimedia/videos/video1.mp4",
       "alt": "Predicación Dominical",
       "title": "Mensaje de Esperanza",
