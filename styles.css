@@ -85,7 +85,8 @@ body {
     font-family: var(--font-sans);
     line-height: 1.6;
     color: var(--text-primary);
-    background: var(--background-color);
+    background: linear-gradient(rgba(31, 31, 31, 0.92), rgba(31, 31, 31, 0.92)),
+                url('fondo2.jpg') center center / cover fixed;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
 }
