@@ -984,7 +984,7 @@ Alertas
                 url('Multimedia/versiculo.jpg') center/cover no-repeat;
     color: var(--white-color);
     padding: 3rem 0 2rem;
-    border-top: 5px solid var(--accent-color); /* opcional, detalle decorativo */
+    border-top: none;
 }
 
 .footer h5 {
