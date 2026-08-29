@@ -152,12 +152,6 @@
         .particle {
             animation: float linear infinite;
         }
-        
-        .navbar.scrolled {
-            background: rgba(44, 62, 80, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
     `;
     document.head.appendChild(animationStyle);
 
