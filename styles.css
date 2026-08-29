@@ -532,8 +532,13 @@ section.py-5 {
     color: var(--text-primary);
 }
 
-.contact-card .small {
-    color: var(--text-secondary);
+.contact-card .small,
+.contact-card small,
+.contact-card .text-muted,
+.contact-card .map-placeholder p,
+.contact-card .map-container small,
+.contact-card .map-container .text-muted {
+    color: var(--color-sand) !important;
 }
 
 .contact-card .btn {
