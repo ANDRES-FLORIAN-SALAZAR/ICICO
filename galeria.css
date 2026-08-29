@@ -253,7 +253,8 @@
 }
 
 /* Botón Cargar Más - Paleta Específica */
-#btn-cargar-mas-imagenes {
+#btn-cargar-mas-imagenes,
+#btn-cargar-mas-videos {
     background: linear-gradient(135deg, #c2a04a, #7a5a2b);
     color: #ffffff;
     border: none;
@@ -264,7 +265,8 @@
     transition: all 0.3s ease;
 }
 
-#btn-cargar-mas-imagenes:hover {
+#btn-cargar-mas-imagenes:hover,
+#btn-cargar-mas-videos:hover {
     background: linear-gradient(135deg, #7a5a2b, #4a1f14);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(194, 160, 74, 0.4);
