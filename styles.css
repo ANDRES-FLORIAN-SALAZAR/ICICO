@@ -703,8 +703,37 @@ section.py-5 {
 }
 
 /* =====================================================
+   Cards y detalles de eventos
+   ===================================================== */
+.event-card .card-header {
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+.event-card .card-header h5,
+.event-card .card-header i {
+    color: var(--white-color);
+}
+
+.event-card .event-details i,
+.event-card .class-details i,
+.event-card .card-header i {
+    color: var(--primary-color);
+}
+
+.event-card .event-details strong,
+.event-card .class-details strong {
+    color: var(--color-dark-2);
+}
+
+/* =====================================================
    Overlay de imagen (nosotros)
    ===================================================== */
+.mission-image img {
+    width: 100%;
+    height: auto;
+}
+
 .image-overlay .overlay-content {
     color: #ffffff !important;
     padding: 2rem;
@@ -713,6 +742,48 @@ section.py-5 {
 .image-overlay .overlay-content h3,
 .image-overlay .overlay-content p {
     color: #ffffff !important;
+}
+
+.map-box {
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.map-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.verse-banner {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75)),
+                url('Multimedia/4.jpg') center/cover no-repeat;
+    border-left: 5px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.verse-icon {
+    color: var(--accent-color);
+    opacity: 0.9;
+}
+
+.verse-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #ffffff;
+    font-style: italic;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.verse-reference {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ffffff !important;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 }
 
 /* =====================================================
