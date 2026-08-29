@@ -269,6 +269,16 @@
       "mes": "Marzo",
       "año": 2026,
       "tipo": "video"
+    },
+    {
+    "id": 27,
+      "src": "Multimedia/images/27.jpg",
+      "alt": "Culto de Damas",
+      "title": "Mujeres de Dios",
+      "description": "Separadas por Dios",
+      "mes": "Agosto",
+      "año": 2026,
+      "tipo": "imagen"
     }
   ]
 }
