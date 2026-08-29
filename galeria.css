@@ -1,8 +1,26 @@
 /* Galería Nueva - Casa de Oración - Paleta de Colores Específica */
 
 /* Galería Container */
-#galeria-container {
-    margin: 0 -15px;
+#galeria-container,
+#videos-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12px;
+    gap: 0;
+}
+
+#galeria-container > [class*="col-"],
+#videos-container > [class*="col-"] {
+    display: flex;
+    padding: 0 12px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+}
+
+#galeria-container > [class*="col-"] > .card,
+#videos-container > [class*="col-"] > .card,
+#videos-container > [class*="col-"] > .video-card {
+    width: 100%;
 }
 
 /* Items de Galería */
@@ -17,9 +35,10 @@
 }
 
 /* Imágenes de Galería */
-.gallery-item img {
+.gallery-item img,
+.gallery-item .card-img-top {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -140,6 +159,17 @@
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.gallery-item .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
 }
 
 .gallery-item .card:hover {
@@ -247,16 +277,41 @@
 }
 
 /* Responsive Design */
+@media (min-width: 992px) {
+    #galeria-container > [class*="col-lg-4"],
+    #videos-container > [class*="col-lg-4"] {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #galeria-container > [class*="col-md-6"],
+    #videos-container > [class*="col-md-6"] {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
 @media (max-width: 768px) {
-    #galeria-container {
+    #galeria-container,
+    #videos-container {
         margin: 0 -10px;
+    }
+    
+    #galeria-container > [class*="col-"],
+    #videos-container > [class*="col-"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0 10px;
     }
     
     .gallery-item {
         padding: 0 10px;
     }
     
-    .gallery-item img {
+    .gallery-item img,
+    .gallery-item .card-img-top {
         height: 180px;
     }
     
