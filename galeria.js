@@ -359,8 +359,6 @@ function renderizarVideos(videos) {
         console.log('   - computed style:', window.getComputedStyle(sectionVideos).display);
     }
     
-    // También forzar el container
-    container.style.display = 'block';
     container.style.visibility = 'visible';
     container.style.opacity = '1';
     
