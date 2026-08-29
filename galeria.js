@@ -257,11 +257,25 @@ function mostrarSeccion(seccion) {
         const galeriaContainer = document.getElementById('galeria-container');
         if (galeriaContainer) galeriaContainer.innerHTML = '';
         const btnCargarMasVideos = document.getElementById('btn-cargar-mas-videos');
+        const btnCargarMasImagenes = document.getElementById('btn-cargar-mas-imagenes');
         if (btnCargarMasVideos) btnCargarMasVideos.style.display = 'none';
         if (seccionImagenes) {
             seccionImagenes.classList.remove('seccion-inactiva');
             seccionImagenes.classList.add('seccion-activa');
+            seccionImagenes.style.display = 'block';
+            seccionImagenes.style.visibility = 'visible';
+            seccionImagenes.style.opacity = '1';
             console.log('7. Sección imágenes activada');
+        }
+        if (seccionVideos) {
+            seccionVideos.classList.remove('seccion-activa');
+            seccionVideos.classList.add('seccion-inactiva');
+            seccionVideos.style.display = 'none';
+            seccionVideos.style.visibility = 'hidden';
+            seccionVideos.style.opacity = '0';
+        }
+        if (btnCargarMasImagenes) {
+            btnCargarMasImagenes.style.display = 'inline-flex';
         }
         if (btnImagenes) {
             btnImagenes.classList.remove('btn-secondary');
@@ -275,16 +289,30 @@ function mostrarSeccion(seccion) {
         const videosContainer = document.getElementById('videos-container');
         if (videosContainer) videosContainer.innerHTML = '';
         const btnCargarMasImagenes = document.getElementById('btn-cargar-mas-imagenes');
+        const btnCargarMasVideos = document.getElementById('btn-cargar-mas-videos');
         if (btnCargarMasImagenes) btnCargarMasImagenes.style.display = 'none';
         if (seccionVideos) {
             seccionVideos.classList.remove('seccion-inactiva');
             seccionVideos.classList.add('seccion-activa');
+            seccionVideos.style.display = 'block';
+            seccionVideos.style.visibility = 'visible';
+            seccionVideos.style.opacity = '1';
             console.log('7. Sección videos activada');
+        }
+        if (seccionImagenes) {
+            seccionImagenes.classList.remove('seccion-activa');
+            seccionImagenes.classList.add('seccion-inactiva');
+            seccionImagenes.style.display = 'none';
+            seccionImagenes.style.visibility = 'hidden';
+            seccionImagenes.style.opacity = '0';
         }
         if (btnVideos) {
             btnVideos.classList.remove('btn-secondary');
             btnVideos.classList.add('btn-primary');
             console.log('8. Botón videos activado');
+        }
+        if (btnCargarMasVideos) {
+            btnCargarMasVideos.style.display = 'inline-flex';
         }
         // Cargar videos
         console.log('9. Llamando a cargarVideos()');
