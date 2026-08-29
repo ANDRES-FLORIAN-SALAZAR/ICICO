@@ -102,6 +102,11 @@ body {
     box-shadow: var(--shadow-md);
 }
 
+.navbar.scrolled {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    box-shadow: 0 8px 25px rgba(227, 106, 60, 0.25);
+}
+
 .navbar-brand {
     font-weight: 600;
     font-size: 1.5rem;
@@ -145,6 +150,15 @@ body {
 .navbar-nav .nav-link.active {
     color: var(--white-color) !important;
     background: rgba(227, 106, 60, 0.1);
+}
+
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link:focus-visible {
+    color: var(--white-color) !important;
+    background: rgba(227, 106, 60, 0.15);
+    box-shadow: none;
+    outline: none;
 }
 
 .navbar-toggler {
@@ -511,19 +525,46 @@ section.py-5 {
    Frase Bíblica
    ===================================================== */
 .biblical-quote {
-    background: #ffffff;
-    border-left: 4px solid var(--accent-color);
+    background: linear-gradient(135deg, rgba(255,255,255,0.97), rgba(255,247,245,0.96));
+    border-left: 5px solid var(--accent-color);
     box-shadow: var(--shadow-md);
     padding: 1.5rem;
     margin: 2rem 0;
     border-radius: 8px;
     font-style: italic;
-    color: var(--text-primary);
+    color: var(--primary-color);
+}
+
+.biblical-quote i,
+.verse-icon {
+    color: var(--accent-color) !important;
+}
+
+#random-verse,
+.verse-text {
+    color: var(--secondary-color) !important;
+}
+
+#verse-reference,
+.verse-reference {
+    color: var(--primary-color) !important;
 }
 
 /* =====================================================
    Contact Cards
    ===================================================== */
+.contact-card .card-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: var(--white-color) !important;
+}
+
+.contact-card .card-header i,
+.contact-card .card-header .fas,
+.contact-card .card-header .fab {
+    color: var(--white-color) !important;
+}
+
 .contact-card .card-body {
     color: var(--color-dark-2);
 }
