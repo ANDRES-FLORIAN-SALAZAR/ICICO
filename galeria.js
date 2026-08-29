@@ -4,9 +4,7 @@ console.log('Galería Nueva - Iniciando...');
 let todasLasImagenes = [];
 let imagenesFiltradas = [];
 let paginaActual = 0;
-let paginaVideosActual = 0;
 const imagenesPorPagina = 6;
-const videosPorPagina = 3;
 const cacheBuster = () => '?v=' + Date.now();
 const mesesOrden = {
     'Enero': 1,
@@ -69,7 +67,8 @@ async function cargarImagenes() {
         console.log('Imágenes cargadas:', todasLasImagenes.length);
         
         renderizarGaleria();
-        return;
+        
+        return true;
     } catch (error) {
         console.error('Error cargando imágenes:', error);
         return false;
@@ -85,10 +84,6 @@ function renderizarGaleria() {
     if (!container) {
         console.error('ERROR: No se encontró el contenedor');
         return;
-    }
-
-    if (paginaActual === 0) {
-        container.innerHTML = '';
     }
     
     if (imagenesFiltradas.length === 0) {
@@ -151,13 +146,6 @@ function cargarMas() {
     renderizarGaleria();
 }
 
-// Cargar más videos
-function cargarMasVideos() {
-    paginaVideosActual++;
-    const videos = ordenarContenido(JSON.parse(sessionStorage.getItem('videosGaleria') || '[]'));
-    renderizarVideos(videos);
-}
-
 // Ver imagen en modal
 function verImagen(src, title, description) {
     const modal = new bootstrap.Modal(document.getElementById('imagenModal'));
@@ -172,23 +160,12 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM cargado - Inicializando galería...');
     
     // Cargar imágenes automáticamente
-    cargarImagenes().then(success => {
-        if (success) {
-            console.log('Galería inicializada exitosamente');
-        } else {
-            console.error('Error inicializando galería');
-        }
-    });
+    cargarImagenes();
     
     // Agregar evento al botón de cargar más solo si existe
     const btnCargarMas = document.getElementById('btn-cargar-mas-imagenes');
     if (btnCargarMas) {
         btnCargarMas.addEventListener('click', cargarMas);
-    }
-
-    const btnCargarMasVideos = document.getElementById('btn-cargar-mas-videos');
-    if (btnCargarMasVideos) {
-        btnCargarMasVideos.addEventListener('click', cargarMasVideos);
     }
     
     // Agregar eventos a los botones de navegación
@@ -252,66 +229,27 @@ function mostrarSeccion(seccion) {
     // Mostrar sección seleccionada y activar botón correspondiente
     if (seccion === 'imagenes') {
         console.log('6. Mostrando sección imágenes');
-        paginaActual = 0;
-        const galeriaContainer = document.getElementById('galeria-container');
-        if (galeriaContainer) galeriaContainer.innerHTML = '';
-        const btnCargarMasVideos = document.getElementById('btn-cargar-mas-videos');
-        const btnCargarMasImagenes = document.getElementById('btn-cargar-mas-imagenes');
-        if (btnCargarMasVideos) btnCargarMasVideos.style.display = 'none';
         if (seccionImagenes) {
             seccionImagenes.classList.remove('seccion-inactiva');
             seccionImagenes.classList.add('seccion-activa');
-            seccionImagenes.style.display = 'block';
-            seccionImagenes.style.visibility = 'visible';
-            seccionImagenes.style.opacity = '1';
             console.log('7. Sección imágenes activada');
-        }
-        if (seccionVideos) {
-            seccionVideos.classList.remove('seccion-activa');
-            seccionVideos.classList.add('seccion-inactiva');
-            seccionVideos.style.display = 'none';
-            seccionVideos.style.visibility = 'hidden';
-            seccionVideos.style.opacity = '0';
-        }
-        if (btnCargarMasImagenes) {
-            btnCargarMasImagenes.style.display = 'inline-flex';
         }
         if (btnImagenes) {
             btnImagenes.classList.remove('btn-secondary');
             btnImagenes.classList.add('btn-primary');
             console.log('8. Botón imágenes activado');
         }
-        renderizarGaleria();
     } else if (seccion === 'videos') {
         console.log('6. Mostrando sección videos');
-        paginaVideosActual = 0;
-        const videosContainer = document.getElementById('videos-container');
-        if (videosContainer) videosContainer.innerHTML = '';
-        const btnCargarMasImagenes = document.getElementById('btn-cargar-mas-imagenes');
-        const btnCargarMasVideos = document.getElementById('btn-cargar-mas-videos');
-        if (btnCargarMasImagenes) btnCargarMasImagenes.style.display = 'none';
         if (seccionVideos) {
             seccionVideos.classList.remove('seccion-inactiva');
             seccionVideos.classList.add('seccion-activa');
-            seccionVideos.style.display = 'block';
-            seccionVideos.style.visibility = 'visible';
-            seccionVideos.style.opacity = '1';
             console.log('7. Sección videos activada');
-        }
-        if (seccionImagenes) {
-            seccionImagenes.classList.remove('seccion-activa');
-            seccionImagenes.classList.add('seccion-inactiva');
-            seccionImagenes.style.display = 'none';
-            seccionImagenes.style.visibility = 'hidden';
-            seccionImagenes.style.opacity = '0';
         }
         if (btnVideos) {
             btnVideos.classList.remove('btn-secondary');
             btnVideos.classList.add('btn-primary');
             console.log('8. Botón videos activado');
-        }
-        if (btnCargarMasVideos) {
-            btnCargarMasVideos.style.display = 'inline-flex';
         }
         // Cargar videos
         console.log('9. Llamando a cargarVideos()');
@@ -337,9 +275,9 @@ async function cargarVideos() {
         console.log('Videos encontrados:', videos.length);
         
         // Renderizar videos
-        sessionStorage.setItem('videosGaleria', JSON.stringify(videos));
         renderizarVideos(videos);
-        return;
+        
+        return true;
     } catch (error) {
         console.error('Error cargando videos:', error);
         return false;
@@ -350,7 +288,6 @@ async function cargarVideos() {
 function renderizarVideos(videos) {
     console.log('=== RENDERIZANDO VIDEOS ===');
     const container = document.getElementById('videos-container');
-    const btnCargarMasVideos = document.getElementById('btn-cargar-mas-videos');
     
     console.log('1. Container videos encontrado:', container);
     console.log('2. Total videos a renderizar:', videos.length);
@@ -359,31 +296,22 @@ function renderizarVideos(videos) {
         console.error('ERROR: No se encontró el contenedor de videos');
         return;
     }
-
-    if (paginaVideosActual === 0) {
-        container.innerHTML = '';
-    }
     
     if (videos.length === 0) {
         console.log('3. No hay videos para mostrar');
         container.innerHTML = '<div class="col-12 text-center"><p class="text-warning">No hay videos disponibles</p></div>';
-        if (btnCargarMasVideos) btnCargarMasVideos.style.display = 'none';
         return;
     }
-
-    const inicio = paginaVideosActual * videosPorPagina;
-    const fin = inicio + videosPorPagina;
-    const videosMostrar = videos.slice(inicio, fin);
     
     let html = '';
-    videosMostrar.forEach((video, index) => {
+    videos.forEach((video, index) => {
         console.log(`4. Procesando video ${index + 1}:`, video);
         
         const videoHtml = `
-            <div class="col-lg-4 col-md-6 mb-4 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
-                <div class="card h-100 shadow video-card">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                <div class="card h-100 shadow">
                     <div class="video-container">
-                        <video controls class="video-player w-100" preload="metadata">
+                        <video controls class="video-player w-100" style="height: 250px; object-fit: cover;">
                             <source src="${video.src}" type="video/mp4">
                             Tu navegador no soporta videos.
                         </video>
@@ -400,32 +328,33 @@ function renderizarVideos(videos) {
         html += videoHtml;
     });
     
-    if (paginaVideosActual === 0) {
-        container.innerHTML = html;
-    } else {
-        container.innerHTML += html;
-    }
+    console.log('5. Insertando HTML en container');
+    container.innerHTML = html;
     
-    if (btnCargarMasVideos) {
-        const totalMostrados = (paginaVideosActual + 1) * videosPorPagina;
-        if (totalMostrados < videos.length) {
-            btnCargarMasVideos.style.display = 'inline-flex';
-            btnCargarMasVideos.innerHTML = `<i class="fas fa-plus me-2"></i>Cargar más (${videos.length - totalMostrados} videos restantes)`;
-        } else {
-            btnCargarMasVideos.style.display = 'none';
-        }
-    }
-    
+    // Forzar visibilidad con múltiples métodos
     const sectionVideos = document.getElementById('seccion-videos');
     if (sectionVideos) {
         console.log('6. Forzando visibilidad de sección videos');
         sectionVideos.classList.remove('seccion-inactiva');
         sectionVideos.classList.add('seccion-activa');
+        
+        // **CRÍTICO: Forzar estilos inline para sobreescribir CSS**
         sectionVideos.style.setProperty('display', 'block', 'important');
         sectionVideos.style.setProperty('visibility', 'visible', 'important');
         sectionVideos.style.setProperty('opacity', '1', 'important');
+        sectionVideos.style.setProperty('position', 'relative', 'important');
+        sectionVideos.style.setProperty('z-index', '1', 'important');
+        
+        console.log('7. Estado final de sección videos:');
+        console.log('   - display:', sectionVideos.style.display);
+        console.log('   - visibility:', sectionVideos.style.visibility);
+        console.log('   - opacity:', sectionVideos.style.opacity);
+        console.log('   - classes:', sectionVideos.className);
+        console.log('   - computed style:', window.getComputedStyle(sectionVideos).display);
     }
     
+    // También forzar el container
+    container.style.display = 'block';
     container.style.visibility = 'visible';
     container.style.opacity = '1';
     

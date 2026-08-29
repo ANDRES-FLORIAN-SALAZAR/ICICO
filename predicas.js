@@ -17,7 +17,8 @@ async function cargarPredicas() {
         console.log('Predicas cargadas:', predicas.length);
         
         renderizarPredicas();
-        return;
+        
+        return true;
     } catch (error) {
         console.error('Error cargando predicas:', error);
         return false;
@@ -92,11 +93,5 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM cargado - Inicializando predicas...');
     
     // Cargar predicas automáticamente
-    cargarPredicas().then(success => {
-        if (success) {
-            console.log('Predicas inicializadas exitosamente');
-        } else {
-            console.error('Error inicializando predicas');
-        }
-    });
+    cargarPredicas();
 });
