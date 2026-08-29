@@ -255,21 +255,28 @@
 /* Botón Cargar Más - Paleta Específica */
 #btn-cargar-mas-imagenes,
 #btn-cargar-mas-videos {
-    background: linear-gradient(135deg, #c2a04a, #7a5a2b);
-    color: #ffffff;
-    border: none;
-    border-radius: 25px;
-    padding: 12px 30px;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(194, 160, 74, 0.3);
+    background: linear-gradient(135deg, #d9b15a, #b87d2a);
+    color: #1f1f1f;
+    border: 3px solid #e36a3c;
+    border-radius: 999px;
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: 1.08rem;
+    line-height: 1.2;
+    box-shadow: 0 6px 18px rgba(194, 160, 74, 0.35);
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 210px;
 }
 
 #btn-cargar-mas-imagenes:hover,
 #btn-cargar-mas-videos:hover {
-    background: linear-gradient(135deg, #7a5a2b, #4a1f14);
+    background: linear-gradient(135deg, #cfa54d, #9d6320);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(194, 160, 74, 0.4);
+    box-shadow: 0 8px 20px rgba(194, 160, 74, 0.45);
 }
 
 /* Estados de Carga */
