@@ -372,7 +372,7 @@ body::-webkit-scrollbar-thumb {
 Page Headers (pestañas internas)
    ===================================================== */
 .page-header {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: transparent;
     color: var(--white-color);
     padding: 5rem 0 3rem;
     text-align: center;
