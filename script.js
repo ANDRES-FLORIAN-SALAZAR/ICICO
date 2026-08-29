@@ -22,9 +22,11 @@
 
     // Inicializar navegación
     function initializeNavigation() {
+        const navbar = document.querySelector('.navbar');
+        if (!navbar) return;
+
         // Cambiar estilo de navbar al hacer scroll
         window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
@@ -54,13 +56,14 @@
     // Animar contadores de estadísticas
     function animateCounters() {
         const counters = document.querySelectorAll('.stat-number[data-count]');
-        
+        if (!counters.length) return;
+
         counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-count'));
+            const target = parseInt(counter.getAttribute('data-count'), 10) || 0;
             const duration = 2000; // 2 segundos
             const increment = target / (duration / 16); // 60fps
             let current = 0;
-            
+
             const updateCounter = () => {
                 current += increment;
                 if (current < target) {
@@ -70,7 +73,12 @@
                     counter.textContent = target;
                 }
             };
-            
+
+            if (!('IntersectionObserver' in window)) {
+                updateCounter();
+                return;
+            }
+
             // Iniciar cuando el elemento sea visible
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -80,7 +88,7 @@
                     }
                 });
             });
-            
+
             observer.observe(counter);
         });
     }
