@@ -103,8 +103,37 @@ body {
 }
 
 .navbar.scrolled {
-    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-    box-shadow: 0 8px 25px rgba(227, 106, 60, 0.25);
+    background: linear-gradient(135deg, #d75d22, #b94d18);
+    box-shadow: 0 8px 25px rgba(215, 93, 34, 0.35);
+}
+
+:root {
+    --scrollbar-thumb: #d75d22;
+    --scrollbar-track: #1f1f1f;
+}
+
+html,
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--scrollbar-thumb), #b94d18);
+    border-radius: 10px;
+    border: 2px solid var(--scrollbar-track);
 }
 
 .navbar-brand {
@@ -525,29 +554,30 @@ section.py-5 {
    Frase Bíblica
    ===================================================== */
 .biblical-quote {
-    background: linear-gradient(135deg, rgba(255,255,255,0.97), rgba(255,247,245,0.96));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(20, 20, 20, 0.94));
     border-left: 5px solid var(--accent-color);
     box-shadow: var(--shadow-md);
     padding: 1.5rem;
     margin: 2rem 0;
     border-radius: 8px;
     font-style: italic;
-    color: var(--primary-color);
+    color: #ffffff;
 }
 
 .biblical-quote i,
 .verse-icon {
-    color: var(--accent-color) !important;
+    color: #d63b2a !important;
 }
 
 #random-verse,
 .verse-text {
-    color: var(--secondary-color) !important;
+    color: #ffffff !important;
 }
 
 #verse-reference,
 .verse-reference {
-    color: var(--primary-color) !important;
+    color: #d63b2a !important;
+    font-weight: 700;
 }
 
 /* =====================================================
@@ -578,12 +608,22 @@ section.py-5 {
 .contact-card .text-muted,
 .contact-card .map-placeholder p,
 .contact-card .map-container small,
-.contact-card .map-container .text-muted {
+.contact-card .map-container .text-muted,
+.contact-card .map-container .leaflet-control-attribution,
+.contact-card .map-container .leaflet-control-attribution a {
     color: var(--color-dark-2) !important;
 }
 
 .contact-card .btn {
     margin: 0.25rem;
+}
+
+.contact-card .card-body strong,
+.contact-card .card-body .fw-bold,
+.contact-card .card-body p,
+.contact-card .card-body .text-muted,
+.contact-card .card-body small {
+    color: var(--color-dark-2) !important;
 }
 
 /* =====================================================
@@ -747,19 +787,42 @@ section.py-5 {
    Cards y detalles de eventos
    ===================================================== */
 .event-card .card-header {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 1rem 1.25rem 0.9rem;
+    text-align: center;
 }
 
 .event-card .card-header h5,
 .event-card .card-header i {
     color: var(--white-color);
+    margin: 0;
+}
+
+.event-card .card-header h5 {
+    display: block;
+    line-height: 1.2;
+}
+
+.event-card .card-header i {
+    font-size: 2rem;
+    color: var(--white-color) !important;
 }
 
 .event-card .event-details i,
 .event-card .class-details i,
 .event-card .card-header i {
     color: var(--primary-color);
+}
+
+.event-card .event-details i,
+.event-card .class-details i {
+    color: var(--secondary-color);
 }
 
 .event-card .event-details strong,
