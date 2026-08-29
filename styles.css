@@ -246,6 +246,7 @@ body::-webkit-scrollbar-thumb {
     transform: scale(1.05);
 }
 
+
 /* =====================================================
    Hero Section
    ===================================================== */
@@ -565,13 +566,11 @@ Navbar Tabs
 
 .nav-tabs .nav-link:hover {
     color: var(--accent-color);
-    border-color: var(--accent-color);
 }
 
 .nav-tabs .nav-link.active {
     color: var(--accent-color);
     background-color: transparent;
-    border-color: var(--accent-color);
 }
 
 /* =====================================================
