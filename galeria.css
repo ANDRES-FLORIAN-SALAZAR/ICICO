@@ -53,39 +53,23 @@
     padding: 12px 24px;
     font-size: 16px;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: all 0.3s ease;
     margin: 0 8px;
     border: none;
     color: #ffffff;
-}
-
-.btn-imagenes {
     background: linear-gradient(135deg, #e36a3c, #c94717);
     box-shadow: 0 4px 6px rgba(227, 106, 60, 0.3);
 }
 
-.btn-imagenes:hover {
+.btn-imagenes:hover,
+.btn-videos:hover,
+.btn-videos.active,
+.btn-imagenes.active {
     background: linear-gradient(135deg, #c94717, #8c2f14);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(227, 106, 60, 0.4);
-}
-
-.btn-videos {
-    background: linear-gradient(135deg, #c2a04a, #7a5a2b);
-    box-shadow: 0 4px 6px rgba(194, 160, 74, 0.3);
-}
-
-.btn-videos:hover {
-    background: linear-gradient(135deg, #7a5a2b, #4a1f14);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(194, 160, 74, 0.4);
-}
-
-.btn-videos.active {
-    background: linear-gradient(135deg, #c2a04a, #7a5a2b);
     color: #ffffff;
-    box-shadow: 0 6px 12px rgba(194, 160, 74, 0.4);
 }
 
 /* Estilos de Secciones */
