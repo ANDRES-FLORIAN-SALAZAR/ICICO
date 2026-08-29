@@ -936,58 +936,6 @@ images
     transform: scale(1.05);
 }
 
-
-/* ===== Página Contacto: clases añadidas (antes eran estilos inline) ===== */
-
-/* Encabezado de color en las tarjetas de contacto */
-.contact-card .card-header {
-    background: var(--primary-color);
-}
-
-/* Caja del mapa interactivo */
-.map-box {
-    height: 250px;
-    border-radius: 8px;
-    position: relative;
-}
-
-/* Spinner de "Cargando mapa..." centrado sobre el mapa */
-.map-loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-/* Banner de la cita bíblica con imagen de fondo */
-.verse-banner {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75)), url('Multimedia/images/4.jpg') center/cover no-repeat;
-    border-left: 5px solid var(--accent-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.verse-icon {
-    color: var(--accent-color);
-    opacity: 0.9;
-}
-
-.verse-text {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    color: #ffffff;
-    font-style: italic;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-}
-
-.verse-reference {
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #ffffff;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-}
-
 /* =====================================================
 Loading / Spinner
 ===================================================== */
