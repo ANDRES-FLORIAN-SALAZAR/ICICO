@@ -6,7 +6,7 @@ let imagenesFiltradas = [];
 let paginaActual = 0;
 let paginaVideosActual = 0;
 const imagenesPorPagina = 6;
-const videosPorPagina = 6;
+const videosPorPagina = 3;
 const cacheBuster = () => '?v=' + Date.now();
 const mesesOrden = {
     'Enero': 1,
@@ -86,6 +86,10 @@ function renderizarGaleria() {
     if (!container) {
         console.error('ERROR: No se encontró el contenedor');
         return;
+    }
+
+    if (paginaActual === 0) {
+        container.innerHTML = '';
     }
     
     if (imagenesFiltradas.length === 0) {
@@ -250,6 +254,8 @@ function mostrarSeccion(seccion) {
     if (seccion === 'imagenes') {
         console.log('6. Mostrando sección imágenes');
         paginaActual = 0;
+        const galeriaContainer = document.getElementById('galeria-container');
+        if (galeriaContainer) galeriaContainer.innerHTML = '';
         const btnCargarMasVideos = document.getElementById('btn-cargar-mas-videos');
         if (btnCargarMasVideos) btnCargarMasVideos.style.display = 'none';
         if (seccionImagenes) {
@@ -266,6 +272,8 @@ function mostrarSeccion(seccion) {
     } else if (seccion === 'videos') {
         console.log('6. Mostrando sección videos');
         paginaVideosActual = 0;
+        const videosContainer = document.getElementById('videos-container');
+        if (videosContainer) videosContainer.innerHTML = '';
         const btnCargarMasImagenes = document.getElementById('btn-cargar-mas-imagenes');
         if (btnCargarMasImagenes) btnCargarMasImagenes.style.display = 'none';
         if (seccionVideos) {
@@ -324,6 +332,10 @@ function renderizarVideos(videos) {
     if (!container) {
         console.error('ERROR: No se encontró el contenedor de videos');
         return;
+    }
+
+    if (paginaVideosActual === 0) {
+        container.innerHTML = '';
     }
     
     if (videos.length === 0) {

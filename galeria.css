@@ -173,26 +173,26 @@
 }
 
 #videos-container .card-title {
-    color: #2b0f0a;
+    color: var(--color-dark-1);
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
 #videos-container .card-text {
-    color: #4d4d4d;
+    color: var(--color-dark-2);
     margin-bottom: 0.5rem;
 }
 
 /* Títulos y Textos - Paleta Específica */
 .gallery-item .card-title {
-    color: #ffffff;
+    color: var(--color-dark-1);
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 8px;
 }
 
 .gallery-item .card-text {
-    color: #c7b8a8;
+    color: var(--color-dark-2);
     font-size: 0.95rem;
     line-height: 1.4;
 }
