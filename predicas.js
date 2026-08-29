@@ -17,8 +17,7 @@ async function cargarPredicas() {
         console.log('Predicas cargadas:', predicas.length);
         
         renderizarPredicas();
-        
-        return true;
+        return;
     } catch (error) {
         console.error('Error cargando predicas:', error);
         return false;

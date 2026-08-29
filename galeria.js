@@ -69,8 +69,7 @@ async function cargarImagenes() {
         console.log('Imágenes cargadas:', todasLasImagenes.length);
         
         renderizarGaleria();
-        
-        return true;
+        return;
     } catch (error) {
         console.error('Error cargando imágenes:', error);
         return false;
@@ -340,8 +339,7 @@ async function cargarVideos() {
         // Renderizar videos
         sessionStorage.setItem('videosGaleria', JSON.stringify(videos));
         renderizarVideos(videos);
-        
-        return true;
+        return;
     } catch (error) {
         console.error('Error cargando videos:', error);
         return false;
