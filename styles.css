@@ -525,11 +525,11 @@ section.py-5 {
    Contact Cards
    ===================================================== */
 .contact-card .card-body {
-    color: var(--text-primary);
+    color: var(--color-dark-2);
 }
 
 .contact-card .card-text {
-    color: var(--text-primary);
+    color: var(--color-dark-2);
 }
 
 .contact-card .small,
@@ -538,7 +538,7 @@ section.py-5 {
 .contact-card .map-placeholder p,
 .contact-card .map-container small,
 .contact-card .map-container .text-muted {
-    color: var(--color-sand) !important;
+    color: var(--color-dark-2) !important;
 }
 
 .contact-card .btn {
@@ -839,7 +839,7 @@ section.py-5 {
    Utilidades
    ===================================================== */
 .text-center  { text-align: center; }
-.text-muted   { color: var(--color-sand) !important; }
+.text-muted   { color: var(--color-dark-2) !important; }
 .text-primary { color: var(--primary-color) !important; }
 .text-white   { color: var(--white-color) !important; }
 .bg-light     { background-color: var(--light-color) !important; }
