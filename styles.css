@@ -369,7 +369,7 @@ section.py-5 {
 }
 
 .card:hover .card-title {
-    color: var(--accent-color) !important;
+    color: var(--color-dark-1) !important;
 }
 
 /* =====================================================
