@@ -293,7 +293,7 @@ body {
    ===================================================== */
 .page-header {
     background: linear-gradient(135deg, rgba(140, 47, 20, 0.82) 0%, rgba(201, 71, 23, 0.75) 100%),
-                url('fondo2.jpg') center center / cover no-repeat;
+                url('Multimedia/fondo.jpg') center center / cover no-repeat;
     color: var(--white-color);
     padding: 5rem 0 3rem;
     text-align: center;
