@@ -268,16 +268,18 @@
       "description": "Palabra de Dios para la congregación",
       "mes": "Marzo",
       "año": 2026,
+      "fechaAgregado": "2026-03-15",
       "tipo": "video"
     },
     {
-    "id": 28,
+      "id": 28,
       "src": "Multimedia/images/27.jpg",
       "alt": "Culto de Damas",
       "title": "Mujeres de Dios",
       "description": "Separadas por Dios",
       "mes": "Agosto",
       "año": 2026,
+      "fechaAgregado": "2026-08-20",
       "tipo": "imagen"
     }
   ]

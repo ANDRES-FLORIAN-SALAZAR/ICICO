@@ -5,18 +5,63 @@ let todasLasImagenes = [];
 let imagenesFiltradas = [];
 let paginaActual = 0;
 const imagenesPorPagina = 6;
+const cacheBuster = () => '?v=' + Date.now();
+const mesesOrden = {
+    'Enero': 1,
+    'Febrero': 2,
+    'Marzo': 3,
+    'Abril': 4,
+    'Mayo': 5,
+    'Junio': 6,
+    'Julio': 7,
+    'Agosto': 8,
+    'Septiembre': 9,
+    'Octubre': 10,
+    'Noviembre': 11,
+    'Diciembre': 12
+};
+
+function ordenarPorReciente(a, b) {
+    const anioA = Number(a?.año ?? 0);
+    const anioB = Number(b?.año ?? 0);
+
+    if (anioB !== anioA) {
+        return anioB - anioA;
+    }
+
+    const mesA = mesesOrden[a?.mes] ?? 0;
+    const mesB = mesesOrden[b?.mes] ?? 0;
+
+    if (mesB !== mesA) {
+        return mesB - mesA;
+    }
+
+    const fechaA = a?.fechaAgregado ? new Date(a.fechaAgregado).getTime() : 0;
+    const fechaB = b?.fechaAgregado ? new Date(b.fechaAgregado).getTime() : 0;
+
+    if (fechaB !== fechaA) {
+        return fechaB - fechaA;
+    }
+
+    return (Number(b?.id ?? 0)) - (Number(a?.id ?? 0));
+}
+
+function ordenarContenido(items) {
+    return [...items].sort(ordenarPorReciente);
+}
 
 // Cargar datos desde JSON
 async function cargarImagenes() {
     try {
-        const response = await fetch('galeria.json');
+        const timestamp = Date.now();
+        const response = await fetch(`galeria.json?v=${timestamp}`);
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
         
-        // Filtrar solo imágenes
-        todasLasImagenes = data.imagenes.filter(item => item.tipo === 'imagen');
+        // Filtrar solo imágenes y ordenarlas por contenido más reciente primero
+        todasLasImagenes = ordenarContenido(data.imagenes.filter(item => item.tipo === 'imagen'));
         imagenesFiltradas = [...todasLasImagenes];
         
         console.log('Imágenes cargadas:', todasLasImagenes.length);
@@ -224,14 +269,15 @@ function mostrarSeccion(seccion) {
 async function cargarVideos() {
     try {
         console.log('=== CARGANDO VIDEOS ===');
-        const response = await fetch('galeria.json');
+        const timestamp = Date.now();
+        const response = await fetch(`galeria.json?v=${timestamp}`);
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
         
-        // Filtrar solo videos
-        const videos = data.imagenes.filter(item => item.tipo === 'video');
+        // Filtrar solo videos y ordenarlos por contenido más reciente primero
+        const videos = ordenarContenido(data.imagenes.filter(item => item.tipo === 'video'));
         console.log('Videos encontrados:', videos.length);
         
         // Renderizar videos
