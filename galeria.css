@@ -126,14 +126,18 @@
 
 /* Contenedor de Videos */
 #videos-container {
-    margin: 0 -15px;
-    padding: 0 15px;
+    margin: 0 -12px;
+    padding: 0 12px;
     display: flex;
     flex-wrap: wrap;
 }
 
 #videos-container .gallery-item {
     margin-bottom: 30px;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    padding: 0 12px;
+    box-sizing: border-box;
 }
 
 #videos-container .video-card {
@@ -144,6 +148,9 @@
     overflow: hidden;
     transition: all 0.3s ease;
     height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 #videos-container .video-card:hover {
@@ -279,7 +286,8 @@
 /* Responsive Design */
 @media (min-width: 992px) {
     #galeria-container > [class*="col-lg-4"],
-    #videos-container > [class*="col-lg-4"] {
+    #videos-container > [class*="col-lg-4"],
+    #videos-container .gallery-item {
         flex: 0 0 33.333333%;
         max-width: 33.333333%;
     }
@@ -287,7 +295,8 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
     #galeria-container > [class*="col-md-6"],
-    #videos-container > [class*="col-md-6"] {
+    #videos-container > [class*="col-md-6"],
+    #videos-container .gallery-item {
         flex: 0 0 50%;
         max-width: 50%;
     }
@@ -300,7 +309,8 @@
     }
     
     #galeria-container > [class*="col-"],
-    #videos-container > [class*="col-"] {
+    #videos-container > [class*="col-"],
+    #videos-container .gallery-item {
         flex: 0 0 100%;
         max-width: 100%;
         padding: 0 10px;
