@@ -274,10 +274,10 @@
     {
       "id": 28,
       "src": "Multimedia/videos/video2.mp4",
-      "alt": "Video 2",
-      "title": "Video 2",
-      "description": "Video adicional de la comunidad",
-      "mes": "Marzo",
+      "alt": "Culto de Damas",
+      "title": "Biendenida",
+      "description": "Palabra de Dios para las Damas",
+      "mes": "Agosto",
       "año": 2026,
       "fechaAgregado": "2026-03-16",
       "tipo": "video"
@@ -285,10 +285,10 @@
     {
       "id": 29,
       "src": "Multimedia/videos/video3.mp4",
-      "alt": "Video 3",
-      "title": "Video 3",
-      "description": "Video adicional de la comunidad",
-      "mes": "Marzo",
+      "alt": "Culto de Damas",
+      "title": "Enseñanza",
+      "description": "Conociendo el Amor",
+      "mes": "Agosto",
       "año": 2026,
       "fechaAgregado": "2026-03-17",
       "tipo": "video"
@@ -296,10 +296,10 @@
     {
       "id": 30,
       "src": "Multimedia/videos/video4.mp4",
-      "alt": "Video 4",
-      "title": "Video 4",
-      "description": "Video adicional de la comunidad",
-      "mes": "Marzo",
+      "alt": "Culto de Damas",
+      "title": "Enseñanza",
+      "description": "El Amor en Mi",
+      "mes": "Agosto",
       "año": 2026,
       "fechaAgregado": "2026-03-18",
       "tipo": "video"
@@ -307,10 +307,10 @@
     {
       "id": 31,
       "src": "Multimedia/videos/video5.mp4",
-      "alt": "Video 5",
-      "title": "Video 5",
-      "description": "Video adicional de la comunidad",
-      "mes": "Marzo",
+      "alt": "Culto de Damas",
+      "title": "Qué es el Amor",
+      "description": "Integrando Nuestras definiciones",
+      "mes": "Agosto",
       "año": 2026,
       "fechaAgregado": "2026-03-19",
       "tipo": "video"
