@@ -899,7 +899,7 @@ Overlay de imagen (nosotros)
 
 .verse-banner {
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75)),
-                url('Multimedia/images/4.jpg') center/cover no-repeat;
+                url('Multimedia/fondo.jpg') center/cover no-repeat;
     border-left: 5px solid var(--accent-color);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
