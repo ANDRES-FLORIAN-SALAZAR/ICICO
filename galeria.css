@@ -98,6 +98,7 @@
     object-fit: cover;
     transition: transform 0.3s ease;
     display: block;
+    background: #1d1d1d;
 }
 
 .video-player:hover {
@@ -108,10 +109,27 @@
 #videos-container {
     margin: 0 -15px;
     padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #videos-container .gallery-item {
     margin-bottom: 30px;
+}
+
+#videos-container .video-card {
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(43, 15, 10, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+#videos-container .video-card:hover {
+    box-shadow: 0 8px 25px rgba(43, 15, 10, 0.5);
+    transform: translateY(-3px);
 }
 
 /* Cards de Galería - Paleta Específica */
@@ -127,6 +145,21 @@
 .gallery-item .card:hover {
     box-shadow: 0 8px 25px rgba(43, 15, 10, 0.5);
     transform: translateY(-3px);
+}
+
+#videos-container .card-body {
+    padding: 1rem 1.1rem 1.2rem;
+}
+
+#videos-container .card-title {
+    color: #2b0f0a;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+#videos-container .card-text {
+    color: #4d4d4d;
+    margin-bottom: 0.5rem;
 }
 
 /* Títulos y Textos - Paleta Específica */

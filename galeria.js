@@ -314,10 +314,10 @@ function renderizarVideos(videos) {
         console.log(`4. Procesando video ${index + 1}:`, video);
         
         const videoHtml = `
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
-                <div class="card h-100 shadow">
+            <div class="col-lg-4 col-md-6 mb-4 gallery-item" data-aos="fade-up" data-aos-delay="${index * 100}">
+                <div class="card h-100 shadow video-card">
                     <div class="video-container">
-                        <video controls class="video-player w-100" style="height: 250px; object-fit: cover;">
+                        <video controls class="video-player w-100" preload="metadata">
                             <source src="${video.src}" type="video/mp4">
                             Tu navegador no soporta videos.
                         </video>
