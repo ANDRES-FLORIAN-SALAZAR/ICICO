@@ -839,6 +839,12 @@ section.py-5 {
 .text-white   { color: var(--white-color) !important; }
 .bg-light     { background-color: var(--light-color) !important; }
 
+.contact-card .map-container .text-muted,
+.contact-card .map-placeholder .text-muted,
+.contact-card .text-muted {
+    color: var(--color-sand) !important;
+}
+
 .text-gradient {
     background: var(--gradient-accent);
     -webkit-background-clip: text;
