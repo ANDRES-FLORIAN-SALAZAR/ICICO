@@ -980,21 +980,25 @@ Alertas
    Footer
    ===================================================== */
 .footer {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.75)),
+                url('Multimedia/versiculo.jpg') center/cover no-repeat;
     color: var(--white-color);
     padding: 3rem 0 2rem;
+    border-top: 5px solid var(--accent-color); /* opcional, detalle decorativo */
 }
 
 .footer h5 {
     color: var(--white-color);
     margin-bottom: 1rem;
     font-weight: 600;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 }
 
 .footer a {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: var(--transition);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
 
 .footer a:hover {
@@ -1022,6 +1026,7 @@ Alertas
     margin-right: 1rem;
     transition: var(--transition);
     display: inline-block;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
 
 .social-links a:hover {
