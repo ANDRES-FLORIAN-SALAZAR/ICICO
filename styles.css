@@ -981,7 +981,7 @@ Alertas
    ===================================================== */
 .footer {
     background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.75)),
-                url('Multimedia/versiculo.jpg') center/cover no-repeat;
+                url('Multimedia/fondo.jpg') center/cover no-repeat;
     color: var(--white-color);
     padding: 3.5rem 0 2.5rem;
     text-align: center;
@@ -1024,6 +1024,19 @@ Alertas
     display: inline-flex;
     align-items: center;
     gap: 8px;
+}
+
+.footer-box {
+  background: rgba(0,0,0,0.6); /* caja translúcida sobre el fondo */
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.footer-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
 .social-links a {
