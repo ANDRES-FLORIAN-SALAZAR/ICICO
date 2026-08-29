@@ -249,6 +249,9 @@ function mostrarSeccion(seccion) {
     // Mostrar sección seleccionada y activar botón correspondiente
     if (seccion === 'imagenes') {
         console.log('6. Mostrando sección imágenes');
+        paginaActual = 0;
+        const btnCargarMasVideos = document.getElementById('btn-cargar-mas-videos');
+        if (btnCargarMasVideos) btnCargarMasVideos.style.display = 'none';
         if (seccionImagenes) {
             seccionImagenes.classList.remove('seccion-inactiva');
             seccionImagenes.classList.add('seccion-activa');
@@ -259,8 +262,12 @@ function mostrarSeccion(seccion) {
             btnImagenes.classList.add('btn-primary');
             console.log('8. Botón imágenes activado');
         }
+        renderizarGaleria();
     } else if (seccion === 'videos') {
         console.log('6. Mostrando sección videos');
+        paginaVideosActual = 0;
+        const btnCargarMasImagenes = document.getElementById('btn-cargar-mas-imagenes');
+        if (btnCargarMasImagenes) btnCargarMasImagenes.style.display = 'none';
         if (seccionVideos) {
             seccionVideos.classList.remove('seccion-inactiva');
             seccionVideos.classList.add('seccion-activa');
@@ -364,8 +371,8 @@ function renderizarVideos(videos) {
     if (btnCargarMasVideos) {
         const totalMostrados = (paginaVideosActual + 1) * videosPorPagina;
         if (totalMostrados < videos.length) {
-            btnCargarMasVideos.style.display = 'inline-block';
-            btnCargarMasVideos.textContent = `Cargar más (${videos.length - totalMostrados} videos restantes)`;
+            btnCargarMasVideos.style.display = 'inline-flex';
+            btnCargarMasVideos.innerHTML = `<i class="fas fa-plus me-2"></i>Cargar más (${videos.length - totalMostrados} videos restantes)`;
         } else {
             btnCargarMasVideos.style.display = 'none';
         }
