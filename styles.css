@@ -980,7 +980,7 @@ Alertas
    Footer
    ===================================================== */
 .footer {
-    background: linear-gradient(135deg, #e36a3c, #c94717); /* mismo degradado que el nav */
+    background: linear-gradient(135deg, #e36a3c, #c94717); /* mismo color que el nav */
     color: var(--white-color);
     padding: 3.5rem 0 2.5rem;
     text-align: center;
@@ -995,7 +995,8 @@ Alertas
 }
 
 .footer-box {
-    background: #f08a5d; /* naranja más claro para contraste */
+    background: transparent; /* caja transparente */
+    border: 2px solid rgba(255,255,255,0.2); /* borde sutil para separar */
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 4px 15px rgba(0,0,0,0.25);
@@ -1007,7 +1008,7 @@ Alertas
 .footer-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-    background: #f39c74; /* se ilumina al hover */
+    border-color: rgba(255,255,255,0.4); /* borde más visible al hover */
 }
 
 .footer h5 {
@@ -1027,7 +1028,7 @@ Alertas
 }
 
 .footer a:hover {
-    color: #ffe0c2; /* tono beige claro */
+    color: #ffe0c2;
     transform: translateY(-2px);
     transition: all 0.3s ease;
 }
