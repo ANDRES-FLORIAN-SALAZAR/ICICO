@@ -1064,6 +1064,29 @@ Alertas
     margin: 2rem 0;
 }
 
+.footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; /* espacio uniforme entre las cajas */
+    justify-content: center;
+}
+
+.footer-box {
+    background: rgba(0,0,0,0.6); /* caja translúcida sobre el fondo */
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+    flex: 1 1 300px; /* que cada caja tenga ancho mínimo y se adapte */
+    margin: 0 auto; /* centra las cajas en pantallas pequeñas */
+}
+
+.footer-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+
 
 /* =====================================================
    Animaciones
