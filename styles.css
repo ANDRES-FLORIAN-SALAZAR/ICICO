@@ -980,7 +980,7 @@ Alertas
    Footer
    ===================================================== */
 .footer {
-    background: linear-gradient(135deg, #e0b89c, #7e2a1b); /* degradado cálido */
+    background-color: #7e2a1b; /* degradado cálido */
     color: #ffffff;
     padding: 3.5rem 0 2.5rem;
     text-align: center;
