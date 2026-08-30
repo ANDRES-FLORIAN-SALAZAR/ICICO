@@ -995,7 +995,7 @@ Alertas
 }
 
 .footer-box {
-    background-color: #e0b89c; /* caja transparente */
+    background-color: transparent; /* caja transparente */
     border: 2px solid rgb(255, 255, 255); /* borde sutil para separar */
     border-radius: 12px;
     padding: 2rem;
