@@ -980,11 +980,34 @@ Alertas
    Footer
    ===================================================== */
 .footer {
-    background: linear-gradient(135deg, #e36a3c, #c94717); /* fondo degradado naranja */
+    background: linear-gradient(135deg, #e36a3c, #c94717); /* mismo degradado que el nav */
     color: var(--white-color);
     padding: 3.5rem 0 2.5rem;
     text-align: center;
     box-shadow: 0 -6px 20px rgba(0,0,0,0.4);
+}
+
+.footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; /* espacio entre cajas */
+    justify-content: center;
+}
+
+.footer-box {
+    background: #f08a5d; /* naranja más claro para contraste */
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+    flex: 1 1 300px;
+    margin: 0 auto;
+}
+
+.footer-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    background: #f39c74; /* se ilumina al hover */
 }
 
 .footer h5 {
@@ -998,13 +1021,13 @@ Alertas
 
 .footer p,
 .footer a {
-    color: rgba(255, 255, 255, 0.9);
+    color: #fff;
     font-size: 0.95rem;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
 .footer a:hover {
-    color: var(--color-light-1); /* un beige claro para resaltar */
+    color: #ffe0c2; /* tono beige claro */
     transform: translateY(-2px);
     transition: all 0.3s ease;
 }
@@ -1024,38 +1047,15 @@ Alertas
     gap: 8px;
 }
 
-.footer .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem; /* espacio uniforme entre las cajas */
-    justify-content: center;
-}
-
-.footer-box {
-    background: rgba(255, 255, 255, 0.12); /* tono claro translúcido sobre el naranja */
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-    transition: transform 0.3s ease;
-    flex: 1 1 300px;
-    margin: 0 auto;
-}
-
-.footer-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-    background: rgba(255, 255, 255, 0.18); /* se aclara un poco al hover */
-}
-
 .social-links a {
-    color: var(--white-color);
+    color: #fff;
     font-size: 1.4rem;
     margin: 0 0.5rem;
     transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--color-light-1);
+    color: #ffe0c2;
     transform: scale(1.2);
 }
 
