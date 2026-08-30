@@ -142,7 +142,7 @@ input[type="submit"] {
 }
 
 .navbar.scrolled {
-    background: linear-gradient(135deg, #d75d22, #b94d18);
+    background-color:#2b0f0a;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 25px rgba(215, 93, 34, 0.35);
