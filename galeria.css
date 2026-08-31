@@ -110,18 +110,18 @@
 
 /* Contenedor de Videos */
 #videos-container {
-    margin: 0 -12px;
-    padding: 0 12px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 0;
+    padding: 0;
 }
 
 #videos-container .gallery-item {
-    margin-bottom: 30px;
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-    padding: 0 12px;
+    margin-bottom: 0;
+    padding: 0;
     box-sizing: border-box;
+    width: 100%;
 }
 
 #videos-container .video-card {
@@ -278,32 +278,30 @@
 
 /* Responsive Design */
 @media (min-width: 992px) {
-    #galeria-container > [class*="col-lg-4"],
-    #videos-container > [class*="col-lg-4"],
-    #videos-container .gallery-item {
+    #galeria-container > [class*="col-lg-4"] {
         flex: 0 0 33.333333%;
         max-width: 33.333333%;
     }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    #galeria-container > [class*="col-md-6"],
-    #videos-container > [class*="col-md-6"],
-    #videos-container .gallery-item {
+    #galeria-container > [class*="col-md-6"] {
         flex: 0 0 50%;
         max-width: 50%;
     }
 }
 
 @media (max-width: 768px) {
-    #galeria-container,
-    #videos-container {
+    #galeria-container {
         margin: 0 -10px;
     }
-    
-    #galeria-container > [class*="col-"],
-    #videos-container > [class*="col-"],
-    #videos-container .gallery-item {
+
+    #videos-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    #galeria-container > [class*="col-"] {
         flex: 0 0 100%;
         max-width: 100%;
         padding: 0 10px;
